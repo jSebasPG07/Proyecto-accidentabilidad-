@@ -37,25 +37,6 @@
                     <h4 class="text-section">Components</h4>
                 </li>
 
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
-                        <i class="fas fa-layer-group"></i>
-                        <p>Reportes</p>
-                        <span class="caret"></span>
-                    </a>
-                    <div class="collapse" id="base">
-                        <ul class="nav nav-collapse">
-                            <li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
-                            <li><a href="components/buttons.html"><span class="sub-item">Solicitud nueva señal</span></a></li>
-                            <li><a href="components/gridsystem.html"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
-                            
-                            <li><a href="<?php echo getUrl("Reportes", "SolicitudNR", "index")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
-                            
-                            <li><a href="components/notifications.html"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
-                            <li><a href="components/sweetalert.html"><span class="sub-item">Solicitud via en mal estado</span></a></li>
-                        </ul>
-                    </div>
-                </li>
 				<!-- Base -->
 				<li class="nav-item">
 					<a data-bs-toggle="collapse" href="#base">
@@ -66,7 +47,7 @@
 					<div class="collapse" id="base">
 						<ul class="nav nav-collapse">
 							<li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
-							<li><a href=>"<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"<span class="sub-item">Solicitud nueva señal</span></a></li>
+							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
 							<li><a href="components/gridsystem.html"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
 							<li><a href="components/panels.html"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
