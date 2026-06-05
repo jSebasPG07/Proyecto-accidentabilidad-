@@ -19,12 +19,17 @@
 
 <script src="../web/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 	<script>
-		sweetalert.swal({
-			 
-		})
+		<?php if(isset($_GET['msg']) && $_GET['msg'] == 'ok'){ ?>
+      swal("¡Bien hecho!", "Registro guardado correctamente", "success");
+    <?php } ?>
 
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'error'){ ?>
+      swal("Error", "No se pudo guardar el registro", "error");
+    <?php } ?>
 
-
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'imgerror'){ ?>
+      swal("Error", "No se pudo subir la imagen", "error");
+    <?php } ?>
 
 
 	</script>
