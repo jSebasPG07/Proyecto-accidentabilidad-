@@ -18,7 +18,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="nlesionados">Numero de lesionados</label>
+            <label for="nlesionados">Numero</label>
             <input type="number" class="form-control" id="usuario" name="nlesionados" placeholder="numero de lesionados">
         </div>
 
@@ -40,7 +40,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="tchoque">Tipo de choque</label>
+            <label for="tchoque">Choque</label>
             <select name="tchoque" id="tchoque" class="form-control">
                 <?php
                     while ($choque = pg_fetch_assoc($reportes)) {
