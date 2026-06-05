@@ -1,12 +1,9 @@
 <?php
 
 include_once "../model/Reportes/ReportesAModel.php";
+
 class ReportesAController {
 
-    public function test(){
-        $obj = new ReportesAModel();
-    }
-    
     public function getCreate(){
         $obj = new ReportesAModel();
         $sql = "SELECT * FROM tipo_choque";
@@ -21,24 +18,35 @@ class ReportesAController {
         $nomenclatura = $_POST['nomenclatura'];
         $nlesionados = $_POST['nlesionados'];
         $tchoque = $_POST['tchoque'];
-        $taccidente = $_POST['taccidente'];
-        $cvehiculo = $_POST['cvehiculo'];
         $direccion = $_POST['direccion'];
-        $observacion = $_POST['observacion'];
+        $observaciones = $_POST['observaciones'];
 
-        $sql = "INSERT INTO reportes_accidentes (fecha_accidente, nomenclatura, numero_lesionados, tipo_choque, tipo_accidente, cantidad_vehiculos, direccion, observacion) VALUES ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$tchoque', '$taccidente', '$cvehiculo', '$direccion', '$observacion')";
-        $obj->insert($sql);
+        $id_estado = 3;
+
+    
+        $img = $_FILES['imagen']['name'];
+        $archivo = $_FILES['imagen']['tmp_name'];
+        $ruta = "../img/" . $img;
+
+        if(move_uploaded_file($archivo, $ruta)){
+
+            $sql = "INSERT INTO reporte_accidente 
+            (fecha_accidente, nomenclatura, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque) 
+            VALUES 
+            ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque')";
+
+            $ejecutar = $obj->insert($sql);
+
+            if($ejecutar){
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ok';</script>";
+            } else {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=error';</script>";
+            }
+
+        } else {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=imgerror';</script>";
+            }
     }
-
-
-
 }
-
-
-
-
-
-
-
 
 ?>
