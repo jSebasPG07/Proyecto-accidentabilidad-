@@ -1,8 +1,8 @@
 <div class="mt-3">
-    <h3 class="display-3">Formulario Solicitud nueva señal</h3>
+    <h3 class="display-3">Formulario Solicitud señal en mal estado</h3>
 </div>
 
-<form action="<?php echo getUrl("Reportes","ReportesNS","postCreate");?>" 
+<form action="<?php echo getUrl("Reportes","ReportesSME","postCreate");?>" 
       method="post" enctype="multipart/form-data">
 
     <div class="row mt-5">
@@ -41,9 +41,22 @@
                 ?>
             </select>
         </div>
+
+        <div class="col-md-4">
+            <label for="tdaño">Tipo daño</label>
+            <select name="tdaño" id="tdaño" class="form-control" required>
+                     <?php
+                        while ($tdaños = pg_fetch_assoc($tdaño)) {
+                            echo "<option value='" . $tdaños['id_tipo_dano_senal'] . "'>" . $tdaños['descripcion'] . "</option>";
+                         }
+                    ?>
+            </select>
+        </div>
+
+
         
         <div class="col-md-4">
-            <button type="submit" class="btn btn-success mt-4">Registrar nueva señal </button>
+            <button type="submit" class="btn btn-success mt-4">Registrar solicitud señal mal estado</button>
         </div>
 
     </div>

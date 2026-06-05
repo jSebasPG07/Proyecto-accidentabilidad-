@@ -5,8 +5,6 @@
     class ReportesNSController{
         public function getCreate(){
             $obj = new ReportesNSModel();
-            $sql = "SELECT * FROM estado";
-            $est = $obj->select($sql);
             $sql = "SELECT * FROM tipo_senal";
             $nsenal = $obj->select($sql);
             include_once "../view/Reportes/ReportesNSView.php";
