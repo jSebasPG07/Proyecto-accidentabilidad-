@@ -42,17 +42,3 @@
     </div>
  
 </form>
- 
-<script>
-    $('form').on('submit', function(e) {
-        var descripcion = $('#descripcion').val().trim();
-        var direccion   = $('#direccion').val().trim();
-        var imagen      = $('#imagen').val();
- 
-        if (descripcion === '' || direccion === '' || imagen === '') {
-            e.preventDefault();
-            swal("Campos incompletos", "Por favor llena todos los campos.", "warning");
-        }
-    });
-</script>
- 
