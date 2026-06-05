@@ -54,7 +54,7 @@
 							<li><a href=>"<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"<span class="sub-item">Solicitud nueva señal</span></a></li>
 							<li><a href="components/gridsystem.html"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
 							<li><a href="components/panels.html"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
-							<li><a href="components/notifications.html"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
+							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
 							<li><a href="components/sweetalert.html"><span class="sub-item">Solicitud via en mal estado</span></a></li>
 						</ul>
 					</div>
