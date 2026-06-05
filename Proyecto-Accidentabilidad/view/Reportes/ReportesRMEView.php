@@ -1,5 +1,5 @@
 <div class="mt-3">
-    <h3 class="display-3">Solicitud reductor en mal estado</h3>
+    <h3 class="display-3">Formulario Solicitud Reductor En Mal Estado</h3>
 </div>
 
 <form action="<?php echo getUrl('Reportes', 'ReportesRME', 'postCreate'); ?>"
