@@ -1,48 +1,60 @@
-<?php 
+<?php
 
 include_once "../model/Reportes/SolicitudVMEModel.php";
 
 class SolicitudVMEController {
 
-    public function getCreate(){
+    public function getCreate() {
         $obj = new SolicitudVMEModel();
+
         $sql = "SELECT * FROM tipo_dano_via";
         $tiposDanoVia = $obj->select($sql);
+
         include_once "../view/Reportes/SolicitudVMEView.php";
     }
 
-    public function postCreate(){
+    public function postCreate() {
         $obj = new SolicitudVMEModel();
 
-        $descripcion = $_POST['descripcion'];
-        $direccion = $_POST['direccion'];
+        $descripcion   = $_POST['descripcion'];
+        $direccion     = $_POST['direccion'];
         $idtipodanovia = $_POST['idtipodanovia'];
+        $id_usuario    = $_SESSION['id'];
 
         $id_estado = 3;
 
-        $img = $_FILES['imagen']['name'];
+        $img     = $_FILES['imagen']['name'];
         $archivo = $_FILES['imagen']['tmp_name'];
-        $ruta = "../img" . $img;
+        $ruta    = "../img/" . $img;
 
-        if (move_uploaded_file($archivo, $ruta)) {
-            
-            $sql = "INSERT INTO sol_via_mal_estado (descripcion, imagen_url, direccion, id_estado, id_tipo_dano_via) 
-                    VALUES ('$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia')";
+        if (empty($descripcion) || empty($direccion) || empty($img)) {
 
-            $ejecutar = $obj->insert($sql);
+            echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=vacio';</script>";
 
-            if($ejecutar) {
-                echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=ok';</script>";
-            } else {
-                echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=error';</script>";
-            }
         } else {
-            echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=imgerror';</script>";
+
+            if (move_uploaded_file($archivo, $ruta)) {
+
+                $sql = "INSERT INTO sol_via_mal_estado 
+                            (descripcion, imagen_url, direccion, id_estado, id_tipo_dano_via, id_usuario) 
+                        VALUES 
+                            ('$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia', '$id_usuario')";
+
+                $ejecutar = $obj->insert($sql);
+
+                if ($ejecutar) {
+                    echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=ok';</script>";
+                } else {
+                    echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=error';</script>";
+                }
+
+            } else {
+                echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=imgerror';</script>";
+            }
+
         }
-
     }
-    
-}
 
+}
 
 ?>
