@@ -43,6 +43,8 @@
                 if(method_exists($objeto, $funcion)){
                     $objeto -> $funcion();
                 }else{
+                    echo "<br><b>Intentando buscar en:</b> ../controller/$modulo/".$controlador."Controller.php<br>";
+
                     echo "la funcion especifica no exixte";
                 }
             }else{

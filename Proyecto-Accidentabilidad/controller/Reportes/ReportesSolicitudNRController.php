@@ -1,23 +1,40 @@
 <?php
 
-include_once "../model/Reportes/SolicitudNRModel.php";
+include_once "../model/Reportes/ReportesSolicitudNRModel.php";
 
-class SolicitudNRController {
+class ReportesSolicitudNRController {
     
     private $model;
 
     public function __construct() {
-        $this->model = new SolicitudNRModel();
+        $this->model = new ReportesSolicitudNRModel();
     }
 
-    // 1. Pantalla principal 
     public function index() {
-        $solicitudes = $this->model->obtenerSolicitudes();
-        include_once "../view/Reportes/solicitudNR.php";
+        $solitudes = $this->model->obtenerSolicitudes(); 
+        include_once "../view/Reportes/ReportesSolicitudNR.php";
     }
 
-    // 2. Función para Guardar un registro nuevo
-   public function crear() {
+    public function getEditar() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $solicitud = $this->model->obtenerSolicitudPorId($id);
+            $solitudes = $this->model->obtenerSolicitudes(); 
+            include_once "../view/Reportes/ReportesSolicitudNR.php";
+        } else {
+            redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
+        }
+    }
+
+    public function getEliminar() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->model->eliminarSolicitud($id);
+        }
+        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
+    }
+
+    public function postCrear() {
         if (isset($_POST['tipo_dano'])) {
             $tipoDano = $_POST['tipo_dano'];
             $descripcion = $_POST['descripcion'];
@@ -34,26 +51,13 @@ class SolicitudNRController {
                 move_uploaded_file($_FILES['imagen_url']['tmp_name'], $carpetaDestino . $nombreImagen);
             }
 
-            // Registra la solicitud en la BD
             $this->model->registrarSolicitud($tipoDano, $descripcion, $nombreImagen, $direccion, $idTipoReductor);
         }
         
-        // Redirecciona automáticamente al listado del módulo
-        redirect(getUrl("Reportes", "SolicitudNR", "index"));
+        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
     }
 
-    // 3. Función para buscar los datos y ponerlos en el formulario para editar
-    public function editar() {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $solicitud = $this->model->obtenerSolicitudPorId($id);
-            $solicitudes = $this->model->obtenerSolicitudes(); 
-            include_once "../view/Reportes/solicitudNR.php";
-        }
-    }
-
-    // 4. Función para guardar los datos ya modificados
-    public function actualizar() {
+    public function postActualizar() {
         if (isset($_POST['id_sol_nuevas_red'])) {
             $id = $_POST['id_sol_nuevas_red'];
             $tipoDano = $_POST['tipo_dano'];
@@ -71,19 +75,7 @@ class SolicitudNRController {
             $this->model->actualizarSolicitud($id, $tipoDano, $descripcion, $direccion, $idTipoReductor, $nombreImagen);
         }
         
-        // Redirección 
-        redirect(getUrl("Reportes", "SolicitudNR", "index"));
-    }
-
-    // 5. Función para eliminar un registro
-    public function eliminar() {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $this->model->eliminarSolicitud($id);
-        }
-        
-        // Redirección 
-        redirect(getUrl("Reportes", "SolicitudNR", "index"));
+        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
     }
 }
 ?>

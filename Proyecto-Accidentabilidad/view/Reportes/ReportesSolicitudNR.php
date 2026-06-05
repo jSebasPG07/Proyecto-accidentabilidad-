@@ -17,12 +17,11 @@
                 </h3>
 
                 <?php 
-                    // Cambiar el destino del formulario según la acción
                     if (isset($solicitud)) {
-                        $urlAccion = "index.php?c=SolicitudNR&a=actualizar";
+                        $urlAccion = getUrl("Reportes", "ReportesSolicitudNR", "postActualizar");
                         $registro = $solicitud[0]; // Extraer el registro para editar
                     } else {
-                        $urlAccion = "index.php?c=SolicitudNR&a=crear";
+                        $urlAccion = getUrl("Reportes", "ReportesSolicitudNR", "postCrear");
                         $registro = null;
                     }
                 ?>
@@ -61,6 +60,9 @@
                     <p>
                         <label>Fotografía de Evidencia:</label><br>
                         <input type="file" name="imagen_url" accept="image/*" <?php if($registro == null) { echo "required"; } ?>>
+                        <?php if($registro != null && $registro['imagen_url'] != "") { ?>
+                            <br><small style="color: gray;">Imagen actual: <?php echo $registro['imagen_url']; ?></small>
+                        <?php } ?>
                     </p>
 
                     <p>
@@ -68,7 +70,7 @@
                     </p>
                     
                     <?php if($registro != null) { ?>
-                        <p><a href="index.php?c=SolicitudNR&a=index">Cancelar Edición</a></p>
+                        <p><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "index"); ?>">Cancelar Edición</a></p>
                     <?php } ?>
                 </form>
 
@@ -87,23 +89,25 @@
                         <th>Acciones</th>
                     </tr>
                     
-                    <?php if (empty($solicitudes)) { ?>
+                    <?php if (empty($solitudes)) { ?>
                         <tr>
                             <td colspan="5" align="center">No hay solicitudes guardadas en la base de datos.</td>
                         </tr>
                     <?php } else { ?>
-                        <?php foreach ($solicitudes as $row) { ?>
+                        <?php foreach ($solitudes as $row) { ?>
                             <tr>
                                 <td align="center">
                                     <?php if ($row['imagen_url'] != "") { ?>
-                                        <img src="web/uploads/reductores/<?php echo $row['imagen_url']; ?>" width="60" height="60">
+                                        <img src="uploads/reductores/<?php echo $row['imagen_url']; ?>" width="60" height="60">
                                     <?php } else { echo "Sin foto"; } ?>
                                 </td>
                                 <td><?php echo $row['direccion']; ?></td>
                                 <td><?php echo $row['tipo_dano']; ?></td>
                                 <td align="center">
                                     <?php 
-                                        if($row['id_estado'] == 1) { 
+                                        if(isset($row['est_nombre'])) {
+                                            echo "<b>" . $row['est_nombre'] . "</b>";
+                                        } else if($row['id_estado'] == 1) { 
                                             echo "<b>Pendiente</b>"; 
                                         } else { 
                                             echo "Procesado"; 
@@ -111,12 +115,8 @@
                                     ?>
                                 </td>
                                 <td align="center">
-                                    <?php if ($row['id_estado'] == 1) { ?>
-                                        <a href="index.php?c=SolicitudNR&a=editar&id=<?php echo $row['id_sol_nuevas_red']; ?>">Editar</a> | 
-                                        <a href="index.php?c=SolicitudNR&a=eliminar&id=<?php echo $row['id_sol_nuevas_red']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este registro?')">Borrar</a>
-                                    <?php } else { ?>
-                                        <span>Solo lectura</span>
-                                    <?php } ?>
+                                    <a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getEditar", array("id" => $row['id_sol_nuevas_red'])); ?>">Editar</a> | 
+                                    <a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getEliminar", array("id" => $row['id_sol_nuevas_red'])); ?>" onclick="return confirm('¿Seguro que deseas eliminar este registro?')">Borrar</a>
                                 </td>
                             </tr>
                         <?php } ?>
