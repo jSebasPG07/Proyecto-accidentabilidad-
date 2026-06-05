@@ -8,7 +8,7 @@ class SolicitudVMEController {
         $obj = new SolicitudVMEModel();
         $sql = "SELECT * FROM tipo_dano_via";
         $tiposDanoVia = $obj->select($sql);
-        include_once "../view/Reportes/SolicitudVMEView.php"
+        include_once "../view/Reportes/SolicitudVMEView.php";
     }
 
     public function postCreate(){
