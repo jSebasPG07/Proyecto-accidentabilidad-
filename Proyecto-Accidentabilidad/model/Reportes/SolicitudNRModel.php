@@ -1,5 +1,5 @@
 <?php
-require_once "model/MasterModel.php";
+include_once "../model/MasterModel.php";
 
 class SolicitudNRModel extends MasterModel {
     
@@ -11,14 +11,13 @@ class SolicitudNRModel extends MasterModel {
     }
 
     // Obtener todas las solicitudes 
-    public function obtenerSolicitudes() {
-        $sql = "SELECT s.*, e.nombre_estado, t.nombre_reductor 
-                FROM sol_nuevo_reductor s
-                LEFT JOIN estado e ON s.id_estado = e.id_estado
-                LEFT JOIN tipo_reductor t ON s.id_tipo_reductor = t.id_tipo_reductor
-                ORDER BY s.id_sol_nuevas_red DESC";
-        return $this->consultar($sql);
-    }
+   public function obtenerSolicitudes() {
+    $sql = "SELECT s.*, e.nombre as est_nombre 
+            FROM sol_nuevo_reductor s 
+            JOIN estado e ON s.id_estado = e.id_estado 
+            ORDER BY s.id_sol_nuevas_red DESC";
+    return $this->select($sql); // <-- CORREGIDO
+}
 
     // Obtener una solicitud específica 
     public function obtenerSolicitudPorId($id) {
