@@ -29,14 +29,14 @@
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
         </div>
 
-        
+
 
         <div class="col-md-4">
-            <label for="tchoque">Tipo de Choque</label>
-            <select name="tchoque" id="tchoque" class="form-control" required>
+            <label for="tsenal">Tipo señal</label>
+            <select name="tsenal" id="tsenal" class="form-control" required>
                 <?php
-                    while ($choque = pg_fetch_assoc($reportes)) {
-                        echo "<option value='" . $choque['id_tipo_choque'] . "'>" . $choque['nombre'] . "</option>";
+                    while ($tsenall = pg_fetch_assoc($nsenal)) {
+                        echo "<option value='" . $tsenall['id_tipo_senal'] . "'>" . $tsenall['nombre_senal'] . "</option>";
                     }
                 ?>
             </select>
