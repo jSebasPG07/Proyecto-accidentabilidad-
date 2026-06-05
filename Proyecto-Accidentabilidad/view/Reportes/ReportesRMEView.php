@@ -11,9 +11,9 @@
             <label for="idtipored">Tipo de reductor</label>
             <select name="idtipored" id="idtipored" class="form-control">
                 <?php while ($red = pg_fetch_assoc($tiposReductor)) { ?>
-                    <option value="<?php echo $red['id_tipo_reductor']; ?>">
-                        <?php echo $red['categoria'] . ' - ' . $red['nombre']; ?>
-                    </option>
+                <option value="<?php echo $red['id_tipo_reductor']; ?>">
+                    <?php echo $red['nombre']; ?>
+                </option>
                 <?php } ?>
             </select>
         </div>
