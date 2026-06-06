@@ -8,7 +8,9 @@
             $sql = "SELECT * FROM tipo_senal";
             $nsenal = $obj->select($sql);
             $sql = "SELECT * FROM tipo_dano_senal";
-            $tdaño = $obj->select($sql);
+            $tdano = $obj->select($sql);
+            $sql = "SELECT * FROM orientacion_senal";
+            $orientacionn = $obj->select($sql);
             include_once "../view/Reportes/ReportesSMEView.php";
         }
 
@@ -19,7 +21,8 @@
             $descripcion = $_POST['descripcion'];
             $direccion = $_POST['direccion'];
             $tsenal = $_POST['tsenal'];
-            $tdaño = $_POST['tdaño'];
+            $tdano = $_POST['tdano'];
+            $id_usuario = $_SESSION['id'];
 
             $id_estado = 3;
 
@@ -29,9 +32,9 @@
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_senal_mal_estado 
-                (orientacion, descripcion, imagen_url, direccion, id_estado, id_tipo_senal , id_tipo_dano_senal)
+                (descripcion, imagen_url, direccion, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario)
                 VALUES 
-                ('$orientacion','$descripcion','$ruta','$direccion','$id_estado','$tsenal','$tdaño')"; 
+                ('$descripcion','$ruta','$direccion','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario')"; 
 
                 $ejecutar = $obj->insert($sql);
 

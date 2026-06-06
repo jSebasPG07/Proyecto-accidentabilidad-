@@ -10,12 +10,18 @@
 
         <div class="col-md-4">
             <label for="orientacion">Orientacion</label>
-            <input type="text" class="form-control" id="orientacion" name="orientacion" placeholder="orientacion" required>
+            <select name="orientacion" id="orientacion" class="form-control" required>
+                <?php
+                    while ($orientacion = pg_fetch_assoc($orientacionn)) {
+                        echo "<option value='" . $orientacion['id_orientacion'] . "'>" . $orientacion['nombre'] . "</option>";
+                    }
+                ?>
+            </select>
         </div>
 
         <div class="col-md-4">
             <label for="descripcion">Descripcion</label>
-            <input type="number" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" min="0" required>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required>
         </div>
 
 
@@ -29,8 +35,6 @@
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
         </div>
 
-
-
         <div class="col-md-4">
             <label for="tsenal">Tipo señal</label>
             <select name="tsenal" id="tsenal" class="form-control" required>
@@ -43,11 +47,11 @@
         </div>
 
         <div class="col-md-4">
-            <label for="tdaño">Tipo daño</label>
-            <select name="tdaño" id="tdaño" class="form-control" required>
+            <label for="tdano">Tipo daño</label>
+            <select name="tdano" id="tdano" class="form-control" required>
                      <?php
-                        while ($tdaños = pg_fetch_assoc($tdaño)) {
-                            echo "<option value='" . $tdaños['id_tipo_dano_senal'] . "'>" . $tdaños['descripcion'] . "</option>";
+                        while ($tdanos = pg_fetch_assoc($tdano)) {
+                            echo "<option value='" . $tdanos['id_tipo_dano_senal'] . "'>" . $tdanos['descripcion'] . "</option>";
                          }
                     ?>
             </select>

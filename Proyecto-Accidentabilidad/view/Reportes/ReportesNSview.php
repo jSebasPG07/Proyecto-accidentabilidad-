@@ -10,12 +10,18 @@
 
         <div class="col-md-4">
             <label for="orientacion">Orientacion</label>
-            <input type="text" class="form-control" id="orientacion" name="orientacion" placeholder="orientacion" required>
+            <select name="orientacion" id="orientacion" class="form-control" required>
+                <?php
+                    while ($orientacion = pg_fetch_assoc($orientacionn)) {
+                        echo "<option value='" . $orientacion['id_orientacion'] . "'>" . $orientacion['nombre'] . "</option>";
+                    }
+                ?>
+            </select>
         </div>
 
         <div class="col-md-4">
             <label for="descripcion">Descripcion</label>
-            <input type="number" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" min="0" required>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required>
         </div>
 
 

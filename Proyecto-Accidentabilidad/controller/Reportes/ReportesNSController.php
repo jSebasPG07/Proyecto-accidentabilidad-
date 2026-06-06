@@ -5,6 +5,8 @@
     class ReportesNSController{
         public function getCreate(){
             $obj = new ReportesNSModel();
+            $sql = "SELECT * FROM orientacion_senal";
+            $orientacionn = $obj->select($sql);
             $sql = "SELECT * FROM tipo_senal";
             $nsenal = $obj->select($sql);
             include_once "../view/Reportes/ReportesNSView.php";
@@ -26,9 +28,9 @@
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_nueva_senal 
-                (orientacion, descripcion, imagen_url, direccion, id_estado, id_tipo_senal)
+                (descripcion, imagen_url, direccion, id_estado, id_tipo_senal, id_orientacion)
                 VALUES 
-                ('$orientacion','$descripcion','$ruta','$direccion','$id_estado','$tsenal')"; 
+                ('$descripcion','$ruta','$direccion','$id_estado','$tsenal','$orientacion')"; 
 
                 $ejecutar = $obj->insert($sql);
 
