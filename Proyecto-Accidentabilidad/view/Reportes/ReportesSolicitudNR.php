@@ -1,131 +1,71 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>GIAV - Reporte Reductores</title>
-</head>
-<body>
+<div class="mt-3">
+    <h3 class="display-3">Formulario Solicitud Nuevo Reductor</h3>
+</div>
 
-    <h2>Formulario de Solicitud de Reductores</h2>
+<form action="<?php echo getUrl("Reportes","ReportesSolicitudNR","postCreate");?>"
+      method="post"
+      enctype="multipart/form-data">
 
-    <table border="0" width="100%">
-        <tr>
-            <td width="35%" valign="top">
-                
-                <h3>
-                    <?php if (isset($solicitud)) { echo "Modificar Solicitud"; } else { echo "Registrar Solicitud"; } ?>
-                </h3>
+    <div class="row mt-5">
 
-                <?php 
-                    if (isset($solicitud)) {
-                        $urlAccion = getUrl("Reportes", "ReportesSolicitudNR", "postActualizar");
-                        $registro = $solicitud[0]; // Extraer el registro para editar
-                    } else {
-                        $urlAccion = getUrl("Reportes", "ReportesSolicitudNR", "postCrear");
-                        $registro = null;
-                    }
-                ?>
-                
-                <form action="<?php echo $urlAccion; ?>" method="POST" enctype="multipart/form-data">
-                    
-                    <?php if ($registro != null) { ?>
-                        <input type="hidden" name="id_sol_nuevas_red" value="<?php echo $registro['id_sol_nuevas_red']; ?>">
-                    <?php } ?>
+        <div class="col-md-4">
+            <label for="id_tipo_reductor">Tipo de Reductor</label>
+            <select name="id_tipo_reductor" id="id_tipo_reductor" class="form-control" required>
+                <option value="">Seleccione...</option>
+                <option value="1">Resalto Parabólico</option>
+                <option value="2">Banda Sonora</option>
+                <option value="3">Stoper / Tachón</option>
+            </select>
+        </div>
 
-                    <p>
-                        <label>Tipo de Reductor:</label><br>
-                        <select name="id_tipo_reductor" required>
-                            <option value="">Seleccione...</option>
-                            <option value="1" <?php if($registro != null && $registro['id_tipo_reductor'] == 1) { echo "selected"; } ?>>Resalto Parabólico</option>
-                            <option value="2" <?php if($registro != null && $registro['id_tipo_reductor'] == 2) { echo "selected"; } ?>>Banda Sonora</option>
-                            <option value="3" <?php if($registro != null && $registro['id_tipo_reductor'] == 3) { echo "selected"; } ?>>Stoper / Tachón</option>
-                        </select>
-                    </p>
+        <div class="col-md-4">
+            <label for="tipo_dano">Clasificación / Daño</label>
+            <input type="text"
+                   class="form-control"
+                   id="tipo_dano"
+                   name="tipo_dano"
+                   placeholder="Ej: Falta reductor vial"
+                   required>
+        </div>
 
-                    <p>
-                        <label>Clasificación / Daño:</label><br>
-                        <input type="text" name="tipo_dano" value="<?php if($registro != null) { echo $registro['tipo_dano']; } ?>" placeholder="Ej: Falta reductor vial" required>
-                    </p>
+        <div class="col-md-4">
+            <label for="direccion">Dirección</label>
+            <input type="text"
+                   class="form-control"
+                   id="direccion"
+                   name="direccion"
+                   placeholder="Dirección"
+                   required>
+        </div>
 
-                    <p>
-                        <label>Dirección (Ubicación en Cali):</label><br>
-                        <input type="text" name="direccion" value="<?php if($registro != null) { echo $registro['direccion']; } ?>" placeholder="Ej: Av. 1N # 4-50" required>
-                    </p>
+        <div class="col-md-4">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control"
+                      id="descripcion"
+                      name="descripcion"
+                      rows="3"
+                      required></textarea>
+        </div>
 
-                    <p>
-                        <label>Descripción:</label><br>
-                        <textarea name="descripcion" rows="4" cols="30" required><?php if($registro != null) { echo $registro['descripcion']; } ?></textarea>
-                    </p>
+        <div class="col-md-4">
+            <label for="imagen_url">Fotografía de Evidencia</label>
+            <input type="file"
+                   class="form-control"
+                   id="imagen_url"
+                   name="imagen_url"
+                   accept="image/*"
+                   required>
+        </div>
 
-                    <p>
-                        <label>Fotografía de Evidencia:</label><br>
-                        <input type="file" name="imagen_url" accept="image/*" <?php if($registro == null) { echo "required"; } ?>>
-                        <?php if($registro != null && $registro['imagen_url'] != "") { ?>
-                            <br><small style="color: gray;">Imagen actual: <?php echo $registro['imagen_url']; ?></small>
-                        <?php } ?>
-                    </p>
+        <div class="col-md-4">
+            <button type="submit"
+                    class="btn btn-success mt-4">
+                Enviar Solicitud
+            </button>
+        </div>
 
-                    <p>
-                        <input type="submit" value="<?php if($registro != null) { echo "Guardar Cambios"; } else { echo "Enviar Solicitud"; } ?>">
-                    </p>
-                    
-                    <?php if($registro != null) { ?>
-                        <p><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "index"); ?>">Cancelar Edición</a></p>
-                    <?php } ?>
-                </form>
+    </div>
 
-            </td>
+</form>
 
-            <td width="65%" valign="top" style="padding-left: 20px;">
-                
-                <h3>Listado de Solicitudes Existentes</h3>
-
-                <table border="1" cellspacing="0" cellpadding="5" width="100%">
-                    <tr bgcolor="#CCCCCC">
-                        <th>Foto</th>
-                        <th>Dirección</th>
-                        <th>Daño</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                    
-                    <?php if (empty($solitudes)) { ?>
-                        <tr>
-                            <td colspan="5" align="center">No hay solicitudes guardadas en la base de datos.</td>
-                        </tr>
-                    <?php } else { ?>
-                        <?php foreach ($solitudes as $row) { ?>
-                            <tr>
-                                <td align="center">
-                                    <?php if ($row['imagen_url'] != "") { ?>
-                                        <img src="uploads/reductores/<?php echo $row['imagen_url']; ?>" width="60" height="60">
-                                    <?php } else { echo "Sin foto"; } ?>
-                                </td>
-                                <td><?php echo $row['direccion']; ?></td>
-                                <td><?php echo $row['tipo_dano']; ?></td>
-                                <td align="center">
-                                    <?php 
-                                        if(isset($row['est_nombre'])) {
-                                            echo "<b>" . $row['est_nombre'] . "</b>";
-                                        } else if($row['id_estado'] == 1) { 
-                                            echo "<b>Pendiente</b>"; 
-                                        } else { 
-                                            echo "Procesado"; 
-                                        } 
-                                    ?>
-                                </td>
-                                <td align="center">
-                                    <a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getEditar", array("id" => $row['id_sol_nuevas_red'])); ?>">Editar</a> | 
-                                    <a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getEliminar", array("id" => $row['id_sol_nuevas_red'])); ?>" onclick="return confirm('¿Seguro que deseas eliminar este registro?')">Borrar</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    <?php } ?>
-                </table>
-
-            </td>
-        </tr>
-    </table>
-
-</body>
-</html>
+<?php include_once "../view/partials/script.php"; ?>

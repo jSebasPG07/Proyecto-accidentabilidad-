@@ -3,79 +3,78 @@
 include_once "../model/Reportes/ReportesSolicitudNRModel.php";
 
 class ReportesSolicitudNRController {
-    
-    private $model;
 
-    public function __construct() {
-        $this->model = new ReportesSolicitudNRModel();
+    public function index(){
+
+        $this->getCreate();
     }
 
-    public function index() {
-        $solitudes = $this->model->obtenerSolicitudes(); 
+    public function getCreate(){
+
+        $obj = new ReportesSolicitudNRModel();
+
         include_once "../view/Reportes/ReportesSolicitudNR.php";
     }
 
-    public function getEditar() {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $solicitud = $this->model->obtenerSolicitudPorId($id);
-            $solitudes = $this->model->obtenerSolicitudes(); 
-            include_once "../view/Reportes/ReportesSolicitudNR.php";
-        } else {
-            redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
-        }
-    }
+    public function postCreate(){
 
-    public function getEliminar() {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $this->model->eliminarSolicitud($id);
-        }
-        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
-    }
+        $obj = new ReportesSolicitudNRModel();
 
-    public function postCrear() {
-        if (isset($_POST['tipo_dano'])) {
-            $tipoDano = $_POST['tipo_dano'];
-            $descripcion = $_POST['descripcion'];
-            $direccion = $_POST['direccion'];
-            $idTipoReductor = $_POST['id_tipo_reductor'];
-            
-            $nombreImagen = "";
-            if (isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0) {
-                $carpetaDestino = "uploads/reductores/";
-                if (!file_exists($carpetaDestino)) {
-                    mkdir($carpetaDestino, 0777, true);
+        $tipoDano = $_POST['tipo_dano'];
+        $descripcion = $_POST['descripcion'];
+        $direccion = $_POST['direccion'];
+        $idTipoReductor = $_POST['id_tipo_reductor'];
+
+        $idEstado = 1;
+
+        $nombreImagen = "";
+        $archivo = $_FILES['imagen_url']['tmp_name'];
+
+        if(isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0){
+
+            $nombreImagen = time() . "_" . $_FILES['imagen_url']['name'];
+
+            $ruta = "../uploads/reductores/" . $nombreImagen;
+
+            if(move_uploaded_file($archivo, $ruta)){
+
+                $sql = "INSERT INTO sol_nuevo_reductor
+                        (
+                            tipo_dano,
+                            descripcion,
+                            imagen_url,
+                            direccion,
+                            id_tipo_reductor,
+                            id_estado
+                        )
+                        VALUES
+                        (
+                            '$tipoDano',
+                            '$descripcion',
+                            '$ruta',
+                            '$direccion',
+                            '$idTipoReductor',
+                            '$idEstado'
+                        )";
+
+                $ejecutar = $obj->insert($sql);
+
+                if($ejecutar){
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ok';</script>";
+                }else{
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=error';</script>";
                 }
-                $nombreImagen = time() . "_" . $_FILES['imagen_url']['name'];
-                move_uploaded_file($_FILES['imagen_url']['tmp_name'], $carpetaDestino . $nombreImagen);
+
+            }else{
+
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=imgerror';</script>";
             }
 
-            $this->model->registrarSolicitud($tipoDano, $descripcion, $nombreImagen, $direccion, $idTipoReductor);
-        }
-        
-        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
-    }
+        }else{
 
-    public function postActualizar() {
-        if (isset($_POST['id_sol_nuevas_red'])) {
-            $id = $_POST['id_sol_nuevas_red'];
-            $tipoDano = $_POST['tipo_dano'];
-            $descripcion = $_POST['descripcion'];
-            $direccion = $_POST['direccion'];
-            $idTipoReductor = $_POST['id_tipo_reductor'];
-            
-            $nombreImagen = null;
-            if (isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0) {
-                $carpetaDestino = "uploads/reductores/";
-                $nombreImagen = time() . "_" . $_FILES['imagen_url']['name'];
-                move_uploaded_file($_FILES['imagen_url']['tmp_name'], $carpetaDestino . $nombreImagen);
-            }
-
-            $this->model->actualizarSolicitud($id, $tipoDano, $descripcion, $direccion, $idTipoReductor, $nombreImagen);
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=imgerror';</script>";
         }
-        
-        redirect(getUrl("Reportes", "ReportesSolicitudNR", "index"));
     }
 }
+
 ?>
