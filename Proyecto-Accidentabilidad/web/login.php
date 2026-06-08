@@ -10,7 +10,7 @@ include_once '../lib/helpers.php';
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class = bg-light>
+<body class = "bg-light">
     <div class = "container d-flex justify-content-center align-items-center min-vh-100">
         <div class= "row w-100">
             <div class = "col-12 col-sm-10 col-lg-4 mx-auto">
@@ -39,7 +39,7 @@ include_once '../lib/helpers.php';
                                 required>
                             </div>
                             <div>
-                                <a href="recuperarCon.php" class="float-right mb-3">¿Olvidaste tu contraseña?</a>
+                                <a href="enviarCorreo.php" class="float-right mb-3">¿Olvidaste tu contraseña?</a>
                             </div>
                             <div class="d-grid gap-2 mt-4">
                                 <button type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button> 

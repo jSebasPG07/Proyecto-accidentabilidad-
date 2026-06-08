@@ -1,5 +1,9 @@
 <?php
 include_once '../lib/helpers.php';
+
+// Mostrar error si lo hay y limpiarlo de sesión
+$error = $_SESSION['error_recuperacion'] ?? '';
+unset($_SESSION['error_recuperacion']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,18 +21,14 @@ include_once '../lib/helpers.php';
                     <div class="card-body p-4">
                         <h2 class="text-center mb-2">Recuperar Contraseña</h2>
                         <p class="text-center text-muted mb-4">
-                            Ingresa tu correo y te enviaremos un enlace para restablecer tu contraseña.
+                            Ingresa tu correo y te enviaremos un código para restablecer tu contraseña.
                         </p>
 
-                        <?php if (isset($_GET['error'])): ?>
-                            <div class="alert alert-danger"><?= htmlspecialchars($_GET['error']) ?></div>
+                        <?php if ($error): ?>
+                            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
                         <?php endif; ?>
 
-                        <?php if (isset($_GET['exito'])): ?>
-                            <div class="alert alert-success"><?= htmlspecialchars($_GET['exito']) ?></div>
-                        <?php endif; ?>
-
-                        <form action="<?= getUrl('Acceso', 'Acceso', 'enviarCorreoRecuperacion', false, 'ajax') ?>" method="POST">
+                        <form action="<?= getUrl('Acceso', 'Acceso', 'enviarCodigo', false, 'ajax') ?>" method="POST">
                             <label for="correo">Correo Electrónico</label>
                             <input
                                 type="email"
@@ -38,7 +38,7 @@ include_once '../lib/helpers.php';
                                 placeholder="correo@ejemplo.com"
                                 required>
                             <button type="submit" class="btn btn-primary btn-block">
-                                Enviar enlace
+                                Enviar código
                             </button>
                         </form>
 
