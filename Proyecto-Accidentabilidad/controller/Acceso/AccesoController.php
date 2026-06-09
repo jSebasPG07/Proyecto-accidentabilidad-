@@ -19,13 +19,20 @@ class AccesoController
         $usuario = $obj->select($sql);
 
         if (pg_num_rows($usuario) > 0) {
-            while ($usu = pg_fetch_assoc($usuario)) {
-                $_SESSION['nombre']    = $usu['nombre'];
-                $_SESSION['apellido']  = $usu['apellido'];
-                $_SESSION['correo']    = $usu['correo'];
-                $_SESSION['rol']       = $usu['nombre_rol'];
-                $_SESSION['auth']      = "ok";
-            }
+
+            
+
+        while ($usu = pg_fetch_assoc($usuario)) {
+
+            $_SESSION['nombre']    = $usu['nombre'];
+            $_SESSION['apellido']  = $usu['apellido'];
+            $_SESSION['correo']    = $usu['correo'];
+            $_SESSION['rol']       = $usu['nombre_rol'];
+            $_SESSION['id']        = $usu['id'];
+            $_SESSION['auth']      = "ok";
+        }
+
+
             redirect("index.php");
         } else {
             redirect("login.php");

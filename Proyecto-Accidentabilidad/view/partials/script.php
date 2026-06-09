@@ -33,15 +33,18 @@
 
 
 	</script>
-
+  
 	<script src="assets/js/core/jquery-3.7.1.min.js"></script>
+  <script src="../web/js/global.js"></script>
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
   <script src="assets/js/kaiadmin.min.js"></script>
+  
   <script src="assets/prism.js"></script>
   <script src="assets/prism-normalize-whitespace.min.js"></script>
   <script type="text/javascript">
+  
     // Optional
     Prism.plugins.NormalizeWhitespace.setDefaults({
       "remove-trailing": true,

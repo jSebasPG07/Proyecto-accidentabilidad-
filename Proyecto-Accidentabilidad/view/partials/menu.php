@@ -64,7 +64,7 @@
                     </a>
                     <div class="collapse" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
-                            <li><a href="<?php echo getUrl("Historial", "MiHistorial", "getCreate") ?>"><span class="sub-item">Mi historial</span></a></li>
+                            <li><a href="<?php echo getUrl("Historial", "MiHistorial", "getList") ?>"><span class="sub-item">Mi historial</span></a></li>
                         </ul>
                     </div>
                 </li>
