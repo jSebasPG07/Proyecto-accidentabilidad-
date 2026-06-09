@@ -1,7 +1,7 @@
 <?php
 include_once '../lib/helpers.php';
 
-// CORRECCIÓN 6: el redirect de la guardia debe ser relativo a web/
+
 if (!isset($_SESSION['recuperacion_verificada'])) {
     redirect('enviarCorreo.php');
     exit;
@@ -26,9 +26,9 @@ unset($_SESSION['error_nueva']);
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4">Nueva Contraseña</h2>
 
-                        <?php if ($error): ?>
-                            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
-                        <?php endif; ?>
+                        <?php if ($error){ ?>
+                            <div class="alert alert-danger"><?php htmlspecialchars($error) ?></div>
+                        <?php }; ?>
 
                         <form action="<?= getUrl('Acceso', 'Acceso', 'guardarContrasena', false, 'ajax') ?>" method="POST">
 

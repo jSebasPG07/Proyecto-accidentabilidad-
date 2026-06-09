@@ -19,7 +19,6 @@ class AccesoController
         $usuario = $obj->select($sql);
 
         if (pg_num_rows($usuario) > 0) {
-<<<<<<< HEAD
 
             
 
@@ -32,22 +31,6 @@ class AccesoController
             $_SESSION['id']        = $usu['id'];
             $_SESSION['auth']      = "ok";
         }
-
-
-=======
-            while ($usu = pg_fetch_assoc($usuario)) {
-<<<<<<< HEAD
-                $_SESSION['id']       = $usu['id'];
-                $_SESSION['nombre']    = $usu['nombre'];
-=======
-                $_SESSION['nombre'] = $usu['nombre'];
->>>>>>> 1721105 (se agregar el registro usuario en la carpeta web y se crea el controlador de usuario con la funcion getCreate y el modelo)
-                $_SESSION['apellido']  = $usu['apellido'];
-                $_SESSION['correo'] = $usu['correo'];
-                $_SESSION['rol'] = $usu['nombre_rol'];
-                $_SESSION['auth'] = "ok";
-            }
->>>>>>> f3aa9a5 (MVC de los mismos pero ahora si trae el id del usuario que hizo la solicitud)
             redirect("index.php");
         } else {
             redirect("login.php");
@@ -141,7 +124,7 @@ class AccesoController
 
             $codigo = $_POST['codigo'] ?? '';
 
-            // CORRECCIÓN 1: primero verificar si el código es válido y no ha expirado
+            
             $sql = "SELECT * FROM token WHERE id_usuario = $id_usuario AND codigo = '$codigo' AND uso = false AND tiempo >= NOW() - INTERVAL '15 minutes'";
             $resultado = $obj->select($sql);
 
@@ -171,7 +154,7 @@ class AccesoController
                 $obj->update($sql_aumentarIntentos);
 
                 // CORRECCIÓN 3: extraer el valor numérico del resource de PostgreSQL
-                $sql_intentos = "SELECT intentos FROM token WHERE id_usuario = $id_usuario AND uso = false ORDER BY fecha_creacion DESC LIMIT 1";
+                $sql_intentos = "SELECT intentos FROM token WHERE id_usuario = $id_usuario AND uso = false ORDER BY tiempo DESC LIMIT 1";
                 $res_intentos = $obj->select($sql_intentos);
                 $fila_intentos = pg_fetch_assoc($res_intentos);
                 $intentos_actuales = (int)($fila_intentos['intentos'] ?? 0);

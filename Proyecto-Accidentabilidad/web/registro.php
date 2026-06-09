@@ -1,5 +1,6 @@
 <?php
 include_once '../lib/helpers.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,9 +24,9 @@ include_once '../lib/helpers.php';
                 <label for="tipo_documento" class="form-label">Tipo de documento</label>
                 <select class="form-select" id="tipo_documento" name="tipo_documento" required>
                     <option value="" disabled selected>Seleccione el tipo de documento</option>
-                    <?php foreach ($tipo as $tip) { ?>
-                        <option value="<?php echo $tip['id_tipo_doc']; ?>">
-                            <?php echo $tip['descripcion']; ?>
+                    <?php foreach ($tipo as $tip){ ?>
+                        <option value="<?php echo $tip['id_tipo_doc'] ?>">
+                            <?php echo $tip['descripcion'] ?>
                         </option>
                     <?php } ?>
                 </select>
