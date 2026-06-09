@@ -19,13 +19,19 @@
         </div>
 
         <div class="col-md-4">
-            <label for="tipo_dano">Clasificación / Daño</label>
-            <input type="text"
-                   class="form-control"
-                   id="tipo_dano"
-                   name="tipo_dano"
-                   placeholder="Ej: Falta reductor vial"
-                   required>
+            <label for="id_tipo_dano_reductor">Clasificación / Daño</label>
+            <select name="id_tipo_dano_reductor"
+            id="id_tipo_dano_reductor"
+            class="form-control"
+            required>
+
+            <option value="">Seleccione...</option>
+            <option value="1">Deformado</option>
+            <option value="2">Partido</option>
+            <option value="3">Suelto</option>
+            <option value="4">Desplazado</option>
+
+        </select>
         </div>
 
         <div class="col-md-4">
