@@ -16,16 +16,16 @@ class SolicitudVMEController {
     public function postCreate() {
         $obj = new SolicitudVMEModel();
 
-        $descripcion   = $_POST['descripcion'];
-        $direccion     = $_POST['direccion'];
+        $descripcion = $_POST['descripcion'];
+        $direccion = $_POST['direccion'];
         $idtipodanovia = $_POST['idtipodanovia'];
-        $id_usuario    = $_SESSION['id'];
+        $id_usuario = $_SESSION['id'];
 
         $id_estado = 3;
 
-        $img     = $_FILES['imagen']['name'];
+        $img = $_FILES['imagen']['name'];
         $archivo = $_FILES['imagen']['tmp_name'];
-        $ruta    = "../img/" . $img;
+        $ruta = "../img/" . $img;
 
         if (empty($descripcion) || empty($direccion) || empty($img)) {
 
