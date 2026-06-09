@@ -12,6 +12,12 @@ class ReportesSolicitudNRController {
 
         $obj = new ReportesSolicitudNRModel();
 
+        $sqlReductor = "SELECT * FROM tipo_reductor";
+        $reductores = $obj->select($sqlReductor);
+
+        $sqlDano = "SELECT * FROM tipo_dano_reductor";
+        $danos = $obj->select($sqlDano);
+
         include_once "../view/Reportes/ReportesSolicitudNR.php";
     }
 
@@ -24,8 +30,8 @@ class ReportesSolicitudNRController {
         $idTipoReductor = $_POST['id_tipo_reductor'];
         $idTipoDanoReductor = $_POST['id_tipo_dano_reductor'];
 
-        $idEstado = 3;
 
+        $idEstado = 3;
         $idUsuario = 1;
 
         if(isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0){
@@ -60,16 +66,15 @@ class ReportesSolicitudNRController {
                 $ejecutar = $obj->insert($sql);
 
                 if($ejecutar){
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ok';</script>";
+                }else{
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=error';</script>";
+                }
 
-                   echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ok';</script>";
-            } else {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=error';</script>";
-            }
-
-        } else {
+            }else{
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=imgerror';</script>";
             }
+        }
     }
-}
 }
 ?>

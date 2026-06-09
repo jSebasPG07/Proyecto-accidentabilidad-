@@ -10,28 +10,39 @@
 
         <div class="col-md-4">
             <label for="id_tipo_reductor">Tipo de Reductor</label>
-            <select name="id_tipo_reductor" id="id_tipo_reductor" class="form-control" required>
+            <select name="id_tipo_reductor"
+                    id="id_tipo_reductor"
+                    class="form-control"
+                    required>
+
                 <option value="">Seleccione...</option>
-                <option value="1">Resalto Parabólico</option>
-                <option value="2">Banda Sonora</option>
-                <option value="3">Stoper / Tachón</option>
+
+                <?php
+                    while($reductor = pg_fetch_assoc($reductores)){
+                        echo "<option value='".$reductor['id_tipo_reductor']."'>".$reductor['nombre']."</option>";
+                    }
+                ?>
+
             </select>
         </div>
 
         <div class="col-md-4">
             <label for="id_tipo_dano_reductor">Clasificación / Daño</label>
+
             <select name="id_tipo_dano_reductor"
-            id="id_tipo_dano_reductor"
-            class="form-control"
-            required>
+                    id="id_tipo_dano_reductor"
+                    class="form-control"
+                    required>
 
-            <option value="">Seleccione...</option>
-            <option value="1">Deformado</option>
-            <option value="2">Partido</option>
-            <option value="3">Suelto</option>
-            <option value="4">Desplazado</option>
+                <option value="">Seleccione...</option>
 
-        </select>
+                <?php
+                    while($dano = pg_fetch_assoc($danos)){
+                        echo "<option value='".$dano['id_tipo_dano_reductor']."'>".$dano['descripcion']."</option>";
+                    }
+                ?>
+
+            </select>
         </div>
 
         <div class="col-md-4">
@@ -44,7 +55,7 @@
                    required>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
             <label for="descripcion">Descripción</label>
             <textarea class="form-control"
                       id="descripcion"
@@ -53,7 +64,7 @@
                       required></textarea>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
             <label for="imagen_url">Fotografía de Evidencia</label>
             <input type="file"
                    class="form-control"
@@ -63,7 +74,7 @@
                    required>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
             <button type="submit"
                     class="btn btn-success mt-4">
                 Enviar Solicitud
