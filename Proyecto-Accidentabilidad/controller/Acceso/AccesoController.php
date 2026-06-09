@@ -19,6 +19,7 @@ class AccesoController
         $usuario = $obj->select($sql);
 
         if (pg_num_rows($usuario) > 0) {
+<<<<<<< HEAD
 
             
 
@@ -33,6 +34,16 @@ class AccesoController
         }
 
 
+=======
+            while ($usu = pg_fetch_assoc($usuario)) {
+                $_SESSION['id']       = $usu['id'];
+                $_SESSION['nombre']    = $usu['nombre'];
+                $_SESSION['apellido']  = $usu['apellido'];
+                $_SESSION['correo']    = $usu['correo'];
+                $_SESSION['rol']       = $usu['nombre_rol'];
+                $_SESSION['auth']      = "ok";
+            }
+>>>>>>> f3aa9a5 (MVC de los mismos pero ahora si trae el id del usuario que hizo la solicitud)
             redirect("index.php");
         } else {
             redirect("login.php");

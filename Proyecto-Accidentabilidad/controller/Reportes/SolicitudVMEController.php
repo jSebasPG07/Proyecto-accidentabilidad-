@@ -27,11 +27,6 @@ class SolicitudVMEController {
         $archivo = $_FILES['imagen']['tmp_name'];
         $ruta = "../img/" . $img;
 
-        if (empty($descripcion) || empty($direccion) || empty($img)) {
-
-            echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=vacio';</script>";
-
-        } else {
 
             if (move_uploaded_file($archivo, $ruta)) {
 
@@ -52,9 +47,10 @@ class SolicitudVMEController {
                 echo "<script>window.location.href='" . getUrl("Reportes", "SolicitudVME", "getCreate") . "&msg=imgerror';</script>";
             }
 
-        }
     }
 
 }
+
+
 
 ?>
