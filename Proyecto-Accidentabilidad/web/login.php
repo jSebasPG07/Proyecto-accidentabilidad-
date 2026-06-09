@@ -44,6 +44,11 @@ include_once '../lib/helpers.php';
                             <div class="d-grid gap-2 mt-4">
                                 <button type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button> 
                             </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <p>No tienes una cuenta? 
+                                    <a href="<?php echo getUrl('Usuario', 'Usuario', 'getCreate', false, 'ajax') ?>" class="float-right mb-3">Registrarse</a>
+                                </p>
+                            </div>
                         </form>
 
                 </div>
