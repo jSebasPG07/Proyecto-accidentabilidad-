@@ -20,8 +20,6 @@ class AccesoController
 
         if (pg_num_rows($usuario) > 0) {
 
-            
-
         while ($usu = pg_fetch_assoc($usuario)) {
 
             $_SESSION['nombre']    = $usu['nombre'];
@@ -31,6 +29,7 @@ class AccesoController
             $_SESSION['id']        = $usu['id'];
             $_SESSION['auth']      = "ok";
         }
+
             redirect("index.php");
         } else {
             redirect("login.php");

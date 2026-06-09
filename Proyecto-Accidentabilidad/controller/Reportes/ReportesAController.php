@@ -23,6 +23,8 @@ class ReportesAController {
 
         $id_estado = 3;
 
+        $id_usuario = $_POST['id'];
+
     
         $img = $_FILES['imagen']['name'];
         $archivo = $_FILES['imagen']['tmp_name'];
@@ -31,9 +33,9 @@ class ReportesAController {
         if(move_uploaded_file($archivo, $ruta)){
 
             $sql = "INSERT INTO reporte_accidente 
-            (fecha_accidente, nomenclatura, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque) 
+            (fecha_accidente, nomenclatura, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
             VALUES 
-            ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque')";
+            ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario')";
 
             $ejecutar = $obj->insert($sql);
 
