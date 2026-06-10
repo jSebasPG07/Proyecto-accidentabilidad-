@@ -16,27 +16,28 @@ if ($ejecutar && pg_num_rows($ejecutar) > 0) {
 include_once "../web/registro.php";
 }
 
-function postCreate(){
-    $obj = new UsuarioModel();
+    public function postCreate()
+    {
+        $obj = new UsuarioModel();
+        $tipo_documento = $_POST['tipo_documento'];
+        $numero_documento = $_POST['numero_documento'];
+        $nombre = $_POST['nombre'];
+        $apellido = $_POST['apellido'];
+        $telefono = $_POST['telefono'];
+        $correo = $_POST['correo'];
+        $contrasena = $_POST['contrasena'];
+        $direccion = $_POST['direccion'];
 
-    $id_tipo_doc = $_POST['tipo_documento'];
-    $numero_doc = $_POST['numero_documento'];
-    $nombres = $_POST['nombre'];
-    $apellidos = $_POST['apellido'];
-    $numero_tel = $_POST['telefono'];
-    $correo = $_POST['correo'];
-    $contra = $_POST['contrasena'];
-    $direccion = $_POST['direccion'];
-
-    $sql = "INSERT INTO usuarios (numero_id, nombre, apellido, contrasena, correo, telefono, direccion, id_tipo_doc, id_rol, id_estado) VALUES ($numero_doc, '$nombres', '$apellidos', '$contra', '$correo', '$numero_tel','$direccion', $id_tipo_doc, 1, 1)";
-    $ejecutar = $obj->insert($sql);
-
-    if($ejecutar){
-        echo "<script>window.location.href='".redirect('../web/index.php')."&msg=ok';</script>";
-        } else {
-            echo "<script>window.location.href='".getUrl("Usuario","Usuario","getCreate", false, ajax)."&msg=error';</script>";
+        $sql = "INSERT INTO usuarios (id_tipo_doc, numero_id, nombre, apellido, telefono, correo, contrasena, direccion, id_rol, id_estado ) VALUES ('$tipo_documento', '$numero_documento', '$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$direccion', 1, 1)";
+        $ejecutar = $obj->insert($sql);
+        if ($ejecutar) {
+            redirect("login.php");
+        }   else {
+            echo "Error al registrar el usuario.";
         }
-    
+    }
 }
-}
+
+
+
 ?>
