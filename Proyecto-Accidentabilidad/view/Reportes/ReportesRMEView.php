@@ -50,6 +50,10 @@
             <button type="submit" class="btn btn-success">Enviar solicitud</button>
         </div>
 
+        <div class="col-md-4">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+        </div>
+
     </div>
 
 </form>

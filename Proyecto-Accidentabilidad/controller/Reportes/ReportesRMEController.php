@@ -25,7 +25,7 @@ class ReportesRMEController {
         $direccion = $_POST['direccion'];
         $idtipored = $_POST['idtipored'];
         $idtipodanoreductor = $_POST['idtipodanoreductor'];
-        $id_usuario = $_SESSION['id'];
+        $id_usuario = $_POST['id'];
 
         $id_estado = 3;
 

@@ -22,7 +22,7 @@
             $direccion = $_POST['direccion'];
             $tsenal = $_POST['tsenal'];
             $tdano = $_POST['tdano'];
-            $id_usuario = $_SESSION['id'];
+            $id_usuario = $_POST['id'];
 
             $id_estado = 3;
 

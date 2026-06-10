@@ -6,7 +6,7 @@
       method="post" enctype="multipart/form-data">
 
     <div class="row mt-5">
-
+        
 
         <div class="col-md-4">
             <label for="orientacion">Orientacion</label>
@@ -47,9 +47,14 @@
                 ?>
             </select>
         </div>
+
         
         <div class="col-md-4">
             <button type="submit" class="btn btn-success mt-4">Registrar nueva señal </button>
+        </div>
+
+        <div class="col-md-4">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
         </div>
 
     </div>

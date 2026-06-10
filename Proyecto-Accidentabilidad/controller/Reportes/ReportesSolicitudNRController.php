@@ -32,7 +32,7 @@ class ReportesSolicitudNRController {
 
 
         $idEstado = 3;
-        $idUsuario = 1;
+        $id_usuario = $_POST['id'];
 
         if(isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0){
 

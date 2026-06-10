@@ -19,7 +19,7 @@ class SolicitudVMEController {
         $descripcion = $_POST['descripcion'];
         $direccion = $_POST['direccion'];
         $idtipodanovia = $_POST['idtipodanovia'];
-        $id_usuario = $_SESSION['id'];
+        $id_usuario = $_POST['id'];
 
         $id_estado = 3;
 

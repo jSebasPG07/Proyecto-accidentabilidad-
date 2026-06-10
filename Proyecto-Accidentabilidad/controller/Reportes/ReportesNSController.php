@@ -22,15 +22,17 @@
 
             $id_estado = 3;
 
+            $id_usuario = $_POST['id'];
+
             $img = $_FILES['imagen']['name'];
             $archivo = $_FILES['imagen']['tmp_name'];
             $ruta = "../img/" . $img;
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_nueva_senal 
-                (descripcion, imagen_url, direccion, id_estado, id_tipo_senal, id_orientacion)
+                (descripcion, imagen_url, direccion, id_estado, id_tipo_senal, id_orientacion, id_usuario)
                 VALUES 
-                ('$descripcion','$ruta','$direccion','$id_estado','$tsenal','$orientacion')"; 
+                ('$descripcion','$ruta','$direccion','$id_estado','$tsenal','$orientacion', '$id_usuario')"; 
 
                 $ejecutar = $obj->insert($sql);
 
