@@ -60,7 +60,7 @@ class ReportesSolicitudNRController {
                     '$idEstado',
                     '$idTipoReductor',
                     '$idTipoDanoReductor',
-                    '$idUsuario'
+                    '$id_usuario'
                 )";
 
                 $ejecutar = $obj->insert($sql);
