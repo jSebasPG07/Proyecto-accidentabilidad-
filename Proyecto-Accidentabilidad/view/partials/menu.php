@@ -48,11 +48,7 @@
 						<ul class="nav nav-collapse">
 							<li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
 							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
-<<<<<<< Updated upstream
 							<li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
-=======
-							<li><a href="components/gridsystem.html"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
->>>>>>> Stashed changes
 							<li><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getCreate")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'SolicitudVME', 'getCreate') ?>"><span class="sub-item">Solicitud via en mal estado</span></a></li>
