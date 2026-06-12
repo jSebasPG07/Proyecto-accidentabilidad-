@@ -19,7 +19,7 @@
         <?php foreach($viamal as $vm){ ?>
             <tr>
                 <td><?= $vm['id_sol_via_mal'] ?></td>
-                <td><?= $vm['descripcion'] ?></td>
+                <td><?= $vm['descripcion'] ?></td>  
                 <td><?php if($vm['imagen_url'] != ""){ ?>
                         <img src="<?= $vm['imagen_url'] ?>" width="80">
                     <?php } ?></td>
