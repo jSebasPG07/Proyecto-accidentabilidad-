@@ -91,7 +91,7 @@
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
-                            <li><a href="tables/tables.html"><span class="sub-item">Reportes ciudadano </span></a></li>
+                            <li><a href=""><span class="sub-item">Reportes ciudadano </span></a></li>
                             <li><a href="tables/datatables.html"><span class="sub-item">PQRSF</span></a></li>
                         </ul>
                     </div>
@@ -105,7 +105,7 @@
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav nav-collapse">
-                            <li><a href="charts/charts.html"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
+                            <li><a href="<?php echo getUrl("Estadisticas", "ZonaMayAccidentabilidad", "getList") ?>"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
                             <li><a href="charts/sparkline.html"><span class="sub-item">Trazabilidad</span></a></li>
                         </ul>
                     </div>
