@@ -26,7 +26,8 @@ class MiHistorialController {
                        t.nombre AS tipo_choque
                 FROM reporte_accidente a
                 LEFT JOIN tipo_choque t 
-                ON a.id_tipo_choque = t.id_tipo_choque";
+                ON a.id_tipo_choque = t.id_tipo_choque
+                ORDER BY a.id_reporte_acc ASC";
 
         $res = $obj->select($sql);
 
@@ -53,7 +54,8 @@ class MiHistorialController {
                 LEFT JOIN estado es ON ns.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON ns.id_tipo_senal = tp.id_tipo_senal 
                 LEFT JOIN orientacion_senal ori ON ns.id_orientacion = ori.id_orientacion 
-                LEFT JOIN usuarios u ON ns.id_usuario = u.id";
+                LEFT JOIN usuarios u ON ns.id_usuario = u.id
+                ORDER BY ns.id_sol_nueva_sen ASC";
 
         $res = $obj->select($sql);
 
@@ -82,7 +84,8 @@ class MiHistorialController {
                 LEFT JOIN tipo_senal tp ON sme.id_tipo_senal = tp.id_tipo_senal
                 LEFT JOIN tipo_dano_senal td ON sme.id_tipo_dano_senal = td.id_tipo_dano_senal 
                 LEFT JOIN orientacion_senal ori ON sme.id_orientacion = ori.id_orientacion 
-                LEFT JOIN usuarios u ON sme.id_usuario = u.id";
+                LEFT JOIN usuarios u ON sme.id_usuario = u.id
+                ORDER BY sme.id_sol_mal ASC";
 
         $res = $obj->select($sql);
 
@@ -109,7 +112,8 @@ class MiHistorialController {
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rn.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
-                LEFT JOIN usuarios u ON rn.id_usuario = u.id";
+                LEFT JOIN usuarios u ON rn.id_usuario = u.id
+                ORDER BY rn.id_sol_nuevas_red ASC";
 
         $res = $obj->select($sql);
 
@@ -136,7 +140,8 @@ class MiHistorialController {
                 LEFT JOIN estado es ON rm.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rm.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
-                LEFT JOIN usuarios u ON rm.id_usuario = u.id";
+                LEFT JOIN usuarios u ON rm.id_usuario = u.id
+                ORDER BY rm.id_sol_red_mal ASC";
 
         $res = $obj->select($sql);
 
@@ -161,7 +166,9 @@ class MiHistorialController {
                 FROM sol_via_mal_estado vm 
                 LEFT JOIN estado es ON vm.id_estado = es.id_estado 
                 LEFT JOIN tipo_dano_via tdv ON vm.id_tipo_dano_via = tdv.id_tipo_dano_via  
-                LEFT JOIN usuarios u ON vm.id_usuario = u.id";
+                LEFT JOIN usuarios u ON vm.id_usuario = u.id
+                ORDER BY vm.id_sol_via_mal ASC";
+                
 
         $res = $obj->select($sql);
 

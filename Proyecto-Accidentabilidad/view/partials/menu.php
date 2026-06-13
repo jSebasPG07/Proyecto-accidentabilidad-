@@ -1,3 +1,4 @@
+```php
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
         <div class="logo-header" data-background-color="dark">
@@ -16,7 +17,7 @@
                 <i class="gg-more-vertical-alt"></i>
             </button>
         </div>
-        </div>
+    </div>
 
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
@@ -28,7 +29,7 @@
                         <p>Mapa</p>
                         <span class="caret"></span>
                     </a>
-                </li >
+                </li>
 
                 <li class="nav-section">
                     <span class="sidebar-mini-icon">
@@ -37,24 +38,24 @@
                     <h4 class="text-section">Components</h4>
                 </li>
 
-				<!-- Base -->
-				<li class="nav-item">
-					<a data-bs-toggle="collapse" href="#base">
-						<i class="fas fa-layer-group"></i>
-						<p>Reportes</p>
-						<span class="caret"></span>
-					</a>
-					<div class="collapse" id="base">
-						<ul class="nav nav-collapse">
-							<li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
-							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
-							<li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
-							<li><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getCreate")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
-							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
-							<li><a href="<?php echo getUrl('Reportes', 'SolicitudVME', 'getCreate') ?>"><span class="sub-item">Solicitud via en mal estado</span></a></li>
-						</ul>
-					</div>
-				</li>
+                <!-- Base -->
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#base">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Reportes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base">
+                        <ul class="nav nav-collapse">
+                            <li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesSolicitudNR","getCreate")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesRME","getCreate")?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","SolicitudVME","getCreate")?>"><span class="sub-item">Solicitud via en mal estado</span></a></li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#sidebarLayouts">
@@ -64,7 +65,7 @@
                     </a>
                     <div class="collapse" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
-                            <li><a href="<?php echo getUrl("Historial", "MiHistorial", "getList") ?>"><span class="sub-item">Mi historial</span></a></li>
+                            <li><a href="<?php echo getUrl("Historial","MiHistorial","getList")?>"><span class="sub-item">Mi historial</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -91,7 +92,7 @@
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
-                            <li><a href="tables/tables.html"><span class="sub-item">Reportes ciudadano </span></a></li>
+                            <li><a href=""><span class="sub-item">Reportes ciudadano</span></a></li>
                             <li><a href="tables/datatables.html"><span class="sub-item">PQRSF</span></a></li>
                         </ul>
                     </div>
@@ -105,7 +106,7 @@
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav nav-collapse">
-                            <li><a href="charts/charts.html"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
+                            <li><a href="<?php echo getUrl("Estadisticas","ZonaMayAccidentabilidad","getList")?>"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
                             <li><a href="charts/sparkline.html"><span class="sub-item">Trazabilidad</span></a></li>
                         </ul>
                     </div>
@@ -119,8 +120,8 @@
                     </a>
                     <div class="collapse" id="list">
                         <ul class="nav nav-collapse">
-                            <li><a href="components/avatars.html"><span class="sub-item">Visualizar usuario</span></a></li>
-                            <li><a href="components/buttons.html"><span class="sub-item">Editar usuario</span></a></li>
+                            <li><a href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>"><span class="sub-item">Visualizar usuario</span></a></li>
+                            <li><a href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>"><span class="sub-item">Editar usuario</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -129,3 +130,4 @@
         </div>
     </div>
 </div>
+```
