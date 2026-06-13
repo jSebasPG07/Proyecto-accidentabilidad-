@@ -1,5 +1,5 @@
 <div class="mt-3">
-    <h3 class="display-3">Formulario Solicitud Vía En Mal Estado</h3>
+    <h3 class="display-3">Formulario Solicitud V&iacute;a En Mal Estado</h3>
 </div>
 
 <form action="<?php echo getUrl('Reportes', 'SolicitudVME', 'postCreate'); ?>"
@@ -8,7 +8,7 @@
     <div class="row mt-5">
 
         <div class="col-md-4">
-            <label for="idtipodanovia">Tipo de daño</label>
+            <label for="idtipodanovia">Tipo de da&ntilde;o</label>
             <select name="idtipodanovia" id="idtipodanovia" class="form-control">
                 <?php while ($dano = pg_fetch_assoc($tiposDanoVia)) { ?>
                     <option value="<?php echo $dano['id_tipo_dano_via']; ?>">
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
+            <label for="direccion">Direcci&oacute;n</label>
             <input type="text" class="form-control" id="direccion" name="direccion"
                    placeholder="Ej: Cra 5 # 12-30">
         </div>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-md-4 mt-3">
-            <label for="descripcion">Descripción</label>
+            <label for="descripcion">Descripci&oacute;n</label>
             <textarea class="form-control" id="descripcion" name="descripcion"
                       rows="3" placeholder="Describa el estado de la vía"></textarea>
         </div>

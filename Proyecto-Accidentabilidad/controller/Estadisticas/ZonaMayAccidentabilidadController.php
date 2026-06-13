@@ -56,7 +56,7 @@ class ZonaMayAccidentabilidadController{
                  LIMIT 5";
         $reporte = $obj->select($sql);
 
-        $zonas = [];
+        $zonas = array();
 
         //Va recorrer los resultados de la base de datos fila porf fila 
         //el row va mostrar digamos la zona los accidentes  y los lesionados de la bd 
@@ -86,10 +86,8 @@ class ZonaMayAccidentabilidadController{
     
     public function exportarExcel(){
 
-        
+        require_once '../lib/PHPExcel/Classes/PHPExcel.php';
 
-        header("Content-Type: application/vnd.ms-excel");  //esta linea se puso para avisarle al navegador que es un archivo excel 
-        header("Content-Disposition: attachment; filename=zonas_accidentabilidad.xls");  // esta linea lo que hace es que a la hora de descargarlo lo hace con el nombre de zonas_accidentabilidad.xls
 
         $obj = new ZonaMayAccidentabilidadModel();
 
@@ -103,11 +101,42 @@ class ZonaMayAccidentabilidadController{
 
         $zonas = $obj->select($sql);
 
-        echo "Zona\tAccidentes\tLesionados\n";
+        $excel = new PHPExcel();
+        $excel->getProperties()->setCreator("GIAV")
+                           ->setTitle("Reporte de Accidentabilidad");
+
+        $sheet = $excel->setActiveSheetIndex(0);
+        
+        
+        //Esta parte son los encabezados de la  tabla en excel
+        $sheet->setCellValue('A1', 'Zona');
+        $sheet->setCellValue('B1', 'Accidentes');
+        $sheet->setCellValue('C1', 'Lesionados');
+
+        //Este es para colocarle negrita
+        $sheet->getStyle('A1:C1')->getFont()->setBold(true);
+
+        $fila = 2;
+        
 
         while($row = pg_fetch_assoc($zonas)){
-            echo $row['zona']."\t".$row['accidentes']."\t".$row['lesionados']."\n";
+            $sheet->setCellValue('A'.$fila, $row['zona']);
+            $sheet->setCellValue('B'.$fila, $row['accidentes']);
+            $sheet->setCellValue('C'.$fila, $row['lesionados']);
+            $fila++;
         }
+
+        foreach(range('A','C') as $col){
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+        
+
+        header("Content-Type: application/vnd.ms-excel");  //esta linea se puso para avisarle al navegador que es un archivo excel 
+        header("Content-Disposition: attachment; filename=zonas_accidentabilidad.xls");  // esta linea lo que hace es que a la hora de descargarlo lo hace con el nombre de zonas_accidentabilidad.xls
+        header('Cache-Control: max-age=0');
+
+        $writer = PHPExcel_IOFactory::createWriter($excel, 'Excel5');
+        $writer->save('php://output');
         
         exit;
     }

@@ -1,11 +1,12 @@
 <?php
 include_once "../model/Acceso/AccesoModel.php";
-require_once "../lib/phpmailer/src/Exception.php";
-require_once "../lib/phpmailer/src/PHPMailer.php";
-require_once "../lib/phpmailer/src/SMTP.php";
+require_once "../lib/PHPMailer-5.2.28/PHPMailerAutoload.php";
+//require_once "../lib/PHPMailer-5.2.28/src/Exception.php";
+//require_once "../lib/PHPMailer-5.2.28/src/PHPMailer.php";
+//require_once "../lib/PHPMailer-5.2.28/src/SMTP.php";
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+//use PHPMailer\PHPMailer\PHPMailer;
+//use PHPMailer\PHPMailer\Exception;
 
 class AccesoController
 {
@@ -47,7 +48,13 @@ class AccesoController
     public function enviarCodigo() {
         try {
             $obj = new AccesoModel();
-            $correo = $_POST['correo'] ?? '';
+            if (isset($_POST['correo'])){
+              $correo = $_POST['correo']; 
+            } else {
+                $correo = '';
+            }
+            //$correo = $_POST['correo'] ?? '';
+            //quitar esos ternarios
 
             if (empty($correo)) {
                 $_SESSION['error_recuperacion'] = 'Todos los campos son obligatorios.';
@@ -115,14 +122,28 @@ class AccesoController
     public function validarCodigo() {
         try {
             $obj = new AccesoModel();
-            $id_usuario = $_SESSION['id_usuario_recuperacion'] ?? null;
+
+            if (isset($_SESSION['id_usuario_recuperacion'])){
+              $id_usuario = $_SESSION['id_usuario_recuperacion']; 
+            } else {
+                $id_usuario = 'null';
+            }
+
+            
+            
+            
 
             if (!$id_usuario) {
                 redirect('enviarCorreo.php');
                 return;
             }
-
-            $codigo = $_POST['codigo'] ?? '';
+            
+            if (isset($_POST['codigo'])){
+              $codigo = $_POST['codigo']; 
+            } else {
+                $codigo = '';
+            }
+            
 
             
             $sql = "SELECT * FROM token WHERE id_usuario = $id_usuario AND codigo = '$codigo' AND uso = false AND tiempo >= NOW() - INTERVAL '15 minutes'";
@@ -157,7 +178,13 @@ class AccesoController
                 $sql_intentos = "SELECT intentos FROM token WHERE id_usuario = $id_usuario AND uso = false ORDER BY tiempo DESC LIMIT 1";
                 $res_intentos = $obj->select($sql_intentos);
                 $fila_intentos = pg_fetch_assoc($res_intentos);
-                $intentos_actuales = (int)($fila_intentos['intentos'] ?? 0);
+
+                if (isset($_POST['codigo'])){
+                    $intentos_actuales = (int)($fila_intentos['intentos']); 
+                } else {
+                    $intentos_actuales = 0;
+                }
+                
 
                 if ($intentos_actuales >= 3) {
                     $sql_eliminarI = "DELETE FROM token WHERE id_usuario = $id_usuario AND uso = false";
@@ -188,9 +215,21 @@ class AccesoController
                 return;
             }
 
+            
             $id_usuario = $_SESSION['id_usuario_recuperacion'];
-            $nueva      = $_POST['nueva_contrasena'] ?? '';
-            $confirmar  = $_POST['confirmar_contrasena'] ?? '';
+
+            if (isset($_POST['nueva_contrasena'])){
+                    $nueva = $_POST['nueva_contrasena']; 
+            } else {
+                    $nueva = '';
+                }
+
+            if (isset($_POST['confirmar_contrasena'])){
+                    $confirmar  = $_POST['confirmar_contrasena']; 
+            } else {
+                    $confirmar = '';
+                }    
+            
 
             if (empty($nueva) || empty($confirmar)) {
                 $_SESSION['error_nueva'] = 'Todos los campos son obligatorios.';

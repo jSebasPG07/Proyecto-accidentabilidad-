@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="id_tipo_dano_reductor">Clasificación / Daño</label>
+            <label for="id_tipo_dano_reductor">Clasificaci&oacute;n / Da&ntilde;o</label>
 
             <select name="id_tipo_dano_reductor"
                     id="id_tipo_dano_reductor"
@@ -46,17 +46,17 @@
         </div>
 
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
+            <label for="direccion">Direcci&oacute;n</label>
             <input type="text"
                    class="form-control"
                    id="direccion"
                    name="direccion"
-                   placeholder="Dirección"
+                   placeholder="Direcci&oacute;n"
                    required>
         </div>
 
         <div class="col-md-4 mt-3">
-            <label for="descripcion">Descripción</label>
+            <label for="descripcion">Descripci&oacute;n</label>
             <textarea class="form-control"
                       id="descripcion"
                       name="descripcion"
@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-md-4 mt-3">
-            <label for="imagen_url">Fotografía de Evidencia</label>
+            <label for="imagen_url">Fotograf&iacute;a de Evidencia</label>
             <input type="file"
                    class="form-control"
                    id="imagen_url"

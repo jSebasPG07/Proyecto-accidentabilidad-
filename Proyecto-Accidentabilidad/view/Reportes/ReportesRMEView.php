@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="idtipodanoreductor">Tipo de daño</label>
+            <label for="idtipodanoreductor">Tipo de da&ntilde;o</label>
             <select name="idtipodanoreductor" id="idtipodanoreductor" class="form-control">
                 <?php while ($dano = pg_fetch_assoc($tiposDanoReductor)) { ?>
                     <option value="<?php echo $dano['id_tipo_dano_reductor']; ?>">
@@ -30,13 +30,13 @@
         </div>
 
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
+            <label for="direccion">Direcci&oacute;n</label>
             <input type="text" class="form-control" id="direccion" name="direccion"
                    placeholder="Ej: Cra 5 # 12-30">
         </div>
 
         <div class="col-md-4 mt-3">
-            <label for="descripcion">Descripción</label>
+            <label for="descripcion">Descripci&oacute;n</label>
             <textarea class="form-control" id="descripcion" name="descripcion"
                       rows="3" placeholder="Describa el estado del reductor"></textarea>
         </div>

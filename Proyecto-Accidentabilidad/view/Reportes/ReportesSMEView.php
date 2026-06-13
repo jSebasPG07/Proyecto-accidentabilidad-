@@ -1,5 +1,5 @@
 <div class="mt-3">
-    <h3 class="display-3">Formulario Solicitud señal en mal estado</h3>
+    <h3 class="display-3">Formulario Solicitud se&ntilde;al en mal estado</h3>
 </div>
 
 <form action="<?php echo getUrl("Reportes","ReportesSME","postCreate");?>" 
@@ -31,12 +31,12 @@
         </div>
         
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
+            <label for="direccion">Direcci&oacute;n</label>
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
         </div>
 
         <div class="col-md-4">
-            <label for="tsenal">Tipo señal</label>
+            <label for="tsenal">Tipo se&ntilde;al</label>
             <select name="tsenal" id="tsenal" class="form-control" required>
                 <?php
                     while ($tsenall = pg_fetch_assoc($nsenal)) {
@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="tdano">Tipo daño</label>
+            <label for="tdano">Tipo da&ntilde;o</label>
             <select name="tdano" id="tdano" class="form-control" required>
                      <?php
                         while ($tdanos = pg_fetch_assoc($tdano)) {
@@ -60,7 +60,7 @@
 
         
         <div class="col-md-4">
-            <button type="submit" class="btn btn-success mt-4">Registrar solicitud señal mal estado</button>
+            <button type="submit" class="btn btn-success mt-4">Registrar solicitud se&ntilde;al mal estado</button>
         </div>
 
         <div class="col-md-4">

@@ -9,7 +9,7 @@
         </a>
     </div>
 
-    <!-- CARDS -->
+    
     <div class="row">
 
         
@@ -31,7 +31,7 @@
         
         <div class="col-md-3">
             <div class="card shadow-sm p-3">
-                <small class="text-muted">Mes con más accidentes</small>
+                <small class="text-muted">Mes con m&aacute;s accidentes</small>
                 <h4><?php echo $mesTop; ?></h4>
             </div>
         </div>

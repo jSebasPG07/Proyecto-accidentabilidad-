@@ -12,7 +12,12 @@ class MiHistorialController {
    public function getFiltrar(){
 
     $obj = new MiHistorialModel();
-    $tipo = $_GET['tipo'] ?? "";
+    if (isset($_GET['tipo'])){
+        $tipo = $_GET['tipo']; 
+    } else {
+        $tipo = "";
+    }
+    
 
     if($tipo == "accidente"){
 
@@ -31,7 +36,7 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $accidentes = [];
+        $accidentes = array();
         while($row = pg_fetch_assoc($res)){
             $accidentes[] = $row;
         }
@@ -59,12 +64,13 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $nuevasenal = [];
+        $nuevasenal = array();
         while($row = pg_fetch_assoc($res)){
             $nuevasenal[] = $row;
         }
 
-        include "../view/Historial/TablaNuevaSeñal.php";
+        
+        include "../view/Historial/TablaNuevaSenal.php";
         die();
     }
 
@@ -89,7 +95,7 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $senalmalestado = [];
+        $senalmalestado = array();
         while($row = pg_fetch_assoc($res)){
             $senalmalestado[] = $row;
         }
@@ -117,7 +123,7 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $reductornuevo = [];
+        $reductornuevo = array();
         while($row = pg_fetch_assoc($res)){
             $reductornuevo[] = $row;
         }
@@ -145,7 +151,7 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $reductormal = [];
+        $reductormal = array();
         while($row = pg_fetch_assoc($res)){
             $reductormal[] = $row;
         }
@@ -172,7 +178,7 @@ class MiHistorialController {
 
         $res = $obj->select($sql);
 
-        $viamal = [];
+        $viamal = array();
         while($row = pg_fetch_assoc($res)){
             $viamal[] = $row;
         }

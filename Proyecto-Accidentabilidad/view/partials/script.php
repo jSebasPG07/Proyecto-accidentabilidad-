@@ -20,9 +20,9 @@
 <script src="../web/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 	<script>
 		<?php if(isset($_GET['msg']) && $_GET['msg'] == 'ok'){ ?>
-      swal("¡Bien hecho!", "Registro guardado correctamente", "success");
+      swal("Bien hecho", "Registro guardado correctamente", "success");
     <?php } ?>
-
+  
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'error'){ ?>
       swal("Error", "No se pudo guardar el registro", "error");
     <?php } ?>

@@ -5,8 +5,8 @@
         data-url="<?php echo getUrl("Historial","MiHistorial","getFiltrar", false,"ajax"); ?>">
 
         <option value="accidente">Reporte Accidente</option>
-        <option value="senal_nueva">Solicitud nueva señal</option>
-        <option value="senal_mal">Solicitud señal en mal estado</option>
+        <option value="senal_nueva">Solicitud nueva se&ntilde;al</option>
+        <option value="senal_mal">Solicitud se&ntilde;al en mal estado</option>
         <option value="reductor_nuevo">Solicitud nuevo reductor</option>
         <option value="reductor_mal">Solicitud reductor en mal estado</option>
         <option value="via_mal">Solicitud vía en mal estado</option>

@@ -18,8 +18,8 @@
         </div>
 
         <div class="col-md-4">
-            <label for="nlesionados">Número de lesionados</label>
-            <input type="number" class="form-control" id="nlesionados" name="nlesionados" placeholder="número de lesionados" min="0" required>
+            <label for="nlesionados">N&uacute;mero de lesionados</label>
+            <input type="number" class="form-control" id="nlesionados" name="nlesionados" placeholder="n&uacute;mero de lesionados" min="0" required>
         </div>
 
         <div class="col-md-4">
@@ -33,8 +33,8 @@
         </div>
         
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
+            <label for="direccion">Direcci&oacute;n</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direcci&oacute;n" required>
         </div>
 
         <div class="col-md-4">

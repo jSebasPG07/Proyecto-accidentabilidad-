@@ -1,5 +1,5 @@
 <div class="mt-3">
-    <h3 class="display-3">Formulario Solicitud nueva señal</h3>
+    <h3 class="display-3">Formulario Solicitud nueva se&ntilde;al</h3>
 </div>
 
 <form action="<?php echo getUrl("Reportes","ReportesNS","postCreate");?>" 
@@ -31,14 +31,14 @@
         </div>
         
         <div class="col-md-4">
-            <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
+            <label for="direccion">Direcci&oacute;n</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direcci&oacute;n" required>
         </div>
 
 
 
         <div class="col-md-4">
-            <label for="tsenal">Tipo señal</label>
+            <label for="tsenal">Tipo se&ntilde;al</label>
             <select name="tsenal" id="tsenal" class="form-control" required>
                 <?php
                     while ($tsenall = pg_fetch_assoc($nsenal)) {
@@ -50,7 +50,7 @@
 
         
         <div class="col-md-4">
-            <button type="submit" class="btn btn-success mt-4">Registrar nueva señal </button>
+            <button type="submit" class="btn btn-success mt-4">Registrar nueva se&ntilde;al </button>
         </div>
 
         <div class="col-md-4">
