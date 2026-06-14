@@ -1,324 +1,163 @@
 <?php
+/**
+ * Vista: Manual de Usuario
+ * Modulo: Manual (GIAV)
+ * PHP compatible con versiones antiguas (sin [], sin <?=)
+ */
 
-$manualUsuario = [
-  
-  [
-    'titulo' => 'A. Bienvenidos a GIAV',
-    'tipo' => 'parrafos',
-    'contenido' => [
-      'GIAV (Geovisor Inteligente de Accidentalidad Vial) es una plataforma colaborativa que permite a la comunidad reportar accidentes de tránsito, problemas de infraestructura vial y hacer seguimiento a sus solicitudes ante las autoridades competentes.',
-      'Este manual te explica paso a paso cómo usar cada módulo de la plataforma.',
-    ],
-  ],
+$secciones = array(
+    array(
+        'titulo'    => 'A. Bienvenida a GIAV',
+        'tipo'      => 'parrafos',
+        'contenido' => array(
+            'GIAV (Geovisor Inteligente de Accidentalidad Vial) es una plataforma colaborativa que permite a la comunidad reportar accidentes de transito, problemas de infraestructura vial y hacer seguimiento a sus solicitudes ante las autoridades competentes.',
+            'Este manual te explica paso a paso como usar cada modulo de la plataforma.',
+        ),
+    ),
 
-  [
-    'titulo' => 'B. Crear y gestionar tu cuenta',
-    'tipo' => 'pasos',
-    'contenido' => [
-      'Regístrate con tu correo electrónico y crea una contraseña segura desde la pantalla de registro.',
-      'Inicia sesión desde la pantalla principal con tus credenciales.',
-      'Desde "Gestión de Usuarios" puedes actualizar tus datos de contacto y consultar tu información.',
-    ],
-  ],
+    array(
+        'titulo'    => 'B. Crear y gestionar tu cuenta',
+        'tipo'      => 'pasos',
+        'contenido' => array(
+            'Registrate con tu correo electronico y crea una contrasena segura desde la pantalla de registro.',
+            'Inicia sesion desde la pantalla principal con tus credenciales.',
+            'En "Gestion de Usuarios" puedes actualizar tus datos de contacto y consultar tu informacion de cuenta.',
+        ),
+    ),
 
-  [
-    'titulo' => 'C. Módulo de Reportes',
-    'tipo' => 'pasos',
-    'contenido' => [
-      'Ingresa al módulo "Mapa" para visualizar los reportes de accidentalidad vial cercanos a tu ubicación.',
-      'En "Reportes" puedes registrar un accidente (tipo de choque, vehículos involucrados y ubicación), o generar una solicitud relacionada con señalización vial:',
-      '— Solicitud nueva señal, Solicitud señal en mal estado, Solicitud nuevo reductor, Solicitud reductor en mal estado y Solicitud vía en mal estado.',
-      'Adjunta evidencia fotográfica cuando esté disponible para agilizar la validación.',
-    ],
-  ],
+    array(
+        'titulo'    => 'C. Modulo de Reportes',
+        'tipo'      => 'pasos',
+        'contenido' => array(
+            'Ingresa al modulo "Mapa" para visualizar los reportes de accidentalidad vial cercanos a tu ubicacion.',
+            'En "Reportes - Nuevo reporte" puedes registrar un accidente: selecciona el tipo de choque, los vehiculos involucrados, la ubicacion en el mapa y agrega una descripcion.',
+            'Tambien puedes generar solicitudes de senalizacion: reportar senal en mal estado, solicitar nueva senal, reportar reductor en mal estado, solicitar nuevo reductor o reportar via en mal estado.',
+            'Adjunta evidencia fotografica cuando este disponible para agilizar la validacion.',
+        ),
+    ),
 
-  [
-    'titulo' => 'D. Historial de Reportes',
-    'tipo' => 'parrafos',
-    'contenido' => [
-      'En "Historial Reportes → Mi historial" puedes consultar todos los reportes y solicitudes que has registrado, junto con su estado actual.',
-      'Los estados posibles son: Pendiente, En revisión, En proceso, Completada o Rechazada.',
-    ],
-  ],
+    array(
+        'titulo'    => 'D. Historial de Reportes',
+        'tipo'      => 'parrafos',
+        'contenido' => array(
+            'En "Historial Reportes - Mi historial" puedes consultar todos los reportes y solicitudes que has registrado, junto con su estado actual.',
+            'Los estados posibles son: <strong>Pendiente</strong>, <strong>En revision</strong>, <strong>En proceso</strong>, <strong>Completada</strong> o <strong>Rechazada</strong>.',
+        ),
+    ),
 
-  [
-    'titulo' => 'E. Manual de Señalización',
-    'tipo' => 'parrafos',
-    'contenido' => [
-      'En "Manual → Manual señalización" encontrarás los tipos de señales viales (reglamentarias, informativas y preventivas), su significado, y enlaces directos para reportar señales dañadas o solicitar señales y reductores nuevos.',
-    ],
-  ],
+    array(
+        'titulo'    => 'E. Manual de Senalizacion',
+        'tipo'      => 'parrafos',
+        'contenido' => array(
+            'En "Manual - Manual senalizacion" encontraras el catalogo completo de senales viales (reglamentarias, informativas y preventivas) tomado del Manual de Senalizacion Vial de Colombia 2024.',
+            'La seccion E del manual contiene los enlaces directos a cada formulario de solicitud (senal danada, nueva senal, reductor danado, nuevo reductor, via en mal estado).',
+        ),
+    ),
 
-  [
-    'titulo' => 'F. PQRSF',
-    'tipo' => 'parrafos',
-    'contenido' => [
-      'El módulo "PQRSF" permite consultar los reportes ciudadanos registrados y radicar Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones (PQRSF) relacionadas con el servicio o la infraestructura vial.',
-    ],
-  ],
+    array(
+        'titulo'    => 'F. Visualizar Reportes y PQRSF',
+        'tipo'      => 'parrafos',
+        'contenido' => array(
+            'El modulo "Visualizar Reportes" permite consultar los reportes ciudadanos registrados en la plataforma.',
+            'Desde el modulo PQRSF puedes radicar Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones relacionadas con el servicio o con la infraestructura vial. Cada PQRSF queda asociada a tu usuario y puedes hacerle seguimiento desde tu historial.',
+        ),
+    ),
 
-  [
-    'titulo' => 'G. Estadísticas',
-    'tipo' => 'parrafos',
-    'contenido' => [
-      'El módulo de Estadísticas incluye "Zona de Mayor Accidentabilidad", que identifica los puntos críticos de la vía, y "Trazabilidad", que permite hacer seguimiento histórico a los reportes y solicitudes.',
-    ],
-  ],
+    array(
+        'titulo'    => 'G. Estadisticas',
+        'tipo'      => 'parrafos',
+        'contenido' => array(
+            '<strong>Zona de Mayor Accidentabilidad:</strong> identifica los puntos criticos de la via con mayor concentracion de siniestros viales, mediante graficas y mapas de calor.',
+            '<strong>Trazabilidad:</strong> permite hacer seguimiento historico a los reportes y solicitudes, filtrando por fecha, tipo, estado y sector.',
+        ),
+    ),
 
-  [
-    'titulo' => 'H. Preguntas frecuentes',
-    'tipo' => 'faq',
-    'contenido' => [
-      ['p' => '¿Cómo sé el estado de mi reporte o solicitud?', 'r' => 'Ingresa a "Historial Reportes → Mi historial" y revisa la columna de estado.'],
-      ['p' => '¿Puedo editar una solicitud después de enviarla?', 'r' => 'No. Si necesitas corregir información, comunícate con soporte a través del módulo PQRSF.'],
-      ['p' => '¿Qué hago si la señal que quiero reportar no aparece en el catálogo?', 'r' => 'Selecciónala lo más parecida posible y agrega el detalle en el campo de descripción del formulario.'],
-    ],
-  ],
-];
-
+    array(
+        'titulo'    => 'H. Preguntas frecuentes',
+        'tipo'      => 'faq',
+        'contenido' => array(
+            array('p' => 'Como se el estado de mi reporte o solicitud?',         'r' => 'Ingresa a "Historial Reportes - Mi historial" y revisa la columna de estado.'),
+            array('p' => 'Puedo editar una solicitud despues de enviarla?',       'r' => 'No. Si necesitas corregir informacion, comunicate con soporte a traves del modulo PQRSF.'),
+            array('p' => 'La senal que quiero reportar no aparece en el catalogo?','r' => 'Selecciona la mas parecida y agrega el detalle en el campo de descripcion del formulario.'),
+            array('p' => 'Puedo adjuntar mas de una foto?',                       'r' => 'Cada formulario de solicitud permite adjuntar una imagen como evidencia principal.'),
+        ),
+    ),
+    
+);
 ?>
 
-<div class="page-inner manual-usuario">
+<div class="container-fluid px-4 py-3">
 
-  <div class="manual-header">
-    <div class="icon-box">
-      <i class="fas fa-user-graduate"></i>
-    </div>
-    <div>
-      <h3>Manual de Usuario</h3>
-      <p>Guía rápida para usar la plataforma GIAV.</p>
-    </div>
-  </div>
-
-  <div class="accordion" id="accordionManualUsuario">
-    <?php foreach ($manualUsuario as $sec): ?>
-      <div class="acc-item">
-        <div class="acc-header" onclick="toggleAccU(this)">
-          <span class="acc-title"><?= $sec['titulo'] ?></span>
-          <span class="chevron">▾</span>
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
+        <div class="bg-success bg-opacity-10 rounded-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#198754" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>
         </div>
-        <div class="acc-body">
-          <div class="acc-content">
-
-            <?php if ($sec['tipo'] === 'parrafos'): ?>
-              <?php foreach ($sec['contenido'] as $p): ?>
-                <p><?= $p ?></p>
-              <?php endforeach; ?>
-
-            <?php elseif ($sec['tipo'] === 'pasos'): ?>
-              <ol class="pasos-list">
-                <?php foreach ($sec['contenido'] as $paso): ?>
-                  <li><?= $paso ?></li>
-                <?php endforeach; ?>
-              </ol>
-
-            <?php elseif ($sec['tipo'] === 'faq'): ?>
-              <div class="faq-list">
-                <?php foreach ($sec['contenido'] as $f): ?>
-                  <div class="faq-item">
-                    <div class="pregunta"><?= $f['p'] ?></div>
-                    <div class="respuesta"><?= $f['r'] ?></div>
-                  </div>
-                <?php endforeach; ?>
-              </div>
-            <?php endif; ?>
-
-          </div>
+        <div>
+            <h4 class="mb-0 fw-bold">Manual de Usuario</h4>
+            <p class="text-muted mb-0 small">Guia rapida para usar la plataforma GIAV</p>
         </div>
-      </div>
-    <?php endforeach; ?>
-  </div>
+    </div>
+
+    <!-- Acordeon -->
+    <div class="accordion accordion-flush" id="accordionUsuario">
+
+        <?php $i = 0; foreach ($secciones as $sec): ?>
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button <?php if ($i !== 0) { echo 'collapsed'; } ?> rounded-3 fw-semibold"
+                        type="button" data-bs-toggle="collapse"
+                        data-bs-target="#secU<?php echo $i; ?>"
+                        aria-expanded="<?php echo ($i === 0) ? 'true' : 'false'; ?>">
+                    <?php echo $sec['titulo']; ?>
+                </button>
+            </h2>
+            <div id="secU<?php echo $i; ?>"
+                 class="accordion-collapse collapse <?php if ($i === 0) { echo 'show'; } ?>"
+                 data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+
+                    <?php if ($sec['tipo'] === 'parrafos'): ?>
+                        <?php foreach ($sec['contenido'] as $p): ?>
+                            <p class="text-muted"><?php echo $p; ?></p>
+                        <?php endforeach; ?>
+
+                    <?php elseif ($sec['tipo'] === 'pasos'): ?>
+                        <ol class="ps-3">
+                            <?php foreach ($sec['contenido'] as $paso): ?>
+                                <li class="text-muted mb-2"><?php echo $paso; ?></li>
+                            <?php endforeach; ?>
+                        </ol>
+
+                    <?php elseif ($sec['tipo'] === 'faq'): ?>
+                        <div class="accordion" id="faqInner<?php echo $i; ?>">
+                            <?php $j = 0; foreach ($sec['contenido'] as $f): ?>
+                                <div class="accordion-item border-0 border-bottom">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent"
+                                                type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#faq<?php echo $i; ?>_<?php echo $j; ?>">
+                                            <?php echo $f['p']; ?>
+                                        </button>
+                                    </h2>
+                                    <div id="faq<?php echo $i; ?>_<?php echo $j; ?>"
+                                         class="accordion-collapse collapse"
+                                         data-bs-parent="#faqInner<?php echo $i; ?>">
+                                        <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
+                                            <?php echo $f['r']; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php $j++; endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            </div>
+        </div>
+        <?php $i++; endforeach; ?>
+
+    </div>
 </div>
-
-<style>
-
-  .manual-usuario{
-    --bg-card:#1c2a45;
-    --bg-card-soft:#243456;
-    --text-light:#e7ecf6;
-    --text-muted:#9aa7c2;
-    --border-soft:#33446b;
-    --azul:#3b82f6;
-    --verde:#22c55e;
-  }
-
-  .manual-usuario .manual-header{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    background:#fff;
-    border-radius:12px;
-    padding:18px 20px;
-    margin-bottom:18px;
-    box-shadow:0 1px 3px rgba(0,0,0,.06);
-  }
-
-  .manual-usuario .manual-header .icon-box{
-    width:46px;
-    height:46px;
-    border-radius:10px; 
-    background:#dcfce7;
-    display:flex; 
-    align-items:center; 
-    justify-content:center; 
-    flex-shrink:0;
-    color:#22c55e; 
-    font-size:1.2rem;
-  }
-
-  .manual-usuario .manual-header h3{
-    margin:0; 
-    font-size:1.2rem;
-  }
-
-  .manual-usuario .manual-header p{
-    margin:2px 0 0; 
-    font-size:.85rem; 
-    color:#64748b;
-  }
-
-  .manual-usuario .accordion{
-    display:flex; 
-    flex-direction:column; 
-    gap:10px;
-  }
-
-  .manual-usuario .acc-item{
-    background:var(--bg-card); 
-    border-radius:10px; 
-    overflow:hidden; 
-    color:var(--text-light);
-  }
-
-  .manual-usuario .acc-header{
-    display:flex; 
-    align-items:center; 
-    gap:12px; 
-    padding:16px 18px;
-    cursor:pointer; 
-    user-select:none; 
-    border-left:4px solid var(--azul);
-  }
-
-  .manual-usuario .acc-title{
-    flex:1; 
-    font-weight:600; 
-    font-size:.97rem;
-  }
-
-  .manual-usuario .chevron{
-    transition:transform .2s ease; 
-    color:var(--text-muted);
-  }
-
-  .manual-usuario .acc-item.open .chevron{
-    transform:rotate(180deg);
-  }
-
-  .manual-usuario .acc-body{
-    max-height:0; 
-    overflow:hidden; 
-    transition:max-height .25s ease;
-  }
-
-  .manual-usuario .acc-item.open .acc-body{
-    border-top:1px solid var(--border-soft);
-  }
-
-  .manual-usuario .acc-content{
-    padding:18px 20px 22px;
-  }
-
-  .manual-usuario .acc-content p{
-    font-size:.88rem; 
-    line-height:1.55; 
-    color:var(--text-muted); 
-    margin:0 0 10px;
-  }
-
-  .manual-usuario .pasos-list{
-    counter-reset:paso; 
-    list-style:none; 
-    margin:6px 0 0; 
-    padding:0; 
-    display:flex; 
-    flex-direction:column; 
-    gap:10px;
-  }
-  
-  .manual-usuario .pasos-list li{
-    counter-increment:paso;
-    background:var(--bg-card-soft);
-    border-radius:8px;
-    padding:12px 14px 12px 46px;
-    position:relative;
-    font-size:.85rem;
-    color:var(--text-muted);
-  }
-
-  .manual-usuario .pasos-list li::before{
-    content:counter(paso); 
-    position:absolute; 
-    left:12px; top:50%; 
-    transform:translateY(-50%);
-    width:24px; 
-    height:24px; 
-    border-radius:50%; 
-    background:var(--azul);
-    color:#fff; 
-    font-weight:700; 
-    font-size:.78rem; 
-    display:flex; 
-    align-items:center; 
-    justify-content:center;
-  }
-
-  .manual-usuario .faq-list{
-    display:flex; 
-    flex-direction:column; 
-    gap:8px; 
-    margin-top:6px;
-  }
-
-  .manual-usuario .faq-item{
-    background:var(--bg-card-soft); 
-    border-radius:8px; 
-    padding:12px 14px;
-  }
-
-  .manual-usuario .faq-item .pregunta{
-    font-weight:700; 
-    font-size:.86rem; 
-    color:var(--text-light); 
-    margin-bottom:4px;
-  }
-
-  .manual-usuario .faq-item .respuesta{
-    font-size:.82rem; 
-    color:var(--text-muted);
-  }
-
-</style>
-
-<script>
-  function toggleAccU(header){
-    const item = header.parentElement;
-    const body = item.querySelector('.acc-body');
-    const isOpen = item.classList.contains('open');
-
-    item.parentElement.querySelectorAll('.acc-item').forEach(el=>{
-      el.classList.remove('open');
-      el.querySelector('.acc-body').style.maxHeight = null;
-    });
-
-    if(!isOpen){
-      item.classList.add('open');
-      body.style.maxHeight = body.scrollHeight + 'px';
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const first = document.querySelector('.manual-usuario .acc-item');
-    if(first) toggleAccU(first.querySelector('.acc-header'));
-  });
-</script>
