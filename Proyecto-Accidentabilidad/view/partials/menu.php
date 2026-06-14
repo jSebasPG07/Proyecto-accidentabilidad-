@@ -49,8 +49,8 @@
 					<div class="collapse" id="base">
 						<ul class="nav nav-collapse">
 							<li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
-							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva se&ntilde;al</span></a></li>
-                            <li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud se&ntilde;al en mal estado</span></a></li>
+							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
 							<li><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getCreate")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'SolicitudVME', 'getCreate') ?>"><span class="sub-item">Solicitud via en mal estado</span></a></li>
@@ -80,8 +80,8 @@
                     </a>
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
-                            <li><a href="forms/forms.html"><span class="sub-item">Manual usuario</span></a></li>
-                            <li><a href="forms/forms.html"><span class="sub-item">Manual se&ntilde;alizacion</span></a></li>
+                            <li><a href="<?php echo getUrl("Manual", "ManualU", "getCreate")?>"><span class="sub-item">Manual usuario</span></a></li>
+                            <li><a href="forms/forms.html"><span class="sub-item">Manual señalizacion</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -89,13 +89,13 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#tables">
                         <i class="fas fa-table"></i>
-                        <p>Visualizar Reportes</p>
+                        <p>PQRSF</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
-                            <li><a href=""><span class="sub-item">Reportes ciudadano</span></a></li>
-                            <li><a href="tables/datatables.html"><span class="sub-item">PQRSF</span></a></li>
+                            <li><a href="tables/tables.html"><span class="sub-item">Registrar PQRSF</span></a></li>
+                            <li><a href="tables/datatables.html"><span class="sub-item">Visualizar PQRSF</span></a></li>
                         </ul>
                     </div>
                 </li>
