@@ -44,11 +44,11 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Reportes','ReportesA','getCreate'); ?>"><span class="sub-item">Reporte accidente</span></a></li>
-                            <li><a href="<?php echo getUrl('Reportes','ReportesNS','getCreate'); ?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
-                            <li><a href="<?php echo getUrl('Reportes','ReportesSME','getCreate'); ?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
+                            <li><a href="<?php echo getUrl('Reportes','ReportesNS','getCreate'); ?>"><span class="sub-item">Solicitud nueva se&ntilde;al</span></a></li>
+                            <li><a href="<?php echo getUrl('Reportes','ReportesSME','getCreate'); ?>"><span class="sub-item">Solicitud se&ntilde;al en mal estado</span></a></li>
                             <li><a href="<?php echo getUrl('Reportes','ReportesSolicitudNR','getCreate'); ?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
                             <li><a href="<?php echo getUrl('Reportes','ReportesRME','getCreate'); ?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
-                            <li><a href="<?php echo getUrl('Reportes','SolicitudVME','getCreate'); ?>"><span class="sub-item">Solicitud vía en mal estado</span></a></li>
+                            <li><a href="<?php echo getUrl('Reportes','SolicitudVME','getCreate'); ?>"><span class="sub-item">Solicitud v&iacute;a en mal estado</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -106,13 +106,13 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#charts">
                         <i class="far fa-chart-bar"></i>
-                        <p>Estadísticas</p>
+                        <p>Estad&iacute;sticas</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Estadisticas','ZonaMayAccidentabilidad','getList'); ?>"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
-                            <li><a href="<?php echo getUrl('Estadisticas','Trazabilidad','getList'); ?>"><span class="sub-item">Trazabilidad</span></a></li>
+                            
                         </ul>
                     </div>
                 </li>
@@ -122,7 +122,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#list">
                         <i class="fas fa-layer-group"></i>
-                        <p>Gestión de Usuarios</p>
+                        <p>Gesti&oacute;n de Usuarios</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="list">

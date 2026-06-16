@@ -1,5 +1,5 @@
 <div class="mt-3">
-    <h3 class="display-3">Gestión de Usuarios</h3>
+    <h3 class="display-3">Gesti&oacute;n de Usuarios</h3>
 </div>
 
 <table class="table table-bordered table-hover mt-4">
