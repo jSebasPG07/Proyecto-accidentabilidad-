@@ -1,94 +1,5 @@
-<?php
-/**
- * Vista: Manual de Usuario
- * Modulo: Manual (GIAV)
- * PHP compatible con versiones antiguas (sin [], sin <?=)
- */
-
-$secciones = array(
-    array(
-        'titulo'    => 'A. Bienvenida a GIAV',
-        'tipo'      => 'parrafos',
-        'contenido' => array(
-            'GIAV (Geovisor Inteligente de Accidentalidad Vial) es una plataforma colaborativa que permite a la comunidad reportar accidentes de transito, problemas de infraestructura vial y hacer seguimiento a sus solicitudes ante las autoridades competentes.',
-            'Este manual te explica paso a paso como usar cada modulo de la plataforma.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'B. Crear y gestionar tu cuenta',
-        'tipo'      => 'pasos',
-        'contenido' => array(
-            'Registrate con tu correo electronico y crea una contrasena segura desde la pantalla de registro.',
-            'Inicia sesion desde la pantalla principal con tus credenciales.',
-            'En "Gestion de Usuarios" puedes actualizar tus datos de contacto y consultar tu informacion de cuenta.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'C. Modulo de Reportes',
-        'tipo'      => 'pasos',
-        'contenido' => array(
-            'Ingresa al modulo "Mapa" para visualizar los reportes de accidentalidad vial cercanos a tu ubicacion.',
-            'En "Reportes - Nuevo reporte" puedes registrar un accidente: selecciona el tipo de choque, los vehiculos involucrados, la ubicacion en el mapa y agrega una descripcion.',
-            'Tambien puedes generar solicitudes de senalizacion: reportar senal en mal estado, solicitar nueva senal, reportar reductor en mal estado, solicitar nuevo reductor o reportar via en mal estado.',
-            'Adjunta evidencia fotografica cuando este disponible para agilizar la validacion.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'D. Historial de Reportes',
-        'tipo'      => 'parrafos',
-        'contenido' => array(
-            'En "Historial Reportes - Mi historial" puedes consultar todos los reportes y solicitudes que has registrado, junto con su estado actual.',
-            'Los estados posibles son: <strong>Pendiente</strong>, <strong>En revision</strong>, <strong>En proceso</strong>, <strong>Completada</strong> o <strong>Rechazada</strong>.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'E. Manual de Senalizacion',
-        'tipo'      => 'parrafos',
-        'contenido' => array(
-            'En "Manual - Manual senalizacion" encontraras el catalogo completo de senales viales (reglamentarias, informativas y preventivas) tomado del Manual de Senalizacion Vial de Colombia 2024.',
-            'La seccion E del manual contiene los enlaces directos a cada formulario de solicitud (senal danada, nueva senal, reductor danado, nuevo reductor, via en mal estado).',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'F. Visualizar Reportes y PQRSF',
-        'tipo'      => 'parrafos',
-        'contenido' => array(
-            'El modulo "Visualizar Reportes" permite consultar los reportes ciudadanos registrados en la plataforma.',
-            'Desde el modulo PQRSF puedes radicar Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones relacionadas con el servicio o con la infraestructura vial. Cada PQRSF queda asociada a tu usuario y puedes hacerle seguimiento desde tu historial.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'G. Estadisticas',
-        'tipo'      => 'parrafos',
-        'contenido' => array(
-            '<strong>Zona de Mayor Accidentabilidad:</strong> identifica los puntos criticos de la via con mayor concentracion de siniestros viales, mediante graficas y mapas de calor.',
-            '<strong>Trazabilidad:</strong> permite hacer seguimiento historico a los reportes y solicitudes, filtrando por fecha, tipo, estado y sector.',
-        ),
-    ),
-
-    array(
-        'titulo'    => 'H. Preguntas frecuentes',
-        'tipo'      => 'faq',
-        'contenido' => array(
-            array('p' => 'Como se el estado de mi reporte o solicitud?',         'r' => 'Ingresa a "Historial Reportes - Mi historial" y revisa la columna de estado.'),
-            array('p' => 'Puedo editar una solicitud despues de enviarla?',       'r' => 'No. Si necesitas corregir informacion, comunicate con soporte a traves del modulo PQRSF.'),
-            array('p' => 'La senal que quiero reportar no aparece en el catalogo?','r' => 'Selecciona la mas parecida y agrega el detalle en el campo de descripcion del formulario.'),
-            array('p' => 'Puedo adjuntar mas de una foto?',                       'r' => 'Cada formulario de solicitud permite adjuntar una imagen como evidencia principal.'),
-        ),
-    ),
-    
-);
-?>
-
 <div class="container-fluid px-4 py-3">
 
-    <!-- Encabezado -->
     <div class="d-flex align-items-center mb-4 gap-3">
         <div class="bg-success bg-opacity-10 rounded-3 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#198754" viewBox="0 0 16 16">
@@ -97,67 +8,187 @@ $secciones = array(
         </div>
         <div>
             <h4 class="mb-0 fw-bold">Manual de Usuario</h4>
-            <p class="text-muted mb-0 small">Guia rapida para usar la plataforma GIAV</p>
+            <p class="text-muted mb-0 small">Gu&iacute;a r&aacute;pida para usar la plataforma GIAV</p>
         </div>
     </div>
 
-    <!-- Acordeon -->
     <div class="accordion accordion-flush" id="accordionUsuario">
 
-        <?php $i = 0; foreach ($secciones as $sec): ?>
         <div class="accordion-item border rounded-3 mb-2 shadow-sm">
             <h2 class="accordion-header">
-                <button class="accordion-button <?php if ($i !== 0) { echo 'collapsed'; } ?> rounded-3 fw-semibold"
-                        type="button" data-bs-toggle="collapse"
-                        data-bs-target="#secU<?php echo $i; ?>"
-                        aria-expanded="<?php echo ($i === 0) ? 'true' : 'false'; ?>">
-                    <?php echo $sec['titulo']; ?>
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secA">
+                    A. Bienvenida a GIAV
                 </button>
             </h2>
-            <div id="secU<?php echo $i; ?>"
-                 class="accordion-collapse collapse <?php if ($i === 0) { echo 'show'; } ?>"
-                 data-bs-parent="#accordionUsuario">
+            <div id="secA" class="accordion-collapse collapse show" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <p class="text-muted">GIAV (Geovisor Inteligente de Accidentalidad Vial) es una plataforma colaborativa que permite a la comunidad reportar accidentes de tr&aacute;nsito, problemas de infraestructura vial y hacer seguimiento a sus solicitudes ante las autoridades competentes.</p>
+                    <p class="text-muted">Este manual te explica paso a paso c&oacute;mo usar cada m&oacute;dulo de la plataforma.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secB">
+                    B. Crear y gestionar tu cuenta
+                </button>
+            </h2>
+            <div id="secB" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <ol class="ps-3">
+                        <li class="text-muted mb-2">Reg&iacute;strate con tu correo electr&oacute;nico y crea una contrase&ntilde;a segura desde la pantalla de registro.</li>
+                        <li class="text-muted mb-2">Inicia sesi&oacute;n desde la pantalla principal con tus credenciales.</li>
+                        <li class="text-muted mb-2">En Gesti&oacute;n de Usuarios puedes actualizar tus datos de contacto y consultar tu informaci&oacute;n de cuenta.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secC">
+                    C. M&oacute;dulo de Reportes
+                </button>
+            </h2>
+            <div id="secC" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <ol class="ps-3">
+                        <li class="text-muted mb-2">Ingresa al m&oacute;dulo Mapa para visualizar los reportes de accidentalidad vial cercanos a tu ubicaci&oacute;n.</li>
+                        <li class="text-muted mb-2">En Reportes - Nuevo reporte puedes registrar un accidente.</li>
+                        <li class="text-muted mb-2">Tambi&eacute;n puedes generar solicitudes de se&ntilde;alizaci&oacute;n.</li>
+                        <li class="text-muted mb-2">Adjunta evidencia fotogr&aacute;fica cuando est&eacute; disponible.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secD">
+                    D. Historial de Reportes
+                </button>
+            </h2>
+            <div id="secD" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <p class="text-muted">En Historial Reportes - Mi historial puedes consultar todos los reportes y solicitudes que has registrado.</p>
+                    <p class="text-muted">Los estados posibles son: <strong>Pendiente</strong>, <strong>En revisi&oacute;n</strong>, <strong>En proceso</strong>, <strong>Completada</strong> o <strong>Rechazada</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secE">
+                    E. Manual de Se&ntilde;alizaci&oacute;n
+                </button>
+            </h2>
+            <div id="secE" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <p class="text-muted">En Manual - Manual se&ntilde;alizaci&oacute;n encontrar&aacute;s el cat&aacute;logo completo de se&ntilde;ales viales.</p>
+                    <p class="text-muted">La secci&oacute;n E contiene los enlaces directos a cada formulario de solicitud.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secF">
+                    F. Visualizar Reportes y PQRSF
+                </button>
+            </h2>
+            <div id="secF" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <p class="text-muted">El m&oacute;dulo Visualizar Reportes permite consultar los reportes ciudadanos registrados en la plataforma.</p>
+                    <p class="text-muted">Desde el m&oacute;dulo PQRSF puedes radicar Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secG">
+                    G. Estad&iacute;sticas
+                </button>
+            </h2>
+            <div id="secG" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
+                <div class="accordion-body">
+                    <p class="text-muted"><strong>Zona de Mayor Accidentabilidad:</strong> identifica los puntos cr&iacute;ticos de la v&iacute;a.</p>
+                    <p class="text-muted"><strong>Trazabilidad:</strong> permite hacer seguimiento hist&oacute;rico a los reportes y solicitudes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2 shadow-sm">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#secH">
+                    H. Preguntas Frecuentes
+                </button>
+            </h2>
+
+            <div id="secH" class="accordion-collapse collapse" data-bs-parent="#accordionUsuario">
                 <div class="accordion-body">
 
-                    <?php if ($sec['tipo'] === 'parrafos'): ?>
-                        <?php foreach ($sec['contenido'] as $p): ?>
-                            <p class="text-muted"><?php echo $p; ?></p>
-                        <?php endforeach; ?>
+                    <div class="accordion" id="faqManual">
 
-                    <?php elseif ($sec['tipo'] === 'pasos'): ?>
-                        <ol class="ps-3">
-                            <?php foreach ($sec['contenido'] as $paso): ?>
-                                <li class="text-muted mb-2"><?php echo $paso; ?></li>
-                            <?php endforeach; ?>
-                        </ol>
-
-                    <?php elseif ($sec['tipo'] === 'faq'): ?>
-                        <div class="accordion" id="faqInner<?php echo $i; ?>">
-                            <?php $j = 0; foreach ($sec['contenido'] as $f): ?>
-                                <div class="accordion-item border-0 border-bottom">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent"
-                                                type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#faq<?php echo $i; ?>_<?php echo $j; ?>">
-                                            <?php echo $f['p']; ?>
-                                        </button>
-                                    </h2>
-                                    <div id="faq<?php echo $i; ?>_<?php echo $j; ?>"
-                                         class="accordion-collapse collapse"
-                                         data-bs-parent="#faqInner<?php echo $i; ?>">
-                                        <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
-                                            <?php echo $f['r']; ?>
-                                        </div>
-                                    </div>
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    &iquest;C&oacute;mo s&eacute; el estado de mi reporte o solicitud?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqManual">
+                                <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
+                                    Ingresa a Historial Reportes - Mi historial y revisa la columna de estado.
                                 </div>
-                            <?php $j++; endforeach; ?>
+                            </div>
                         </div>
-                    <?php endif; ?>
+
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    &iquest;Puedo editar una solicitud despu&eacute;s de enviarla?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqManual">
+                                <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
+                                    No. Si necesitas corregir informaci&oacute;n, comun&iacute;cate con soporte a trav&eacute;s del m&oacute;dulo PQRSF.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0 border-bottom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    &iquest;La se&ntilde;al que quiero reportar no aparece en el cat&aacute;logo?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqManual">
+                                <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
+                                    Selecciona la m&aacute;s parecida y agrega el detalle en la descripci&oacute;n.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed px-0 py-2 small fw-semibold bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    &iquest;Puedo adjuntar m&aacute;s de una foto?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqManual">
+                                <div class="accordion-body px-0 pt-0 pb-2 small text-muted">
+                                    Cada formulario permite adjuntar una imagen como evidencia principal.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
         </div>
-        <?php $i++; endforeach; ?>
 
     </div>
+
 </div>
