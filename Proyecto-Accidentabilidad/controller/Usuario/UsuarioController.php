@@ -7,7 +7,7 @@ $obj      = new UsuarioModel();
 $sql      = "SELECT * FROM tipo_documento";
 $ejecutar = $obj->select($sql);
 
-$tipo = [];
+$tipo = array();
 if ($ejecutar && pg_num_rows($ejecutar) > 0) {
     while ($fila = pg_fetch_assoc($ejecutar)) {
         $tipo[] = $fila; 
