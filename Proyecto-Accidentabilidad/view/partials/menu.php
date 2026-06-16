@@ -1,4 +1,4 @@
-```php
+
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
         <div class="logo-header" data-background-color="dark">
@@ -49,8 +49,8 @@
 					<div class="collapse" id="base">
 						<ul class="nav nav-collapse">
 							<li><a href="<?php echo getUrl("Reportes","ReportesA","getCreate")?>"><span class="sub-item">Reporte accidente</span></a></li>
-							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva señal</span></a></li>
-                            <li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud señal en mal estado</span></a></li>
+							<li><a href="<?php echo getUrl("Reportes","ReportesNS","getCreate")?>"><span class="sub-item">Solicitud nueva se&ntilde;al</span></a></li>
+                            <li><a href="<?php echo getUrl("Reportes","ReportesSME","getCreate")?>"><span class="sub-item">Solicitud se&ntilde;al en mal estado</span></a></li>
 							<li><a href="<?php echo getUrl("Reportes", "ReportesSolicitudNR", "getCreate")?>"><span class="sub-item">Solicitud nuevo reductor</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'ReportesRME', 'getCreate')?>"><span class="sub-item">Solicitud reductor en mal estado</span></a></li>
 							<li><a href="<?php echo getUrl('Reportes', 'SolicitudVME', 'getCreate') ?>"><span class="sub-item">Solicitud via en mal estado</span></a></li>
@@ -94,7 +94,7 @@
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav nav-collapse">
-                            <li><a href="tables/tables.html"><span class="sub-item">Registrar PQRSF</span></a></li>
+                            <li><a href="<?php echo getUrl("PQRSF", "PqrsfC", "getCreate")?>"><span class="sub-item">Registrar PQRSF</span></a></li>
                             <li><a href="tables/datatables.html"><span class="sub-item">Visualizar PQRSF</span></a></li>
                         </ul>
                     </div>
@@ -132,4 +132,4 @@
         </div>
     </div>
 </div>
-```
+

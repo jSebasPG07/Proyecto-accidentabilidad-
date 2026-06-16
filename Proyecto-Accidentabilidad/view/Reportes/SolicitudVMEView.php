@@ -32,7 +32,7 @@
         <div class="col-md-4 mt-3">
             <label for="descripcion">Descripci&oacute;n</label>
             <textarea class="form-control" id="descripcion" name="descripcion"
-                      rows="3" placeholder="Describa el estado de la vía"></textarea>
+                      rows="3" placeholder="Describa el estado de la v&iacute;a"></textarea>
         </div>
 
         <div class="col-md-12 mt-4">

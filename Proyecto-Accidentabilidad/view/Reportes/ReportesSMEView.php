@@ -32,7 +32,7 @@
         
         <div class="col-md-4">
             <label for="direccion">Direcci&oacute;n</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="dirección" required>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direcci&oacute;n" required>
         </div>
 
         <div class="col-md-4">
