@@ -65,7 +65,7 @@ include_once '../lib/helpers.php';
             <div class="mb-3">
                 <label for="contrasena" class="form-label">Crea una contraseña</label>
                 <input type="password" class="form-control" id="contrasena" name="contrasena"
-                    placeholder="Minimo 8 caracteres" minlength="8" required>
+                    placeholder="Minimo 8 caracteres, una mayuscula y un caracter" minlength="8" required>
             </div>
 
             <div class="mb-4">

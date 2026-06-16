@@ -26,7 +26,7 @@
 
                 <?php if (Permisos::hasModule(1)): ?>
                 <li class="nav-item active">
-                    <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                    <a href="<?php echo getUrl("Mapa","mapa","list") ?>" class="collapsed">
                         <i class="fas fa-home"></i>
                         <p>Mapa</p>
                         <span class="caret"></span>
@@ -129,9 +129,6 @@
                         <ul class="nav nav-collapse">
                             <?php if (Permisos::hasPermission(7, 'VER')): ?>
                             <li><a href="<?php echo getUrl('Usuario','GestionUsuario','getList'); ?>"><span class="sub-item">Visualizar usuarios</span></a></li>
-                            <?php endif; ?>
-                            <?php if (Permisos::hasPermission(7, 'EDITAR')): ?>
-                            <li><a href="<?php echo getUrl('Usuario','GestionUsuario','getList'); ?>"><span class="sub-item">Editar usuario</span></a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

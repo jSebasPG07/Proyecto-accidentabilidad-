@@ -92,7 +92,7 @@
 						<li>
 							<a class="dropdown-item"
 								href="<?php echo getUrl("Acceso", "Acceso", "logout"); ?>">
-								Cerrar sesión
+								Cerrar sesi&oacute;n
 							</a>
 						</li>
 					</ul>
