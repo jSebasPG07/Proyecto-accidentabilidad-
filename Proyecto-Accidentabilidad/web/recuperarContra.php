@@ -7,7 +7,10 @@ if (!isset($_SESSION['recuperacion_verificada'])) {
     exit;
 }
 
-$error = $_SESSION['error_nueva'] ?? '';
+$error ='';
+if (isset($_SESSION['error_nueva'])) {
+    $error = $_SESSION['error_nueva'];
+}
 unset($_SESSION['error_nueva']);
 ?>
 <!DOCTYPE html>

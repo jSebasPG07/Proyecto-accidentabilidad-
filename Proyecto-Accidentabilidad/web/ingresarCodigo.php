@@ -7,8 +7,14 @@ if (!isset($_SESSION['id_usuario_recuperacion'])) {
     exit;
 }
 
-$error = $_SESSION['error_verificacion'] ?? '';
-$msg   = $_SESSION['msg_recuperacion'] ?? '';
+$error = '';
+if (isset($_SESSION['error_verificacion'])) {
+    $error = $_SESSION['error_verificacion'];
+}
+$msg   = '';
+if (isset($_SESSION['msg_recuperacion'])) {
+    $msg = $_SESSION['msg_recuperacion'];
+}
 unset($_SESSION['error_verificacion'], $_SESSION['msg_recuperacion']);
 ?>
 <!DOCTYPE html>

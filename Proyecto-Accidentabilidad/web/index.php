@@ -1,6 +1,22 @@
 <?php
 
 include_once "../lib/helpers.php";
+include_once "../lib/Permisos.php";
+
+$moduloPorControlador = array(
+    'ReportesA' => 2,
+    'ReportesNS' => 2,
+    'ReportesSME' => 2,
+    'ReportesSolicitudNR' => 2,
+    'ReportesRME' => 2,
+    'SolicitudVME' => 2,
+    'MiHistorial' => 3,
+    'ManualU' => 4,
+    'ManualS' => 4,
+    'ZonaMayAccidentabilidad' => 6,
+    'GestionUsuario' => 7,
+);
+
 
 echo "<!DOCTYPE html>";
 echo "<html lang='es'>";

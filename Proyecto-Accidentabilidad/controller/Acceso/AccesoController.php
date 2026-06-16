@@ -28,10 +28,29 @@ class AccesoController
             $_SESSION['apellido']  = $usu['apellido'];
             $_SESSION['correo']    = $usu['correo'];
             $_SESSION['rol']       = $usu['nombre_rol'];
+            $_SESSION['id_rol']   = $usu['id_rol'];
             $_SESSION['id']        = $usu['id'];
             $_SESSION['auth']      = "ok";
         }
 
+        $id_rol = $_SESSION['id_rol'];
+        $sql_permisos = "SELECT p.id_permiso, p.nombre, p.accion, p.id_modulo, m.nombre AS nombre_modulo
+                         FROM rol_permiso rp JOIN permisos p ON rp.id_permiso = p.id_permiso
+                         JOIN modulos  m ON p.id_modulo   = m.id_modulo WHERE rp.id_rol = $id_rol
+                         AND p.activo = true AND m.activo = true";
+
+        $res_permisos = $obj->select($sql_permisos);
+        $permisos = array();
+        while ($p = pg_fetch_assoc($res_permisos)) {
+            $permisos[] = array(
+                'permiso_id' => $p['id_permiso'],
+                'modulo_id' => $p['id_modulo'],
+                'nombre_modulo' => $p['nombre_modulo'],
+                'accion_id' => $p['accion'],
+                'nombre_permiso' => $p['nombre'],
+            );
+        }
+        $_SESSION['permisos'] = $permisos;
             redirect("index.php");
         } else {
             redirect("login.php");
@@ -68,7 +87,7 @@ class AccesoController
             if (pg_num_rows($resultado) > 0) {
                 $usuario    = pg_fetch_assoc($resultado);
                 $id_usuario = $usuario['id'];
-                $codigo     = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+                $codigo     = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
 
                 $sql_codigo = "INSERT INTO token (codigo, id_usuario) VALUES ('$codigo', $id_usuario)";
                 $guardado   = $obj->insert($sql_codigo);
