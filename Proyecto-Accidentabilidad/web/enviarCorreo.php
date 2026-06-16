@@ -2,7 +2,10 @@
 include_once '../lib/helpers.php';
 
 // Mostrar error si lo hay y limpiarlo de sesión
-$error = $_SESSION['error_recuperacion'] ?? '';
+$error = "";
+if (isset($_SESSION['error_recuperacion'])) {
+    $error = $_SESSION['error_recuperacion'];
+}
 unset($_SESSION['error_recuperacion']);
 ?>
 <!DOCTYPE html>
