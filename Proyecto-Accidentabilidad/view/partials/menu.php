@@ -80,7 +80,7 @@
                     <div class="collapse" id="forms">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Manual','ManualU','getCreate'); ?>"><span class="sub-item">Manual usuario</span></a></li>
-                            <li><a href="<?php echo getUrl('Manual','ManualS','getCreate'); ?>"><span class="sub-item">Manual señalización</span></a></li>
+                            <li><a href="<?php echo getUrl('Manual','ManualS','getCreate'); ?>"><span class="sub-item">Manual se&ntilde;alizaci&oacute;n</span></a></li>
                         </ul>
                     </div>
                 </li>
