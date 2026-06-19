@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Fecha</th>
             <th>Descripcion</th>
             <th>Imagen</th>
             <th>direccion</th>
@@ -21,6 +22,7 @@
         <?php foreach($senalmalestado as $sme){ ?>
             <tr>
                 <td><?= $sme['id_sol_mal'] ?></td>
+                <td><?= $sme['fecha_senal_mal_estado'] ?></td>
                 <td><?= $sme['descripcion'] ?></td>
                 <td><?php if($sme['imagen_url'] != ""){ ?>
                         <img src="<?= $sme['imagen_url'] ?>" width="80">

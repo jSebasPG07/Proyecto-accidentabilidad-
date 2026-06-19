@@ -14,7 +14,7 @@ class ReportesAController {
     public function postCreate(){
         $obj = new ReportesAModel();
 
-        $fechaaccidente = $_POST['fechaaccidente'];
+        $fechaaccidente = date("Y-m-d");
         $nomenclatura = $_POST['nomenclatura'];
         $nlesionados = $_POST['nlesionados'];
         $tchoque = $_POST['tchoque'];

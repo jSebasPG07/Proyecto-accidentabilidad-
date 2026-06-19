@@ -135,6 +135,20 @@
                 </li>
                 <?php endif; ?>
 
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#list">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Acerca de</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="list">
+                        <ul class="nav nav-collapse">
+                            <li><a href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>"><span class="sub-item">Acerca de GIAV</span></a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>

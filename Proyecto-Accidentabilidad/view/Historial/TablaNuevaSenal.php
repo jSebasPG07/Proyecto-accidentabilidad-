@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Fecha</th>
             <th>Descripcion</th>
             <th>Imagen</th>
             <th>direccion</th>
@@ -20,6 +21,7 @@
         <?php foreach($nuevasenal as $ns){ ?>
             <tr>
                 <td><?= $ns['id_sol_nueva_sen'] ?></td>
+                <td><?= $ns['fecha_nueva_senal'] ?></td>
                 <td><?= $ns['descripcion'] ?></td>
                 <td><?php if($ns['imagen_url'] != ""){ ?>
                         <img src="<?= $ns['imagen_url'] ?>" width="80">

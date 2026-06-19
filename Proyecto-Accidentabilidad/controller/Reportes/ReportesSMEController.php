@@ -16,7 +16,7 @@
 
         public function postCreate(){
             $obj = new ReportesSMEModel();
-
+            $fechaaccidente = date("Y-m-d");
             $orientacion = $_POST['orientacion'];
             $descripcion = $_POST['descripcion'];
             $direccion = $_POST['direccion'];
@@ -32,9 +32,9 @@
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_senal_mal_estado 
-                (descripcion, imagen_url, direccion, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario)
+                (fecha_senal_mal_estado,descripcion, imagen_url, direccion, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario)
                 VALUES 
-                ('$descripcion','$ruta','$direccion','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario')"; 
+                ('$fechaaccidente','$descripcion','$ruta','$direccion','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario')"; 
 
                 $ejecutar = $obj->insert($sql);
 

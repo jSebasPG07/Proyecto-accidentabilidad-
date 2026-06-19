@@ -7,11 +7,7 @@
 
     <div class="row mt-5">
 
-        <div class="col-md-4">
-            <label for="fechaaccidente">Fecha del accidente</label>
-            <input type="date" class="form-control" id="fechaaccidente" name="fechaaccidente" required>
-        </div>
-
+        
         <div class="col-md-4">
             <label for="nomenclatura">Nomenclatura</label>
             <input type="text" class="form-control" id="nomenclatura" name="nomenclatura" placeholder="nomenclatura" required>
