@@ -25,6 +25,7 @@ class ReportesSolicitudNRController {
 
         $obj = new ReportesSolicitudNRModel();
 
+        $fechanreductor = date("d-m-y");
         $descripcion = $_POST['descripcion'];
         $direccion = $_POST['direccion'];
         $idTipoReductor = $_POST['id_tipo_reductor'];
@@ -33,17 +34,16 @@ class ReportesSolicitudNRController {
 
         $idEstado = 3;
         $id_usuario = $_POST['id'];
+        $img = $_FILES['imagen']['name'];
+        $archivo = $_FILES['imagen']['tmp_name'];
+        $ruta = "../img/" . $img;
 
-        if(isset($_FILES['imagen_url']) && $_FILES['imagen_url']['error'] == 0){
 
-            $nombreImagen = time() . "_" . $_FILES['imagen_url']['name'];
-
-            $ruta = "../img/" . $nombreImagen;
-
-            if(move_uploaded_file($_FILES['imagen_url']['tmp_name'], $ruta)){
+            if(move_uploaded_file($archivo, $ruta)){
 
                 $sql = "INSERT INTO sol_nuevo_reductor
-                (
+                (   
+                    fecha_nuevo_reductor,
                     descripcion,
                     imagen_url,
                     direccion,
@@ -53,9 +53,10 @@ class ReportesSolicitudNRController {
                     id_usuario
                 )
                 VALUES
-                (
+                (   
+                    '$fechanreductor',
                     '$descripcion',
-                    '$nombreImagen',
+                    '$ruta',
                     '$direccion',
                     '$idEstado',
                     '$idTipoReductor',
@@ -73,7 +74,6 @@ class ReportesSolicitudNRController {
 
             }else{
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=imgerror';</script>";
-            }
         }
     }
 }

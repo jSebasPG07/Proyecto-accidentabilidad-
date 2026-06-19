@@ -47,7 +47,8 @@ class MiHistorialController {
 
     if($tipo == "senal_nueva"){
 
-        $sql = "SELECT ns.id_sol_nueva_sen, 
+        $sql = "SELECT ns.id_sol_nueva_sen,
+                       ns.fecha_nueva_senal,
                        ns.descripcion,
                        ns.imagen_url, 
                        ns.direccion, 
@@ -76,7 +77,8 @@ class MiHistorialController {
 
     if($tipo == "senal_mal"){
 
-        $sql = "SELECT sme.id_sol_mal, 
+        $sql = "SELECT sme.id_sol_mal,
+                       sme.fecha_senal_mal_estado,
                        sme.descripcion,
                        sme.imagen_url, 
                        sme.direccion, 
@@ -107,6 +109,7 @@ class MiHistorialController {
     if($tipo == "reductor_nuevo"){
 
         $sql = "SELECT rn.id_sol_nuevas_red, 
+                       rn.fecha_nuevo_reductor,
                        rn.descripcion,
                        rn.imagen_url, 
                        rn.direccion, 
@@ -135,6 +138,7 @@ class MiHistorialController {
     if($tipo == "reductor_mal"){
 
         $sql = "SELECT rm.id_sol_red_mal, 
+                       rm.fecha_reductor_mal_estado,
                        rm.descripcion,
                        rm.imagen_url, 
                        rm.direccion, 
@@ -162,7 +166,8 @@ class MiHistorialController {
 
     if($tipo == "via_mal"){
 
-        $sql = "SELECT vm.id_sol_via_mal, 
+        $sql = "SELECT vm.id_sol_via_mal,
+                       vm.fecha_via_mal_estado,
                        vm.descripcion,
                        vm.imagen_url, 
                        vm.direccion, 

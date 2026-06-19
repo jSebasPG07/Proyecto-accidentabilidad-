@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Fecha</th>
             <th>Descripcion</th>
             <th>Imagen</th>
             <th>direccion</th>
@@ -19,6 +20,7 @@
         <?php foreach($viamal as $vm){ ?>
             <tr>
                 <td><?= $vm['id_sol_via_mal'] ?></td>
+                <td><?= $vm['fecha_via_mal_estado'] ?></td>
                 <td><?= $vm['descripcion'] ?></td>  
                 <td><?php if($vm['imagen_url'] != ""){ ?>
                         <img src="<?= $vm['imagen_url'] ?>" width="80">

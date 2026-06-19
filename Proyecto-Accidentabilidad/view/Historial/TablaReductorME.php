@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Fecha</th>
             <th>Descripcion</th>
             <th>Imagen</th>
             <th>direccion</th>
@@ -20,6 +21,7 @@
         <?php foreach($reductormal as $rm){ ?>
             <tr>
                 <td><?= $rm['id_sol_red_mal'] ?></td>
+                <td><?= $rm['fecha_reductor_mal_estado'] ?></td>
                 <td><?= $rm['descripcion'] ?></td>
                 <td><?php if($rm['imagen_url'] != ""){ ?>
                         <img src="<?= $rm['imagen_url'] ?>" width="80">

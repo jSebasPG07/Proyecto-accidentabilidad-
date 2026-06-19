@@ -14,24 +14,38 @@
             <th>Tipo señal</th>
             <th>Orientacion</th>
             <th>Usuario</th>
+            <th>Acciones</th>
         </tr>
     </thead>
 
     <tbody>
-        <?php foreach($nuevasenal as $ns){ ?>
-            <tr>
-                <td><?= $ns['id_sol_nueva_sen'] ?></td>
-                <td><?= $ns['fecha_nueva_senal'] ?></td>
-                <td><?= $ns['descripcion'] ?></td>
-                <td><?php if($ns['imagen_url'] != ""){ ?>
-                        <img src="<?= $ns['imagen_url'] ?>" width="80">
-                    <?php } ?></td>
-                <td><?= $ns['direccion'] ?></td>
-                <td><?= $ns['estado'] ?></td>
-                <td><?= $ns['tipo_senal'] ?></td>
-                <td><?= $ns['orientacion'] ?></td>
-                <td><?= $ns['usuario'] ?></td>
-            </tr>
-        <?php } ?>
+        <?php 
+foreach($nuevasenal as $ns){
+
+    echo "<tr>";
+
+    echo "<td>".$ns['id_sol_nueva_sen']."</td>";
+    echo "<td>".$ns['fecha_nueva_senal']."</td>";
+    echo "<td>".$ns['descripcion']."</td>";
+
+    echo "<td>";
+    if($ns['imagen_url'] != ""){
+        echo "<img src='".$ns['imagen_url']."' width='80'>";
+    }
+    echo "</td>";
+
+    echo "<td>".$ns['direccion']."</td>";
+    echo "<td>".$ns['estado']."</td>";
+    echo "<td>".$ns['tipo_senal']."</td>";
+    echo "<td>".$ns['orientacion']."</td>";
+    echo "<td>".$ns['usuario']."</td>";
+
+    echo "<td><a href='".getUrl("Historial","MiHistorial","getUpdate",array("id" => $ns['id_sol_nueva_sen']))."'>
+            <button class='btn btn-primary'>Editar</button>
+          </a></td>";
+
+    echo "</tr>";
+}
+?>    
     </tbody>
 </table>

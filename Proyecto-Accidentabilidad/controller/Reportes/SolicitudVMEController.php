@@ -15,7 +15,7 @@ class SolicitudVMEController {
 
     public function postCreate() {
         $obj = new SolicitudVMEModel();
-
+        $fechavme = date("d-m-y");
         $descripcion = $_POST['descripcion'];
         $direccion = $_POST['direccion'];
         $idtipodanovia = $_POST['idtipodanovia'];
@@ -31,9 +31,9 @@ class SolicitudVMEController {
             if (move_uploaded_file($archivo, $ruta)) {
 
                 $sql = "INSERT INTO sol_via_mal_estado 
-                            (descripcion, imagen_url, direccion, id_estado, id_tipo_dano_via, id_usuario) 
+                            (fecha_via_mal_estado, descripcion, imagen_url, direccion, id_estado, id_tipo_dano_via, id_usuario) 
                         VALUES 
-                            ('$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia', '$id_usuario')";
+                            ('$fechavme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia', '$id_usuario')";
 
                 $ejecutar = $obj->insert($sql);
 

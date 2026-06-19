@@ -21,6 +21,7 @@ class ReportesRMEController {
     public function postCreate() {
         $obj = new ReportesRMEModel();
 
+        $fecharme = date("d-m-y");
         $descripcion = $_POST['descripcion'];
         $direccion = $_POST['direccion'];
         $idtipored = $_POST['idtipored'];
@@ -37,9 +38,9 @@ class ReportesRMEController {
             if (move_uploaded_file($archivo, $ruta)) {
 
                 $sql = "INSERT INTO sol_reductor_mal_estado 
-                            (descripcion, imagen_url, direccion, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario) 
+                            (fecha_reductor_mal_estado, descripcion, imagen_url, direccion, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario) 
                         VALUES 
-                            ('$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipored', '$idtipodanoreductor', '$id_usuario')";
+                            ('$fecharme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipored', '$idtipodanoreductor', '$id_usuario')";
 
                 $ejecutar = $obj->insert($sql);
 

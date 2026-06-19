@@ -6,6 +6,7 @@
     <thead>
         <tr>
             <th>ID</th>
+            <th>Fecha</th>
             <th>Descripcion</th>
             <th>Imagen</th>
             <th>direccion</th>
@@ -20,6 +21,7 @@
         <?php foreach($reductornuevo as $rn){ ?>
             <tr>
                 <td><?= $rn['id_sol_nuevas_red'] ?></td>
+                <td><?= $rn['fecha_nuevo_reductor'] ?></td>
                 <td><?= $rn['descripcion'] ?></td>
                 <td><?php if($rn['imagen_url'] != ""){ ?>
                         <img src="<?= $rn['imagen_url'] ?>" width="80">

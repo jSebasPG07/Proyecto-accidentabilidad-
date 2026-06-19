@@ -27,7 +27,7 @@
 
         <div class="col-md-4">
             <label class="form-label" for="imagen">Inserta una imagen</label>
-            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+            <input type="file" class="form-control" id="imagen" name="imagen" placeholder= imagen required>
         </div>
         
         <div class="col-md-4">

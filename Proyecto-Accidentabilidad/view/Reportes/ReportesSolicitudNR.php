@@ -64,14 +64,9 @@
                       required></textarea>
         </div>
 
-        <div class="col-md-4 mt-3">
-            <label for="imagen_url">Fotograf&iacute;a de Evidencia</label>
-            <input type="file"
-                   class="form-control"
-                   id="imagen_url"
-                   name="imagen_url"
-                   accept="image/*"
-                   required>
+        <div class="col-md-4">
+            <label class="form-label" for="imagen">Inserta una imagen</label>
+            <input type="file" class="form-control" id="imagen" name="imagen" placeholder= imagen required>
         </div>
 
         <div class="col-md-4 mt-3">

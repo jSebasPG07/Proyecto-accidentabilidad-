@@ -19,7 +19,7 @@ Class PqrsfCController {
 
         $id_usuario = $_POST['id'];
 
-        $sql = "INSERT INTO pqrsf (mensaje, id_estado, id_tipo_pqrsf, id_usuario)VALUES ('$mensaje','$id_estado','$tpqrsf','$id_usuario')";
+        $sql = "INSERT INTO pqrsf (mensaje, id_estado, id_tipo_pqrsf, id_usuario)VALUES ('$mensaje',$id_estado,'$tpqrsf','$id_usuario')";
 
         $ejecutar = $obj->insert($sql);
         

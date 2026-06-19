@@ -16,7 +16,7 @@
 
         public function postCreate(){
             $obj = new ReportesSMEModel();
-            $fechaaccidente = date("Y-m-d");
+            $fechaaccidente = date("d-m-y");
             $orientacion = $_POST['orientacion'];
             $descripcion = $_POST['descripcion'];
             $direccion = $_POST['direccion'];
