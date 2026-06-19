@@ -41,8 +41,9 @@ if (!isset($_SESSION['auth']) || $_SESSION['auth'] != "ok") {
 }
 if (isset($_GET['modulo'])) {
   resolver();
-}
-//include_once '../view/partials/contenido.php'; 
+}else {
+  include_once '../view/partials/contenido.php';
+} 
 echo "</div>";
 
 

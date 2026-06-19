@@ -1,0 +1,70 @@
+MAP
+    NAME mapaCali
+    SIZE 800 700 
+    STATUS ON
+    EXTENT 1053867 860190 1068491 879441
+
+    FONTSET "misc/fonts/fonts.txt"
+    SYMBOLSET "misc/symbols/symbols.sym"
+
+    IMAGECOLOR 255 255 255
+
+    WEB
+        IMAGEPATH "C:/ms4w/tmp/ms_tmp/"
+        IMAGEURL "/ms_tmp/"
+    END
+
+    LAYER 
+        TRANSPARENCY 10
+        NAME "cali"
+        STATUS ON
+        TYPE POLYGON
+        DATA "C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/assets/shapeCali41/CaliArea.shp"
+        CLASS 
+            STYLE
+                COLOR 255 255 0
+                OUTLINECOLOR 0 0 0
+            END
+        END
+    END
+
+    LAYER 
+        NAME "Comunas"
+        STATUS ON 
+        TYPE POLYGON
+        DATA "C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/assets/shapeCali41/ComunasC.shp"
+        CLASS
+            STYLE
+                COLOR 255 204 153
+                OUTLINECOLOR 0 0 0
+            END
+        END
+    END
+
+    LAYER 
+        NAME "Barrios"
+        STATUS ON
+        TYPE POLYGON
+        DATA "C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/assets/shapeCali41/Barrios.shp"
+        CLASS
+            STYLE 
+                COLOR 204 255 204
+                OUTLINECOLOR 0 0 0
+            END
+        END
+    END
+
+    LAYER
+        NAME "MallaVial"
+        STATUS ON
+        TYPE LINE
+        DATA "C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/assets/shapeCali41/MallaVialC.shp"
+        CLASS
+            STYLE
+                COLOR 0 0 0
+                WIDTH 2
+            END
+        END
+    END
+END
+    
