@@ -310,7 +310,7 @@
                                     </div>
                                     <h6 class="fw-bold mb-1">Curva peligrosa</h6>
                                     <p class="text-muted small mb-2">Advierte la proximidad de una curva cuya velocidad de dise&ntilde;o es menor a la velocidad de operaci&oacute;n de la v&iacute;a, lo que obliga a agudizar la atenci&oacute;n y disminuir la velocidad.</p>
-                                    <p class="small mb-1 text-warning fw-semibold">&#9651; Posibilidad de volcamiento o p&eacute;rdida de control.</p>
+                                    <p class="small mb-1 text-warning fw-semibold">&#9650; Posibilidad de volcamiento o p&eacute;rdida de control.</p>
                                     <p class="small mb-0 text-primary">&#8594; Reducir la velocidad antes de ingresar a la curva.</p>
                                 </div>
                             </div>
@@ -325,7 +325,7 @@
                                     </div>
                                     <h6 class="fw-bold mb-1">Reducci&oacute;n de carril</h6>
                                     <p class="text-muted small mb-2">Advierte la proximidad de una reducci&oacute;n o estrechamiento de la calzada, ya sea en el n&uacute;mero de carriles o en su ancho disponible.</p>
-                                    <p class="small mb-1 text-warning fw-semibold">&#9651; El n&uacute;mero de carriles disponibles disminuye.</p>
+                                    <p class="small mb-1 text-warning fw-semibold">&#9650; El n&uacute;mero de carriles disponibles disminuye.</p>
                                     <p class="small mb-0 text-primary">&#8594; Mantener distancia y prepararse para fusionar carriles.</p>
                                 </div>
                             </div>
@@ -340,7 +340,7 @@
                                     </div>
                                     <h6 class="fw-bold mb-1">Pendiente pronunciada</h6>
                                     <p class="text-muted small mb-2">Advierte la proximidad de una pendiente fuerte de ascenso o descenso, indicando en n&uacute;meros enteros el porcentaje de la pendiente.</p>
-                                    <p class="small mb-1 text-warning fw-semibold">&#9651; La v&iacute;a tiene una inclinaci&oacute;n significativa.</p>
+                                    <p class="small mb-1 text-warning fw-semibold">&#9650; La v&iacute;a tiene una inclinaci&oacute;n significativa.</p>
                                     <p class="small mb-0 text-primary">&#8594; Usar el freno motor en descenso. En ascenso, mantener la velocidad y precauci&oacute;n con veh&iacute;culos lentos.</p>
                                 </div>
                             </div>
@@ -355,7 +355,7 @@
                                     </div>
                                     <h6 class="fw-bold mb-1">Cruce de peatones</h6>
                                     <p class="text-muted small mb-2">Indica el sitio mismo donde se ubica un cruce peatonal sobre la calzada. No debe usarse cuando el cruce forma parte de una intersecci&oacute;n semaforizada.</p>
-                                    <p class="small mb-1 text-warning fw-semibold">&#9651; Zona de cruce frecuente de peatones.</p>
+                                    <p class="small mb-1 text-warning fw-semibold">&#9650; Zona de cruce frecuente de peatones.</p>
                                     <p class="small mb-0 text-primary">&#8594; Reducir la velocidad y ceder el paso a los peatones.</p>
                                 </div>
                             </div>
