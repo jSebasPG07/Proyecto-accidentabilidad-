@@ -40,7 +40,7 @@ foreach($nuevasenal as $ns){
     echo "<td>".$ns['orientacion']."</td>";
     echo "<td>".$ns['usuario']."</td>";
 
-    echo "<td><a href='".getUrl("Historial","MiHistorial","getUpdate",array("id" => $ns['id_sol_nueva_sen']))."'>
+    echo "<td><a href='".getUrl("Reportes","ReportesA","getUpdate",array("id" => $ns['id_sol_nueva_sen']))."'>
             <button class='btn btn-primary'>Editar</button>
           </a></td>";
 

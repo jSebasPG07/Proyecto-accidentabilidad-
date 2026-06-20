@@ -55,6 +55,37 @@ class ReportesRMEController {
             }
 
     }
+
+    public function getUpdate(){
+
+    $obj = new ReportesRMEModel();
+
+    $id_sol_red_mal = $_GET['id'];
+
+    $sql = "SELECT rm.id_sol_red_mal, 
+                   rm.fecha_reductor_mal_estado,
+                   rm.descripcion,
+                   rm.imagen_url, 
+                   rm.direccion, 
+                   es.nombre AS estado, 
+                   tr.nombre AS tipo_reductor,
+                   tdr.descripcion AS tipo_dano,  
+                   u.numero_id AS usuario
+            FROM sol_reductor_mal_estado rm 
+            LEFT JOIN estado es ON rm.id_estado = es.id_estado 
+            LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
+            LEFT JOIN tipo_dano_reductor tdr ON rm.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
+            LEFT JOIN usuarios u ON rm.id_usuario = u.id
+            WHERE rm.id_sol_red_mal = $id_sol_red_mal";
+
+    $reporte = $obj->select($sql);
+
+    $sql = "SELECT * FROM estado WHERE controlador = 'solicitudes';";
+    
+    $estados = $obj->select($sql);
+
+    include_once "../view/Reportes/UpdateReporteRME.php";
+}
     
 }
 
