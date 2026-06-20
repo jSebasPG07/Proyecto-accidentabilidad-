@@ -26,7 +26,7 @@
 
                 <?php if (Permisos::hasModule(1)): ?>
                 <li class="nav-item active">
-                    <a href="<?php echo getUrl("Mapa","mapa","list") ?>" class="collapsed">
+                    <a href="<?php echo getUrl("Mapa","mapa","getList") ?>" class="collapsed">
                         <i class="fas fa-home"></i>
                         <p>Mapa</p>
                         <span class="caret"></span>

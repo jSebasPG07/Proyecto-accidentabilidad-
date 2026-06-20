@@ -7,10 +7,10 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/plugins.min.css">
 	<link rel="stylesheet" href="assets/css/kaiadmin.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/misc/img/dc.css">
+  <link rel="stylesheet" type="text/css" href="misc/img/dc.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="assets/css/demo.css">
-  <script src="assets/misc/lib/mscross-1.1.9.js" type="text/javascript"></script>
+  <script src="misc/lib/mscross-1.1.9.js" type="text/javascript"></script>
     <style type="text/css">
     <!--
         #Layer1 {
