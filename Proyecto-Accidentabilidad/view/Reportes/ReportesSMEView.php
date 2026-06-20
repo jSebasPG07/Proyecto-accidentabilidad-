@@ -1,74 +1,113 @@
-<div class="mt-3">
-    <h3 class="display-3">Formulario Solicitud se&ntilde;al en mal estado</h3>
-</div>
+<div class="container-fluid px-4 py-3">
 
-<form action="<?php echo getUrl("Reportes","ReportesSME","postCreate");?>" 
-      method="post" enctype="multipart/form-data">
-
-    <div class="row mt-5">
-
-
-        <div class="col-md-4">
-            <label for="orientacion">Orientacion</label>
-            <select name="orientacion" id="orientacion" class="form-control" required>
-                <?php
-                    while ($orientacion = pg_fetch_assoc($orientacionn)) {
-                        echo "<option value='" . $orientacion['id_orientacion'] . "'>" . $orientacion['nombre'] . "</option>";
-                    }
-                ?>
-            </select>
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
+            <i class="fas fa-traffic-light" style="font-size:1.4rem;color:#fff;"></i>
         </div>
-
-        <div class="col-md-4">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripcion" required>
+        <div>
+            <h4 class="mb-0 fw-bold">Solicitud Se&ntilde;al en Mal Estado</h4>
+            <p class="text-muted mb-0 small">Reporta se&ntilde;ales viales da&ntilde;adas o en mal estado</p>
         </div>
-
-
-        <div class="col-md-4">
-            <label class="form-label" for="imagen">Inserta una imagen</label>
-            <input type="file" class="form-control" id="imagen" name="imagen" placeholder= imagen required>
-        </div>
-        
-        <div class="col-md-4">
-            <label for="direccion">Direcci&oacute;n</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="direcci&oacute;n" required>
-        </div>
-
-        <div class="col-md-4">
-            <label for="tsenal">Tipo se&ntilde;al</label>
-            <select name="tsenal" id="tsenal" class="form-control" required>
-                <?php
-                    while ($tsenall = pg_fetch_assoc($nsenal)) {
-                        echo "<option value='" . $tsenall['id_tipo_senal'] . "'>" . $tsenall['nombre_senal'] . "</option>";
-                    }
-                ?>
-            </select>
-        </div>
-
-        <div class="col-md-4">
-            <label for="tdano">Tipo da&ntilde;o</label>
-            <select name="tdano" id="tdano" class="form-control" required>
-                     <?php
-                        while ($tdanos = pg_fetch_assoc($tdano)) {
-                            echo "<option value='" . $tdanos['id_tipo_dano_senal'] . "'>" . $tdanos['descripcion'] . "</option>";
-                         }
-                    ?>
-            </select>
-        </div>
-
-
-        
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-success mt-4">Registrar solicitud se&ntilde;al mal estado</button>
-        </div>
-
-        <div class="col-md-4">
-            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
-        </div>
-
     </div>
 
-</form>
+    <!-- Card -->
+    <div class="card border shadow-sm">
+        <div class="card-body p-4">
+
+            <form action="<?php echo getUrl('Reportes', 'ReportesSME', 'postCreate');?>"
+                  method="post" enctype="multipart/form-data">
+
+                <div class="row g-3">
+
+                    <!-- Orientación -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="orientacion">Orientaci&oacute;n</label>
+                        <select name="orientacion" id="orientacion" class="form-control" required>
+
+                        <option value="">Seleccione...</option>
+
+                            <?php while ($orientacion = pg_fetch_assoc($orientacionn)) { ?>
+                                <option value="<?php echo $orientacion['id_orientacion']; ?>">
+                                    <?php echo $orientacion['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <!-- Dirección -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="direccion">Direcci&oacute;n</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion"
+                               placeholder="Ej: Cra 5 # 12-30" required>
+                    </div>
+
+                    <!-- Tipo señal -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="tsenal">Tipo de se&ntilde;al</label>
+                        <select name="tsenal" id="tsenal" class="form-control" required>
+
+                        <option value="">Seleccione...</option>
+
+                            <?php while ($tsenall = pg_fetch_assoc($nsenal)) { ?>
+                                <option value="<?php echo $tsenall['id_tipo_senal']; ?>">
+                                    <?php echo $tsenall['nombre_senal']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <!-- Tipo daño -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="tdano">Tipo de da&ntilde;o</label>
+                        <select name="tdano" id="tdano" class="form-control" required>
+
+                        <option value="">Seleccione...</option>
+                        
+                            <?php while ($tdanos = pg_fetch_assoc($tdano)) { ?>
+                                <option value="<?php echo $tdanos['id_tipo_dano_senal']; ?>">
+                                    <?php echo $tdanos['descripcion']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
+                        <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+
+                        <div class="form-text">
+                            Opcional. Formatos: JPG, PNG.
+                        </div>
+                    </div>
+
+                    <!-- Descripción -->
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el estado de la se&ntilde;al" required></textarea>
+                    </div>
+
+                    <!-- Hidden -->
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+
+                    <!-- Botones -->
+                    <div class="col-12 d-flex gap-2 pt-2">
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="fas fa-paper-plane me-2"></i>Enviar solicitud</button>
+
+                        <a href="<?php echo getUrl('Reportes', 'ReportesSME', 'getCreate');?>"
+                           class="btn btn-outline-secondary px-4">Cancelar</a>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
 
 <?php include_once "../view/partials/script.php"; ?>
