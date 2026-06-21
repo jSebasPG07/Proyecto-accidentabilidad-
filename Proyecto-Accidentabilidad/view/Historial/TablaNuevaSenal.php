@@ -20,32 +20,29 @@
 
     <tbody>
         <?php 
-foreach($nuevasenal as $ns){
+            foreach($nuevasenal as $ns){
 
-    echo "<tr>";
+            echo "<tr>";
+                echo "<td>".$ns['id_sol_nueva_sen']."</td>";
+                echo "<td>".$ns['fecha_nueva_senal']."</td>";
+                echo "<td>".$ns['descripcion']."</td>";
+                echo "<td>";
+                if($ns['imagen_url'] != ""){
+                    echo "<img src='".$ns['imagen_url']."' width='80'>";
+                }
+                echo "</td>";
+                echo "<td>".$ns['direccion']."</td>";
+                echo "<td>".$ns['estado']."</td>";
+                echo "<td>".$ns['tipo_senal']."</td>";
+                echo "<td>".$ns['orientacion']."</td>";
+                echo "<td>".$ns['usuario']."</td>";
 
-    echo "<td>".$ns['id_sol_nueva_sen']."</td>";
-    echo "<td>".$ns['fecha_nueva_senal']."</td>";
-    echo "<td>".$ns['descripcion']."</td>";
+                echo "<td><a href='".getUrl("Reportes","ReportesNS","getUpdate",array("id" => $ns['id_sol_nueva_sen']))."'>
+                    <button class='btn btn-primary'>Editar</button>
+                </a></td>";
 
-    echo "<td>";
-    if($ns['imagen_url'] != ""){
-        echo "<img src='".$ns['imagen_url']."' width='80'>";
-    }
-    echo "</td>";
-
-    echo "<td>".$ns['direccion']."</td>";
-    echo "<td>".$ns['estado']."</td>";
-    echo "<td>".$ns['tipo_senal']."</td>";
-    echo "<td>".$ns['orientacion']."</td>";
-    echo "<td>".$ns['usuario']."</td>";
-
-    echo "<td><a href='".getUrl("Reportes","ReportesA","getUpdate",array("id" => $ns['id_sol_nueva_sen']))."'>
-            <button class='btn btn-primary'>Editar</button>
-          </a></td>";
-
-    echo "</tr>";
-}
-?>    
+            echo "</tr>";
+            }
+            ?>    
     </tbody>
 </table>

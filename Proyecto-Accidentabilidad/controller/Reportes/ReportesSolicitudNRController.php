@@ -76,5 +76,51 @@ class ReportesSolicitudNRController {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=imgerror';</script>";
         }
     }
+
+    public function getUpdate(){
+        $obj = new ReportesSolicitudNRModel();
+
+        $id_sol_nuevas_red = $_GET['id'];
+
+        $sql = "SELECT rn.id_sol_nuevas_red, 
+                       rn.fecha_nuevo_reductor,
+                       rn.descripcion,
+                       rn.imagen_url, 
+                       rn.direccion, 
+                       es.nombre AS estado, 
+                       tr.nombre AS tipo_reductor,
+                       tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
+                       u.numero_id AS usuario
+                FROM sol_nuevo_reductor rn 
+                LEFT JOIN estado es ON rn.id_estado = es.id_estado 
+                LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
+                LEFT JOIN tipo_dano_reductor tdr ON rn.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
+                LEFT JOIN usuarios u ON rn.id_usuario = u.id
+                WHERE rn.id_sol_nuevas_red = $id_sol_nuevas_red";
+        $reporte = $obj->select($sql);
+
+        $sql = "SELECT * FROM estado WHERE controlador = 'solicitudes';";
+    
+        $estados = $obj->select($sql);
+
+        include_once "../view/Reportes/UpdateReportesNR.php";
+    }
+
+    public function postUpdate(){
+        $obj = new ReportesSolicitudNRModel();
+
+        $id_sol_nuevas_red = $_POST{'id_sol_nuevas_red'};
+        $id_estado = $_POST['id_estado'];
+
+        $sql = "UPDATE sol_nuevo_reductor SET id_estado = $id_estado WHERE id_sol_nuevas_red = $id_sol_nuevas_red";
+
+        $ejecutar = $obj->update($sql);
+
+        if ($ejecutar) {
+            echo "<script>window.location.href='" . getUrl("Historial","MiHistorial","getList") . "&msg=ok';</script>";
+        } else {
+            echo "<script>window.location.href='" . getUrl("Historial","MiHistorial","getList") . "&msg=error';</script>";
+        }
+    }
 }
 ?>

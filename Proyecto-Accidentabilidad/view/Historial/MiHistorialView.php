@@ -9,7 +9,7 @@
         <option value="senal_mal">Solicitud se&ntilde;al en mal estado</option>
         <option value="reductor_nuevo">Solicitud nuevo reductor</option>
         <option value="reductor_mal">Solicitud reductor en mal estado</option>
-        <option value="via_mal">Solicitud vía en mal estado</option>
+        <option value="via_mal">Solicitud v&iacute;a en mal estado</option>
     </select>
 </div>
 

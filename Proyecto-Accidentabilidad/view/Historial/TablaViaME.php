@@ -13,23 +13,31 @@
             <th>estado</th>
             <th>Tipo daño via</th>
             <th>Usuario</th>
+            <th>Acciones</th>
         </tr>
     </thead>
 
     <tbody>
-        <?php foreach($viamal as $vm){ ?>
-            <tr>
-                <td><?= $vm['id_sol_via_mal'] ?></td>
-                <td><?= $vm['fecha_via_mal_estado'] ?></td>
-                <td><?= $vm['descripcion'] ?></td>  
-                <td><?php if($vm['imagen_url'] != ""){ ?>
-                        <img src="<?= $vm['imagen_url'] ?>" width="80">
-                    <?php } ?></td>
-                <td><?= $vm['direccion'] ?></td>
-                <td><?= $vm['estado'] ?></td>
-                <td><?= $vm['tipo_dano_via'] ?></td>
-                <td><?= $vm['usuario'] ?></td>
-            </tr>
-        <?php } ?>
+        <?php 
+        foreach($viamal as $vm){ 
+                echo "<tr>";
+                echo "<td>".$vm['id_sol_via_mal']."</td>";
+                echo "<td>".$vm['fecha_via_mal_estado']."</td>";
+                echo "<td>".$vm['descripcion']."</td>";  
+                echo "<td>";
+                if($vm['imagen_url'] != ""){
+                    echo "<img src='".$vm['imagen_url']."' width='80'>";
+                }
+                echo "</td>";
+                echo "<td>".$vm['direccion']."</td>";
+                echo "<td>".$vm['estado']."</td>";
+                echo "<td>".$vm['tipo_dano_via']."</td>";
+                echo "<td>".$vm['usuario']."</td>";
+                echo "<td><a href='".getUrl("Reportes","SolicitudVME","getUpdate",array("id" => $vm['id_sol_via_mal']))."'>
+                    <button class='btn btn-primary'>Editar</button>
+                </a></td>";
+            echo "</tr>";
+        } 
+        ?>
     </tbody>
 </table>

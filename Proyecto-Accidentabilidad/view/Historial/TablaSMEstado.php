@@ -15,25 +15,34 @@
             <th>Tipo daño señal</th>
             <th>Orientacion</th>
             <th>Usuario</th>
+            <th>Acciones</th>
         </tr>
     </thead>
 
     <tbody>
-        <?php foreach($senalmalestado as $sme){ ?>
-            <tr>
-                <td><?= $sme['id_sol_mal'] ?></td>
-                <td><?= $sme['fecha_senal_mal_estado'] ?></td>
-                <td><?= $sme['descripcion'] ?></td>
-                <td><?php if($sme['imagen_url'] != ""){ ?>
-                        <img src="<?= $sme['imagen_url'] ?>" width="80">
-                    <?php } ?></td>
-                <td><?= $sme['direccion'] ?></td>
-                <td><?= $sme['estado'] ?></td>
-                <td><?= $sme['tipo_senal'] ?></td>
-                <td><?= $sme['tipo_dano_senal'] ?></td>
-                <td><?= $sme['orientacion'] ?></td>
-                <td><?= $sme['usuario'] ?></td>
-            </tr>
-        <?php } ?>
+        <?php 
+        
+        foreach($senalmalestado as $sme){ 
+            echo "<tr>";
+                echo "<td>".$sme['id_sol_mal']."</td>";
+                echo "<td>".$sme['fecha_senal_mal_estado']."</td>";
+                echo "<td>".$sme['descripcion']."</td>";
+                echo "<td>";
+                if($sme['imagen_url'] != ""){
+                    echo "<img src='".$sme['imagen_url']."' width='80'>";
+                }
+                echo "</td>";
+                echo "<td>".$sme['direccion']."</td>";
+                echo "<td>".$sme['estado']."</td>";
+                echo "<td>".$sme['tipo_senal']."</td>";
+                echo "<td>".$sme['tipo_dano_senal']."</td>";
+                echo "<td>".$sme['orientacion']."</td>";
+                echo "<td>".$sme['usuario']."</td>";
+                echo "<td><a href='".getUrl("Reportes","ReportesSME","getUpdate",array("id" => $sme['id_sol_mal']))."'>
+                    <button class='btn btn-primary'>Editar</button>
+                </a></td>";
+            echo "</tr>";
+         } 
+         ?>
     </tbody>
 </table>

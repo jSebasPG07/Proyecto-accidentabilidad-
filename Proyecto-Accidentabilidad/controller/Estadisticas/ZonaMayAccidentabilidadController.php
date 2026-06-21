@@ -106,7 +106,7 @@ class ZonaMayAccidentabilidadController{
                 ->setCreator("Sebastian") //esta linea es para decir quien es el autor  
                 ->setTitle("Reporte de Accidentabilidad"); //esta linea el titulo
 
-        $sheet = $excel->setActiveSheetIndex(0); //esta linea lo que hace es decir que se va trabajar en la hoia 1 del archivo 
+        $sheet = $excel->setActiveSheetIndex(0); //esta linea lo que hace es decir que se va trabajar en la hoja 1 del archivo 
 
         //TITULO PRINCIPAL
         $sheet->mergeCells('A1:C1'); //Esta linea lo que hace es unir las celdas A1,B1,C1 para poner el reporte de accidentabilidad 

@@ -26,12 +26,13 @@ class MiHistorialController {
                        a.nomenclatura, 
                        a.num_lesionados, 
                        a.observaciones, 
-                       a.direccion, 
+                       a.direccion,
+                       es.nombre AS estado,
                        a.imagen_url,
                        t.nombre AS tipo_choque
                 FROM reporte_accidente a
-                LEFT JOIN tipo_choque t 
-                ON a.id_tipo_choque = t.id_tipo_choque
+                LEFT JOIN estado es ON a.id_estado = es.id_estado 
+                LEFT JOIN tipo_choque t ON a.id_tipo_choque = t.id_tipo_choque
                 ORDER BY a.id_reporte_acc ASC";
 
         $res = $obj->select($sql);
