@@ -36,12 +36,12 @@
 
                 <?php if (Permisos::hasModule(2)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#base">
+                    <a data-bs-toggle="collapse" href="#reportesMenu">
                         <i class="fas fa-layer-group"></i>
                         <p>Reportes</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="base">
+                    <div class="collapse" id="reportesMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Reportes','ReportesA','getCreate'); ?>"><span class="sub-item">Reporte accidente</span></a></li>
                             <li><a href="<?php echo getUrl('Reportes','ReportesNS','getCreate'); ?>"><span class="sub-item">Solicitud nueva se&ntilde;al</span></a></li>
@@ -57,12 +57,12 @@
 
                 <?php if (Permisos::hasModule(3)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                    <a data-bs-toggle="collapse" href="#historialMenu">
                         <i class="fas fa-th-list"></i>
                         <p>Historial Reportes</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="sidebarLayouts">
+                    <div class="collapse" id="historialMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Historial','MiHistorial','getList'); ?>"><span class="sub-item">Mi historial</span></a></li>
                         </ul>
@@ -72,12 +72,12 @@
 
                 <?php if (Permisos::hasModule(4)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#forms">
+                    <a data-bs-toggle="collapse" href="#manualMenu">
                         <i class="fas fa-pen-square"></i>
                         <p>Manual</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="forms">
+                    <div class="collapse" id="manualMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Manual','ManualU','getCreate'); ?>"><span class="sub-item">Manual usuario</span></a></li>
                             <li><a href="<?php echo getUrl('Manual','ManualS','getCreate'); ?>"><span class="sub-item">Manual se&ntilde;alizaci&oacute;n</span></a></li>
@@ -88,12 +88,12 @@
 
                 <?php if (Permisos::hasModule(5)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#tables">
+                    <a data-bs-toggle="collapse" href="#pqrsfMenu">
                         <i class="fas fa-table"></i>
                         <p>PQRSF</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="tables">
+                    <div class="collapse" id="pqrsfMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl("PQRSF", "PqrsfC", "getCreate")?>"><span class="sub-item">Registrar PQRSF</span></a></li>
                             <li><a href="<?php echo getUrl("PQRSF", "PqrsfV", "getList")?>"><span class="sub-item">Visualizar PQRSF</span></a></li>
@@ -104,12 +104,12 @@
 
                 <?php if (Permisos::hasModule(6)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#charts">
+                    <a data-bs-toggle="collapse" href="#estadisticasMenu">
                         <i class="far fa-chart-bar"></i>
                         <p>Estad&iacute;sticas</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="charts">
+                    <div class="collapse" id="estadisticasMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Estadisticas','ZonaMayAccidentabilidad','getList'); ?>"><span class="sub-item">Zona mayor accidentabilidad</span></a></li>
                             
@@ -120,12 +120,12 @@
 
                 <?php if (Permisos::hasModule(7)): ?>
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#list">
+                    <a data-bs-toggle="collapse" href="#usuariosMenu">
                         <i class="fas fa-layer-group"></i>
                         <p>Gesti&oacute;n de Usuarios</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="list">
+                    <div class="collapse" id="usuariosMenu">
                         <ul class="nav nav-collapse">
                             <?php if (Permisos::hasPermission(7, 'VER')): ?>
                             <li><a href="<?php echo getUrl('Usuario','GestionUsuario','getList'); ?>"><span class="sub-item">Visualizar usuarios</span></a></li>
@@ -136,12 +136,12 @@
                 <?php endif; ?>
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#list">
+                    <a data-bs-toggle="collapse" href="#acercaMenu">
                         <i class="fas fa-layer-group"></i>
                         <p>Acerca de</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="list">
+                    <div class="collapse" id="acercaMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>"><span class="sub-item">Acerca de GIAV</span></a></li>
                             
