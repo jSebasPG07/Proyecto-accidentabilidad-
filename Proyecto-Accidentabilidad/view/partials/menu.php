@@ -127,8 +127,11 @@
                     </a>
                     <div class="collapse" id="usuariosMenu">
                         <ul class="nav nav-collapse">
-                            <?php if (Permisos::hasPermission(7, 'VER')): ?>
+                            <?php if (Permisos::hasPermission(7, 1)): ?>
                             <li><a href="<?php echo getUrl('Usuario','GestionUsuario','getList'); ?>"><span class="sub-item">Visualizar usuarios</span></a></li>
+                            <?php endif; ?>
+                            <?php if (Permisos::hasPermission(7, 3)): ?>
+                            <li><a href="<?php echo getUrl('Usuario','GestionRoles','getList'); ?>"><span class="sub-item">Gesti&oacute;n de roles</span></a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

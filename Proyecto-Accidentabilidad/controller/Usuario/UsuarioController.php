@@ -28,9 +28,9 @@ include_once "../web/registro.php";
         $contrasena = $_POST['contrasena'];
         $direccion = $_POST['direccion'];
 
-        $obj -> autoincrement(usuarios, id);
+        $id = $obj -> autoincrement(usuarios, id);
     
-        $sql = "INSERT INTO usuarios (id_tipo_doc, numero_id, nombre, apellido, telefono, correo, contrasena, direccion, id_rol, id_estado ) VALUES ('$tipo_documento', '$numero_documento', '$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$direccion', 1, 1)";
+        $sql = "INSERT INTO usuarios (id, id_tipo_doc, numero_id, nombre, apellido, telefono, correo, contrasena, direccion, id_rol, id_estado ) VALUES ('$id', '$tipo_documento', '$numero_documento', '$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$direccion', 1, 1)";
         $ejecutar = $obj->insert($sql);
         if ($ejecutar) {
             redirect("login.php");
