@@ -96,7 +96,7 @@
                     <div class="collapse" id="pqrsfMenu">
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl("PQRSF", "PqrsfC", "getCreate")?>"><span class="sub-item">Registrar PQRSF</span></a></li>
-                            <li><a href="<?php echo getUrl("PQRSF", "PqrsfV", "getList")?>"><span class="sub-item">Visualizar PQRSF</span></a></li>
+                            <li><a href="<?php echo getUrl("PQRSF", "Pqrsfc", "getList")?>"><span class="sub-item">Visualizar PQRSF</span></a></li>
                         </ul>
                     </div>
                 </li>
