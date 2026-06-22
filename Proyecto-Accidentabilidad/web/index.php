@@ -35,7 +35,7 @@ echo "<div class='main-panel'>";
 include_once '../view/partials/navbar.php';
 
 
-echo "<div class='content'>";
+echo "<div class='content' style='min-height: 750px; position: relative;'>";
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] != "ok") {
   redirect("login.php");
 }
@@ -47,11 +47,12 @@ if (isset($_GET['modulo'])) {
 echo "</div>";
 
 
+
 include_once '../view/partials/footer.php';
-
 echo "</div>";
 
 echo "</div>";
+
 include_once '../view/partials/script.php';
 echo "</body>";
 

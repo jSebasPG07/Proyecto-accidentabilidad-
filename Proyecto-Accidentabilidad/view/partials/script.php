@@ -54,7 +54,7 @@
     });
 
     // handle links with @href started with '#' only
-    $(document).on("click", 'a[href^="#"]', function (e) {
+    $(document).on("click", 'a[href^="#"]:not([data-bs-toggle="collapse"])', function (e) {
       // target element id
       var id = $(this).attr("href");
 
