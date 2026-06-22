@@ -48,7 +48,7 @@ echo "</div>";
 
 
 
-include_once '../view/partials/footer.php';
+//include_once '../view/partials/footer.php';
 echo "</div>";
 
 echo "</div>";
