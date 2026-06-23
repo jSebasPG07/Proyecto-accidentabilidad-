@@ -39,12 +39,28 @@ echo "<div class='content' style='min-height: 750px; position: relative;'>";
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] != "ok") {
   redirect("login.php");
 }
+
+
 if (isset($_GET['modulo'])) {
-  resolver();
-}else {
-  include_once '../view/partials/contenido.php';
-} 
+    $controlador = isset($_GET['controlador']) ? ucwords($_GET['controlador']) : '';
+    if (isset($moduloPorControlador[$controlador])) {
+        $idModulo = $moduloPorControlador[$controlador];
+        if (!Permisos::hasModule($idModulo)) {
+            echo "<div class='alert alert-danger m-4'>";
+            echo "<h4>Acceso denegado</h4>";
+            echo "<p>No tienes permiso para acceder a este modulo.</p>";
+            echo "</div>";
+        } else {
+            resolver();
+        }
+    } else {
+        resolver();
+    }
+} else {
+    include_once '../view/partials/contenido.php';
+}
 echo "</div>";
+
 
 
 
