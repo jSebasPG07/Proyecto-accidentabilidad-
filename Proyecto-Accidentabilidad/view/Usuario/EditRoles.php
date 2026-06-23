@@ -46,10 +46,7 @@
 
                         <div class="form-check form-check-inline">
 
-                            <input type="checkbox"
-                                   class="form-check-input"
-                                   name="permisos[]"
-                                   id="permiso_<?php echo $permiso['id_permiso']; ?>"
+                            <input type="checkbox" class="form-check-input" name="permisos[]" id="permiso_<?php echo $permiso['id_permiso']; ?>"
                                    value="<?php echo $permiso['id_permiso']; ?>"
                                    <?php if (in_array($permiso['id_permiso'], $permisosAsignados)) { echo "checked"; } ?>>
 

@@ -40,7 +40,9 @@ include_once "../web/registro.php";
         $sql = "INSERT INTO usuarios (id, id_tipo_doc, numero_id, nombre, apellido, telefono, correo, contrasena, direccion, id_rol, id_estado ) VALUES ('$id', '$tipo_documento', '$numero_documento', '$nombre', '$apellido', '$telefono', '$correo', '$contrasena', '$direccion', 1, 1)";
         $ejecutar = $obj->insert($sql);
         if ($ejecutar) {
-            redirect("login.php");
+
+            $_SESSION['exito'] = "Usuario registrado exitosamente. Por favor, inicie sesión.";
+            redirect(getUrl('Acceso', 'Acceso', 'login', false, 'ajax'));
         }   else {
             echo "Error al registrar el usuario.";
         }

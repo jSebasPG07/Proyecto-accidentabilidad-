@@ -125,7 +125,13 @@ include_once '../lib/helpers.php';
 </head>
 
 <body>
-
+<?php
+    if(isset($_SESSION['exito'])):?>
+        <div class="alert alert-success text-center" role="alert">
+            <?php echo $_SESSION['exito']; 
+            unset($_SESSION['exito']); ?>
+        </div>
+<?php endif; ?>
 <div class="container min-vh-100 d-flex align-items-center">
 
     <div class="row justify-content-center w-100">
