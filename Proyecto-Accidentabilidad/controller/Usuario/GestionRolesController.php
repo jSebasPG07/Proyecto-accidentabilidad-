@@ -53,14 +53,9 @@ class GestionRolesController{
 
         if($ejecutar){
 
-            // Obtener el id del rol recien creado
-            $sqlUltimoRol = "SELECT id_rol FROM roles WHERE nombre_rol = '$nombre_rol' ORDER BY id_rol DESC LIMIT 1";
-            $resultUltimoRol = $obj->select($sqlUltimoRol);
-            $filaRol = pg_fetch_assoc($resultUltimoRol);
-            $id_rol = $filaRol['id_rol'];
-
             foreach($permisosMarcados as $id_permiso){
-                $sqlInsertPermiso = "INSERT INTO rol_permiso (id_rol, id_permiso) VALUES ('$id_rol', '$id_permiso')";
+                $id_rol_permiso = $obj -> autoincrement(rol_permiso, id_rol_permiso);
+                $sqlInsertPermiso = "INSERT INTO rol_permiso (id_rol_permiso, id_rol, id_permiso) VALUES ('$id_rol_permiso', '$id_rol', '$id_permiso')";
                 $obj->insert($sqlInsertPermiso);
             }
 
@@ -127,7 +122,8 @@ class GestionRolesController{
         // Asignar los permisos marcados que todavia no tenia
         foreach($permisosMarcados as $id_permiso){
             if(!in_array($id_permiso, $permisosActuales)){
-                $sqlInsert = "INSERT INTO rol_permiso (id_rol, id_permiso) VALUES ('$id_rol', '$id_permiso')";
+                $id_rol_permiso = $obj -> autoincrement(rol_permiso, id_rol_permiso);
+                $sqlInsert = "INSERT INTO rol_permiso (id_rol_permiso, id_rol, id_permiso) VALUES ('$id_rol_permiso', '$id_rol', '$id_permiso')";
                 $obj->insert($sqlInsert);
             }
         }

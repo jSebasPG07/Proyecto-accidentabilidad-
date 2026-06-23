@@ -33,12 +33,7 @@
             <td>
 
                 <a class="btn btn-warning btn-sm"
-                   href="<?php echo getUrl(
-                        "Usuario",
-                        "GestionRoles",
-                        "getEdit",
-                        array("id"=>$rol['id_rol'])
-                   ); ?>">
+                   href="<?php echo getUrl( "Usuario", "GestionRoles", "getEdit", array("id"=>$rol['id_rol']) ); ?>">
 
                     Editar permisos
 
