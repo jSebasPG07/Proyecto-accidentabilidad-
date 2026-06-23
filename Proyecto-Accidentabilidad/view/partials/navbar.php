@@ -88,7 +88,17 @@
 						<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?>
 					</a>
 
+					
+
 					<ul class="dropdown-menu">
+
+						<li>
+       					 <a class="dropdown-item"
+          				  href="<?php echo getUrl("Usuario", "Usuario", "perfil"); ?>">
+           				 <i class="usu"></i> Mi Perfil
+        				</a>
+    				</li>
+
 						<li>
 							<a class="dropdown-item"
 								href="<?php echo getUrl("Acceso", "Acceso", "logout"); ?>">

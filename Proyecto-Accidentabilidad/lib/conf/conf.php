@@ -2,7 +2,7 @@
 
     $server= "localhost";
     $user = "postgres";
-    $pass = "1234";
+    $pass = "sena";
     $db = "GIAV";
     $port = 5432;
     //postgres -> 5432
