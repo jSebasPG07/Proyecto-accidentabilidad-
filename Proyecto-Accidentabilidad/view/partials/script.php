@@ -31,6 +31,42 @@
       swal("Error", "No se pudo subir la imagen", "error");
     <?php } ?>
 
+    <?php if($_GET['msg'] == 'numero1'){ ?>
+      swal("Error", "El numero debe ser tipo numero o numeo y letra (27 o 27b)", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'numero2'){ ?>
+      swal("Error", "El campo # debe ser numero o numero y letra o numero, letra - numero (27 ,27B, 27-36,27D-36 ,10A-5)", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_largo'){ ?>
+      swal("Error", "Las observaciones no pueden superar los 200 caracteres", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_formato'){ ?>
+      swal("Error", "Las observaciones tienen caracteres no validos", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_letra'){ ?>
+      swal("Error", "Las observaciones deben contener al menos una letra", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_largo'){ ?>
+      swal("Error", "Las descripciones no pueden superar los 200 caracteres", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_formato'){ ?>
+      swal("Error", "Las descripciones tienen caracteres no validos", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_letra'){ ?>
+      swal("Error", "Las descripciones deben contener al menos una letra", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'tipoimg'){ ?>
+      swal("Error", "Solo se permiten imagenes JPG o PNG", "error");
+    <?php } ?>
+
 
 	</script>
   

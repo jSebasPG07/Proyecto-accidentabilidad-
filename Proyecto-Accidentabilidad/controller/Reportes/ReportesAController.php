@@ -15,27 +15,73 @@ class ReportesAController {
         $obj = new ReportesAModel();
 
         $fechaaccidente = date("Y-m-d");
-        $nomenclatura = $_POST['nomenclatura'];
         $nlesionados = $_POST['nlesionados'];
         $tchoque = $_POST['tchoque'];
-        $direccion = $_POST['direccion'];
+        $tipo_via = $_POST['tipo_via'];
+        $numero1 = $_POST['numero1'];
+        $numero2 = $_POST['numero2'];
+        $complemento = $_POST['complemento'];
+        $direccion = "$tipo_via $numero1 # $numero2 $complemento";
         $observaciones = $_POST['observaciones'];
 
         $id_estado = 3;
 
         $id_usuario = $_POST['id'];
 
+        //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
+        // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
+        if (!preg_match('/^[0-9]+[A-Za-z]?$/', $numero1)) {
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero1';</script>";
+        }
+
+        //Esta validacion puede ser un numero o un numero con el guion
+        //No va permitir un guion y desoues el numero osea asi (-30)
+        if (!preg_match('/^[0-9]+[A-Za-z]?(-[0-9]+)?$/', $numero2)) {
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero2';</script>"; 
+        }
+
+        
+        //Este campo no puede tener mas de 200 caracteres
+        if (strlen($observaciones) > 200) {
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_largo';</script>"; 
+        }
+
+        //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
+        //Esta bloquea los caracteres especiales @$,#,%,!
+        if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $observaciones)) {
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_formato';</script>";   
+        }
+
+        //verifica que tenga al menos una letra osea que si ponen 8888 muestra el error
+        if (!preg_match('/[A-Za-z]/', $observaciones)) {
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_letra';</script>";
+        }
+
     
         $img = $_FILES['imagen']['name'];
         $archivo = $_FILES['imagen']['tmp_name'];
         $ruta = "../img/" . $img;
 
+        //Esta linea verifica si se subio un archivo 
+        if (!empty($img)) {
+
+            //Esto va obtener la extension del archivo osea ps si es jpg o png 
+            $extension = strtolower(pathinfo($img, PATHINFO_EXTENSION)); //saca la extension del archivo osea si el archivoes foto.PNG entonces solo saca el PNG 
+            //Y el strtolower Lo convierte en minuscula esta extension que saca
+
+
+            //Aqui ps si no es ni png, jepg o jpg lo manda al error 
+            if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=tipoimg';</script>";
+            }
+        }
+
         if(move_uploaded_file($archivo, $ruta)){
 
             $sql = "INSERT INTO reporte_accidente 
-            (fecha_accidente, nomenclatura, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
+            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
             VALUES 
-            ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario')";
+            ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario')";
 
             $ejecutar = $obj->insert($sql);
 
@@ -82,7 +128,7 @@ class ReportesAController {
 
         $obj = new ReportesAModel();
 
-        $id_reporte_acc = $_POST{'id_reporte_acc'};
+        $id_reporte_acc = $_POST['id_reporte_acc'];
         $id_estado = $_POST['id_estado'];
 
         $sql = "UPDATE reporte_accidente SET id_estado = $id_estado WHERE id_reporte_acc = $id_reporte_acc";

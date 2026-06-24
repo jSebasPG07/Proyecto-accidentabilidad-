@@ -22,7 +22,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Fecha</th>
-                            <th>Nomenclatura</th>
                             <th>Lesionados</th>
                             <th>Observaciones</th>
                             <th>Dirección</th>
@@ -41,7 +40,6 @@
 
                                 <td><?php echo $a['id_reporte_acc']; ?></td>
                                 <td><?php echo $a['fecha_accidente']; ?></td>
-                                <td><?php echo $a['nomenclatura']; ?></td>
                                 <td><?php echo $a['num_lesionados']; ?></td>
 
                                 <td style="max-width:220px;">

@@ -4,39 +4,88 @@ include_once "../model/Reportes/ReportesSolicitudNRModel.php";
 
 class ReportesSolicitudNRController {
 
-    public function index(){
-        $this->getCreate();
-    }
+        public function index(){
+            $this->getCreate();
+        }
 
-    public function getCreate(){
+        public function getCreate(){
 
-        $obj = new ReportesSolicitudNRModel();
+            $obj = new ReportesSolicitudNRModel();
 
-        $sqlReductor = "SELECT * FROM tipo_reductor";
-        $reductores = $obj->select($sqlReductor);
+            $sqlReductor = "SELECT * FROM tipo_reductor";
+            $reductores = $obj->select($sqlReductor);
 
-        $sqlDano = "SELECT * FROM tipo_dano_reductor";
-        $danos = $obj->select($sqlDano);
+            $sqlDano = "SELECT * FROM tipo_dano_reductor";
+            $danos = $obj->select($sqlDano);
 
-        include_once "../view/Reportes/ReportesSolicitudNR.php";
-    }
+            include_once "../view/Reportes/ReportesSolicitudNR.php";
+        }
 
-    public function postCreate(){
+        public function postCreate(){
 
-        $obj = new ReportesSolicitudNRModel();
+            $obj = new ReportesSolicitudNRModel();
 
-        $fechanreductor = date("d-m-y");
-        $descripcion = $_POST['descripcion'];
-        $direccion = $_POST['direccion'];
-        $idTipoReductor = $_POST['id_tipo_reductor'];
-        $idTipoDanoReductor = $_POST['id_tipo_dano_reductor'];
+            $fechanreductor = date("d-m-y");
+            $tipo_via = $_POST['tipo_via'];
+            $numero1 = $_POST['numero1'];
+            $numero2 = $_POST['numero2'];
+            $complemento = $_POST['complemento'];
+            $descripcion = $_POST['descripcion'];
+            $direccion = "$tipo_via $numero1 # $numero2 $complemento";
+            $idTipoReductor = $_POST['id_tipo_reductor'];
+            $idTipoDanoReductor = $_POST['id_tipo_dano_reductor'];
 
 
-        $idEstado = 3;
-        $id_usuario = $_POST['id'];
-        $img = $_FILES['imagen']['name'];
-        $archivo = $_FILES['imagen']['tmp_name'];
-        $ruta = "../img/" . $img;
+            $idEstado = 3;
+            $id_usuario = $_POST['id'];
+
+            //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
+            // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
+            if (!preg_match('/^[0-9]+[A-Za-z]?$/', $numero1)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=numero1';</script>";
+            }
+
+            //Esta validacion puede ser un numero o un numero con el guion
+            //No va permitir un guion y desoues el numero osea asi (-30)
+            if (!preg_match('/^[0-9]+[A-Za-z]?(-[0-9]+)?$/', $numero2)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=numero2';</script>"; 
+            }
+
+        
+            //Este campo no puede tener mas de 200 caracteres
+            if (strlen($descripcion) > 200) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_largo';</script>"; 
+            }
+
+            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
+            //Esta bloquea los caracteres especiales @$,#,%,!
+            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $descripcion)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_formato';</script>";   
+            }
+
+            //verifica que tenga al menos una letra osea que si ponen 8888 muestra el error
+            if (!preg_match('/[A-Za-z]/', $descripcion)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_letra';</script>";
+            }
+
+
+            $img = $_FILES['imagen']['name'];
+            $archivo = $_FILES['imagen']['tmp_name'];
+            $ruta = "../img/" . $img;
+
+            if (!empty($img)) {
+
+            //Esto va obtener la extension del archivo osea ps si es jpg o png 
+            $extension = strtolower(pathinfo($img, PATHINFO_EXTENSION)); //saca la extension del archivo osea si el archivoes foto.PNG entonces solo saca el PNG 
+            //Y el strtolower Lo convierte en minuscula esta extension que saca
+
+
+            //Aqui ps si no es ni png, jepg o jpg lo manda al error 
+                if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=tipoimg';</script>";
+                }
+            }
+
 
 
             if(move_uploaded_file($archivo, $ruta)){
@@ -109,7 +158,7 @@ class ReportesSolicitudNRController {
     public function postUpdate(){
         $obj = new ReportesSolicitudNRModel();
 
-        $id_sol_nuevas_red = $_POST{'id_sol_nuevas_red'};
+        $id_sol_nuevas_red = $_POST['id_sol_nuevas_red'];
         $id_estado = $_POST['id_estado'];
 
         $sql = "UPDATE sol_nuevo_reductor SET id_estado = $id_estado WHERE id_sol_nuevas_red = $id_sol_nuevas_red";

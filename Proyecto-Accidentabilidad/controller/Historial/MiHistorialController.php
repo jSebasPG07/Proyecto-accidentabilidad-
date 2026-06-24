@@ -22,8 +22,7 @@ class MiHistorialController {
     if($tipo == "accidente"){
 
         $sql = "SELECT a.id_reporte_acc, 
-                       a.fecha_accidente, 
-                       a.nomenclatura, 
+                       a.fecha_accidente,  
                        a.num_lesionados, 
                        a.observaciones, 
                        a.direccion,

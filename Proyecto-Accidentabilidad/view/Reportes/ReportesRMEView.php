@@ -1,6 +1,6 @@
 <div class="container-fluid px-4 py-3">
 
-    <!-- Encabezado -->
+    
     <div class="d-flex align-items-center mb-4 gap-3">
         <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
              style="width:54px;height:54px;flex-shrink:0;">
@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <!-- Card -->
+    
     <div class="card border shadow-sm">
         <div class="card-body p-4">
 
@@ -21,7 +21,7 @@
 
                 <div class="row g-3">
 
-                    <!-- Tipo de reductor -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipored">Tipo de reductor</label>
                         <select name="idtipored" id="idtipored" class="form-control" required>
@@ -33,7 +33,7 @@
                         </select>
                     </div>
 
-                    <!-- Tipo de daño -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipodanoreductor">Tipo de da&ntilde;o</label>
                         <select name="idtipodanoreductor" id="idtipodanoreductor" class="form-control" required>
@@ -45,14 +45,46 @@
                         </select>
                     </div>
 
-                    <!-- Dirección -->
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="direccion">Direcci&oacute;n</label>
-                        <input type="text" class="form-control" id="direccion" name="direccion"
-                               placeholder="Ej: Cra 5 # 12-30" required>
+                   <div class="col-12 col-md-6">
+                        <label>Tipo de via</label>
+                        <select name="tipo_via" class="form-control" required>
+                            <option value="Calle">Calle</option>
+                        </select>
                     </div>
 
-                    <!-- Imagen -->
+    
+                    <div class="col-12 col-md-6">
+                        <label>Numero</label>
+                        <input type="text" name="numero1" class="form-control" required>
+                    </div>
+
+    
+                    <div class="col-12 col-md-6">
+                        <label>#</label>
+                        <input type="text" name="numero2" class="form-control" required>
+                    </div>
+
+    
+                    <div class="col-12 col-md-6">
+                        <label>Complemento</label>
+                        <select name="complemento" class="form-control">
+                            <option value="">Seleccione...</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apto">Apto</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Torre">Torre</option>
+                            <option value="Interior">Interior</option>
+                            <option value="Bloque">Bloque</option>
+                            <option value="Local">Local</option>
+                            <option value="Oficina">Oficina</option>
+                            <option value="Piso">Piso</option>
+                            <option value="Edificio">Edificio</option>
+                            <option value="Unidad">Unidad</option>
+                            <option value="Manzana">Manzana</option>
+                        </select>
+                    </div>
+
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                         <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
