@@ -20,7 +20,7 @@
                 <div class="row g-3">
                     
                     <div class="col-12 col-md-6">
-                        <label>Tipo de via</label>
+                        <label class="form-label fw-semibold" for="tipovia">Tipo de via</label>
                         <select name="tipo_via" class="form-control" required>
                             <option value="Calle">Calle</option>
                         </select>
@@ -28,20 +28,20 @@
 
     
                     <div class="col-12 col-md-6">
-                        <label>Numero</label>
+                        <label class="form-label fw-semibold" for="numero">N&uacute;mero</label>
                         <input type="text" name="numero1" class="form-control" required>
                     </div>
 
     
                     <div class="col-12 col-md-6">
-                        <label>#</label>
+                        <label class="form-label fw-semibold" for="caracter">#</label>
                         <input type="text" name="numero2" class="form-control" required>
                     </div>
 
     
                     <div class="col-12 col-md-6">
-                        <label>Complemento</label>
-                        <select name="complemento" class="form-control">
+                        <label class="form-label fw-semibold" for="complemento">Complemento</label>
+                        <select name="complemento" class="form-control" required>
                             <option value="">Seleccione...</option>
                             <option value="Casa">Casa</option>
                             <option value="Apto">Apto</option>
