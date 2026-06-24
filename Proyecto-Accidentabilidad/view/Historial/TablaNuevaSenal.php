@@ -31,6 +31,7 @@
                             <th>Tipo señal</th>
                             <th>Orientación</th>
                             <th>Usuario</th>
+                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -70,6 +71,8 @@
                                 <td><?php echo $ns['orientacion']; ?></td>
 
                                 <td><?php echo $ns['usuario']; ?></td>
+
+                                <td><?php echo $ns['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","ReportesNS","getUpdate",array("id"=>$ns['id_sol_nueva_sen'])); ?>"

@@ -45,14 +45,14 @@ class ZonaMayAccidentabilidadController{
         $pendientes = $row['pendientes'];
 
 
-        // Para las usamos la nomenclatura
+        // Para las zonas usamos la direccion
         // esta consulta muestra la zona los cuenta cuantos accidentes hubieron en esa zona y muestra cuantos lesionados hubieron, todo lo muestra de mayor a menor 
         $sql = "SELECT 
-                    nomenclatura AS zona,
+                    direccion AS zona,
                     COUNT(*) as accidentes,
                     COALESCE(SUM(num_lesionados),0) as lesionados
                  FROM reporte_accidente
-                 GROUP BY nomenclatura
+                 GROUP BY direccion
                  ORDER BY accidentes DESC
                  LIMIT 5";
         $reporte = $obj->select($sql);
@@ -92,11 +92,11 @@ class ZonaMayAccidentabilidadController{
         $obj = new ZonaMayAccidentabilidadModel();
 
         $sql = "SELECT 
-                    nomenclatura AS zona,
+                    direccion AS zona,
                     COUNT(*) as accidentes,
                     COALESCE(SUM(num_lesionados),0) as lesionados
                 FROM reporte_accidente
-                GROUP BY nomenclatura
+                GROUP BY direccion
                 ORDER BY accidentes DESC";
 
         $zonas = $obj->select($sql);

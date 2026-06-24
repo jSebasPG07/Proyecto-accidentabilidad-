@@ -1,6 +1,5 @@
 <div class="container-fluid px-4 py-3">
 
-    <!-- Encabezado -->
     <div class="d-flex align-items-center mb-4 gap-3">
         <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:54px;height:54px;flex-shrink:0;">
             <i class="fas fa-clipboard-list" style="font-size:1.4rem;color:#fff;"></i>
@@ -30,7 +29,10 @@
                             ?>
                        </select>
                     </div>
-
+                    
+                    <div class="col-12 col-md-6">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                    </div>
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="mensaje">mensaje</label>

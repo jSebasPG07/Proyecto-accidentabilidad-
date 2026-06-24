@@ -31,6 +31,7 @@
                             <th>Tipo reductor</th>
                             <th>Tipo daño</th>
                             <th>Usuario</th>
+                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -70,6 +71,8 @@
                                 <td><?php echo $rm['tipo_dano_reductor']; ?></td>
 
                                 <td><?php echo $rm['usuario']; ?></td>
+
+                                <td><?php echo $rm['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","ReportesRME","getUpdate",array("id"=>$rm['id_sol_red_mal'])); ?>"

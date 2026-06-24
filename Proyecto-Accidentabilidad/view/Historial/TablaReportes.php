@@ -28,6 +28,8 @@
                             <th>Estado</th>
                             <th>Tipo Choque</th>
                             <th>Imagen</th>
+                            <th>Usuario</th>
+                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -64,6 +66,10 @@
                                              style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
                                     <?php } ?>
                                 </td>
+
+                                <td><?php echo $a['usuario']; ?></td>
+
+                                <td><?php echo $a['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","ReportesA","getUpdate",array("id"=>$a['id_reporte_acc'])); ?>"

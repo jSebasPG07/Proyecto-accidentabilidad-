@@ -32,6 +32,7 @@
                             <th>Tipo daño</th>
                             <th>Orientación</th>
                             <th>Usuario</th>
+                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -73,6 +74,8 @@
                                 <td><?php echo $sme['orientacion']; ?></td>
 
                                 <td><?php echo $sme['usuario']; ?></td>
+
+                                <td><?php echo $sme['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","ReportesSME","getUpdate",array("id"=>$sme['id_sol_mal'])); ?>"

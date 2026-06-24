@@ -31,6 +31,7 @@
                             <th>Tipo reductor</th>
                             <th>Tipo daño</th>
                             <th>Usuario</th>
+                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -70,6 +71,8 @@
                                 <td><?php echo $rn['tipo_dano_reductor']; ?></td>
 
                                 <td><?php echo $rn['usuario']; ?></td>
+
+                                <td><?php echo $rn['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","ReportesSolicitudNR","getUpdate",array("id"=>$rn['id_sol_nuevas_red'])); ?>"

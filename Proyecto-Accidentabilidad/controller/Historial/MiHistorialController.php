@@ -28,10 +28,13 @@ class MiHistorialController {
                        a.direccion,
                        es.nombre AS estado,
                        a.imagen_url,
-                       t.nombre AS tipo_choque
+                       t.nombre AS tipo_choque,
+                       CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+                       u.numero_id AS identificacion
                 FROM reporte_accidente a
                 LEFT JOIN estado es ON a.id_estado = es.id_estado 
                 LEFT JOIN tipo_choque t ON a.id_tipo_choque = t.id_tipo_choque
+                LEFT JOIN usuarios u ON a.id_usuario = u.id
                 ORDER BY a.id_reporte_acc ASC";
 
         $res = $obj->select($sql);
@@ -48,20 +51,21 @@ class MiHistorialController {
     if($tipo == "senal_nueva"){
 
         $sql = "SELECT ns.id_sol_nueva_sen,
-                       ns.fecha_nueva_senal,
-                       ns.descripcion,
-                       ns.imagen_url, 
-                       ns.direccion, 
-                       es.nombre AS estado, 
-                       tp.nombre_senal AS tipo_senal, 
-                       ori.nombre AS orientacion, 
-                       u.numero_id AS usuario
-                FROM sol_nueva_senal ns 
-                LEFT JOIN estado es ON ns.id_estado = es.id_estado 
-                LEFT JOIN tipo_senal tp ON ns.id_tipo_senal = tp.id_tipo_senal 
-                LEFT JOIN orientacion_senal ori ON ns.id_orientacion = ori.id_orientacion 
-                LEFT JOIN usuarios u ON ns.id_usuario = u.id
-                ORDER BY ns.id_sol_nueva_sen ASC";
+               ns.fecha_nueva_senal,
+               ns.descripcion,
+               ns.imagen_url, 
+               ns.direccion, 
+               es.nombre AS estado, 
+               tp.nombre_senal AS tipo_senal, 
+               ori.nombre AS orientacion, 
+               CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+               u.numero_id AS identificacion
+        FROM sol_nueva_senal ns 
+        LEFT JOIN estado es ON ns.id_estado = es.id_estado 
+        LEFT JOIN tipo_senal tp ON ns.id_tipo_senal = tp.id_tipo_senal 
+        LEFT JOIN orientacion_senal ori ON ns.id_orientacion = ori.id_orientacion 
+        LEFT JOIN usuarios u ON ns.id_usuario = u.id
+        ORDER BY ns.id_sol_nueva_sen ASC";
 
         $res = $obj->select($sql);
 
@@ -86,7 +90,8 @@ class MiHistorialController {
                        tp.nombre_senal AS tipo_senal,
                        td.id_tipo_dano_senal AS tipo_dano_senal, 
                        ori.nombre AS orientacion, 
-                       u.numero_id AS usuario
+                       CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+                       u.numero_id AS identificacion
                 FROM sol_senal_mal_estado sme 
                 LEFT JOIN estado es ON sme.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON sme.id_tipo_senal = tp.id_tipo_senal
@@ -116,7 +121,8 @@ class MiHistorialController {
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
                        tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
-                       u.numero_id AS usuario
+                       CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+                       u.numero_id AS identificacion
                 FROM sol_nuevo_reductor rn 
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
@@ -145,7 +151,8 @@ class MiHistorialController {
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
                        tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
-                       u.numero_id AS usuario
+                       CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+                       u.numero_id AS identificacion
                 FROM sol_reductor_mal_estado rm 
                 LEFT JOIN estado es ON rm.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
@@ -173,7 +180,8 @@ class MiHistorialController {
                        vm.direccion, 
                        es.nombre AS estado, 
                        tdv.id_tipo_dano_via AS tipo_dano_via,  
-                       u.numero_id AS usuario
+                       CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+                       u.numero_id AS identificacion
                 FROM sol_via_mal_estado vm 
                 LEFT JOIN estado es ON vm.id_estado = es.id_estado 
                 LEFT JOIN tipo_dano_via tdv ON vm.id_tipo_dano_via = tdv.id_tipo_dano_via  

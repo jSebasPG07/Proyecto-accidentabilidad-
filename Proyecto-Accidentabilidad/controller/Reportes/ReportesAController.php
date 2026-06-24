@@ -102,8 +102,7 @@ class ReportesAController {
         $id_reporte_acc = $_GET['id'];
 
         $sql = "SELECT a.id_reporte_acc, 
-                       a.fecha_accidente, 
-                       a.nomenclatura, 
+                       a.fecha_accidente,  
                        a.num_lesionados, 
                        a.observaciones, 
                        a.direccion,

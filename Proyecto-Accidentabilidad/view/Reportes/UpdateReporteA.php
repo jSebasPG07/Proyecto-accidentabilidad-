@@ -25,11 +25,6 @@
 
                 <div class="row g-3">
 
-                    
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="nomenclatura">Nomenclatura</label>
-                        <p class="form-control"><?php echo $datos['nomenclatura'] ?></p>
-                    </div>
 
                     
                     <div class="col-12 col-md-6">
