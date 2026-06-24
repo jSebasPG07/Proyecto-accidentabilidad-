@@ -31,7 +31,7 @@ include_once "../web/registro.php";
         $sql_validate = "SELECT * FROM usuarios WHERE correo = '$correo' OR numero_id = '$numero_documento'";
         $result_validate = $obj->select($sql_validate);
         if (pg_num_rows($result_validate) > 0) {
-            echo "<script>alert('El correo o número de documento ya está registrado.'); window.location.href='registro.php';</script>";
+            echo "<script>alert('El correo o número de documento ya está registrado.'); window.location.href='" . getUrl('Usuario','Usuario','getCreate',false,'ajax') . "';</script>";
             exit();
         }else{
 
