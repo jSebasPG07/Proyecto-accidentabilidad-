@@ -9,10 +9,11 @@
             </h4>
 
             <span class="text-muted small">
-                Total: <?php echo count($viamal); ?>
+                Total: <?php echo count($viamal); ?> 
             </span>
 
         </div>
+        
 
         <div class="card-body p-0">
 
@@ -30,7 +31,6 @@
                             <th>Estado</th>
                             <th>Tipo daño vía</th>
                             <th>Usuario</th>
-                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -68,8 +68,6 @@
                                 <td><?php echo $vm['tipo_dano_via']; ?></td>
 
                                 <td><?php echo $vm['usuario']; ?></td>
-
-                                <td><?php echo $vm['identificacion']; ?></td>
 
                                 <td>
                                     <a href="<?php echo getUrl("Reportes","SolicitudVME","getUpdate",array("id"=>$vm['id_sol_via_mal'])); ?>"

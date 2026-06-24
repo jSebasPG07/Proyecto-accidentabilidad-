@@ -208,5 +208,15 @@ include_once '../lib/helpers.php';
 
 </div>
 
+<script>
+    setTimeout(
+        function() { //Una función (bloque de código) que va a ejecutarse
+        var alerta = document.querySelector('.alert-success'); // Busca el elemento con clase "alert-success"
+        if(alerta) { // Si lo encuentra
+            alerta.style.display = 'none'; // Lo oculta (display: none = desaparece)
+        }
+    }, 5000); // Espera 5000 milisegundos (5 segundos) para ejecutar
+</script>
+
 </body>
 </html>
