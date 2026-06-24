@@ -274,7 +274,7 @@ class AccesoController
             if ($resultado) {
                 unset($_SESSION['id_usuario_recuperacion']);
                 unset($_SESSION['recuperacion_verificada']);
-                $_SESSION['exito_login'] = 'Contraseña actualizada. Ya puede iniciar sesión.';
+                $_SESSION['exito'] = 'Contraseña actualizada correctamente. Por favor, inicia sesión.';
                 // CORRECCIÓN 4: el controller vive en controller/, igual que login() y logout()
                 redirect('login.php');
             } else {
