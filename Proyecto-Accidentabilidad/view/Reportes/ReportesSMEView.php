@@ -66,7 +66,7 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold">N&uacute;mero de predio</label>
                         <input type="text" name="numero3" class="form-control"required>
-                    </div
+                    </div>
 
     
                     <div class="col-12 col-md-6">
@@ -123,6 +123,9 @@
                 
                     <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
 
+                    <div class="col-12">
+                        <?php include_once "../view/partials/_mapaSelector.php"; ?>
+                    </div>
                     
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4">

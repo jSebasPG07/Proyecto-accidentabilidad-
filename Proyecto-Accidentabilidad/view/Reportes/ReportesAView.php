@@ -48,7 +48,7 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold">N&uacute;mero de predio</label>
                         <input type="text" name="numero3" class="form-control"required>
-                    </div
+                    </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tchoque">Tipo de choque</label>
@@ -90,8 +90,10 @@
                         <textarea class="form-control" id="observaciones" name="observaciones"rows="3" placeholder="Detalles adicionales del accidente..."></textarea>
                     </div>
 
-                    <?php include_once "../view/partials/_mapaSelector.php"; ?>
-                    
+                    <div class="col-12 col-md-6">
+                        <?php include_once "../view/partials/_mapaSelector.php"; ?>
+                    </div>
+
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4"><i class="fas fa-save me-2"></i>Registrar accidente</button>
                         <a href="<?php echo getUrl('Reportes', 'ReportesA', 'getCreate'); ?>" class="btn btn-outline-secondary px-4">Cancelar</a>
