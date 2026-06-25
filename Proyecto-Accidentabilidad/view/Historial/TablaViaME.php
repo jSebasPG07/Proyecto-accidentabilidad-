@@ -63,7 +63,27 @@
                                 <td><?php echo $vm['referencia']; ?></td>
 
                                 <td>
-                                    <span class="badge badge-info px-2 py-1">
+                                    <?php
+                                     $estado = trim($vm['estado']);
+
+                                     if($estado == 'Pendiente'){
+                                        $clase = 'badge badge-warning'; //amarillo
+                                     }
+                                     elseif($estado == 'En revision'){
+                                         $clase = 'badge badge-primary'; //azul 
+                                     }
+                                     elseif($estado == 'En proceso'){
+                                        $clase = 'badge badge-info'; //Azul claro
+                                     }
+                                     elseif($estado == 'Rechazada'){
+                                        $clase = 'badge badge-danger'; // Rojo
+                                     }
+                                     elseif($estado == 'Completada'){
+                                        $clase = 'badge badge-success'; //verde
+                                     }
+                                     
+                                    ?>           
+                                    <span class="<?php echo $clase; ?>">
                                         <?php echo $vm['estado']; ?>
                                     </span>
                                 </td>

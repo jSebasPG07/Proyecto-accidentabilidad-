@@ -1,4 +1,4 @@
-<div class="container-fluid px-4 py-3">
+<div class="container-fluid mt-5">
 
     <!-- Encabezado -->
     <div class="d-flex align-items-center mb-4 gap-3">
@@ -41,4 +41,4 @@
 
 </div>
 
-<div id="resultado" class="mt-4 container-fluid"></div>
+<div id="resultado" class="mt-8"></div>

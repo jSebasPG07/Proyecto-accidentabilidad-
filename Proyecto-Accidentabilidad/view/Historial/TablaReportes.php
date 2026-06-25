@@ -3,6 +3,7 @@
     <div class="card shadow-sm border-0 rounded-lg">
 
         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+
             <h4 class="mb-0 text-primary font-weight-bold">
                 Listado de Accidentes
             </h4>
@@ -54,26 +55,24 @@
 
                                 <td>
                                     <?php
-                                     $estado = trim(strtolower($a['estado']));
+                                     $estado = trim($a['estado']);
 
-                                     if($estado == 'pendiente'){
+                                     if($estado == 'Pendiente'){
                                         $clase = 'badge badge-warning'; //amarillo
                                      }
-                                     elseif($estado == 'en revision'){
+                                     elseif($estado == 'En revision'){
                                          $clase = 'badge badge-primary'; //azul 
                                      }
                                      elseif($estado == 'En proceso'){
-                                        $clase = 'badge badge-secondary';
+                                        $clase = 'badge badge-info'; //Azul claro
+                                     }
+                                     elseif($estado == 'Rechazada'){
+                                        $clase = 'badge badge-danger'; // Rojo
                                      }
                                      elseif($estado == 'Completada'){
                                         $clase = 'badge badge-success'; //verde
                                      }
-                                     elseif($estado == 'rechazada'){
-                                        $clase = 'badge badge-danger'; // Rojo
-                                     }
-                                     else{
-                                         $clase = 'badge badge-secondary';
-                                     }
+                                     
                                     ?>           
                                     <span class="<?php echo $clase; ?>">
                                         <?php echo $a['estado']; ?>
