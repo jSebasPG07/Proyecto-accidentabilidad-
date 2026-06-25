@@ -37,6 +37,7 @@
             //Tambien por que puede tener una letra al final
             if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero1)){
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero1_formato';</script>";
+                exit();
             
             }
 
@@ -45,11 +46,13 @@
             //Tambien por que puede tener una letra al final
             if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero2)){
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero2_formato';</script>";
+                exit();
             }
 
             //Esta validacion permite 3 numeros pero no letra al final
             if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
             echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero3_formato';</script>";
+            exit();
             }
 
         
@@ -57,42 +60,50 @@
             //el strlen cuenta la cantidad de caracteres que hay 
             if (strlen($descripcion) > 200) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_largo';</script>"; 
+                exit();
             }
 
             //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
             //Esta bloquea los caracteres especiales @$,#,%,!
             if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_formato';</script>";   
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_formato';</script>";  
+                exit(); 
             }
 
             //verifica que solo sean letras
             if (!preg_match('/^[A-Za-z\s]+$/', $descripcion)) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_letra';</script>";
+                exit();
             }
             
             if (!preg_match('/^\s*\S+\s+\S+.*$/', $descripcion)) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_palabras';</script>";
+                exit();
             }
 
             //Este campo no puede tener mas de 200 caracteres
             //el strlen cuenta la cantidad de caracteres que hay 
             if (strlen($referencia) > 200) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_largo';</script>"; 
+                exit();
             }
 
             //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
             //Esta bloquea los caracteres especiales @$,#,%,!
             if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_formato';</script>";   
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_formato';</script>";  
+                exit(); 
             }
 
             //verifica que solo sean letras
             if (!preg_match('/^[A-Za-z\s]+$/', $referencia)) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_letra';</script>";
+                exit();
             }
             
             if (!preg_match('/^\s*\S+\s+\S+.*$/', $referencia)) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_palabras';</script>";
+                exit();
             }
 
 
@@ -111,6 +122,7 @@
             //Aqui ps si no es ni png, jepg o jpg lo manda al error 
                 if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
                     echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=tipoimg';</script>";
+                    exit();
                 }
             }
 

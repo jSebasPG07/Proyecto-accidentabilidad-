@@ -20,9 +20,7 @@
                 $datos = pg_fetch_assoc($reporte);
             ?>
 
-            <?php 
-                $datos = pg_fetch_assoc($reporte);
-            ?>
+            
 
             <form action="<?php echo getUrl('Reportes', 'ReportesRME', 'postCreate'); ?>"
                   method="post" enctype="multipart/form-data">
