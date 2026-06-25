@@ -209,7 +209,7 @@ include_once '../lib/helpers.php';
 </div>
 
 <script>
-    setTimeout(
+    setTimeout( // Espera y luego ejecuta
         function() { //Una función (bloque de código) que va a ejecutarse
         var alerta = document.querySelector('.alert-success'); // Busca el elemento con clase "alert-success"
         if(alerta) { // Si lo encuentra
