@@ -144,6 +144,7 @@
                        ns.descripcion,
                        ns.imagen_url, 
                        ns.direccion, 
+                       ns.referencia,
                        es.nombre AS estado, 
                        tp.nombre_senal AS tipo_senal, 
                        ori.nombre AS orientacion, 

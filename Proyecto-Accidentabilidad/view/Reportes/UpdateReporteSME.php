@@ -1,6 +1,6 @@
 <div class="container-fluid px-4 py-3">
 
-    <!-- Encabezado -->
+    
     <div class="d-flex align-items-center mb-4 gap-3">
         <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
              style="width:54px;height:54px;flex-shrink:0;">
@@ -12,48 +12,52 @@
         </div>
     </div>
 
-    <!-- Card -->
+    
     <div class="card border shadow-sm">
         <div class="card-body p-4">
+
             <?php 
                 $datos = pg_fetch_assoc($reporte);
             ?>
 
-            <form action="<?php echo getUrl('Reportes', 'ReportesSME', 'postUpdate');?>"
+            <form action="<?php echo getUrl('Reportes', 'ReportesSME', 'postCreate');?>"
                   method="post" enctype="multipart/form-data">
-
-                  <input type="hidden" name="id_sol_mal" value="<?php echo $datos['id_sol_mal']; ?>">
 
                 <div class="row g-3">
 
-                    <!-- Orientación -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="orientacion">Orientaci&oacute;n</label>
                         <p class="form-control"><?php echo $datos['orientacion'] ?></p>
                     </div>
 
-                    <!-- Dirección -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="direccion">Direcci&oacute;n</label>
                         <p class="form-control"><?php echo $datos['direccion'] ?></p>
                     </div>
 
-                    <!-- Tipo señal -->
+    
+                    <div class="col-12 col-md-6">
+                        <label>Referencia del lugar</label>
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p>
+                    </div>
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tsenal">Tipo de se&ntilde;al</label>
                         <p class="form-control"><?php echo $datos['tipo_senal'] ?></p>
                     </div>
 
-                    <!-- Tipo daño -->
+                    
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="tdano">Tipo de da&ntilde;o</label>
+                        <label class="form-label fw-semibold" for="idtipodanoreductor">Tipo de da&ntilde;o</label>
                         <p class="form-control"><?php echo $datos['tipo_dano'] ?></p>
                     </div>
 
-                    <!-- Imagen -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
-                        <div>
+                        <<div>
                             <?php if($datos['imagen_url'] != ""){ ?>
                                 <img src="<?php echo $datos['imagen_url']; ?>" width="120">
                             <?php } else { ?>
@@ -62,14 +66,9 @@
                         </div>
                     </div>
 
-                    <!-- Descripción -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['descripcion'] ?></p>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="estado">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
                             <?php while ($est = pg_fetch_assoc($estados)) { ?>
             
@@ -82,15 +81,19 @@
 
                             <?php } ?>
                         </select>
-                   </div>
+                    </div>
 
-                    <!-- Botones -->
+                
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+
+                    
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4">
                             <i class="fas fa-paper-plane me-2"></i>Enviar solicitud</button>
-                    </div>
 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                        <a href="<?php echo getUrl('Reportes', 'ReportesSME', 'getCreate');?>"
+                           class="btn btn-outline-secondary px-4">Cancelar</a>
+                    </div>
 
                 </div>
 

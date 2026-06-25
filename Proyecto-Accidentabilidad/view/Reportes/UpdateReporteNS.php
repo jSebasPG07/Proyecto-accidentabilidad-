@@ -39,6 +39,12 @@
                         <p class="form-control"><?php echo $datos['direccion'] ?></p>
                     </div>
 
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Referencia del lugar</label>
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p>
+                    </div>
+
+
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tsenal">Tipo de se&ntilde;al</label>
