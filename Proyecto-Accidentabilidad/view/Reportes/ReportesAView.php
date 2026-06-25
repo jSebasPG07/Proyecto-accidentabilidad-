@@ -90,7 +90,7 @@
                         <textarea class="form-control" id="observaciones" name="observaciones"rows="3" placeholder="Detalles adicionales del accidente..."></textarea>
                     </div>
 
-                    
+                    <?php include_once "../view/partials/_mapaSelector.php"; ?>
                     
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4"><i class="fas fa-save me-2"></i>Registrar accidente</button>
