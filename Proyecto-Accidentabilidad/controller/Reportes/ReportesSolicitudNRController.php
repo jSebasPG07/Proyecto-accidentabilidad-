@@ -127,8 +127,10 @@ class ReportesSolicitudNRController {
 
             if(move_uploaded_file($archivo, $ruta)){
 
-                $sql = "INSERT INTO sol_nuevo_reductor(fecha_nuevo_reductor, descripcion, referencia, imagen_url, direccion, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario, coordenadas)
-                VALUES('$fechanreductor','$descripcion','$ruta','$direccion','$referencia','$idEstado','$idTipoReductor','$idTipoDanoReductor','$id_usuario',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
+                $sql = "INSERT INTO sol_nuevo_reductor(
+                fecha_nuevo_reductor,descripcion,referencia,imagen_url,direccion,id_estado,id_tipo_reductor,id_tipo_dano_reductor,id_usuario,coordenadas)
+                VALUES
+                ('$fechanreductor','$descripcion','$referencia','$ruta','$direccion','$idEstado','$idTipoReductor','$idTipoDanoReductor','$id_usuario',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 

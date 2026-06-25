@@ -28,6 +28,7 @@
                             <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Dirección</th>
+                            <th>Referencia</th>
                             <th>Estado</th>
                             <th>Tipo daño vía</th>
                             <th>Usuario</th>
@@ -58,6 +59,8 @@
                                 </td>
 
                                 <td><?php echo $vm['direccion']; ?></td>
+
+                                <td><?php echo $vm['referencia']; ?></td>
 
                                 <td>
                                     <span class="badge badge-info px-2 py-1">

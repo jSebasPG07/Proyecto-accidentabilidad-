@@ -27,6 +27,7 @@
                             <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Dirección</th>
+                            <th>Referencia</th>
                             <th>Estado</th>
                             <th>Tipo reductor</th>
                             <th>Tipo daño</th>
@@ -59,6 +60,8 @@
                                 </td>
 
                                 <td><?php echo $rn['direccion']; ?></td>
+
+                                <td><?php echo $rn['referencia']; ?></td>
 
                                 <td>
                                     <span class="badge badge-info px-2 py-1">
