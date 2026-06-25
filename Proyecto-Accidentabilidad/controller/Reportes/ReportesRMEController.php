@@ -33,8 +33,8 @@ class ReportesRMEController {
         $id_usuario = $_POST['id'];
 
         $id_estado = 3;
-        $coordX = floatval($_POST['coord_x'] ?? 0);
-        $coordY = floatval($_POST['coord_y'] ?? 0);
+        $coordX = floatval(isset($_POST['coord_x']) ? $_POST['coord_x'] : 0);
+        $coordY = floatval(isset($_POST['coord_y']) ? $_POST['coord_y'] : 0);
             //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
             // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
             if (!preg_match('/^[0-9]+[A-Za-z]?$/', $numero1)) {

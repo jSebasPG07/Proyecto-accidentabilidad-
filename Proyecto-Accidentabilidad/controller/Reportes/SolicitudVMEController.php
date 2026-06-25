@@ -27,8 +27,8 @@ class SolicitudVMEController {
 
         $id_estado = 3;
 
-        $coordX = floatval($_POST['coord_x'] ?? 0);
-        $coordY = floatval($_POST['coord_y'] ?? 0);
+        $coordX = floatval(isset($_POST['coord_x']) ? $_POST['coord_x'] : 0);
+        $coordY = floatval(isset($_POST['coord_y']) ? $_POST['coord_y'] : 0);
         
 
 
