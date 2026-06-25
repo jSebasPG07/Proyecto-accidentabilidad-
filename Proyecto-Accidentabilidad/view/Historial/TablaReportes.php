@@ -53,7 +53,29 @@
                                 <td><?php echo $a['direccion']; ?></td>
 
                                 <td>
-                                    <span class="badge badge-info px-2 py-1">
+                                    <?php
+                                     $estado = trim(strtolower($a['estado']));
+
+                                     if($estado == 'pendiente'){
+                                        $clase = 'badge badge-warning'; //amarillo
+                                     }
+                                     elseif($estado == 'en revision'){
+                                         $clase = 'badge badge-primary'; //azul 
+                                     }
+                                     elseif($estado == 'En proceso'){
+                                        $clase = 'badge badge-secondary';
+                                     }
+                                     elseif($estado == 'Completada'){
+                                        $clase = 'badge badge-success'; //verde
+                                     }
+                                     elseif($estado == 'rechazada'){
+                                        $clase = 'badge badge-danger'; // Rojo
+                                     }
+                                     else{
+                                         $clase = 'badge badge-secondary';
+                                     }
+                                    ?>           
+                                    <span class="<?php echo $clase; ?>">
                                         <?php echo $a['estado']; ?>
                                     </span>
                                 </td>
