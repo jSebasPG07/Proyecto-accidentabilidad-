@@ -93,17 +93,17 @@
                         </div>
                     </div>
 
-                    <!-- Descripción -->
+                    
                     <div class="col-12">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="4"
                                   placeholder="Describa el estado del reductor, da&ntilde;os visibles o riesgos..." required></textarea>
                     </div>
 
-                    <!-- Hidden -->
+                    
                     <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
 
-                    <!-- Botones -->
+                    
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4">
                             <i class="fas fa-paper-plane me-2"></i>Enviar solicitud</button>

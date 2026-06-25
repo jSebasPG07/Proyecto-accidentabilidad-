@@ -20,10 +20,11 @@
             $orientacion = $_POST['orientacion'];
             $descripcion = $_POST['descripcion'];
             $tipo_via = $_POST['tipo_via'];
-            $numero1 = $_POST['numero1'];
+            $numero1 = strtoupper($_POST['numero1']);
             $numero2 = $_POST['numero2'];
-            $complemento = $_POST['complemento'];
-            $direccion = "$tipo_via $numero1 # $numero2 $complemento";
+            $numero3 = $_POST['numero3'];
+            $referencia = $_POST['referencia'];
+            $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
             $tsenal = $_POST['tsenal'];
             $tdano = $_POST['tdano'];
             $id_usuario = $_POST['id'];
@@ -33,20 +34,29 @@
             $coordX = floatval(isset($_POST['coord_x']) ? $_POST['coord_x'] : 0);
             $coordY = floatval(isset($_POST['coord_y']) ? $_POST['coord_y'] : 0);
 
-            //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
-            // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
-            if (!preg_match('/^[0-9]+[A-Za-z]?$/', $numero1)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero1';</script>";
+            //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
+            //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
+            //Tambien por que puede tener una letra al final
+            if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero1)){
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero1_formato';</script>";
+            
             }
 
-            //Esta validacion puede ser un numero o un numero con el guion
-            //No va permitir un guion y desoues el numero osea asi (-30)
-            if (!preg_match('/^[0-9]+[A-Za-z]?(-[0-9]+)?$/', $numero2)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero2';</script>"; 
+            //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
+            //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
+            //Tambien por que puede tener una letra al final
+            if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero2)){
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero2_formato';</script>";
+            }
+
+            //Esta validacion permite 3 numeros pero no letra al final
+            if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero3_formato';</script>";
             }
 
         
             //Este campo no puede tener mas de 200 caracteres
+            //el strlen cuenta la cantidad de caracteres que hay 
             if (strlen($descripcion) > 200) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=desc_largo';</script>"; 
             }
@@ -57,9 +67,34 @@
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=desc_formato';</script>";   
             }
 
-            //verifica que tenga al menos una letra osea que si ponen 8888 muestra el error
-            if (!preg_match('/[A-Za-z]/', $descripcion)) {
+            //verifica que solo sean letras
+            if (!preg_match('/^[A-Za-z\s]+$/', $descripcion)) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=desc_letra';</script>";
+            }
+            
+            if (!preg_match('/^\s*\S+\s+\S+.*$/', $descripcion)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=desc_palabras';</script>";
+            }
+
+            //Este campo no puede tener mas de 200 caracteres
+            //el strlen cuenta la cantidad de caracteres que hay 
+            if (strlen($referencia) > 200) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_largo';</script>"; 
+            }
+
+            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
+            //Esta bloquea los caracteres especiales @$,#,%,!
+            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $referencia)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_formato';</script>";   
+            }
+
+            //verifica que solo sean letras
+            if (!preg_match('/^[A-Za-z\s]+$/', $referencia)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_letra';</script>";
+            }
+            
+            if (!preg_match('/^\s*\S+\s+\S+.*$/', $referencia)) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_palabras';</script>";
             }
 
             $img = $_FILES['imagen']['name'];
@@ -75,15 +110,15 @@
 
             //Aqui ps si no es ni png, jepg o jpg lo manda al error 
                 if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
-                    echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=tipoimg';</script>";
+                    echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=tipoimg';</script>";
                 }
             }
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_senal_mal_estado 
-                (fecha_senal_mal_estado,descripcion, imagen_url, direccion, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario)
+                (fecha_senal_mal_estado,descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario, coordenadas)
                 VALUES 
-                ('$fechaaccidente','$descripcion','$ruta','$direccion','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 
+                ('$fechaaccidente','$descripcion','$ruta','$direccion','$referencia','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 
 
                 $ejecutar = $obj->insert($sql);
 

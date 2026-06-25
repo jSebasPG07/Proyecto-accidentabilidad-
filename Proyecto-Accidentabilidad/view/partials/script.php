@@ -32,11 +32,11 @@
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero1_formato'){ ?>
-      swal("Error", "El numero de vía debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 1A, 25, 80B", "error");
+      swal("Error", "El numero de via debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 1A, 25, 80B", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero2_formato'){ ?>
-      swal("Error", "El numero después del # debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 49, 80A", "error");
+      swal("Error", "El numero despues del # debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 49, 80A", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero3_formato'){ ?>
@@ -69,6 +69,10 @@
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_letra'){ ?>
       swal("Error", "Las descripciones deben contener solo letras", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'desc_palabras'){ ?>
+      swal("Error", "Las descripciones deben contener al menos 2 palabras", "error");
     <?php } ?>
 
 

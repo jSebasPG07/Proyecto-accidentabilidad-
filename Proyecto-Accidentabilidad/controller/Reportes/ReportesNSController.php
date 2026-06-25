@@ -36,7 +36,7 @@
             //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
             //Tambien por que puede tener una letra al final
             if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero1)){
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero1_formato';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero1_formato';</script>";
             
             }
 
@@ -44,55 +44,55 @@
             //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
             //Tambien por que puede tener una letra al final
             if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero2)){
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero2_formato';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero2_formato';</script>";
             }
 
             //Esta validacion permite 3 numeros pero no letra al final
             if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
-            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero3_formato';</script>";
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=numero3_formato';</script>";
             }
 
         
             //Este campo no puede tener mas de 200 caracteres
             //el strlen cuenta la cantidad de caracteres que hay 
             if (strlen($descripcion) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=desc_largo';</script>"; 
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_largo';</script>"; 
             }
 
             //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
             //Esta bloquea los caracteres especiales @$,#,%,!
             if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=desc_formato';</script>";   
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_formato';</script>";   
             }
 
             //verifica que solo sean letras
             if (!preg_match('/^[A-Za-z\s]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=desc_letra';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_letra';</script>";
             }
             
             if (!preg_match('/^\s*\S+\s+\S+.*$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=desc_palabras';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_palabras';</script>";
             }
 
             //Este campo no puede tener mas de 200 caracteres
             //el strlen cuenta la cantidad de caracteres que hay 
             if (strlen($referencia) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ref_largo';</script>"; 
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_largo';</script>"; 
             }
 
             //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
             //Esta bloquea los caracteres especiales @$,#,%,!
             if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ref_formato';</script>";   
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_formato';</script>";   
             }
 
             //verifica que solo sean letras
             if (!preg_match('/^[A-Za-z\s]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ref_letra';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_letra';</script>";
             }
             
             if (!preg_match('/^\s*\S+\s+\S+.*$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ref_palabras';</script>";
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_palabras';</script>";
             }
 
 
@@ -116,7 +116,7 @@
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_nueva_senal 
-                (fecha_nueva_senal, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_senal, id_orientacion, id_usuario)
+                (fecha_nueva_senal, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_senal, id_orientacion, id_usuario, coordenadas)
                 VALUES 
 
                 ('$fechanueva','$descripcion','$ruta','$direccion','$referencia','$id_estado','$tsenal','$orientacion','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 

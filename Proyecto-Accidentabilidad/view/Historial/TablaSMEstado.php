@@ -27,6 +27,7 @@
                             <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Dirección</th>
+                            <th>Referencia</th>
                             <th>Estado</th>
                             <th>Tipo señal</th>
                             <th>Tipo daño</th>
@@ -60,6 +61,8 @@
                                 </td>
 
                                 <td><?php echo $sme['direccion']; ?></td>
+
+                                <td><?php echo $sme['referencia']; ?></td>
 
                                 <td>
                                     <span class="badge badge-warning px-2 py-1">

@@ -94,7 +94,7 @@ class ReportesAController {
         if(move_uploaded_file($archivo, $ruta)){
 
             $sql = "INSERT INTO reporte_accidente 
-            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
+            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario, coordenadas) 
             VALUES 
             ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 

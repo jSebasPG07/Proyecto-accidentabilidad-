@@ -61,7 +61,7 @@
 
                                 <td><?php echo $ns['direccion']; ?></td>
 
-                                <td><?php echo $ns['reerencia']; ?></td>
+                                <td><?php echo $ns['referencia']; ?></td>
 
                                 <td>
                                     <span class="badge badge-info px-2 py-1">
