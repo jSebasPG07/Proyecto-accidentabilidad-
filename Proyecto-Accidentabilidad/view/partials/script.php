@@ -31,12 +31,16 @@
       swal("Error", "No se pudo subir la imagen", "error");
     <?php } ?>
 
-    <?php if($_GET['msg'] == 'numero1'){ ?>
-      swal("Error", "El numero debe ser tipo numero o numeo y letra (27 o 27b)", "error");
+    <?php if($_GET['msg'] == 'numero1_formato'){ ?>
+      swal("Error", "El numero de vía debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 1A, 25, 80B", "error");
     <?php } ?>
 
-    <?php if($_GET['msg'] == 'numero2'){ ?>
-      swal("Error", "El campo # debe ser numero o numero y letra o numero, letra - numero (27 ,27B, 27-36,27D-36 ,10A-5)", "error");
+    <?php if($_GET['msg'] == 'numero2_formato'){ ?>
+      swal("Error", "El numero después del # debe contener entre 1 y 3 dígitos y opcionalmente una letra al final. Ej: 49, 80A", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'numero3_formato'){ ?>
+      swal("Error", "El numero del predio debe contener entre 1 y 3 dígitos", "error");
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_largo'){ ?>
@@ -48,7 +52,11 @@
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_letra'){ ?>
-      swal("Error", "Las observaciones deben contener al menos una letra", "error");
+      swal("Error", "Las observaciones deben contener solo letras", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'obs_palabras'){ ?>
+      swal("Error", "Las observaciones deben contener al menos 2 palabras", "error");
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_largo'){ ?>
@@ -60,7 +68,24 @@
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_letra'){ ?>
-      swal("Error", "Las descripciones deben contener al menos una letra", "error");
+      swal("Error", "Las descripciones deben contener solo letras", "error");
+    <?php } ?>
+
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'ref_largo'){ ?>
+      swal("Error", "El lugar de referencia no pueden superar los 200 caracteres", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'ref_formato'){ ?>
+      swal("Error", "El lugar de referencia tienen caracteres no validos", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'ref_letra'){ ?>
+      swal("Error", "El lugar de referencia deben contener solo letras", "error");
+    <?php } ?>
+
+    <?php if($_GET['msg'] == 'ref_palabras'){ ?>
+      swal("Error", "El lugar de referencia deben contener al menos 2 palabras", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'tipoimg'){ ?>

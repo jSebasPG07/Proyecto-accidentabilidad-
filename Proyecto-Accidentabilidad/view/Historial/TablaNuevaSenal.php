@@ -27,6 +27,7 @@
                             <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Dirección</th>
+                            <th>Lugar de referencia</th>
                             <th>Estado</th>
                             <th>Tipo señal</th>
                             <th>Orientación</th>
@@ -59,6 +60,8 @@
                                 </td>
 
                                 <td><?php echo $ns['direccion']; ?></td>
+
+                                <td><?php echo $ns['reerencia']; ?></td>
 
                                 <td>
                                     <span class="badge badge-info px-2 py-1">

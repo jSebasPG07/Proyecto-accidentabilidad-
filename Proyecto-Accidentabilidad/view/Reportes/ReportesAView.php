@@ -21,44 +21,35 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tipovia">Tipo de via</label>
-                        <select name="tipo_via" class="form-control" required>
+                        <select name="tipo_via" class="form-control" required>                 
                             <option value="Calle">Calle</option>
+                            <option value="Carrera">Carrera</option>
+                            <option value="Avenida">Avenida</option>
+                            <option value="Avenida Carrera">Avenida Carrera</option>
+                            <option value="Avenida Calle">Avenida Calle</option>
+                            <option value="Diagonal">Diagonal</option>
+                            <option value="Transversal">Transversal</option>
+                            <option value="Circular">Circular</option>
                         </select>
                     </div>
 
     
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="numero">N&uacute;mero</label>
+                        <label class="form-label fw-semibold" for="numero1">N&uacute;mero de via</label>
                         <input type="text" name="numero1" class="form-control" required>
                     </div>
 
     
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="caracter">#</label>
+                        <label class="form-label fw-semibold" for="caracter">N&uacute;mero despues de #</label>
                         <input type="text" name="numero2" class="form-control" required>
                     </div>
 
-    
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="complemento">Complemento</label>
-                        <select name="complemento" class="form-control" required>
-                            <option value="">Seleccione...</option>
-                            <option value="Casa">Casa</option>
-                            <option value="Apto">Apto</option>
-                            <option value="Apartamento">Apartamento</option>
-                            <option value="Torre">Torre</option>
-                            <option value="Interior">Interior</option>
-                            <option value="Bloque">Bloque</option>
-                            <option value="Local">Local</option>
-                            <option value="Oficina">Oficina</option>
-                            <option value="Piso">Piso</option>
-                            <option value="Edificio">Edificio</option>
-                            <option value="Unidad">Unidad</option>
-                            <option value="Manzana">Manzana</option>
-                        </select>
-                    </div>
+                        <label class="form-label fw-semibold">N&uacute;mero de predio</label>
+                        <input type="text" name="numero3" class="form-control"required>
+                    </div
 
-                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tchoque">Tipo de choque</label>
                         <select name="tchoque" id="tchoque" class="form-control" required>
@@ -84,7 +75,7 @@
                     <div class="col-12 col-md-6">
                             <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
-                        <div class="form-text">Opcional. Formatos: JPG, PNG.</div>
+                            <div class="form-text">Opcional. Formatos: JPG, PNG.</div>
 
                     </div>
 
