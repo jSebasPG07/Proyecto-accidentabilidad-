@@ -28,6 +28,8 @@
             $id_estado = 3;
 
             $id_usuario = $_POST['id'];
+            $coordX = floatval($_POST['coord_x'] ?? 0);
+            $coordY = floatval($_POST['coord_y'] ?? 0);
 
             //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
             // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
@@ -80,8 +82,7 @@
                 $sql = "INSERT INTO sol_nueva_senal 
                 (fecha_nueva_senal, descripcion, imagen_url, direccion, id_estado, id_tipo_senal, id_orientacion, id_usuario)
                 VALUES 
-                ('$fechanueva','$descripcion','$ruta','$direccion','$id_estado','$tsenal','$orientacion', '$id_usuario')"; 
-
+                ('$fechanueva','$descripcion','$ruta','$direccion','$id_estado','$tsenal','$orientacion','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 
                 $ejecutar = $obj->insert($sql);
 
                 if($ejecutar){

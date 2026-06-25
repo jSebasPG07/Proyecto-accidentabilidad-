@@ -38,6 +38,8 @@ class ReportesSolicitudNRController {
 
             $idEstado = 3;
             $id_usuario = $_POST['id'];
+            $coordX = floatval($_POST['coord_x'] ?? 0);
+            $coordY = floatval($_POST['coord_y'] ?? 0);
 
             //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
             // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
@@ -90,28 +92,8 @@ class ReportesSolicitudNRController {
 
             if(move_uploaded_file($archivo, $ruta)){
 
-                $sql = "INSERT INTO sol_nuevo_reductor
-                (   
-                    fecha_nuevo_reductor,
-                    descripcion,
-                    imagen_url,
-                    direccion,
-                    id_estado,
-                    id_tipo_reductor,
-                    id_tipo_dano_reductor,
-                    id_usuario
-                )
-                VALUES
-                (   
-                    '$fechanreductor',
-                    '$descripcion',
-                    '$ruta',
-                    '$direccion',
-                    '$idEstado',
-                    '$idTipoReductor',
-                    '$idTipoDanoReductor',
-                    '$id_usuario'
-                )";
+                $sql = "INSERT INTO sol_nuevo_reductor(fecha_nuevo_reductor, descripcion, imagen_url, direccion, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario, coordenadas)
+                VALUES('$fechanreductor','$descripcion','$ruta','$direccion','$idEstado','$idTipoReductor','$idTipoDanoReductor','$id_usuario',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 

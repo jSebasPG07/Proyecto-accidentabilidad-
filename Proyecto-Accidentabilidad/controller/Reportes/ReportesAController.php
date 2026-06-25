@@ -27,6 +27,8 @@ class ReportesAController {
         $id_estado = 3;
 
         $id_usuario = $_POST['id'];
+        $coordX = floatval($_POST['coord_x'] ?? 0);
+        $coordY = floatval($_POST['coord_y'] ?? 0);
 
         //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
         // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
@@ -79,10 +81,11 @@ class ReportesAController {
         if(move_uploaded_file($archivo, $ruta)){
 
             $sql = "INSERT INTO reporte_accidente 
-            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
+            (fecha_accidente, nomenclatura, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario) 
             VALUES 
-            ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario')";
+            ('$fechaaccidente', '$nomenclatura', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
+            $ejecutar = $obj->insert($sql);
             $ejecutar = $obj->insert($sql);
 
             if($ejecutar){

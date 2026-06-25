@@ -33,7 +33,8 @@ class ReportesRMEController {
         $id_usuario = $_POST['id'];
 
         $id_estado = 3;
-            
+        $coordX = floatval($_POST['coord_x'] ?? 0);
+        $coordY = floatval($_POST['coord_y'] ?? 0);
             //Esta validacion es por que el numero debe ser asi primero numero despues una letra opcional
             // no va permitir letra primero tampoco si se pone un numero espacio y despues la letra 
             if (!preg_match('/^[0-9]+[A-Za-z]?$/', $numero1)) {
@@ -87,7 +88,7 @@ class ReportesRMEController {
                 $sql = "INSERT INTO sol_reductor_mal_estado 
                             (fecha_reductor_mal_estado, descripcion, imagen_url, direccion, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario) 
                         VALUES 
-                            ('$fecharme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipored', '$idtipodanoreductor', '$id_usuario')";
+                            ('$fecharme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipored', '$idtipodanoreductor', '$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 

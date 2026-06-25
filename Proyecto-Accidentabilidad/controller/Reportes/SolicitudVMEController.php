@@ -26,6 +26,9 @@ class SolicitudVMEController {
         $id_usuario = $_POST['id'];
 
         $id_estado = 3;
+
+        $coordX = floatval($_POST['coord_x'] ?? 0);
+        $coordY = floatval($_POST['coord_y'] ?? 0);
         
 
 
@@ -81,7 +84,7 @@ class SolicitudVMEController {
                 $sql = "INSERT INTO sol_via_mal_estado 
                             (fecha_via_mal_estado, descripcion, imagen_url, direccion, id_estado, id_tipo_dano_via, id_usuario) 
                         VALUES 
-                            ('$fechavme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia', '$id_usuario')";
+                            ('$fechavme','$descripcion', '$ruta', '$direccion', '$id_estado', '$idtipodanovia', '$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 
