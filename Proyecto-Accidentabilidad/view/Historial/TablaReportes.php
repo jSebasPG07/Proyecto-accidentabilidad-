@@ -35,7 +35,6 @@
 
                             <tr>
 
-                                
                                 <td><?php echo $a['fecha_accidente']; ?></td>
                                 
                                 <td><?php echo $a['direccion']; ?></td>
