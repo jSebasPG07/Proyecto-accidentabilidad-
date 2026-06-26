@@ -1,65 +1,99 @@
-<div class="container-fluid px-4 py-3">
+<div class="container-fluid mt-3">
 
+    <!-- Encabezado -->
     <div class="d-flex align-items-center mb-4 gap-3">
-        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:54px;height:54px;flex-shrink:0;">
-            <i class="fas fa-clipboard-list" style="font-size:1.4rem;color:#fff;"></i>
+
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
+            <i class="fas fa-comments text-white" style="font-size:1.4rem;"></i>
         </div>
+
         <div>
-            <h4 class="mb-0 fw-bold">Registro de pqrsf</h4>
             
+            <h4 class="mb-0 fw-bold">Registro de PQRSF</h4>
+            <small class="text-muted">Registra una petici&oacute;n, queja, reclamo, sugerencia o felicitaci&oacute;n.</small>
+
         </div>
+
     </div>
 
-    <div class="card border shadow-sm">
+    <div class="card shadow-sm border-0 rounded-lg">
+
         <div class="card-body p-4">
 
-            <form action="<?php echo getUrl("PQRSF","PqrsfC", "postCreate"); ?>"
-                  method="post" enctype="multipart/form-data">
+            <form action="<?php echo getUrl("PQRSF","PqrsfC","postCreate"); ?>"
+                  method="post"
+                  enctype="multipart/form-data">
 
-                <div class="row g-3">
+                <div class="row">
 
-                    
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="tpqrsf">Selecciona el Tipo de pqrsf que desea hacer</label>
-                        <select name="tpqrsf" id="tpqrsf" class="form-control" required>
-                         <?php
-                            while ($pqrsf = pg_fetch_assoc($tpqrsff)) {
-                                echo "<option value='" . $pqrsf['id_tipo_pqrsf'] . "'>" . $pqrsf['nombre'] . "</option>";
+                    <!-- Tipo -->
+                    <div class="col-md-7 mb-4">
+
+                        <label class="form-label fw-bold">Tipo de PQRSF</label>
+
+                        <select
+                            name="tpqrsf"
+                            id="tpqrsf"
+                            class="form-control"
+                            required>
+
+                            <?php
+                            while($pqrsf = pg_fetch_assoc($tpqrsff)){
+                                echo "<option value='".$pqrsf['id_tipo_pqrsf']."'>".$pqrsf['nombre']."</option>";
                             }
                             ?>
-                       </select>
-                    </div>
-                    
-                    <div class="col-12 col-md-6">
-                        <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
-                    </div>
-                    
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="mensaje">mensaje</label>
-                        <textarea class="form-control" id="mensaje" name="mensaje"rows="3" required></textarea>
+
+                        </select>
+
                     </div>
 
-                    <div class="col-12 d-flex gap-2 pt-2">
-                        <button type="submit" class="btn btn-primary px-4"><i class="fas fa-save me-2"></i>Registrar PQRSF</button>
-                        <a href="<?php echo getUrl("PQRSF","PqrsfC", "getCreate"); ?>" class="btn btn-outline-secondary px-4">Cancelar</a>
+                    <!-- Mensaje -->
+                    <div class="col-md-7 mb-4">
+
+                        <label class="form-label fw-bold">Mensaje</label>
+
+                        <textarea
+                            class="form-control"
+                            id="mensaje"
+                            name="mensaje"
+                            rows="5"
+                            placeholder="Escriba aqu&iacute; el detalle de su solicitud..."
+                            required></textarea>
+
                     </div>
 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                    <input type="hidden"
+                           name="id"
+                           value="<?php echo $_SESSION['id']; ?>">
+
+                    <!-- Botones -->
+                    <div class="col-12">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Registrar PQRSF
+
+                        </button>
+
+                        <a
+                            href="<?php echo getUrl("PQRSF","PqrsfC","getCreate"); ?>"
+                            class="btn btn-outline-secondary ms-2">
+                            Cancelar
+
+                        </a>
+
+                    </div>
 
                 </div>
+
             </form>
 
         </div>
+
     </div>
+
 </div>
-
-
-
-
-
-
-
-
-
-
-

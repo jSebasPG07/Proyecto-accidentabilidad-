@@ -65,13 +65,15 @@
                                     </span>
                                 </td>
 
-                                <td style="max-width:250px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:220px;">
-                                        <?php echo $p['respuesta']; ?>
+                                <td style="max-width:220px;">
+                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
+                                        <?php echo $p['respuesta'] != "" ? $p['respuesta'] : "<span class='text-muted'>Sin respuesta</span>"; ?>
                                     </span>
                                 </td>
 
-                                <td><?php echo $p['fecha_respuesta']; ?></td>
+                                <td>
+                                    <?php echo ($p['fecha_respuesta'] != "") ? $p['fecha_respuesta'] : "<span class='text-muted'>Sin fecha</span>";?>
+                                </td>
 
                                 <td>
                                     <?php

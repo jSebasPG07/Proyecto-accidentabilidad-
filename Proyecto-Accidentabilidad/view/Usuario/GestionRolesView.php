@@ -1,52 +1,95 @@
-<div class="mt-3">
-    <h3 class="display-3">Gesti&oacute;n de Roles</h3>
-</div>
+<div class="container-fluid mt-3">
 
-<a class="btn btn-primary mb-3"
-   href="<?php echo getUrl("Usuario", "GestionRoles", "getCreate"); ?>">
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
+            <i class="fas fa-user-shield" style="font-size:1.4rem;color:#fff;"></i>
+        </div>
 
-    Crear Rol
+        <div>
+            <h4 class="mb-0 fw-bold">Gesti&oacute;n de Roles</h4>
+            <small class="text-muted">Administra los roles y permisos del sistema.</small>
+        </div>
+    </div>
 
-</a>
+    <div class="card shadow-sm border-0 rounded-lg">
 
-<table class="table table-bordered table-hover mt-4">
+        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
 
-    <thead>
+            <h4 class="mb-0 text-primary font-weight-bold">Listado de Roles</h4>
 
-        <tr>
-            <th>ID</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-        </tr>
+            <div class="d-flex align-items-center gap-3">
 
-    </thead>
+                <span class="text-muted small">Total: <?php echo pg_num_rows($roles); ?></span>
 
-    <tbody>
-
-    <?php while($rol = pg_fetch_assoc($roles)){ ?>
-
-        <tr>
-
-            <td><?php echo $rol['id_rol']; ?></td>
-            <td><?php echo $rol['nombre_rol']; ?></td>
-
-            <td>
-
-                <a class="btn btn-warning btn-sm"
-                   href="<?php echo getUrl( "Usuario", "GestionRoles", "getEdit", array("id"=>$rol['id_rol']) ); ?>">
-
-                    Editar permisos
-
+                <a class="btn btn-primary"
+                   href="<?php echo getUrl("Usuario", "GestionRoles", "getCreate"); ?>">
+                    <i class="fas fa-plus me-2"></i>
+                    Crear Rol
                 </a>
 
-            </td>
+            </div>
 
-        </tr>
+        </div>
 
-    <?php } ?>
+        <div class="card-body p-0">
 
-    </tbody>
+            <div class="table-responsive">
 
-</table>
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="thead-dark">
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <?php while($rol = pg_fetch_assoc($roles)){ ?>
+
+                            <tr>
+
+                                <td><?php echo $rol['id_rol']; ?></td>
+
+                                <td><?php echo $rol['nombre_rol']; ?></td>
+
+                                <td>
+
+                                    <a class="btn btn-sm btn-primary"
+                                       href="<?php echo getUrl(
+                                            "Usuario",
+                                            "GestionRoles",
+                                            "getEdit",
+                                            array("id"=>$rol['id_rol'])
+                                       ); ?>">
+
+                                        <i class="fas fa-user-lock me-1"></i>
+                                        Editar Permisos
+
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <?php include_once "../view/partials/script.php"; ?>

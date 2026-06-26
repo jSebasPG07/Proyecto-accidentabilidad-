@@ -2,9 +2,9 @@
 
     
     <div class="d-flex align-items-center mb-4 gap-3">
-        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+        <div class="bg-danger rounded-3 d-flex align-items-center justify-content-center"
              style="width:54px;height:54px;flex-shrink:0;">
-            <i class="fas fa-traffic-light" style="font-size:1.4rem;color:#fff;"></i>
+            <i class="fas fa-map-signs" style="font-size:1.4rem;color:#fff;"></i>
         </div>
         <div>
             <h4 class="mb-0 fw-bold">Solicitud Se&ntilde;al en Mal Estado</h4>

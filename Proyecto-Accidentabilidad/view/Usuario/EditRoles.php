@@ -1,16 +1,18 @@
 <?php
-    // Agrupar los permisos por módulo para pintarlos organizados
-    // $modulosPermisos viene como resource de pg_query, lo recorremos UNA vez aquí
+    // Agrupar los permisos por m&oacute;dulo para pintarlos organizados
     $modulosAgrupados = array();
 
     while ($fila = pg_fetch_assoc($modulosPermisos)) {
+
         $idModulo = $fila['id_modulo'];
 
         if (!isset($modulosAgrupados[$idModulo])) {
+
             $modulosAgrupados[$idModulo] = array(
                 'nombre_modulo' => $fila['nombre_modulo'],
                 'permisos' => array()
             );
+
         }
 
         $modulosAgrupados[$idModulo]['permisos'][] = array(
@@ -21,59 +23,128 @@
     }
 ?>
 
-<div class="container mt-4">
+<div class="container-fluid mt-3">
 
-    <h3>Editar Permisos del Rol: <?php echo $rol['nombre_rol']; ?></h3>
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
 
-    <hr>
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
 
-    <form action="<?php echo getUrl("Usuario", "GestionRoles", "postUpdate"); ?>"
-          method="post">
+            <i class="fas fa-user-lock"
+               style="font-size:1.4rem;color:#fff;"></i>
 
-        <input type="hidden" name="id_rol" value="<?php echo $rol['id_rol']; ?>">
+        </div>
 
-        <?php foreach ($modulosAgrupados as $idModulo => $datosModulo): ?>
+        <div>
 
-            <div class="card mb-3">
+            <h4 class="mb-0 fw-bold">Editar Permisos del Rol</h4>
 
-                <div class="card-header">
-                    <strong><?php echo $datosModulo['nombre_modulo']; ?></strong>
-                </div>
+            <small class="text-muted">
+                Rol: <strong><?php echo $rol['nombre_rol']; ?></strong>
+            </small>
 
-                <div class="card-body">
+        </div>
 
-                    <?php foreach ($datosModulo['permisos'] as $permiso): ?>
+    </div>
 
-                        <div class="form-check form-check-inline">
+    <div class="card shadow-sm border-0 rounded-lg">
 
-                            <input type="checkbox" class="form-check-input" name="permisos[]" id="permiso_<?php echo $permiso['id_permiso']; ?>"
-                                   value="<?php echo $permiso['id_permiso']; ?>"
-                                   <?php if (in_array($permiso['id_permiso'], $permisosAsignados)) { echo "checked"; } ?>>
+        <div class="card-body p-4">
 
-                            <label class="form-check-label" for="permiso_<?php echo $permiso['id_permiso']; ?>">
-                                <?php echo $permiso['nombre_accion']; ?> &mdash; <?php echo $permiso['nombre_permiso']; ?>
-                            </label>
+            <form action="<?php echo getUrl("Usuario","GestionRoles","postUpdate"); ?>"
+                  method="post">
+
+                <input type="hidden"
+                       name="id_rol"
+                       value="<?php echo $rol['id_rol']; ?>">
+
+                <?php foreach ($modulosAgrupados as $idModulo => $datosModulo): ?>
+
+                    <div class="card border mb-3">
+
+                        <div class="card-header bg-light">
+
+                            <strong>
+                                <?php echo $datosModulo['nombre_modulo']; ?>
+                            </strong>
 
                         </div>
 
-                    <?php endforeach; ?>
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <?php foreach ($datosModulo['permisos'] as $permiso): ?>
+
+                                    <div class="col-md-4 mb-2">
+
+                                        <div class="form-check">
+
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="permisos[]"
+                                                id="permiso_<?php echo $permiso['id_permiso']; ?>"
+                                                value="<?php echo $permiso['id_permiso']; ?>"
+
+                                                <?php
+                                                if (in_array($permiso['id_permiso'], $permisosAsignados)) {
+                                                    echo "checked";
+                                                }
+                                                ?>>
+
+                                            <label class="form-check-label"
+                                                   for="permiso_<?php echo $permiso['id_permiso']; ?>">
+
+                                                <strong>
+                                                    <?php echo $permiso['nombre_accion']; ?>
+                                                </strong>
+
+                                                <br>
+
+                                                <small class="text-muted">
+                                                    <?php echo $permiso['nombre_permiso']; ?>
+                                                </small>
+
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+
+                                <?php endforeach; ?>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endforeach; ?>
+
+                <div class="mt-4 d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-primary px-4">
+
+                        <i class="fas fa-save me-2"></i>
+                        Guardar Permisos
+
+                    </button>
+
+                    <a class="btn btn-outline-secondary px-4"
+                       href="<?php echo getUrl("Usuario","GestionRoles","getList"); ?>">
+                        Cancelar
+                    </a>
 
                 </div>
 
-            </div>
+            </form>
 
-        <?php endforeach; ?>
+        </div>
 
-        <button type="submit" class="btn btn-success mt-3">
-            Guardar Permisos
-        </button>
-
-        <a class="btn btn-secondary mt-3"
-           href="<?php echo getUrl("Usuario", "GestionRoles", "getList"); ?>">
-            Cancelar
-        </a>
-
-    </form>
+    </div>
 
 </div>
 

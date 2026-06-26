@@ -1,10 +1,10 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-3">
 
     <!-- Encabezado -->
     <div class="d-flex align-items-center mb-4 gap-3">
         <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
              style="width:54px;height:54px;flex-shrink:0;">
-            <i class="fas fa-history" style="font-size:1.4rem;color:#fff;"></i>
+            <i class="fas fa-clipboard-list" style="font-size:1.4rem;color:#fff;"></i>
         </div>
 
         <div>
@@ -41,4 +41,4 @@
 
 </div>
 
-<div id="resultado" class="mt-8"></div>
+<div id="resultado" class="mt-4"></div>

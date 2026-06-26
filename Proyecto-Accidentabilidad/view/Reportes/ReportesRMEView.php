@@ -2,7 +2,7 @@
 
     
     <div class="d-flex align-items-center mb-4 gap-3">
-        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+        <div class="bg-danger rounded-3 d-flex align-items-center justify-content-center"
              style="width:54px;height:54px;flex-shrink:0;">
             <i class="fas fa-road" style="font-size:1.4rem;color:#fff;"></i>
         </div>
@@ -74,7 +74,7 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold">N&uacute;mero de predio</label>
                         <input type="text" name="numero3" class="form-control"required>
-                    </div
+                    </div>
 
     
                     <div class="col-12 col-md-6">

@@ -4,35 +4,100 @@ $datos = pg_fetch_assoc($usuario);
 
 ?>
 
-<div class="container mt-4">
+<div class="container-fluid mt-3">
 
-    <h3>Detalle Usuario</h3>
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
+            <i class="fas fa-user-circle" style="font-size:1.4rem;color:#fff;"></i>
+        </div>
 
-    <hr>
+        <div>
+            <h4 class="mb-0 fw-bold">Detalle del Usuario</h4>
+            <small class="text-muted">Consulta la informaci&oacute;n completa del usuario seleccionado.</small>
+        </div>
+    </div>
 
-    <p><strong>ID:</strong> <?php echo $datos['id']; ?></p>
+    <div class="card shadow-sm border-0 rounded-lg">
 
-    <p><strong>Documento:</strong> <?php echo $datos['numero_id']; ?></p>
+        <div class="card-header bg-white border-0">
+            <h4 class="mb-0 text-primary font-weight-bold">Informaci&oacute;n del Usuario</h4>
+        </div>
 
-    <p><strong>Nombre:</strong>
-        <?php echo $datos['nombre']." ".$datos['apellido']; ?>
-    </p>
+        <div class="card-body">
 
-    <p><strong>Correo:</strong> <?php echo $datos['correo']; ?></p>
+            <div class="row">
 
-    <p><strong>Teléfono:</strong> <?php echo $datos['telefono']; ?></p>
+                <div class="col-md-6 mb-3">
+                    <strong>ID:</strong><br>
+                    <?php echo $datos['id']; ?>
+                </div>
 
-    <p><strong>Dirección:</strong> <?php echo $datos['direccion']; ?></p>
+                <div class="col-md-6 mb-3">
+                    <strong>Documento:</strong><br>
+                    <?php echo $datos['numero_id']; ?>
+                </div>
 
-    <p><strong>Rol:</strong> <?php echo $datos['nombre_rol']; ?></p>
+                <div class="col-md-6 mb-3">
+                    <strong>Nombre:</strong><br>
+                    <?php echo $datos['nombre']." ".$datos['apellido']; ?>
+                </div>
 
-    <p><strong>Estado:</strong> <?php echo $datos['estado']; ?></p>
+                <div class="col-md-6 mb-3">
+                    <strong>Correo Electr&oacute;nico:</strong><br>
+                    <?php echo $datos['correo']; ?>
+                </div>
 
-    <a class="btn btn-secondary"
-       href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>">
+                <div class="col-md-6 mb-3">
+                    <strong>Tel&eacute;fono:</strong><br>
+                    <?php echo $datos['telefono']; ?>
+                </div>
 
-        Volver
+                <div class="col-md-6 mb-3">
+                    <strong>Direcci&oacute;n:</strong><br>
+                    <?php echo $datos['direccion']; ?>
+                </div>
 
-    </a>
+                <div class="col-md-6 mb-3">
+                    <strong>Rol:</strong><br>
+                    <?php echo $datos['nombre_rol']; ?>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Estado:</strong><br>
+
+                    <?php
+                        $estado = trim($datos['estado']);
+
+                        if($estado == 'Habilitado'){
+                            $clase = 'badge badge-success';
+                        }
+                        elseif($estado == 'Inhabilitado'){
+                            $clase = 'badge badge-danger';
+                        }
+                    ?>
+
+                    <span class="<?php echo $clase; ?>">
+                        <?php echo $datos['estado']; ?>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer bg-white">
+
+            <a class="btn btn-primary"
+               href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>">
+                <i class="fas fa-arrow-left me-2"></i>
+                Volver
+            </a>
+
+        </div>
+
+    </div>
 
 </div>

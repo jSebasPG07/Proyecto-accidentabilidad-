@@ -1,90 +1,150 @@
 <?php
-    // Agrupar los permisos por modulo para pintarlos organizados
+    // Agrupar los permisos por m&oacute;dulo para pintarlos organizados
     $modulosAgrupados = array();
 
     while ($fila = pg_fetch_assoc($modulosPermisos)) {
+
         $idModulo = $fila['id_modulo'];
 
         if (!isset($modulosAgrupados[$idModulo])) {
+
             $modulosAgrupados[$idModulo] = array(
                 'nombre_modulo' => $fila['nombre_modulo'],
                 'permisos' => array()
             );
+
         }
 
         $modulosAgrupados[$idModulo]['permisos'][] = array(
-            'id_permiso' => $fila['id_permiso'],
-            'nombre_permiso' => $fila['nombre_permiso'],
-            'nombre_accion' => $fila['nombre_accion'],
+            'id_permiso'      => $fila['id_permiso'],
+            'nombre_permiso'  => $fila['nombre_permiso'],
+            'nombre_accion'   => $fila['nombre_accion'],
         );
     }
 ?>
 
-<div class="container mt-4">
+<div class="container-fluid mt-3">
 
-    <h3>Crear Rol</h3>
+    <!-- Encabezado -->
+    <div class="d-flex align-items-center mb-4 gap-3">
 
-    <hr>
+        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+             style="width:54px;height:54px;flex-shrink:0;">
 
-    <form action="<?php echo getUrl("Usuario", "GestionRoles", "postCreate"); ?>"
-          method="post">
-
-        <div class="form-group mb-3">
-
-            <label>Nombre del Rol</label>
-
-            <input type="text"
-                   class="form-control"
-                   name="nombre_rol"
-                   placeholder="Ej: Supervisor"
-                   required>
+            <i class="fas fa-user-plus"
+               style="font-size:1.4rem;color:#fff;"></i>
 
         </div>
 
-        <?php foreach ($modulosAgrupados as $idModulo => $datosModulo): ?>
+        <div>
 
-            <div class="card mb-3">
+            <h4 class="mb-0 fw-bold">Crear Rol</h4>
 
-                <div class="card-header">
-                    <strong><?php echo $datosModulo['nombre_modulo']; ?></strong>
+            <small class="text-muted">Registra un nuevo rol y asigna los permisos correspondientes.</small>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-lg">
+
+        <div class="card-body p-4">
+
+            <form action="<?php echo getUrl("Usuario","GestionRoles","postCreate"); ?>"
+                  method="post">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-semibold">Nombre del Rol</label>
+
+                        <input type="text"
+                               class="form-control"
+                               name="nombre_rol"
+                               placeholder="Ej: Supervisor"
+                               required>
+
+                    </div>
+
                 </div>
 
-                <div class="card-body">
+                <?php foreach ($modulosAgrupados as $idModulo => $datosModulo): ?>
 
-                    <?php foreach ($datosModulo['permisos'] as $permiso): ?>
+                    <div class="card border mb-3">
 
-                        <div class="form-check form-check-inline">
+                        <div class="card-header bg-light">
 
-                            <input type="checkbox"
-                                   class="form-check-input"
-                                   name="permisos[]"
-                                   id="permiso_<?php echo $permiso['id_permiso']; ?>"
-                                   value="<?php echo $permiso['id_permiso']; ?>">
-
-                            <label class="form-check-label" for="permiso_<?php echo $permiso['id_permiso']; ?>">
-                                <?php echo $permiso['nombre_accion']; ?> &mdash; <?php echo $permiso['nombre_permiso']; ?>
-                            </label>
+                            <strong>
+                                <?php echo $datosModulo['nombre_modulo']; ?>
+                            </strong>
 
                         </div>
 
-                    <?php endforeach; ?>
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <?php foreach ($datosModulo['permisos'] as $permiso): ?>
+
+                                    <div class="col-md-4 mb-2">
+
+                                        <div class="form-check">
+
+                                            <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="permisos[]"
+                                                id="permiso_<?php echo $permiso['id_permiso']; ?>"
+                                                value="<?php echo $permiso['id_permiso']; ?>">
+
+                                            <label class="form-check-label"
+                                                   for="permiso_<?php echo $permiso['id_permiso']; ?>">
+
+                                                <strong><?php echo $permiso['nombre_accion']; ?></strong>
+                                                <br>
+                                                <small class="text-muted">
+                                                    <?php echo $permiso['nombre_permiso']; ?>
+                                                </small>
+
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+
+                                <?php endforeach; ?>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endforeach; ?>
+
+                <div class="mt-4 d-flex gap-2">
+
+                    <button type="submit"
+                            class="btn btn-primary px-4">
+
+                        <i class="fas fa-save me-2"></i>
+                        Crear Rol
+
+                    </button>
+
+                    <a class="btn btn-outline-secondary px-4"
+                       href="<?php echo getUrl("Usuario","GestionRoles","getList"); ?>">
+                        Cancelar
+                    </a>
 
                 </div>
 
-            </div>
+            </form>
 
-        <?php endforeach; ?>
+        </div>
 
-        <button type="submit" class="btn btn-success mt-3">
-            Crear Rol
-        </button>
-
-        <a class="btn btn-secondary mt-3"
-           href="<?php echo getUrl("Usuario", "GestionRoles", "getList"); ?>">
-            Cancelar
-        </a>
-
-    </form>
+    </div>
 
 </div>
 

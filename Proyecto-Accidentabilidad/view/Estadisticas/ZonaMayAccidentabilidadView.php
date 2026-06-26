@@ -1,18 +1,33 @@
 <div class="container-fluid mt-4">
 
-    
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3>Zona Mayor Accidentabilidad</h3>
+    <!-- Encabezado -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <a href="<?php echo getUrl("Estadisticas","ZonaMayAccidentabilidad","exportarExcel", false, "ajax"); ?>" class="btn btn-success">
-            Exportar Excel
+        <div class="d-flex align-items-center gap-3">
+
+            <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+                 style="width:54px;height:54px;flex-shrink:0;">
+                <i class="fas fa-chart-line text-white" style="font-size:1.4rem;"></i>
+            </div>
+
+            <div>
+                <h4 class="mb-0 fw-bold">Zona Mayor Accidentabilidad</h4>
+                <small class="text-muted">Consulta las estad&iacute;sticas y analiza las zonas con mayor incidencia de accidentes.</small>
+            </div>
+
+        </div>
+
+        <a href="<?php echo getUrl("Estadisticas","ZonaMayAccidentabilidad","exportarExcel", false, "ajax"); ?>"
+           class="btn btn-success">
+           <i class="fas fa-file-excel me-2"></i>
+           Exportar Excel
         </a>
+
     </div>
 
-    
+    <!-- Indicadores -->
     <div class="row">
 
-        
         <div class="col-md-3">
             <div class="card shadow-sm p-3">
                 <small class="text-muted">Total accidentes</small>
@@ -20,7 +35,6 @@
             </div>
         </div>
 
-        
         <div class="col-md-3">
             <div class="card shadow-sm p-3">
                 <small class="text-muted">Total lesionados</small>
@@ -28,7 +42,6 @@
             </div>
         </div>
 
-        
         <div class="col-md-3">
             <div class="card shadow-sm p-3">
                 <small class="text-muted">Mes con m&aacute;s accidentes</small>
@@ -36,13 +49,10 @@
             </div>
         </div>
 
-        
         <div class="col-md-3">
             <div class="card shadow-sm p-3">
                 <small class="text-muted">Casos pendientes</small>
-                <h4>
-                    <?php echo isset($pendientes) ? $pendientes : 0; ?>
-                </h4>
+                <h4><?php echo $pendientes; ?></h4>
             </div>
         </div>
 
@@ -68,14 +78,16 @@
                 </thead>
 
                 <tbody>
-
                      
+                    <!-- Aquí se valida si el arreglo $zonas no está vacío. Si contiene información, se mostrarán los registros en la tabla -->
                     <?php if(!empty($zonas)): ?>
 
+                        <!-- Se crea una variable llamada $i y se inicializa en 1. Esta variable servirá para numerar las filas de la tabla -->
                         <?php $i = 1; ?>
                         <?php foreach($zonas as $z): ?>
 
                             <tr>
+                                <!-- Se muestra el número consecutivo de la fila. El operador ++ hace que, después de mostrar el valor, aumente en uno para el siguiente registro -->
                                 <td><?php echo $i++; ?></td>
                                 <td><?php echo $z['zona']; ?></td>
                                 <td><?php echo $z['accidentes']; ?></td>
@@ -92,9 +104,7 @@
                     <?php else: ?>  
 
                         <tr>
-                            <td colspan="5" class="text-center">
-                                No hay datos disponibles
-                            </td>
+                            <td colspan="5" class="text-center">No hay datos disponibles</td>
                         </tr>
 
                     <?php endif; ?>
