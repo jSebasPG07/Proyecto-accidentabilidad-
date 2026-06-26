@@ -4,7 +4,7 @@ include_once "../model/Manual/ManualSModel.php";
 
 class ManualSController {
 
-    public function getCreate() {
+    public function getList() {
         include_once "../view/Manual/ManualSView.php";
     }
 
