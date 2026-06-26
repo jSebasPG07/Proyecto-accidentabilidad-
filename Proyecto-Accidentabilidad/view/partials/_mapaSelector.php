@@ -22,7 +22,7 @@
 
     <div class="card shadow-sm border-0">
         <div class="card-header text-white fw-semibold d-flex align-items-center justify-content-between"
-             style="background-color:#1A7C43; height:42px;">
+             style="background-color:#2773F5; height:42px;">
             <span><i class="fas fa-map me-2"></i>Mapa de Cali &mdash; clic para seleccionar punto</span>
             <span class="badge bg-light text-dark" id="badge_herramienta">Activar herramienta </span>
         </div>
@@ -88,7 +88,7 @@
     reMap2.redraw();
 
     // Herramienta de selección de punto
-    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/ico13.png', onClickMapa);
+    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/viajar.png', onClickMapa);
     reMap.getToolbar(0).addMapTool(herramienta);
 
     var modoSeleccion = false;

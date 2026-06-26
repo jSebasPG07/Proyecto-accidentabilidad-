@@ -17,13 +17,13 @@
         <div class="col-12 col-md-9">
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold d-flex align-items-center"
-                     style="background-color:#1A7C43; height:46px;">
+                     style="background-color:#2773F5; height:46px;">
                     <i class="fas fa-map me-2"></i> Mapa de Cali
                 </div>
                 <div class="card-body p-0">
                     <div style="overflow-x:auto; width:100%;">
                         <div class="mscross border"
-                             style="overflow:hidden; width:900px; height:700px; -moz-user-select:none; position:relative;"
+                             style="overflow:hidden; width:785px; height:700px; -moz-user-select:none; position:relative;"
                              id="dc_main">
                         </div>
                     </div>
@@ -37,7 +37,7 @@
             <!-- Minimapa -->
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold"
-                     style="background-color:#138241;">
+                     style="background-color:#2773F5;">
                     <i class="fas fa-search-location me-1"></i> Referencia
                 </div>
                 <div class="card-body p-2 d-flex justify-content-center">
@@ -50,7 +50,7 @@
             <!-- Capas -->
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold"
-                     style="background-color:#177B40;">
+                     style="background-color:#2773F5;">
                     <i class="fas fa-layer-group me-1"></i> Capas
                 </div>
                 <div class="card-body">
@@ -80,21 +80,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Leyenda -->
-            <div class="card shadow-sm border-0">
-                <div class="card-header text-white fw-semibold"
-                     style="background-color:#177B40;">
-                    <i class="fas fa-info-circle me-1"></i> Leyenda
-                </div>
-                <div class="card-body">
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                        <span style="color:#c80000;font-size:1.2rem;">&#9733;</span>
-                        <span class="small">Accidente reportado</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -104,7 +89,7 @@
 <div class="modal fade" id="modalAccidente" tabindex="-1" aria-labelledby="modalAccidenteLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header text-white" style="background-color:#1A7C43;">
+            <div class="modal-header text-white" style="background-color:#2773F5;">
                 <h5 class="modal-title" id="modalAccidenteLabel">
                     <i class="fas fa-car-crash me-2"></i> Detalle del Accidente
                 </h5>
@@ -145,7 +130,7 @@
     chgLayers();
 
     // Herramienta consultar accidente (basada en query2 de visorDinamicoCali.php)
-    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/ico12.png', queryAccidente);
+    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/info_32.png', queryAccidente);
     myMap1.getToolbar(0).addMapTool(toolConsulta);
 
     var consultaActiva = false;

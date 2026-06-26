@@ -86,7 +86,7 @@ MAP
         CONNECTIONTYPE postgis
         NAME "Accidentes"
         STATUS ON
-        CONNECTION "user=postgres password=1234 dbname=GIAV host=localhost port=5432"
+        CONNECTION "user=postgres password=12345 dbname=GIAV host=localhost port=5432"
         DATA "coordenadas FROM (SELECT id_reporte_acc, coordenadas FROM reporte_accidente WHERE coordenadas IS NOT NULL) AS acc USING UNIQUE id_reporte_acc USING SRID=4326"
         TYPE POINT
         PROJECTION
@@ -95,7 +95,7 @@ MAP
         CLASS
             STYLE
                 SYMBOL star
-                SIZE 18
+                SIZE 15
                 COLOR 200 0 0
                 OUTLINECOLOR 255 255 255
             END

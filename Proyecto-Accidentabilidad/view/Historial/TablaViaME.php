@@ -1,3 +1,7 @@
+<?php
+    include_once "../lib/Permisos.php";
+?>
+
 <div class="container-fluid mt-4">
 
     <div class="card shadow-sm border-0 rounded-lg">
@@ -86,10 +90,12 @@
                                 <td><?php echo $vm['usuario']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo getUrl("Reportes","SolicitudVME","getUpdate",array("id"=>$vm['id_sol_via_mal'])); ?>"
-                                       class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
+                                    <?php if (Permisos::hasPermission(3, 3)): ?>
+                                        <a href="<?php echo getUrl("Reportes","SolicitudVME","getUpdate",array("id"=>$vm['id_sol_via_mal'])); ?>"
+                                           class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>

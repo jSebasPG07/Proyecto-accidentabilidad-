@@ -1,3 +1,7 @@
+<?php
+    include_once "../lib/Permisos.php";
+?>
+
 <div class="container-fluid mt-4">
 
     <div class="card shadow-sm border-0 rounded-lg">
@@ -21,15 +25,10 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Fecha</th>
-                            <th>Lesionados</th>
-                            <th>Observaciones</th>
                             <th>Dirección</th>
                             <th>Estado</th>
-                            <th>Tipo Choque</th>
                             <th>Usuario</th>
-                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -40,16 +39,8 @@
 
                             <tr>
 
-                                <td><?php echo $a['id_reporte_acc']; ?></td>
                                 <td><?php echo $a['fecha_accidente']; ?></td>
-                                <td><?php echo $a['num_lesionados']; ?></td>
-
-                                <td style="max-width:220px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
-                                        <?php echo $a['observaciones']; ?>
-                                    </span>
-                                </td>
-
+                                
                                 <td><?php echo $a['direccion']; ?></td>
 
                                 <td>
@@ -78,18 +69,15 @@
                                     </span>
                                 </td>
 
-                                <td><?php echo $a['tipo_choque']; ?></td>
-
-
                                 <td><?php echo $a['usuario']; ?></td>
-
-                                <td><?php echo $a['identificacion']; ?></td>
-
+                                
                                 <td>
-                                    <a href="<?php echo getUrl("Reportes","ReportesA","getUpdate",array("id"=>$a['id_reporte_acc'])); ?>"
-                                       class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
+                                    <?php if (Permisos::hasPermission(3, 3)): ?>
+                                        <a href="<?php echo getUrl("Reportes","ReportesA","getUpdate",array("id"=>$a['id_reporte_acc'])); ?>"
+                                           class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>

@@ -1,3 +1,7 @@
+<?php
+    include_once "../lib/Permisos.php";
+?>
+
 <div class="container-fluid mt-4">
 
     <div class="card shadow-sm border-0 rounded-lg">
@@ -93,10 +97,12 @@
                                 <td><?php echo $sme['identificacion']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo getUrl("Reportes","ReportesSME","getUpdate",array("id"=>$sme['id_sol_mal'])); ?>"
-                                       class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
+                                    <?php if (Permisos::hasPermission(3, 3)): ?>
+                                        <a href="<?php echo getUrl("Reportes","ReportesSME","getUpdate",array("id"=>$sme['id_sol_mal'])); ?>"
+                                           class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>

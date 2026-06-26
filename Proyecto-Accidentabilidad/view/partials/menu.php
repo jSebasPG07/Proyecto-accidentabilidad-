@@ -58,7 +58,7 @@
                 <?php if (Permisos::hasModule(3)): ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#historialMenu">
-                        <i class="far fa-clock"></i>
+                        <i class="fas fa-history"></i>
                         <p>Historial Reportes</p>
                         <span class="caret"></span>
                     </a>
