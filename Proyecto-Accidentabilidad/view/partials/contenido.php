@@ -7,7 +7,7 @@
         </div>
         <div>
             <h4 class="mb-0 fw-bold">Mapa de Accidentes - Cali</h4>
-            <p class="text-muted mb-0 small">Visualizaci&oacute;n geogr&aacute;fica de accidentes reportados</p>
+            <p class="text-muted mb-0 small">Visualización geográfica de accidentes reportados</p>
         </div>
     </div>
 
@@ -21,9 +21,11 @@
                     <i class="fas fa-map me-2"></i> Mapa de Cali
                 </div>
                 <div class="card-body p-0">
-                    <div class="mscross border"
-                         style="overflow:hidden; width:1147px; height:700px; -moz-user-select:none; position:relative;"
-                         id="dc_main">
+                    <div style="overflow-x:auto; width:100%;">
+                        <div class="mscross border"
+                             style="overflow:hidden; width:900px; height:700px; -moz-user-select:none; position:relative;"
+                             id="dc_main">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,6 +99,30 @@
     </div>
 </div>
 
+
+<!-- Modal detalle accidente -->
+<div class="modal fade" id="modalAccidente" tabindex="-1" aria-labelledby="modalAccidenteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-white" style="background-color:#1A7C43;">
+                <h5 class="modal-title" id="modalAccidenteLabel">
+                    <i class="fas fa-car-crash me-2"></i> Detalle del Accidente
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalAccidenteBody">
+                <div class="text-center py-4">
+                    <div class="spinner-border text-success" role="status"></div>
+                    <p class="mt-2 text-muted">Buscando reporte...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="misc/lib/mscross-1.1.9.js"></script>
 <script type="text/javascript">
     var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/cali.map';
@@ -109,7 +135,7 @@
 
     myMap2 = new msMap(document.getElementById("dc_main2"));
     myMap2.setActionNone();
-    myMap2.setFullExtent(1053867, 1074000, 860200);
+    myMap2.setFullExtent(1043800, 1075000, 860200);
     myMap2.setMapFile(mapFile);
     myMap2.setLayers('Cali');
     myMap1.setReferenceMap(myMap2);
@@ -117,6 +143,64 @@
     myMap1.redraw();
     myMap2.redraw();
     chgLayers();
+
+    // Herramienta consultar accidente (basada en query2 de visorDinamicoCali.php)
+    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/ico12.png', queryAccidente);
+    myMap1.getToolbar(0).addMapTool(toolConsulta);
+
+    var consultaActiva = false;
+
+    function activarConsulta(e, map) {
+        map.getTagMap().style.cursor = "crosshair";
+        consultaActiva = true;
+    }
+
+    function queryAccidente(event, map, x, y, xx, yy) {
+        if (!consultaActiva) return;
+        consultaActiva = false;
+        map.getTagMap().style.cursor = "default";
+
+        // Mostrar modal con spinner
+        document.getElementById('modalAccidenteBody').innerHTML =
+            '<div class="text-center py-4"><div class="spinner-border text-success" role="status"></div>' +
+            '<p class="mt-2 text-muted">Buscando reporte...</p></div>';
+        var modal = new bootstrap.Modal(document.getElementById('modalAccidente'));
+        modal.show();
+
+        // AJAX al endpoint (patrón de consulta_ejemplo.php)
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/Proyecto-Accidentabilidad/web/consultar_accidente.php?x=" + encodeURIComponent(xx) + "&y=" + encodeURIComponent(yy), true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                var data = JSON.parse(xhr.responseText);
+                if (data.encontrado) {
+                    var img = data.imagen
+                        ? '<img src="/Proyecto-Accidentabilidad/web/assets/img/reportes/' + data.imagen + '" class="img-fluid rounded mb-3" style="max-height:220px;object-fit:cover;width:100%;">'
+                        : '';
+                    document.getElementById('modalAccidenteBody').innerHTML =
+                        img +
+                        '<div class="row g-2">' +
+                            '<div class="col-6"><span class="text-muted small">ID Reporte</span><p class="fw-semibold mb-1">#' + data.id + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Fecha</span><p class="fw-semibold mb-1">' + (data.fecha || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Dirección</span><p class="fw-semibold mb-1">' + (data.direccion || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Nomenclatura</span><p class="fw-semibold mb-1">' + (data.nomenclatura || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Tipo de choque</span><p class="fw-semibold mb-1">' + (data.tipo_choque || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Lesionados</span><p class="fw-semibold mb-1">' + (data.lesionados || '0') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Estado</span><p class="fw-semibold mb-1">' + (data.estado || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Reportado por</span><p class="fw-semibold mb-1">' + (data.reportado_por || '—') + '</p></div>' +
+                            '<div class="col-12"><span class="text-muted small">Observaciones</span><p class="fw-semibold mb-1">' + (data.observaciones || '—') + '</p></div>' +
+                            '<div class="col-12 text-muted" style="font-size:0.75rem;">Distancia al punto seleccionado: ' + data.distancia + ' m</p></div>' +
+                        '</div>';
+                } else {
+                    document.getElementById('modalAccidenteBody').innerHTML =
+                        '<div class="text-center py-4 text-muted">' +
+                        '<i class="fas fa-map-marker-alt fa-2x mb-2"></i>' +
+                        '<p>No se encontró ningún accidente cercano al punto seleccionado.</p></div>';
+                }
+            }
+        };
+        xhr.send(null);
+    }
 
     function chgLayers() {
         var list = "";

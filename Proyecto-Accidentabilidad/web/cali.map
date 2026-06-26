@@ -19,7 +19,7 @@ MAP
     LAYER
         NAME "Cali"
         STATUS ON
-        DATA "C:\ms4w\Apache\htdocs\shapeCali41\CaliArea.shp"  
+        DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\CaliArea.shp"  
         TYPE POLYGON
         CLASS
             STYLE
@@ -33,7 +33,7 @@ MAP
         TRANSPARENCY 50
         NAME "Comunas"
         STATUS ON
-        DATA "C:\ms4w\Apache\htdocs\shapeCali41\ComunasC.shp" 
+        DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\ComunasC.shp" 
         TYPE POLYGON
         CLASS
             STYLE
@@ -47,7 +47,7 @@ MAP
         TRANSPARENCY 45
         NAME "Barrio"
         STATUS ON
-        DATA "C:\ms4w\Apache\htdocs\shapeCali41\Barrios.shp" 
+        DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\Barrios.shp" 
         TYPE POLYGON
         LABELITEM "BARRIO"
         CLASS
@@ -67,7 +67,7 @@ MAP
         TRANSPARENCY 25
         NAME "MallaVial"
         STATUS ON
-        DATA "C:\ms4w\Apache\htdocs\shapeCali41\MallaVialC.shp" 
+        DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\MallaVialC.shp" 
         TYPE LINE
         CLASS
             STYLE
@@ -79,17 +79,20 @@ MAP
     
     LAYER
         CONNECTIONTYPE postgis
-        NAME "Puntos"
+        NAME "Accidentes"
         STATUS ON
-        CONNECTION "user=postgres password=1234 db=GIAV host=localhost port=5432"
-        DATA "geom FROM (select coordenadas from reporte_accidente) as puntos using unique id using SRID=4326"
+        CONNECTION "user=postgres password=1234 dbname=GIAV host=localhost port=5432"
+        DATA "coordenadas FROM (SELECT id_reporte_acc, coordenadas FROM reporte_accidente WHERE coordenadas IS NOT NULL) AS acc USING UNIQUE id_reporte_acc USING SRID=4326"
         TYPE POINT
+        PROJECTION
+            "init=epsg:4326"
+        END
         CLASS
             STYLE
                 SYMBOL star
-                SIZE 100
-                COLOR 0 34 125
-                OUTLINECOLOR 0 255 0
+                SIZE 18
+                COLOR 200 0 0
+                OUTLINECOLOR 255 255 255
             END
         END
     END
