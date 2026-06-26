@@ -90,7 +90,7 @@
                         <textarea class="form-control" id="observaciones" name="observaciones"rows="3" placeholder="Detalles adicionales del accidente..."></textarea>
                     </div>
 
-                    <div class="col-12 col-md-6">
+                    <div class="col-12">
                         <?php include_once "../view/partials/_mapaSelector.php"; ?>
                     </div>
 
