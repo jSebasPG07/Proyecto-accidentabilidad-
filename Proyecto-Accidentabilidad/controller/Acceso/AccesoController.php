@@ -14,14 +14,19 @@ class AccesoController
     {
         $obj = new AccesoModel();
         $usu_correo = $_POST['use_correo'];
-        $usu_clave = $_POST['use_clave'];
+        $usu_clave  = $_POST['use_clave'];
 
         $salt = "giavpassword0602";
         $usu_clave = md5($salt . $usu_clave);
 
-        $sql = "SELECT u.*, r.nombre_rol FROM usuarios AS u , roles AS r WHERE u.correo = '$usu_correo' AND u.contrasena = '$usu_clave' AND u.id_rol = r.id_rol";
-        $usuario = $obj->select($sql);
+        $sql = "SELECT u.*, r.nombre_rol
+                FROM usuarios u
+                INNER JOIN roles r ON u.id_rol = r.id_rol
+                WHERE u.correo = '$usu_correo'
+                AND u.contrasena = '$usu_clave'";
 
+    
+    $usuario = $obj->select($sql);
         if (pg_num_rows($usuario) > 0) {
 
 
