@@ -90,11 +90,12 @@ class ReportesAController {
 
             $ejecutar = $obj->insert($sql);
 
-            
-
-        } else {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=imgerror';</script>";
+            if ($ejecutar) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=ok';</script>";
+            } else {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=error';</script>";
             }
+        }
     }
 
     public function getUpdate(){

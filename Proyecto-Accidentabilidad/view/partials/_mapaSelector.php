@@ -88,7 +88,7 @@
     reMap2.redraw();
 
     // Herramienta de selección de punto
-    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/ico13.png', onClickMapa);
+    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/viajar.png', onClickMapa);
     reMap.getToolbar(0).addMapTool(herramienta);
 
     var modoSeleccion = false;

@@ -23,7 +23,7 @@
                 <div class="card-body p-0">
                     <div style="overflow-x:auto; width:100%;">
                         <div class="mscross border"
-                             style="overflow:hidden; width:900px; height:700px; -moz-user-select:none; position:relative;"
+                             style="overflow:hidden; width:785px; height:700px; -moz-user-select:none; position:relative;"
                              id="dc_main">
                         </div>
                     </div>
@@ -80,21 +80,6 @@
                     </form>
                 </div>
             </div>
-
-            <!-- Leyenda -->
-            <div class="card shadow-sm border-0">
-                <div class="card-header text-white fw-semibold"
-                     style="background-color:#177B40;">
-                    <i class="fas fa-info-circle me-1"></i> Leyenda
-                </div>
-                <div class="card-body">
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                        <span style="color:#c80000;font-size:1.2rem;">&#9733;</span>
-                        <span class="small">Accidente reportado</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -145,7 +130,7 @@
     chgLayers();
 
     // Herramienta consultar accidente (basada en query2 de visorDinamicoCali.php)
-    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/ico12.png', queryAccidente);
+    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/info_32.png', queryAccidente);
     myMap1.getToolbar(0).addMapTool(toolConsulta);
 
     var consultaActiva = false;
