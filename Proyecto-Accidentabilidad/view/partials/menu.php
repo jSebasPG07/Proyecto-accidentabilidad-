@@ -27,7 +27,7 @@
                 <?php if (Permisos::hasModule(1)): ?>
                 <li class="nav-item active">
                     <a href="<?php echo getUrl("Mapa","mapa","getList") ?>" class="collapsed">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-map"></i>
                         <p>Mapa</p>
                         <span class="caret"></span>
                     </a>
@@ -58,7 +58,7 @@
                 <?php if (Permisos::hasModule(3)): ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#historialMenu">
-                        <i class="fas fa-th-list"></i>
+                        <i class="fas fa-history"></i>
                         <p>Historial Reportes</p>
                         <span class="caret"></span>
                     </a>
@@ -73,14 +73,14 @@
                 <?php if (Permisos::hasModule(4)): ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#manualMenu">
-                        <i class="fas fa-pen-square"></i>
+                        <i class="fas fa-book"></i>
                         <p>Manual</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="manualMenu">
                         <ul class="nav nav-collapse">
-                            <li><a href="<?php echo getUrl('Manual','ManualU','getCreate'); ?>"><span class="sub-item">Manual usuario</span></a></li>
-                            <li><a href="<?php echo getUrl('Manual','ManualS','getCreate'); ?>"><span class="sub-item">Manual se&ntilde;alizaci&oacute;n</span></a></li>
+                            <li><a href="<?php echo getUrl('Manual','ManualU','getList'); ?>"><span class="sub-item">Manual usuario</span></a></li>
+                            <li><a href="<?php echo getUrl('Manual','ManualS','getList'); ?>"><span class="sub-item">Manual se&ntilde;alizaci&oacute;n</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -121,7 +121,7 @@
                 <?php if (Permisos::hasModule(7)): ?>
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#usuariosMenu">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-users"></i>
                         <p>Gesti&oacute;n de Usuarios</p>
                         <span class="caret"></span>
                     </a>
@@ -140,13 +140,13 @@
 
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" href="#acercaMenu">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-info-circle"></i>
                         <p>Acerca de</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="acercaMenu">
                         <ul class="nav nav-collapse">
-                            <li><a href="<?php echo getUrl("Usuario","GestionUsuario","getList"); ?>"><span class="sub-item">Acerca de GIAV</span></a></li>
+                            <li><a href="<?php echo getUrl("AcercaDe","AcercaDe","getList"); ?>"><span class="sub-item">Acerca de GIAV</span></a></li>
                             
                         </ul>
                     </div>
