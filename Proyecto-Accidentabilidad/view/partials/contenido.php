@@ -7,7 +7,7 @@
         </div>
         <div>
             <h4 class="mb-0 fw-bold">Mapa de Accidentes - Cali</h4>
-            <p class="text-muted mb-0 small">Visualización geográfica de accidentes reportados</p>
+            <p class="text-muted mb-0 small">Visualizaci&oacute;n geogr&aacute;fica de accidentes reportados</p>
         </div>
     </div>
 
@@ -169,21 +169,20 @@
 
         // AJAX al endpoint (patrón de consulta_ejemplo.php)
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/Proyecto-Accidentabilidad/web/consultar_accidente.php?x=" + encodeURIComponent(xx) + "&y=" + encodeURIComponent(yy), true);
+        xhr.open("GET", "consultar_accidente.php?x=" + encodeURIComponent(xx) + "&y=" + encodeURIComponent(yy), true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 var data = JSON.parse(xhr.responseText);
                 if (data.encontrado) {
                     var img = data.imagen
-                        ? '<img src="/Proyecto-Accidentabilidad/web/assets/img/reportes/' + data.imagen + '" class="img-fluid rounded mb-3" style="max-height:220px;object-fit:cover;width:100%;">'
+                        ? '<img src="../img/' + data.imagen + '" class="img-fluid rounded mb-3" style="max-height:220px;object-fit:cover;width:100%;">'
                         : '';
                     document.getElementById('modalAccidenteBody').innerHTML =
                         img +
                         '<div class="row g-2">' +
                             '<div class="col-6"><span class="text-muted small">ID Reporte</span><p class="fw-semibold mb-1">#' + data.id + '</p></div>' +
                             '<div class="col-6"><span class="text-muted small">Fecha</span><p class="fw-semibold mb-1">' + (data.fecha || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Dirección</span><p class="fw-semibold mb-1">' + (data.direccion || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Nomenclatura</span><p class="fw-semibold mb-1">' + (data.nomenclatura || '—') + '</p></div>' +
+                            '<div class="col-6"><span class="text-muted small">Direcci&oacute;n</span><p class="fw-semibold mb-1">' + (data.direccion || '—') + '</p></div>' +
                             '<div class="col-6"><span class="text-muted small">Tipo de choque</span><p class="fw-semibold mb-1">' + (data.tipo_choque || '—') + '</p></div>' +
                             '<div class="col-6"><span class="text-muted small">Lesionados</span><p class="fw-semibold mb-1">' + (data.lesionados || '0') + '</p></div>' +
                             '<div class="col-6"><span class="text-muted small">Estado</span><p class="fw-semibold mb-1">' + (data.estado || '—') + '</p></div>' +
@@ -195,7 +194,7 @@
                     document.getElementById('modalAccidenteBody').innerHTML =
                         '<div class="text-center py-4 text-muted">' +
                         '<i class="fas fa-map-marker-alt fa-2x mb-2"></i>' +
-                        '<p>No se encontró ningún accidente cercano al punto seleccionado.</p></div>';
+                        '<p>No se encontró ning&uacute;n accidente cercano al punto seleccionado.</p></div>';
                 }
             }
         };

@@ -89,7 +89,6 @@ class ReportesAController {
             ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
             $ejecutar = $obj->insert($sql);
-            $ejecutar = $obj->insert($sql);
 
             
 

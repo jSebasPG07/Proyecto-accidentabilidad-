@@ -53,11 +53,11 @@
                     </div>
                     <div class="form-switch mb-1">
                         <input class="form-check-input" checked onclick="chgLayersReporte()" type="checkbox" id="rl2">
-                        <label class="form-check-label small" for="rl2">Barrios</label>
+                        <label class="form-check-label small" for="rl2">Malla Vial</label>
                     </div>
                     <div class="form-switch mb-1">
                         <input class="form-check-input" checked onclick="chgLayersReporte()" type="checkbox" id="rl3">
-                        <label class="form-check-label small" for="rl3">Malla Vial</label>
+                        <label class="form-check-label small" for="rl3">Barrios</label>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
     reMap.setCgi('/cgi-bin/mapserv.exe');
     reMap.setMapFile(mapFile);
     reMap.setFullExtent(1043800, 1075000, 860200);
-    reMap.setLayers('Cali Comunas Barrio MallaVial');
+    reMap.setLayers('Cali Comunas MallaVial Barrio');
 
     var reMap2 = new msMap(document.getElementById("mapa_reporte_mini"));
     reMap2.setActionNone();
