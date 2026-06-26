@@ -28,7 +28,6 @@
                             <th>Dirección</th>
                             <th>Estado</th>
                             <th>Tipo Choque</th>
-                            <th>Imagen</th>
                             <th>Usuario</th>
                             <th>identificacion</th>
                             <th>Acciones</th>
@@ -81,12 +80,6 @@
 
                                 <td><?php echo $a['tipo_choque']; ?></td>
 
-                                <td>
-                                    <?php if($a['imagen_url'] != ""){ ?>
-                                        <img src="<?php echo $a['imagen_url']; ?>"
-                                             style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
-                                    <?php } ?>
-                                </td>
 
                                 <td><?php echo $a['usuario']; ?></td>
 

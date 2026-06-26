@@ -23,6 +23,8 @@
             <form action="<?php echo getUrl('Reportes', 'ReportesSME', 'postCreate');?>"
                   method="post" enctype="multipart/form-data">
 
+                  <input type="hidden" name="id_sol_mal" value="<?php echo $datos['id_sol_mal']; ?>">
+
                 <div class="row g-3">
 
                     
@@ -69,6 +71,11 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
                             <?php while ($est = pg_fetch_assoc($estados)) { ?>
             

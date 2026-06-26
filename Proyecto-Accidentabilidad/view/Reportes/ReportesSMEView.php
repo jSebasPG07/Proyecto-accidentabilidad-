@@ -43,8 +43,6 @@
                             <option value="Calle">Calle</option>
                             <option value="Carrera">Carrera</option>
                             <option value="Avenida">Avenida</option>
-                            <option value="Avenida Carrera">Avenida Carrera</option>
-                            <option value="Avenida Calle">Avenida Calle</option>
                             <option value="Diagonal">Diagonal</option>
                             <option value="Transversal">Transversal</option>
                             <option value="Circular">Circular</option>
@@ -70,9 +68,9 @@
 
     
                     <div class="col-12 col-md-6">
-                        <label>Referencia del lugar</label>
+                        <label class="form-label fw-semibold" for="referencia"> Referencia del lugar</label>
                         <input type="text" name="referencia" class="form-control"
-                        placeholder="Ej: Frente a la panaderia, junto al poste, cerca al parque" required>
+                        placeholder="Ej: Frente a la panader&iacute;a, junto al poste, cerca al parque" required>
                     </div>
                     
                     <div class="col-12 col-md-6">
@@ -113,15 +111,17 @@
                             Opcional. Formatos: JPG, PNG.
                         </div>
                     </div>
-
                     
                     <div class="col-12 col-md-6">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                    </div>
+
+                    <div class="col-12">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Describe el estado de la se&ntilde;al" required></textarea>
                     </div>
 
                 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
 
                     <div class="col-12">
                         <?php include_once "../view/partials/_mapaSelector.php"; ?>

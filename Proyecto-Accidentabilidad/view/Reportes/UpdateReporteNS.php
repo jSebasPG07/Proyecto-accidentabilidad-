@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold">Referencia del lugar</label>
+                        <label class="form-label fw-semibold" for="reerencia">Referencia del lugar</label>
                         <p class="form-control"><?php echo $datos['referencia'] ?></p>
                     </div>
 
@@ -64,13 +64,13 @@
                     </div>
 
                     
-                    <div class="col-12">
+                    <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['tipo_senal'] ?></p>
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="estado">Estado</label>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
                             <?php while ($est = pg_fetch_assoc($estados)) { ?>
             

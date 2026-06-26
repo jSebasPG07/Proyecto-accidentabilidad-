@@ -56,53 +56,16 @@
             }
 
         
-            //Este campo no puede tener mas de 200 caracteres
-            //el strlen cuenta la cantidad de caracteres que hay 
-            if (strlen($descripcion) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_largo';</script>"; 
-                exit();
-            }
-
-            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
-            //Esta bloquea los caracteres especiales @$,#,%,!
-            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_formato';</script>";  
-                exit(); 
-            }
-
-            //verifica que solo sean letras
-            if (!preg_match('/^[A-Za-z\s]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_letra';</script>";
+            // La descripcion debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+            if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($descripcion))) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_formato';</script>";
                 exit();
             }
             
-            if (!preg_match('/^\s*\S+\s+\S+.*$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=desc_palabras';</script>";
-                exit();
-            }
 
-            //Este campo no puede tener mas de 200 caracteres
-            //el strlen cuenta la cantidad de caracteres que hay 
-            if (strlen($referencia) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_largo';</script>"; 
-                exit();
-            }
-
-            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
-            //Esta bloquea los caracteres especiales @$,#,%,!
-            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_formato';</script>";  
-                exit(); 
-            }
-
-            //verifica que solo sean letras
-            if (!preg_match('/^[A-Za-z\s]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_letra';</script>";
-                exit();
-            }
-            
-            if (!preg_match('/^\s*\S+\s+\S+.*$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_palabras';</script>";
+            // El lugar de referencia debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+            if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($referencia))) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesNS","getCreate")."&msg=ref_formato';</script>";
                 exit();
             }
 

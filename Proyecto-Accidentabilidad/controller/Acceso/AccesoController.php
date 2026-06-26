@@ -16,6 +16,9 @@ class AccesoController
         $usu_correo = $_POST['use_correo'];
         $usu_clave = $_POST['use_clave'];
 
+        $salt = "giavpassword0602";
+        $usu_clave = md5($salt . $usu_clave);
+
         $sql = "SELECT u.*, r.nombre_rol FROM usuarios AS u , roles AS r WHERE u.correo = '$usu_correo' AND u.contrasena = '$usu_clave' AND u.id_rol = r.id_rol";
         $usuario = $obj->select($sql);
 
@@ -268,7 +271,10 @@ class AccesoController
                 return;
             }
 
-            $sql_actualizarU = "UPDATE usuarios SET contrasena = '$nueva' WHERE id = $id_usuario";
+            $salt = "giavpassword0602";
+            $nuevaHash = md5($salt . $nueva);
+
+            $sql_actualizarU = "UPDATE usuarios SET contrasena = '$nuevaHash' WHERE id = $id_usuario";
             $resultado = $obj->update($sql_actualizarU);
 
             if ($resultado) {

@@ -123,6 +123,17 @@ include_once '../lib/helpers.php';
                                     <input type="tel" class="form-control" name="telefono" required>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="numero1">N&uacute;mero de via</label>
+                                    <input type="text" name="numero1" class="form-control" required>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold">N&uacute;mero de predio</label>
+                                    <input type="text" name="numero3" class="form-control"required>
+                                </div>
+
                             </div>
 
                             <!-- DERECHA -->
@@ -140,13 +151,26 @@ include_once '../lib/helpers.php';
 
                                 <div class="form-group">
                                     <label>Contrase&ntilde;a</label>
-                                    <input type="password" class="form-control" name="contrasena" minlength="8" required>
+                                    <input type="password" class="form-control" name="contrasena" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Direcci&oacute;n</label>
-                                    <input type="text" class="form-control" name="direccion" required>
+                                    <label class="form-label fw-semibold" for="tipovia">Tipo de via</label>
+                                    <select name="tipo_via" class="form-control" required>                 
+                                        <option value="Calle">Calle</option>
+                                        <option value="Carrera">Carrera</option>
+                                        <option value="Avenida">Avenida</option>
+                                        <option value="Diagonal">Diagonal</option>
+                                        <option value="Transversal">Transversal</option>
+                                        <option value="Circular">Circular</option>
+                                    </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="caracter">N&uacute;mero despues de #</label>
+                                    <input type="text" name="numero2" class="form-control" required>
+                                </div>
+
 
                             </div>
 
@@ -175,3 +199,4 @@ include_once '../lib/helpers.php';
 
 </body>
 </html>
+<?php include_once "../view/partials/script.php"; ?>

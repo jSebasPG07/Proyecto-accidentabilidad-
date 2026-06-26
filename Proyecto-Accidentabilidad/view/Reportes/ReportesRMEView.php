@@ -51,8 +51,6 @@
                             <option value="Calle">Calle</option>
                             <option value="Carrera">Carrera</option>
                             <option value="Avenida">Avenida</option>
-                            <option value="Avenida Carrera">Avenida Carrera</option>
-                            <option value="Avenida Calle">Avenida Calle</option>
                             <option value="Diagonal">Diagonal</option>
                             <option value="Transversal">Transversal</option>
                             <option value="Circular">Circular</option>
@@ -77,10 +75,10 @@
                     </div>
 
     
-                    <div class="col-12 col-md-6">
-                        <label>Referencia del lugar</label>
+                   <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="referencia"> Referencia del lugar</label>
                         <input type="text" name="referencia" class="form-control"
-                        placeholder="Ej: Frente a la panadería, junto al poste, cerca al parque" required>
+                        placeholder="Ej: Frente a la panader&iacute;a, junto al poste, cerca al parque" required>
                     </div>
 
                     

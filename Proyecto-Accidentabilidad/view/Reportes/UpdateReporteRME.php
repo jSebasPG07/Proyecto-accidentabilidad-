@@ -22,8 +22,10 @@
 
             
 
-            <form action="<?php echo getUrl('Reportes', 'ReportesRME', 'postCreate'); ?>"
+            <form action="<?php echo getUrl('Reportes', 'ReportesRME', 'postUpdate'); ?>"
                   method="post" enctype="multipart/form-data">
+
+                  <input type="hidden" name="id_sol_red_mal" value="<?php echo $datos['id_sol_red_mal']; ?>">
 
                 <div class="row g-3">
 
@@ -53,18 +55,35 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
-                        <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
-
-                        <div class="form-text">
-                            Opcional. Formatos: JPG, PNG.
+                        <<div>
+                            <?php if($datos['imagen_url'] != ""){ ?>
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">
+                            <?php } else { ?>
+                                <p class="form-control">Sin imagen</p>
+                            <?php } ?>
                         </div>
                     </div>
 
                     
-                    <div class="col-12">
+                    <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="4"
-                                  placeholder="Describa el estado del reductor, da&ntilde;os visibles o riesgos..." required></textarea>
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Estado</label>
+                        <select name="id_estado" id="estado" class="form-control" required>
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?>
+            
+                        <option value="<?php echo $est['id_estado']; ?>"
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>
+                
+                            <?php echo $est['nombre']; ?>
+            
+                        </option>
+
+                            <?php } ?>
+                        </select>
                     </div>
 
                     

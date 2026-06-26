@@ -27,7 +27,7 @@
 
                 <div class="row g-3">
 
-                    <!-- Tipo de Reductor -->
+                    
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="id_tipo_reductor">Tipo de Reductor</label>
                         <p class="form-control"><?php echo $datos['tipo_reductor'] ?></p>
@@ -35,12 +35,18 @@
 
                     <!-- Tipo de Daño -->
                     <div class="col-12 col-md-6">
-                        <p class="form-control"><?php echo $datos['tipo_dano'] ?></p>
+                        <label class="form-label fw-semibold" for="id_tipo_dano">Tipo de da&ntilde;o</label>
+                        <p class="form-control"><?php echo $datos['tipo_dano_reductor'] ?></p>
                     </div>
-
                     <!-- Dirección -->
                     <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="direccion">Direccion</label>
                         <p class="form-control"><?php echo $datos['direccion'] ?></p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="referencia">Referencia</label>
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p>
                     </div>
 
                     <!-- Imagen -->
@@ -56,12 +62,13 @@
                     </div>
 
                     <!-- DESCRIPCIÓN -->
-                    <div class="col-12">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
                         <p class="form-control"><?php echo $datos['descripcion'] ?></p>
                     </div>
-                    
-                    <div class="col-md-4">
-                        <label for="estado">Estado</label>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
                             <?php while ($est = pg_fetch_assoc($estados)) { ?>
             
@@ -74,7 +81,7 @@
 
                             <?php } ?>
                         </select>
-                   </div>
+                    </div>
                     <!-- Botones -->
                     <div class="col-12 d-flex gap-2 pt-2">
                         <button type="submit" class="btn btn-primary px-4">

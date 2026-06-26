@@ -55,29 +55,10 @@ class ReportesAController {
         }
 
         
-        //Este campo no puede tener mas de 200 caracteres
-        //el strlen cuenta la cantidad de caracteres que hay 
-        if (strlen($observaciones) > 200) {
-            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_largo';</script>"; 
-            exit();
-        }
-
-        //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
-        //Esta bloquea los caracteres especiales @$,#,%,!
-        if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $observaciones)) {
+        // La observación debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+        if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($observaciones))) {
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_formato';</script>";
-            exit();   
-        }
-
-        //verifica que solo sean letras
-        if (!preg_match('/^[A-Za-z\s]+$/', $observaciones)) {
-            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_letra';</script>";
             exit();
-        }
-        //Verifica que tenaga almenos 2 palabras y el espacio osea digams choque frontal osea asi con el espacio 
-        if (!preg_match('/^\s*\S+\s+\S+.*$/', $observaciones)) {
-             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_palabras';</script>";
-             exit();
         }
 
     

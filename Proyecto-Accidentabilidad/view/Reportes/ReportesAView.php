@@ -25,8 +25,6 @@
                             <option value="Calle">Calle</option>
                             <option value="Carrera">Carrera</option>
                             <option value="Avenida">Avenida</option>
-                            <option value="Avenida Carrera">Avenida Carrera</option>
-                            <option value="Avenida Calle">Avenida Calle</option>
                             <option value="Diagonal">Diagonal</option>
                             <option value="Transversal">Transversal</option>
                             <option value="Circular">Circular</option>

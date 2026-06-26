@@ -25,7 +25,6 @@
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
-                            <th>Imagen</th>
                             <th>Dirección</th>
                             <th>Referencia</th>
                             <th>Estado</th>
@@ -50,13 +49,6 @@
                                     <span class="d-inline-block text-truncate" style="max-width:200px;">
                                         <?php echo $rn['descripcion']; ?>
                                     </span>
-                                </td>
-
-                                <td>
-                                    <?php if($rn['imagen_url'] != ""){ ?>
-                                        <img src="<?php echo $rn['imagen_url']; ?>"
-                                             style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
-                                    <?php } ?>
                                 </td>
 
                                 <td><?php echo $rn['direccion']; ?></td>

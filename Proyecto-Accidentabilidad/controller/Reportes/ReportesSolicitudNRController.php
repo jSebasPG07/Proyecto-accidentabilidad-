@@ -61,58 +61,21 @@ class ReportesSolicitudNRController {
 
             //Esta validacion permite 3 numeros pero no letra al final
             if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
-            echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=numero3_formato';</script>";
-            exit();
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=numero3_formato';</script>";
+                exit();
             }
 
         
-            //Este campo no puede tener mas de 200 caracteres
-            //el strlen cuenta la cantidad de caracteres que hay 
-            if (strlen($descripcion) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_largo';</script>"; 
-                exit();
-            }
-
-            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
-            //Esta bloquea los caracteres especiales @$,#,%,!
-            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_formato';</script>"; 
-                exit();  
-            }
-
-            //verifica que solo sean letras
-            if (!preg_match('/^[A-Za-z\s]+$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_letra';</script>";
+            // La descripcion debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+            if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($descripcion))) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_formato';</script>";
                 exit();
             }
             
-            if (!preg_match('/^\s*\S+\s+\S+.*$/', $descripcion)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=desc_palabras';</script>";
-                exit();
-            }
 
-            //Este campo no puede tener mas de 200 caracteres
-            //el strlen cuenta la cantidad de caracteres que hay 
-            if (strlen($referencia) > 200) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ref_largo';</script>"; 
-                exit();
-            }
-
-            //Esta validacion solo permite caracteres seguros osea letras desde la A-z, numeros, espacios, comas, punto y guion 
-            //Esta bloquea los caracteres especiales @$,#,%,!
-            if (!preg_match('/^[A-Za-z0-9\s\.\,\-]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ref_formato';</script>"; 
-                exit();  
-            }
-
-            //verifica que solo sean letras
-            if (!preg_match('/^[A-Za-z\s]+$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ref_letra';</script>";
-                exit();
-            }
-            
-            if (!preg_match('/^\s*\S+\s+\S+.*$/', $referencia)) {
-                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ref_palabras';</script>";
+            // El lugar de referencia debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+            if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($referencia))) {
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSolicitudNR","getCreate")."&msg=ref_formato';</script>";
                 exit();
             }
 
@@ -166,10 +129,11 @@ class ReportesSolicitudNRController {
                        rn.fecha_nuevo_reductor,
                        rn.descripcion,
                        rn.imagen_url, 
-                       rn.direccion, 
+                       rn.direccion,
+                       rn.referencia,
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
-                       tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
+                       tdr.descripcion AS tipo_dano_reductor,  
                        u.numero_id AS usuario
                 FROM sol_nuevo_reductor rn 
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 

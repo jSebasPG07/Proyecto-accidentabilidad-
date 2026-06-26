@@ -26,7 +26,6 @@
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Descripción</th>
-                            <th>Imagen</th>
                             <th>Dirección</th>
                             <th>Referencia</th>
                             <th>Estado</th>
@@ -51,12 +50,6 @@
                                     </span>
                                 </td>
 
-                                <td>
-                                    <?php if($vm['imagen_url'] != ""){ ?>
-                                        <img src="<?php echo $vm['imagen_url']; ?>"
-                                             style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
-                                    <?php } ?>
-                                </td>
 
                                 <td><?php echo $vm['direccion']; ?></td>
 
