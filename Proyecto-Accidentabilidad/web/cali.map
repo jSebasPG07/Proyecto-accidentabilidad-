@@ -95,7 +95,7 @@ MAP
         CLASS
             STYLE
                 SYMBOL star
-                SIZE 18
+                SIZE 15
                 COLOR 200 0 0
                 OUTLINECOLOR 255 255 255
             END

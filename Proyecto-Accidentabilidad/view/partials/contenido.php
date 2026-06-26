@@ -17,7 +17,7 @@
         <div class="col-12 col-md-9">
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold d-flex align-items-center"
-                     style="background-color:#1A7C43; height:46px;">
+                     style="background-color:#2773F5; height:46px;">
                     <i class="fas fa-map me-2"></i> Mapa de Cali
                 </div>
                 <div class="card-body p-0">
@@ -37,7 +37,7 @@
             <!-- Minimapa -->
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold"
-                     style="background-color:#138241;">
+                     style="background-color:#2773F5;">
                     <i class="fas fa-search-location me-1"></i> Referencia
                 </div>
                 <div class="card-body p-2 d-flex justify-content-center">
@@ -50,7 +50,7 @@
             <!-- Capas -->
             <div class="card shadow-sm border-0">
                 <div class="card-header text-white fw-semibold"
-                     style="background-color:#177B40;">
+                     style="background-color:#2773F5;">
                     <i class="fas fa-layer-group me-1"></i> Capas
                 </div>
                 <div class="card-body">
@@ -89,7 +89,7 @@
 <div class="modal fade" id="modalAccidente" tabindex="-1" aria-labelledby="modalAccidenteLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header text-white" style="background-color:#1A7C43;">
+            <div class="modal-header text-white" style="background-color:#2773F5;">
                 <h5 class="modal-title" id="modalAccidenteLabel">
                     <i class="fas fa-car-crash me-2"></i> Detalle del Accidente
                 </h5>
