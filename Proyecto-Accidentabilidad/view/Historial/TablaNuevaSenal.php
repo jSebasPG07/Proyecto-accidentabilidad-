@@ -90,10 +90,12 @@
                                 <td><?php echo $ns['identificacion']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo getUrl("Reportes","ReportesNS","getUpdate",array("id"=>$ns['id_sol_nueva_sen'])); ?>"
-                                       class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
+                                    <?php if (Permisos::hasPermission(3, 3)): ?>
+                                        <a href="<?php echo getUrl("Reportes","ReportesNS","getUpdate",array("id"=>$ns['id_sol_nueva_sen'])); ?>"
+                                           class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>

@@ -106,10 +106,12 @@
                                 <td><?php echo $p['usuarios']; ?></td>
 
                                 <td>
-                                    <a href="<?php echo getUrl("PQRSF","PqrsfC","getUpdate",array("id"=>$p['id_pqrsf'])); ?>"
-                                       class="btn btn-sm btn-primary">
-                                        Editar
-                                    </a>
+                                    <?php if (Permisos::hasPermission(3, 3)): ?>
+                                        <a href="<?php echo getUrl("PQRSF","PqrsfC","getUpdate",array("id"=>$p['id_pqrsf'])); ?>"
+                                           class="btn btn-sm btn-primary">
+                                            Editar
+                                        </a>
+                                    <?php endif; ?>
                                 </td>
 
                             </tr>
