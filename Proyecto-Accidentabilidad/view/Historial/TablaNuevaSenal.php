@@ -22,16 +22,11 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
+                            
                             <th>Fecha</th>
-                            <th>Descripción</th>
                             <th>Dirección</th>
-                            <th>Lugar de referencia</th>
                             <th>Estado</th>
-                            <th>Tipo señal</th>
-                            <th>Orientación</th>
                             <th>Usuario</th>
-                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -42,18 +37,10 @@
 
                             <tr>
 
-                                <td><?php echo $ns['id_sol_nueva_sen']; ?></td>
                                 <td><?php echo $ns['fecha_nueva_senal']; ?></td>
-
-                                <td style="max-width:220px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
-                                        <?php echo $ns['descripcion']; ?>
-                                    </span>
-                                </td>
 
                                 <td><?php echo $ns['direccion']; ?></td>
 
-                                <td><?php echo $ns['referencia']; ?></td>
 
                                 <td>
                                     <?php
@@ -81,13 +68,7 @@
                                     </span>
                                 </td>
 
-                                <td><?php echo $ns['tipo_senal']; ?></td>
-
-                                <td><?php echo $ns['orientacion']; ?></td>
-
                                 <td><?php echo $ns['usuario']; ?></td>
-
-                                <td><?php echo $ns['identificacion']; ?></td>
 
                                 <td>
                                     <?php if (Permisos::hasPermission(3, 3)): ?>

@@ -15,6 +15,7 @@
     </div>
 
     <div class="card shadow-sm border-0 rounded-lg">
+
         <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
 
             <h4 class="mb-0 text-primary font-weight-bold">
@@ -35,13 +36,9 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Fecha</th>
                             <th>Mensaje</th>
-                            <th>Respuesta</th>
-                            <th>Fecha Respuesta</th>
                             <th>Estado</th>
-                            <th>Tipo PQRSF</th>
                             <th>Usuario</th>
                             <th>Acciones</th>
                         </tr>
@@ -49,74 +46,70 @@
 
                     <tbody>
 
-                        <?php while($p = pg_fetch_assoc($pqrsf)){ ?>
+                    <?php
+                    $datosModal = array();
 
-                            <tr>
+                    while($p = pg_fetch_assoc($pqrsf)){
 
-                                <td><?php echo $p['id_pqrsf']; ?></td>
+                        $datosModal[] = $p;
 
-                                <td>
-                                    <?php echo $p['fecha_pqrsf']; ?>
-                                </td>
+                        $estado = trim($p['estado']);
 
-                                <td style="max-width:250px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:220px;">
-                                        <?php echo $p['mensaje']; ?>
-                                    </span>
-                                </td>
+                        if($estado == 'Pendiente'){
+                            $clase='badge badge-warning';
+                        }elseif($estado == 'En revision'){
+                            $clase='badge badge-primary';
+                        }elseif($estado == 'En proceso'){
+                            $clase='badge badge-info';
+                        }elseif($estado == 'Rechazada'){
+                            $clase='badge badge-danger';
+                        }elseif($estado == 'Completada'){
+                            $clase='badge badge-success';
+                        }
+                    ?>
 
-                                <td style="max-width:220px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
-                                        <?php echo $p['respuesta'] != "" ? $p['respuesta'] : "<span class='text-muted'>Sin respuesta</span>"; ?>
-                                    </span>
-                                </td>
+                        <tr>
 
-                                <td>
-                                    <?php echo ($p['fecha_respuesta'] != "") ? $p['fecha_respuesta'] : "<span class='text-muted'>Sin fecha</span>";?>
-                                </td>
+                            <td><?php echo $p['fecha_pqrsf']; ?></td>
 
-                                <td>
-                                    <?php
-                                     $estado = trim($p['estado']);
+                            <td style="max-width:250px;">
+                                <span class="d-inline-block text-truncate" style="max-width:220px;">
+                                    <?php echo $p['mensaje']; ?>
+                                </span>
+                            </td>
 
-                                     if($estado == 'Pendiente'){
-                                        $clase = 'badge badge-warning'; //amarillo
-                                     }
-                                     elseif($estado == 'En revision'){
-                                         $clase = 'badge badge-primary'; //azul 
-                                     }
-                                     elseif($estado == 'En proceso'){
-                                        $clase = 'badge badge-info'; //Azul claro
-                                     }
-                                     elseif($estado == 'Rechazada'){
-                                        $clase = 'badge badge-danger'; // Rojo
-                                     }
-                                     elseif($estado == 'Completada'){
-                                        $clase = 'badge badge-success'; //verde
-                                     }
-                                     
-                                    ?>           
-                                    <span class="<?php echo $clase; ?>">
-                                        <?php echo $p['estado']; ?>
-                                    </span>
-                                </td>
+                            <td>
+                                <span class="<?php echo $clase; ?>">
+                                    <?php echo $estado; ?>
+                                </span>
+                            </td>
 
-                                <td><?php echo $p['tipo_pqrsf']; ?></td>
+                            <td><?php echo $p['usuarios']; ?></td>
 
-                                <td><?php echo $p['usuarios']; ?></td>
+                            <td>
 
-                                <td>
-                                    <?php if (Permisos::hasPermission(3, 3)): ?>
-                                        <a href="<?php echo getUrl("PQRSF","PqrsfC","getUpdate",array("id"=>$p['id_pqrsf'])); ?>"
-                                           class="btn btn-sm btn-primary">
-                                            Editar
-                                        </a>
-                                    <?php endif; ?>
-                                </td>
+                                <button
+                                    type="button"
+                                    class="btn btn-info btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modal<?php echo $p['id_pqrsf']; ?>">
+                                    Ver PQRSF
+                                </button>
 
-                            </tr>
+                                <?php if (Permisos::hasPermission(3,3)){ ?>
 
-                        <?php } ?>
+                                    <a href="<?php echo getUrl("PQRSF","PqrsfC","getUpdate",array("id"=>$p['id_pqrsf'])); ?>"
+                                       class="btn btn-primary btn-sm">
+                                        Editar
+                                    </a>
+
+                                <?php } ?>
+
+                            </td>
+
+                        </tr>
+
+                    <?php } ?>
 
                     </tbody>
 
@@ -129,3 +122,132 @@
     </div>
 
 </div>
+
+
+<!-- MODALES -->
+
+<?php foreach($datosModal as $p){ ?>
+
+<div class="modal fade"
+     id="modal<?php echo $p['id_pqrsf']; ?>"
+     tabindex="-1"
+     role="dialog">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title">
+                    Información PQRSF
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label><strong>Fecha</strong></label>
+
+                        <p class="form-control">
+                            <?php echo $p['fecha_pqrsf']; ?>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label><strong>Estado</strong></label>
+
+                        <p class="form-control">
+                            <?php echo $p['estado']; ?>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label><strong>Usuario</strong></label>
+
+                        <p class="form-control">
+                            <?php echo $p['usuarios']; ?>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label><strong>Tipo PQRSF</strong></label>
+
+                        <p class="form-control">
+                            <?php echo $p['tipo_pqrsf']; ?>
+                        </p>
+
+                    </div>
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Mensaje</strong></label>
+
+                        <textarea class="form-control" rows="5" readonly><?php echo $p['mensaje']; ?></textarea>
+
+                    </div>
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Respuesta</strong></label>
+
+                        <textarea class="form-control" rows="5" readonly><?php echo $p['respuesta']; ?></textarea>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label><strong>Fecha respuesta</strong></label>
+
+                        <p class="form-control">
+
+                            <?php
+                            if($p['fecha_respuesta']==""){
+                                echo "Sin respuesta";
+                            }else{
+                                echo $p['fecha_respuesta'];
+                            }
+                            ?>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php } ?>
