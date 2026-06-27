@@ -84,14 +84,7 @@ class ReportesAController {
                 exit();
             }
 
-            // PHP necesita abrir la imagen para poder modificarla.
-            // Si es JPG o JPEG utiliza imagecreatefromjpeg()
-            // Si es PNG utiliza imagecreatefrompng()
-            if($extension == "jpg" || $extension == "jpeg"){
-                $imagenOriginal = imagecreatefromjpeg($archivo);
-            }else{
-                $imagenOriginal = imagecreatefrompng($archivo);
-            }
+            
 
         }
 

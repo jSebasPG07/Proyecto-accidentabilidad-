@@ -30,7 +30,7 @@
 
             <!-- Mapa -->
             <div class="mscross border"
-                 style="overflow:hidden; width:820px; height:480px; -moz-user-select:none; position:relative;"
+                 style="overflow:hidden; width:650px; height:480px; -moz-user-select:none; position:relative;"
                  id="mapa_reporte">
             </div>
 
@@ -69,7 +69,7 @@
 <script type="text/javascript" src="misc/lib/mscross-1.1.9.js"></script>
 <script type="text/javascript">
 (function() {
-    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/cali.map';
+    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-Accidentabilidad/web/cali.map';
 
     var reMap = new msMap(document.getElementById("mapa_reporte"), 'standardRight');
     reMap.setCgi('/cgi-bin/mapserv.exe');

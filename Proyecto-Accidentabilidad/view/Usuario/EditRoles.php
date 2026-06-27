@@ -23,6 +23,17 @@
     }
 ?>
 
+<?php
+if(isset($_GET['msg']) && $_GET['msg'] == "permisos"){
+?>
+    <div class="alert alert-danger">
+        Debe seleccionar al menos un permiso para editar el rol.
+    </div>
+<?php
+}
+?>
+
+
 <div class="container-fluid mt-3">
 
     <!-- Encabezado -->

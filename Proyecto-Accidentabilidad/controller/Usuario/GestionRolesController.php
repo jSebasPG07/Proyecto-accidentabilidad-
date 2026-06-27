@@ -47,6 +47,22 @@ class GestionRolesController{
 
         $permisosMarcados = isset($_POST['permisos']) ? $_POST['permisos'] : array();
 
+        // Esta validación verifica que el usuario haya seleccionado
+        // al menos un permiso para el nuevo rol.
+        if(count($permisosMarcados) == 0){
+            echo "<script>window.location.href='".getUrl("Usuario","GestionRoles","getCreate")."&msg=permisos';</script>";
+            exit();
+        }
+
+        // Esta validación verifica que no exista otro rol con el mismo nombre.
+        $sqlValidar = "SELECT * FROM roles WHERE UPPER(nombre_rol) = UPPER('$nombre_rol')";
+        $validar = $obj->select($sqlValidar);
+
+        if(pg_num_rows($validar) > 0){
+            echo "<script>window.location.href='".getUrl("Usuario","GestionRoles","getCreate")."&msg=rol_existe';</script>";
+            exit();
+        }
+
         $id_rol = $obj -> autoincrement(roles, id_rol);
         $sqlInsertRol = "INSERT INTO roles (id_rol, nombre_rol) VALUES ('$id_rol', '$nombre_rol')";
         $ejecutar = $obj->insert($sqlInsertRol);
@@ -110,6 +126,13 @@ class GestionRolesController{
         $id_rol = $_POST['id_rol'];
 
         $permisosMarcados = isset($_POST['permisos']) ? $_POST['permisos'] : array();
+
+        // Esta validación verifica que el usuario haya seleccionado
+        // al menos un permiso para el nuevo rol.
+        if(count($permisosMarcados) == 0){
+            echo "<script>window.location.href='".getUrl("Usuario","GestionRoles","getEdit",array("id"=>$id_rol))."&msg=permisos';</script>";
+            exit();
+        }
 
         $sqlAsignados = "SELECT id_permiso FROM rol_permiso WHERE id_rol = '$id_rol'";
         $resultAsignados = $obj->select($sqlAsignados);

@@ -23,6 +23,26 @@
     }
 ?>
 
+<?php
+if(isset($_GET['msg']) && $_GET['msg'] == "permisos"){
+?>
+    <div class="alert alert-danger">
+        Debe seleccionar al menos un permiso para crear el rol.
+    </div>
+<?php
+}
+?>
+
+<?php
+if(isset($_GET['msg']) && $_GET['msg'] == "rol_existe"){
+?>
+<div class="alert alert-danger">
+    Ya existe un rol con ese nombre.
+</div>
+<?php
+}
+?>
+
 <div class="container-fluid mt-3">
 
     <!-- Encabezado -->
