@@ -37,24 +37,23 @@
             //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
             //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
             //Tambien por que puede tener una letra al final
-            if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero1)){
+            if(!preg_match('/^[1-9][0-9]{0,2}[A-Z]?$/', $numero1)){
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero1_formato';</script>";
                 exit();
-            
             }
 
             //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
             //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
             //Tambien por que puede tener una letra al final
-            if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero2)){
+            if(!preg_match('/^[1-9][0-9]{0,2}[A-Z]?$/', $numero2)){
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero2_formato';</script>";
                 exit();
             }
 
             //Esta validacion permite 3 numeros pero no letra al final
-            if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
-            echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero3_formato';</script>";
-            exit();
+            if(!preg_match('/^[1-9][0-9]{0,2}$/', $numero3)){
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=numero3_formato';</script>";
+                exit();
             }
 
         
@@ -68,6 +67,12 @@
             // El lugar de referencia debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
             if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($referencia))) {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_formato';</script>";
+                exit();
+            }
+
+            //Esta validacion es por si no selecciona un punto en el mapa no lo deja hacer el registro
+            if($coordX == 0 || $coordY == 0){
+                echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=coordenadas';</script>";
                 exit();
             }
 

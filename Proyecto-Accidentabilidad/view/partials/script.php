@@ -32,27 +32,27 @@
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero1_formato'){ ?>
-      swal("Error", "El numero de via debe contener entre 1 y 3 digitos y opcionalmente una letra al final. Ej: 1A, 25, 80B", "error");
+      swal("Error", "El numero de via debe contener entre 1 y 3 digitos, no se puede iniciar con 0 y opcionalmente una letra al final. Ej: 1A, 25, 80B", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero2_formato'){ ?>
-      swal("Error", "El numero despues del # debe contener entre 1 y 3 digitos y opcionalmente una letra al final. Ej: 49, 80A", "error");
+      swal("Error", "El numero despues del # debe contener entre 1 y 3 digitos, no se puede iniciar con 0 y opcionalmente una letra al final. Ej: 49, 80A", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'numero3_formato'){ ?>
-      swal("Error", "El numero del predio debe contener entre 1 y 3 digitos", "error");
+      swal("Error", "El numero del predio debe contener entre 1 y 3 digitos y no se puede iniciar con 0", "error");
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'obs_formato'){ ?>
-      swal("Error", "La observacion debe contener unicamente letras, puede tener máximo 200 caracteres y mínimo dos palabras.", "error");
+      swal("Error", "La observacion debe contener unicamente letras, puede tener maximo 200 caracteres y minimo dos palabras.", "error");
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'desc_formato'){ ?>
-      swal("Error", "La descripcion debe contener unicamente letras, puede tener máximo 200 caracteres y mínimo dos palabras.", "error");
+      swal("Error", "La descripcion debe contener unicamente letras, puede tener maximo 200 caracteres y minimo dos palabras.", "error");
     <?php } ?>
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'ref_formato'){ ?>
-      swal("Error", "El lugar de referencia debe contener unicamente letras, puede tener máximo 200 caracteres y mínimo dos palabras.", "error");
+      swal("Error", "El lugar de referencia debe contener unicamente letras, puede tener maximo 200 caracteres y minimo dos palabras.", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'documento_digitos'){ ?>
@@ -77,6 +77,14 @@
 
     <?php if(isset($_GET['msg']) && $_GET['msg'] == 'telefono_formato'){ ?>
       swal("Error", "El teléfono debe contener únicamente 10 números y debe comenzar con el 3", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'mensaje_formato'){ ?>
+      swal("Error", "El mensaje debe contener unicamente letras, puede tener maximo 200 caracteres y minimo dos palabras.", "error");
+    <?php } ?>
+
+    <?php if(isset($_GET['msg']) && $_GET['msg'] == 'coordenadas'){ ?>
+      swal("Error", "Debe seleccionar un punto en el mapa.", "error");
     <?php } ?>
 
     <?php if($_GET['msg'] == 'tipoimg'){ ?>

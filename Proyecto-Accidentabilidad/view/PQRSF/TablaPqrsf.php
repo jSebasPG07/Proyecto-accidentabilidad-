@@ -140,7 +140,7 @@
             <div class="modal-header bg-primary text-white">
 
                 <h5 class="modal-title">
-                    Información PQRSF
+                    Informaci&oacute;n PQRSF
                 </h5>
 
                 <button
@@ -194,6 +194,7 @@
                         </p>
 
                     </div>
+
 
                     <div class="col-12 mb-3">
 

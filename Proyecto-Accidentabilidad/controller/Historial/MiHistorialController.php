@@ -21,6 +21,7 @@ class MiHistorialController {
 
     if($tipo == "accidente"){
 
+
         if ($_SESSION['id_rol'] == 1) {
             $sql = "SELECT a.id_reporte_acc, 
                        a.fecha_accidente,  
@@ -42,10 +43,11 @@ class MiHistorialController {
             $sql = "SELECT a.id_reporte_acc, 
                        a.fecha_accidente,  
                        a.num_lesionados, 
-                       a.observaciones, 
+                       a.observaciones,
                        a.direccion,
-                       es.nombre AS estado,
+                       a.coordenadas,
                        a.imagen_url,
+                       es.nombre AS estado,
                        t.nombre AS tipo_choque,
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
@@ -55,6 +57,7 @@ class MiHistorialController {
                 LEFT JOIN usuarios u ON a.id_usuario = u.id
                 ORDER BY a.id_reporte_acc ASC";
         }
+
 
         $res = $obj->select($sql);
 
@@ -69,6 +72,7 @@ class MiHistorialController {
 
     if($tipo == "senal_nueva"){
 
+
         if( $_SESSION['id_rol'] == 1) {
             $sql = "SELECT ns.id_sol_nueva_sen,
                        ns.fecha_nueva_senal,
@@ -76,6 +80,7 @@ class MiHistorialController {
                        ns.imagen_url, 
                        ns.direccion, 
                        ns.referencia,
+                       ns.coordenadas,
                        es.nombre AS estado, 
                        tp.nombre_senal AS tipo_senal, 
                        ori.nombre AS orientacion, 
@@ -95,6 +100,7 @@ class MiHistorialController {
                        ns.imagen_url, 
                        ns.direccion, 
                        ns.referencia,
+                       ns.coordenadas,
                        es.nombre AS estado, 
                        tp.nombre_senal AS tipo_senal, 
                        ori.nombre AS orientacion, 
@@ -107,6 +113,7 @@ class MiHistorialController {
                 LEFT JOIN usuarios u ON ns.id_usuario = u.id
                 ORDER BY ns.id_sol_nueva_sen ASC";
         }
+
 
         $res = $obj->select($sql);
 
@@ -150,9 +157,10 @@ class MiHistorialController {
                        sme.imagen_url, 
                        sme.direccion,
                        sme.referencia,
+                       sme.coordenadas,
                        es.nombre AS estado, 
                        tp.nombre_senal AS tipo_senal,
-                       td.id_tipo_dano_senal AS tipo_dano_senal, 
+                       td.descripcion AS tipo_dano_senal, 
                        ori.nombre AS orientacion, 
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
@@ -185,6 +193,7 @@ class MiHistorialController {
                        rn.imagen_url, 
                        rn.direccion,
                        rn.referencia,
+                       rn.coordenadas,
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
                        tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
@@ -204,9 +213,10 @@ class MiHistorialController {
                        rn.imagen_url, 
                        rn.direccion,
                        rn.referencia,
+                       rn.coordenadas,
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
-                       tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
+                       tdr.descripcion AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
                 FROM sol_nuevo_reductor rn 
@@ -237,9 +247,10 @@ class MiHistorialController {
                        rm.imagen_url, 
                        rm.direccion,
                        rm.referencia,
+                       rm.coordenadas,
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
-                       tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
+                       tdr.descripcion AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
                 FROM sol_reductor_mal_estado rm 
@@ -290,8 +301,9 @@ class MiHistorialController {
                        vm.imagen_url, 
                        vm.direccion,
                        vm.referencia,
+                       vm.coordenadas,
                        es.nombre AS estado, 
-                       tdv.id_tipo_dano_via AS tipo_dano_via,  
+                       tdv.descripcion AS tipo_dano_via,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
                 FROM sol_via_mal_estado vm 

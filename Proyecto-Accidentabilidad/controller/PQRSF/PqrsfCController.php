@@ -22,6 +22,12 @@ Class PqrsfCController {
 
         $id_usuario = $_POST['id'];
 
+        // La observación debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
+        if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($mensaje))) {
+            echo "<script>window.location.href='".getUrl("PQRSF","PqrsfC","getCreate")."&msg=mensaje_formato';</script>";
+            exit();
+        }
+
         $sql = "INSERT INTO pqrsf (fecha_pqrsf, mensaje, id_estado, id_tipo_pqrsf, id_usuario) VALUES ('$fechapqrsf','$mensaje','$id_estado','$tpqrsf','$id_usuario')";
 
         $ejecutar = $obj->insert($sql);

@@ -25,16 +25,10 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Fecha</th>
-                            <th>Descripción</th>
                             <th>Dirección</th>
-                            <th>Referencia</th>
                             <th>Estado</th>
-                            <th>Tipo reductor</th>
-                            <th>Tipo daño</th>
                             <th>Usuario</th>
-                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -44,19 +38,11 @@
                         <?php foreach($reductornuevo as $rn){ ?>
 
                             <tr>
-
-                                <td><?php echo $rn['id_sol_nuevas_red']; ?></td>
                                 <td><?php echo $rn['fecha_nuevo_reductor']; ?></td>
 
-                                <td style="max-width:220px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
-                                        <?php echo $rn['descripcion']; ?>
-                                    </span>
-                                </td>
+                                
 
                                 <td><?php echo $rn['direccion']; ?></td>
-
-                                <td><?php echo $rn['referencia']; ?></td>
 
                                 <td>
                                     <?php
@@ -84,15 +70,18 @@
                                     </span>
                                 </td>
 
-                                <td><?php echo $rn['tipo_reductor']; ?></td>
-
-                                <td><?php echo $rn['tipo_dano_reductor']; ?></td>
-
                                 <td><?php echo $rn['usuario']; ?></td>
 
-                                <td><?php echo $rn['identificacion']; ?></td>
-
                                 <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-info btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal<?php echo $rn['id_sol_nuevas_red']; ?>">
+                                        Ver solicitud reductor
+                                    </button>
+
                                     <?php if (Permisos::hasPermission(3, 3)): ?>
                                         <a href="<?php echo getUrl("Reportes","ReportesSolicitudNR","getUpdate",array("id"=>$rn['id_sol_nuevas_red'])); ?>"
                                            class="btn btn-sm btn-primary">
@@ -116,3 +105,151 @@
     </div>
 
 </div>
+
+<?php foreach($reductornuevo as $rn){ ?>
+
+<div class="modal fade"
+     id="modal<?php echo $rn['id_sol_nuevas_red']; ?>"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title">
+                    Información de solicitud de nuevo reductor
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Fecha</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['fecha_nuevo_reductor']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Estado</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['estado']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Usuario</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['usuario']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Identificación</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['identificacion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Dirección</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['direccion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Lugar de referencia</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['referencia']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Tipo de reductor</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['tipo_reductor']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Tipo daño reductor</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['tipo_dano_reductor']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label><strong>Coordenadas</strong></label>
+                        <p class="form-control">
+                            <?php echo $rn['coordenadas']; ?>
+                        </p>
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Descripcion</strong></label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            readonly><?php echo $rn['descripcion']; ?></textarea>
+
+                    </div>
+                    
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Imagen de reductor nuevo</strong></label>
+
+                        <?php if(!empty($rn['imagen_url'])){ ?>
+
+                            <img src="../img/<?php echo $rn['imagen_url']; ?>"
+                                 class="img-fluid rounded border"
+                                 style="max-height:350px;width:100%;object-fit:cover;">
+
+                        <?php }else{ ?>
+
+                            <p class="form-control">
+                                Sin imagen
+                            </p>
+
+                        <?php } ?>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php } ?>

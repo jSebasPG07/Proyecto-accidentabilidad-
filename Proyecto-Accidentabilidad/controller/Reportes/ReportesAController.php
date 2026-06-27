@@ -33,23 +33,21 @@ class ReportesAController {
         //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
         //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
         //Tambien por que puede tener una letra al final
-        if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero1)){
+        if(!preg_match('/^[1-9][0-9]{0,2}[A-Z]?$/', $numero1)){
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero1_formato';</script>";
             exit();
-
-            
         }
 
         //Esta validacion es para que en el campo de numero de via acepte numeros del 0 a 9
         //Tambien solo para que en el campo solo se puedan poner 3 digitos osea digamso 123
         //Tambien por que puede tener una letra al final
-        if(!preg_match('/^[0-9]{1,3}[A-Z]?$/', $numero2)){
+        if(!preg_match('/^[1-9][0-9]{0,2}[A-Z]?$/', $numero2)){
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero2_formato';</script>";
             exit();
         }
 
         //Esta validacion permite 3 numeros pero no letra al final
-        if(!preg_match('/^[0-9]{1,3}$/', $numero3)){
+        if(!preg_match('/^[1-9][0-9]{0,2}$/', $numero3)){
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=numero3_formato';</script>";
             exit();
         }
@@ -58,6 +56,12 @@ class ReportesAController {
         // La observación debe Tener máximo 200 caracteres Contener solo letras, espacios, ñ y vocales con tilde.Tener mínimo dos palabras.
         if (!preg_match('/^(?=.{1,200}$)[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?:\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$/u', trim($observaciones))) {
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_formato';</script>";
+            exit();
+        }
+
+        //Esta validacion es por si no selecciona un punto en el mapa no lo deja hacer el registro
+        if($coordX == 0 || $coordY == 0){
+            echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=coordenadas';</script>";
             exit();
         }
 
@@ -79,6 +83,16 @@ class ReportesAController {
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=tipoimg';</script>";
                 exit();
             }
+
+            // PHP necesita abrir la imagen para poder modificarla.
+            // Si es JPG o JPEG utiliza imagecreatefromjpeg()
+            // Si es PNG utiliza imagecreatefrompng()
+            if($extension == "jpg" || $extension == "jpeg"){
+                $imagenOriginal = imagecreatefromjpeg($archivo);
+            }else{
+                $imagenOriginal = imagecreatefrompng($archivo);
+            }
+
         }
 
         if(move_uploaded_file($archivo, $ruta)){

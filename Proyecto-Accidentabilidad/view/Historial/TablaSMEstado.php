@@ -26,17 +26,10 @@
 
                     <thead class="thead-dark">
                         <tr>
-                            <th>ID</th>
                             <th>Fecha</th>
-                            <th>Descripción</th>
                             <th>Dirección</th>
-                            <th>Referencia</th>
                             <th>Estado</th>
-                            <th>Tipo señal</th>
-                            <th>Tipo daño</th>
-                            <th>Orientación</th>
                             <th>Usuario</th>
-                            <th>identificacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -46,19 +39,9 @@
                         <?php foreach($senalmalestado as $sme){ ?>
 
                             <tr>
-
-                                <td><?php echo $sme['id_sol_mal']; ?></td>
                                 <td><?php echo $sme['fecha_senal_mal_estado']; ?></td>
 
-                                <td style="max-width:220px;">
-                                    <span class="d-inline-block text-truncate" style="max-width:200px;">
-                                        <?php echo $sme['descripcion']; ?>
-                                    </span>
-                                </td>
-
                                 <td><?php echo $sme['direccion']; ?></td>
-
-                                <td><?php echo $sme['referencia']; ?></td>
 
                                 <td>
                                     <?php
@@ -86,17 +69,19 @@
                                     </span>
                                 </td>
 
-                                <td><?php echo $sme['tipo_senal']; ?></td>
-
-                                <td><?php echo $sme['tipo_dano_senal']; ?></td>
-
-                                <td><?php echo $sme['orientacion']; ?></td>
-
                                 <td><?php echo $sme['usuario']; ?></td>
 
-                                <td><?php echo $sme['identificacion']; ?></td>
 
                                 <td>
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-info btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal<?php echo $sme['id_sol_mal']; ?>">
+                                        Ver solicutud
+                                    </button>
+
                                     <?php if (Permisos::hasPermission(3, 3)): ?>
                                         <a href="<?php echo getUrl("Reportes","ReportesSME","getUpdate",array("id"=>$sme['id_sol_mal'])); ?>"
                                            class="btn btn-sm btn-primary">
@@ -120,3 +105,158 @@
     </div>
 
 </div>
+
+<?php foreach($senalmalestado as $sme){ ?>
+
+<div class="modal fade"
+     id="modal<?php echo $sme['id_sol_mal']; ?>"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title">
+                    Información de solicitud de señal mal estado
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Fecha</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['fecha_senal_mal_estado']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Estado</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['estado']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Usuario</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['usuario']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Identificación</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['identificacion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Dirección</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['direccion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Lugar de referencia</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['referencia']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Tipo de señal</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['tipo_senal']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Tipo de daño</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['tipo_dano_senal']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Orientacion</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['orientacion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label><strong>Coordenadas</strong></label>
+                        <p class="form-control">
+                            <?php echo $sme['coordenadas']; ?>
+                        </p>
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Descripcion</strong></label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            readonly><?php echo $sme['descripcion']; ?></textarea>
+
+                    </div>
+                    
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Imagen de señal mal estado</strong></label>
+
+                        <?php if(!empty($sme['imagen_url'])){ ?>
+
+                            <img src="../img/<?php echo $sme['imagen_url']; ?>"
+                                 class="img-fluid rounded border"
+                                 style="max-height:350px;width:100%;object-fit:cover;">
+
+                        <?php }else{ ?>
+
+                            <p class="form-control">
+                                Sin imagen
+                            </p>
+
+                        <?php } ?>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php } ?>

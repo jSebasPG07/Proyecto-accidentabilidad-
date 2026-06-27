@@ -70,8 +70,17 @@
                                 </td>
 
                                 <td><?php echo $a['usuario']; ?></td>
+
                                 
                                 <td>
+                                    <button
+                                        type="button"
+                                        class="btn btn-info btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modal<?php echo $a['id_reporte_acc']; ?>">
+                                        Ver reporte
+                                    </button>
+
                                     <?php if (Permisos::hasPermission(3, 3)): ?>
                                         <a href="<?php echo getUrl("Reportes","ReportesA","getUpdate",array("id"=>$a['id_reporte_acc'])); ?>"
                                            class="btn btn-sm btn-primary">
@@ -95,3 +104,145 @@
     </div>
 
 </div>
+
+<?php foreach($accidentes as $a){ ?>
+
+<div class="modal fade"
+     id="modal<?php echo $a['id_reporte_acc']; ?>"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+
+                <h5 class="modal-title">
+                    Información del Reporte
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Fecha</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['fecha_accidente']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Estado</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['estado']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Usuario</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['usuario']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Identificación</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['identificacion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Dirección</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['direccion']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Tipo de choque</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['tipo_choque']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Número de lesionados</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['num_lesionados']; ?>
+                        </p>
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+                        <label><strong>Coordenadas</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['coordenadas']; ?>
+                        </p>
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Observaciones</strong></label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            readonly><?php echo $a['observaciones']; ?></textarea>
+
+                    </div>
+                    
+
+                    <div class="col-12 mb-3">
+
+                        <label><strong>Imagen del accidente</strong></label>
+
+                        <?php if(!empty($a['imagen_url'])){ ?>
+
+                            <img src="../img/<?php echo $a['imagen_url']; ?>"
+                                 class="img-fluid rounded border"
+                                 style="max-height:350px;width:100%;object-fit:cover;">
+
+                        <?php }else{ ?>
+
+                            <p class="form-control">
+                                Sin imagen
+                            </p>
+
+                        <?php } ?>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php } ?>
