@@ -2,9 +2,9 @@
 include_once '../model/Mapa/mapaModel.php';
 
 $obj = new MapaModel();
-header('Content-Type: application/json');
+header('Content-Type: application/json'); // Se indica que la respuesta del archivo será en formato JSON.
 
-$x = floatval(isset($_GET['x']) ? $_GET['x'] : 0);
+$x = floatval(isset($_GET['x']) ? $_GET['x'] : 0);// Se reciben las coordenadas X y Y enviadas desde el mapa, si no llegan, se les asigna el valor 0.
 $y = floatval(isset($_GET['y']) ? $_GET['y'] : 0);
 
 if ($x == 0 || $y == 0) {
@@ -15,7 +15,8 @@ if ($x == 0 || $y == 0) {
 
 $tolerancia = 1000;
 
-$sql = "
+// Consulta SQL para buscar el accidente más cercano a las coordenadas recibidas.
+$sql = " 
     SELECT
         ra.id_reporte_acc,
         ra.fecha_accidente,
@@ -45,9 +46,9 @@ $sql = "
 
 $result = $obj->select($sql);
 
-if ($result && pg_num_rows($result) > 0) {
-    $row = pg_fetch_assoc($result);
-    echo json_encode(array(
+if ($result && pg_num_rows($result) > 0) { // Se verifica si la consulta encontró algún accidente.
+    $row = pg_fetch_assoc($result);  // Se obtiene el primer registro encontrado.
+    echo json_encode(array( // Se devuelve toda la información del accidente en formato JSON.
         'encontrado'    => true,
         'id'            => $row['id_reporte_acc'],
         'fecha'         => $row['fecha_accidente'],
