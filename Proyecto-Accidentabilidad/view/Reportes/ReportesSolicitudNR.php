@@ -29,8 +29,8 @@
                             <option value="">Seleccione...</option>
 
                             <?php
-                                while($reductor = pg_fetch_assoc($reductores)){
-                                    echo "<option value='".$reductor['id_tipo_reductor']."'>".$reductor['nombre']."</option>";
+                                while($reductor = pg_fetch_assoc($reductores)){ // Se recorren todos los tipos de reductores de la base de datos.
+                                    echo "<option value='".$reductor['id_tipo_reductor']."'>".$reductor['nombre']."</option>"; // Se crea una opción en el listado con el ID y el nombre de cada reductor.
                                 }
                             ?>
 
@@ -45,8 +45,8 @@
                             <option value="">Seleccione...</option>
 
                             <?php
-                                while($dano = pg_fetch_assoc($danos)){
-                                    echo "<option value='".$dano['id_tipo_dano_reductor']."'>".$dano['descripcion']."</option>";
+                                while($dano = pg_fetch_assoc($danos)){ // Se recorren todos los tipos de daño del reductor  de la base de datos.
+                                    echo "<option value='".$dano['id_tipo_dano_reductor']."'>".$dano['descripcion']."</option>"; // Se crea una opción en el listado con la descripción de cada tipo de daño.
                                 }
                             ?>
 

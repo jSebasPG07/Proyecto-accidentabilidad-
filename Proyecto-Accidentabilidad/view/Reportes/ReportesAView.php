@@ -55,8 +55,8 @@
 
                         <option value="">Seleccione...</option>
                         
-                            <?php while ($choque = pg_fetch_assoc($reportes)) { ?>
-                                <option value="<?php echo $choque['id_tipo_choque']; ?>">
+                            <?php while ($choque = pg_fetch_assoc($reportes)) { ?> // Se recorren todos los tipos de choque obtenidos de la base de datos.
+                                <option value="<?php echo $choque['id_tipo_choque']; ?>"> 
                                     <?php echo $choque['nombre']; ?>
                                 </option>
                             <?php } ?>
@@ -80,7 +80,7 @@
 
                     
                     <div class="col-12 col-md-6">
-                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                         <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> //Se guarda el ID del usuario que inició sesión en un campo oculto para enviarlo junto con el formulario.
                     </div>
 
                     

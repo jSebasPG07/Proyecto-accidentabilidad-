@@ -30,40 +30,40 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="orientacion">Orientaci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['orientacion'] ?></p>
+                        <p class="form-control"><?php echo $datos['orientacion'] ?></p> <!-- Se muestra la orientación registrada del reporte. -->
                     </div>
 
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="direccion">Direcci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['direccion'] ?></p>
+                        <p class="form-control"><?php echo $datos['direccion'] ?></p> <!-- Se muestra la dirección registrada del reporte. -->
                     </div>
 
     
                     <div class="col-12 col-md-6">
                         <label>Referencia del lugar</label>
-                        <p class="form-control"><?php echo $datos['referencia'] ?></p>
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p> <!-- Se muestra la referencia registrada del reporte. -->
                     </div>
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="tsenal">Tipo de se&ntilde;al</label>
-                        <p class="form-control"><?php echo $datos['tipo_senal'] ?></p>
+                        <p class="form-control"><?php echo $datos['tipo_senal'] ?></p> <!-- Se muestra el tipo de señal registrado en el reporte. -->
                     </div>
 
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipodanoreductor">Tipo de da&ntilde;o</label>
-                        <p class="form-control"><?php echo $datos['tipo_dano'] ?></p>
+                        <p class="form-control"><?php echo $datos['tipo_dano'] ?></p> <!-- Se muestra el tipo de daño registrado en el reporte. -->
                     </div>
 
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                         <<div>
-                            <?php if($datos['imagen_url'] != ""){ ?>
-                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">
+                            <?php if($datos['imagen_url'] != ""){ ?> // Se verifica si el reporte tiene una imagen registrada.
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">    <!-- Si hay una imagen, se muestra en pantalla. -->
                             <?php } else { ?>
-                                <p class="form-control">Sin imagen</p>
+                                <p class="form-control">Sin imagen</p> //Si no hay imagen
                             <?php } ?>
                         </div>
                     </div>
@@ -71,16 +71,16 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['descripcion'] ?></p>
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> <!-- Se muestra la descripción registrada del reporte. -->
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?>
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> <!-- Se recorren los estados de la base de datos. -->
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> <!-- Marca como seleccionado el estado actual del reporte. -->
                 
                             <?php echo $est['nombre']; ?>
             
@@ -91,7 +91,7 @@
                     </div>
 
                 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> <!-- Guarda el ID del usuario que inició sesión para enviarlo con el formulario. -->
 
                     
                     <div class="col-12 d-flex gap-2 pt-2">

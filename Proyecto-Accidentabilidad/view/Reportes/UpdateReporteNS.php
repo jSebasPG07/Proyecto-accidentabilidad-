@@ -55,10 +55,10 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                         <div>
-                            <?php if($datos['imagen_url'] != ""){ ?>
-                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">
+                            <?php if($datos['imagen_url'] != ""){ ?> // Se verifica si el reporte tiene una imagen asociada.
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">  <!-- Si existe una imagen, se muestra al usuario. -->
                             <?php } else { ?>
-                                <p class="form-control">Sin imagen</p>
+                                <p class="form-control">Sin imagen</p> //si no existe
                             <?php } ?>
                         </div>
                     </div>
@@ -72,10 +72,10 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?>
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> // Se recorren todos los estados de la base de datos.
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>   <!-- Se crea una opción para cada estado y, si coincide con el estado actual del reporte, se deja seleccionado automáticamente. -->
                 
                             <?php echo $est['nombre']; ?>
             

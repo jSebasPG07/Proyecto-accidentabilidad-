@@ -28,8 +28,8 @@
                             
                         <option value="">Seleccione...</option>
 
-                            <?php while ($orientacion = pg_fetch_assoc($orientacionn)) { ?>
-                                <option value="<?php echo $orientacion['id_orientacion']; ?>">
+                            <?php while ($orientacion = pg_fetch_assoc($orientacionn)) { ?> // Se recorren todas las orientaciones de la base de datos.
+                                <option value="<?php echo $orientacion['id_orientacion']; ?>"> <!-- Se crea una opción en el listado con el ID y el nombre de la orientación. -->
                                     <?php echo $orientacion['nombre']; ?>
                                 </option>
                             <?php } ?>
@@ -79,8 +79,8 @@
 
                         <option value="">Seleccione...</option>
                         
-                            <?php while ($tsenall = pg_fetch_assoc($nsenal)) { ?>
-                                <option value="<?php echo $tsenall['id_tipo_senal']; ?>">
+                            <?php while ($tsenall = pg_fetch_assoc($nsenal)) { ?> // Se recorren todos los tipos de señal de la base de datos.
+                                <option value="<?php echo $tsenall['id_tipo_senal']; ?>"> <!-- Se crea una opción en el listado con el ID y el nombre del tipo de señal. -->
                                     <?php echo $tsenall['nombre_senal']; ?>
                                 </option>
                             <?php } ?>

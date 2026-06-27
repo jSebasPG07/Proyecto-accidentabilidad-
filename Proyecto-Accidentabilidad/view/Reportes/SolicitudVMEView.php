@@ -29,8 +29,8 @@
                             <option value="">Seleccione...</option>
 
                             <?php
-                                while ($dano = pg_fetch_assoc($tiposDanoVia)) {
-                                    echo "<option value='" . $dano['id_tipo_dano_via'] . "'>" . $dano['descripcion'] . "</option>";
+                                while ($dano = pg_fetch_assoc($tiposDanoVia)) { // Se recorren todos los tipos de daño de la vía de la base de datos.
+                                    echo "<option value='" . $dano['id_tipo_dano_via'] . "'>" . $dano['descripcion'] . "</option>"; // Se crea una opción en el listado con la descripción de cada tipo de daño.
                                 }
                             ?>
 

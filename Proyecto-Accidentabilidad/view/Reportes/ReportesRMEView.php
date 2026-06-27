@@ -25,8 +25,8 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipored">Tipo de reductor</label>
                         <select name="idtipored" id="idtipored" class="form-control" required>
-                            <?php while ($red = pg_fetch_assoc($tiposReductor)) { ?>
-                                <option value="<?php echo $red['id_tipo_reductor']; ?>">
+                            <?php while ($red = pg_fetch_assoc($tiposReductor)) { ?> // Se recorren todos los tipos de reductores de la base de datos.
+                                <option value="<?php echo $red['id_tipo_reductor']; ?>"> <!-- Se crea una opción en el listado mostrando la categoría y el nombre del reductor. -->
                                     <?php echo $red['categoria'] . ' - ' . $red['nombre']; ?>
                                 </option>
                             <?php } ?>
@@ -37,8 +37,8 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipodanoreductor">Tipo de da&ntilde;o</label>
                         <select name="idtipodanoreductor" id="idtipodanoreductor" class="form-control" required>
-                            <?php while ($dano = pg_fetch_assoc($tiposDanoReductor)) { ?>
-                                <option value="<?php echo $dano['id_tipo_dano_reductor']; ?>">
+                            <?php while ($dano = pg_fetch_assoc($tiposDanoReductor)) { ?> // Se recorren todos los tipos de daño del reductor de la base de datos.
+                                <option value="<?php echo $dano['id_tipo_dano_reductor']; ?>"> <!-- Se crea una opción en el listado con la descripción del tipo de daño. -->
                                     <?php echo $dano['descripcion']; ?>
                                 </option>
                             <?php } ?>
