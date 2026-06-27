@@ -120,6 +120,131 @@ include_once "../web/registro.php";
         }
         }
     }
+
+     public function perfil(){
+
+        $obj = new UsuarioModel();
+
+        $id_usuario = $_SESSION['id'];
+
+        $sql = "SELECT u.*, td.descripcion AS nombre_tipo_doc, r.nombre_rol, e.nombre AS nombre_estado
+                FROM usuarios u
+                INNER JOIN tipo_documento td ON u.id_tipo_doc = td.id_tipo_doc
+                INNER JOIN roles r ON u.id_rol = r.id_rol
+                INNER JOIN estado e ON u.id_estado = e.id_estado
+                WHERE u.id = '$id_usuario'";
+
+        $usuario = $obj->select($sql);
+
+        include_once "../view/Usuario/PerfilView.php";
+    }
+
+    public function getEditPerfil(){
+
+        $obj = new UsuarioModel();
+
+        $id_usuario = $_SESSION['id'];
+
+        $sql = "SELECT u.*, td.descripcion AS nombre_tipo_doc, r.nombre_rol, e.nombre AS nombre_estado
+                FROM usuarios u
+                INNER JOIN tipo_documento td ON u.id_tipo_doc = td.id_tipo_doc
+                INNER JOIN roles r ON u.id_rol = r.id_rol
+                INNER JOIN estado e ON u.id_estado = e.id_estado
+                WHERE u.id = '$id_usuario'";
+
+        $usuario = $obj->select($sql);
+
+        include_once "../view/Usuario/EditPerfil.php";
+    }
+
+    public function postPerfil(){
+
+        $obj = new UsuarioModel();
+
+        $id_usuario = $_SESSION['id'];
+        $id_rol     = $_SESSION['id_rol'];
+
+        // ── Datos de contacto: editables por TODOS los roles ─────────────
+        $telefono  = $_POST['telefono'];
+        $direccion = $_POST['direccion'];
+
+        $sql = "UPDATE usuarios SET telefono = '$telefono', direccion = '$direccion'";
+
+        // ── Nombre y Apellido: solo Funcionario (3) y Administrador (2) ──
+        if ($id_rol == 2 || $id_rol == 3) {
+            $nombre   = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $sql .= ", nombre = '$nombre', apellido = '$apellido'";
+        }
+
+        // ── Correo: solo Administrador (2) ────────────────────────────────
+        if ($id_rol == 2) {
+            $correo = $_POST['correo'];
+            $sql .= ", correo = '$correo'";
+        }
+
+        $sql .= " WHERE id = '$id_usuario'";
+
+        $ejecutar = $obj->update($sql);
+
+        if (!$ejecutar) {
+            $_SESSION['error_perfil'] = "No se pudo actualizar la informacion. Intente nuevamente.";
+            redirect(getUrl("Usuario", "Usuario", "getEditPerfil"));
+            return;
+        }
+
+        // ── Cambio de contrasena: solo Ciudadano (1) y Administrador (2) ──
+        if ($id_rol == 1 || $id_rol == 2) {
+
+            $contrasena_actual    = isset($_POST['contrasena_actual']) ? trim($_POST['contrasena_actual']) : '';
+            $contrasena_nueva     = isset($_POST['contrasena_nueva']) ? trim($_POST['contrasena_nueva']) : '';
+            $contrasena_confirmar = isset($_POST['contrasena_confirmar']) ? trim($_POST['contrasena_confirmar']) : '';
+
+            // Si dejo los 3 campos vacios, no quiere cambiar la contrasena -> se ignora
+            if ($contrasena_actual !== '' || $contrasena_nueva !== '' || $contrasena_confirmar !== '') {
+
+                $salt = "giavpassword0602";
+                $hash_actual_calculado = md5($salt . $contrasena_actual);
+
+                $sql_check = "SELECT contrasena FROM usuarios WHERE id = '$id_usuario'";
+                $res_check = $obj->select($sql_check);
+                $fila_check = pg_fetch_assoc($res_check);
+                $hash_guardado = $fila_check['contrasena'];
+
+                if ($hash_actual_calculado !== $hash_guardado) {
+                    $_SESSION['error_perfil'] = "La contrasena actual no es correcta.";
+                    redirect(getUrl("Usuario", "Usuario", "getEditPerfil"));
+                    return;
+                }
+
+                if ($contrasena_nueva === '' || $contrasena_confirmar === '') {
+                    $_SESSION['error_perfil'] = "Debe completar la nueva contrasena y su confirmacion.";
+                    redirect(getUrl("Usuario", "Usuario", "getEditPerfil"));
+                    return;
+                }
+
+                if ($contrasena_nueva !== $contrasena_confirmar) {
+                    $_SESSION['error_perfil'] = "La nueva contrasena y su confirmacion no coinciden.";
+                    redirect(getUrl("Usuario", "Usuario", "getEditPerfil"));
+                    return;
+                }
+
+                if (strlen($contrasena_nueva) < 8) {
+                    $_SESSION['error_perfil'] = "La nueva contrasena debe tener minimo 8 caracteres.";
+                    redirect(getUrl("Usuario", "Usuario", "getEditPerfil"));
+                    return;
+                }
+
+                $hash_nuevo = md5($salt . $contrasena_nueva);
+                $sql_clave  = "UPDATE usuarios SET contrasena = '$hash_nuevo' WHERE id = '$id_usuario'";
+                $obj->update($sql_clave);
+            }
+        }
+
+        $_SESSION['exito_perfil'] = "Perfil actualizado correctamente.";
+        redirect(getUrl("Usuario", "Usuario", "perfil"));
+    }
+
 }
 
 
