@@ -149,7 +149,8 @@
                                 <span class="badge" style="background: #616161;">Bootstrap 5</span>
                                 <span class="badge" style="background: #757575;">HTML5</span>
                                 <span class="badge" style="background: #9e9e9e;">CSS3</span>
-                                <span class="badge" style="background: #1976d2; color: white;">JavaScript</span>
+                                <span class="badge" style="background: #1976d2;">JavaScript</span>
+                                <span class="badge" style="background: #05ec4e; ">PostGIS</span>
 
                             </td>
                         </tr>

@@ -10,6 +10,16 @@
             <h4 class="mb-0 fw-bold">Manual de Usuario</h4>
             <p class="text-muted mb-0 small">Gu&iacute;a r&aacute;pida para usar la plataforma GIAV</p>
         </div>
+
+        <a href="assets/pdf/Manual_Usuario_GIAV.pdf"
+           download="Manual_Usuario_GIAV.pdf"
+           class="btn btn-primary ms-auto">
+
+            <i class="fas fa-file-pdf me-2"></i>
+            Descargar Manual
+
+        </a>
+
     </div>
 
     <div class="accordion accordion-flush" id="accordionUsuario">
