@@ -110,7 +110,7 @@
 
 <script type="text/javascript" src="misc/lib/mscross-1.1.9.js"></script>
 <script type="text/javascript">
-    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-Accidentabilidad/web/cali.map';
+    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/cali.map';
 
     myMap1 = new msMap(document.getElementById("dc_main"), 'standardRight');
     myMap1.setCgi('/cgi-bin/mapserv.exe');

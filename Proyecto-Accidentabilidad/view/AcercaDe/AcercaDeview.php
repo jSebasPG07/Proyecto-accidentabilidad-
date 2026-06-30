@@ -150,6 +150,7 @@
                                 <span class="badge" style="background: #757575;">HTML5</span>
                                 <span class="badge" style="background: #9e9e9e;">CSS3</span>
                                 <span class="badge" style="background: #1976d2; color: white;">JavaScript</span>
+                                
 
                             </td>
                         </tr>

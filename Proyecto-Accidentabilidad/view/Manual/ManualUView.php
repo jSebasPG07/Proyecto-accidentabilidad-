@@ -1,15 +1,29 @@
 <div class="container-fluid px-4 py-3">
 
     <div class="d-flex align-items-center mb-4 gap-3">
+
         <div class="bg-success bg-opacity-10 rounded-3 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#198754" viewBox="0 0 16 16">
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
             </svg>
         </div>
+
         <div>
             <h4 class="mb-0 fw-bold">Manual de Usuario</h4>
-            <p class="text-muted mb-0 small">Gu&iacute;a r&aacute;pida para usar la plataforma GIAV</p>
+            <p class="text-muted mb-0 small">
+                Gu&iacute;a r&aacute;pida para usar la plataforma GIAV
+            </p>
         </div>
+
+        <a href="assets/pdf/Manual_Usuario_GIAV.pdf"
+           download="Manual_Usuario_GIAV.pdf"
+           class="btn btn-primary ms-auto">
+
+            <i class="fas fa-file-pdf me-2"></i>
+            Descargar PDF
+
+        </a>
+
     </div>
 
     <div class="accordion accordion-flush" id="accordionUsuario">

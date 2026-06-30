@@ -12,6 +12,15 @@
             <h4 class="mb-0 fw-bold">Manual de Se&ntilde;alizaci&oacute;n</h4>
             <p class="text-muted mb-0 small">Gu&iacute;a sobre tipos de se&ntilde;ales viales, su significado y c&oacute;mo reportarlas en GIAV</p>
         </div>
+
+        <a href="assets/pdf/Manual_Senalizacion.pdf"
+           download="Manual_Senalizacion.pdf"
+           class="btn btn-primary ms-auto">
+
+            <i class="fas fa-file-pdf me-2"></i>
+            Descargar PDF
+
+        </a>
     </div>
 
     <div class="accordion accordion-flush" id="accordionSenalizacion">
