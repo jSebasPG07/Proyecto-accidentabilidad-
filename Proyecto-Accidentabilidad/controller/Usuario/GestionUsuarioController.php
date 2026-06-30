@@ -65,7 +65,7 @@ class GestionUsuarioController{
         $sqlRoles = "SELECT * FROM roles";
         $roles = $obj->select($sqlRoles);
 
-        $sqlEstados = "SELECT * FROM estado";
+        $sqlEstados = "SELECT * FROM estado WHERE controlador = 'usuario'";
         $estados = $obj->select($sqlEstados);
 
         include_once "../view/Usuario/EditUsuario.php";
