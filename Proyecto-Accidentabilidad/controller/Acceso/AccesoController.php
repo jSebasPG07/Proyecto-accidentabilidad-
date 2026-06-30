@@ -62,6 +62,7 @@ class AccesoController
         $_SESSION['permisos'] = $permisos;
             redirect("index.php");
         } else {
+            $_SESSION[error_login]= "Error al iniciar sesión, intente nuevamente";
             redirect("login.php");
         }
     }

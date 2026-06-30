@@ -30,7 +30,7 @@
 
             <!-- Mapa -->
             <div class="mscross border"
-                 style="overflow:hidden; width:650px; height:480px; -moz-user-select:none; position:relative;"
+                 style="overflow:hidden; width:830px; height:580px; -moz-user-select:none; position:relative;"
                  id="mapa_reporte">
             </div>
 
@@ -88,7 +88,7 @@
     reMap2.redraw();
 
     // Herramienta de selección de punto
-    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/viajar.png', onClickMapa);
+    var herramienta = new msTool('Seleccionar punto', activarSeleccion, 'misc/img/seleccionar.png', onClickMapa);
     reMap.getToolbar(0).addMapTool(herramienta);
 
     var modoSeleccion = false;

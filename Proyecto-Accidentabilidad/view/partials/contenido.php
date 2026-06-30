@@ -23,7 +23,7 @@
                 <div class="card-body p-0">
                     <div style="overflow-x:auto; width:100%;">
                         <div class="mscross border"
-                             style="overflow:hidden; width:1147px; height:660px; -moz-user-select:none; position:relative;"
+                             style="overflow:hidden; width:785px; height:660px; -moz-user-select:none; position:relative;"
                              id="dc_main">
                         </div>
                     </div>
@@ -130,7 +130,7 @@
     chgLayers();
 
     // Herramienta consultar accidente (basada en query2 de visorDinamicoCali.php)
-    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/info_32.png', queryAccidente);
+    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/consultar_accidente.png', queryAccidente);
     myMap1.getToolbar(0).addMapTool(toolConsulta);
 
     var consultaActiva = false;
