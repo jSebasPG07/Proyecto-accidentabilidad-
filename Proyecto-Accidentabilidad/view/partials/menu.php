@@ -81,6 +81,12 @@
                         <ul class="nav nav-collapse">
                             <li><a href="<?php echo getUrl('Manual','ManualU','getList'); ?>"><span class="sub-item">Manual usuario</span></a></li>
                             <li><a href="<?php echo getUrl('Manual','ManualS','getList'); ?>"><span class="sub-item">Manual se&ntilde;alizaci&oacute;n</span></a></li>
+                            <?php if (Permisos::hasPermission(4, 1)): ?>
+                            <li><a href="<?php echo getUrl('Manual','ManualT','getList'); ?>"><span class="sub-item">Manual t&eacute;cnico</span></a></li>
+                            <?php endif; ?>
+                            <?php if (Permisos::hasPermission(4, 1)): ?>
+                            <li><a href="<?php echo getUrl('Manual','ManualI','getList'); ?>"><span class="sub-item">Manual instalaci&oacute;n</span></a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </li>

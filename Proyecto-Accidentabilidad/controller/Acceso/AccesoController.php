@@ -23,7 +23,8 @@ class AccesoController
                 FROM usuarios u
                 INNER JOIN roles r ON u.id_rol = r.id_rol
                 WHERE u.correo = '$usu_correo'
-                AND u.contrasena = '$usu_clave'";
+                AND u.contrasena = '$usu_clave'
+                AND id_estado = 1";
 
     
     $usuario = $obj->select($sql);
@@ -61,6 +62,7 @@ class AccesoController
         $_SESSION['permisos'] = $permisos;
             redirect("index.php");
         } else {
+            $_SESSION[error_login]= "Error al iniciar sesión, intente nuevamente";
             redirect("login.php");
         }
     }

@@ -165,6 +165,22 @@ include_once '../lib/helpers.php';
 
                             <p class="text-center text-muted mb-4">Inicia sesi&oacute;n para continuar</p>
 
+                            <?php
+                                if(isset($_SESSION['exito'])):?>
+                                    <div class="alert alert-success text-center" role="alert">
+                                        <?php echo $_SESSION['exito']; 
+                                        unset($_SESSION['exito']); ?>
+                                    </div>
+                            <?php endif; ?>
+                            <?php
+                                if(isset($_SESSION[error_login])):?>
+                                    <div class="alert alert-success text-center" role="alert">
+                                        <?php echo $_SESSION[error_login]; 
+                                        unset($_SESSION[error_login]); ?>
+                                    </div>
+                            <?php endif; ?>
+
+
                             <form action="<?php echo getUrl('Acceso','Acceso','login',false,'ajax'); ?>" method="POST">
 
                                 <div class="form-group">
