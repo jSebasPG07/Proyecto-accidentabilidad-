@@ -23,7 +23,7 @@
                 <div class="card-body p-0">
                     <div style="overflow-x:auto; width:100%;">
                         <div class="mscross border"
-                             style="overflow:hidden; width:730px; height:660px; -moz-user-select:none; position:relative;"
+                             style="overflow:hidden; width:785px; height:660px; -moz-user-select:none; position:relative;"
                              id="dc_main">
                         </div>
                     </div>
@@ -110,7 +110,7 @@
 
 <script type="text/javascript" src="misc/lib/mscross-1.1.9.js"></script>
 <script type="text/javascript">
-    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-Accidentabilidad/web/cali.map'; // Ruta donde se encuentra el archivo del mapa.
+    var mapFile = 'C:/ms4w/Apache/htdocs/Giav-proyecto/Proyecto-accidentabilidad-/Proyecto-Accidentabilidad/web/cali.map';
 
     myMap1 = new msMap(document.getElementById("dc_main"), 'standardRight');
     myMap1.setCgi('/cgi-bin/mapserv.exe');
@@ -130,7 +130,7 @@
     chgLayers();
 
     // Herramienta consultar accidente (basada en query2 de visorDinamicoCali.php)
-    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/info_32.png', queryAccidente);
+    var toolConsulta = new msTool('Consultar accidente', activarConsulta, 'misc/img/consultar_accidente.png', queryAccidente);
     myMap1.getToolbar(0).addMapTool(toolConsulta);
 
     var consultaActiva = false;

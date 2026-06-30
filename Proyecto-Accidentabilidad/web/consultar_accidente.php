@@ -13,7 +13,7 @@ if ($x == 0 || $y == 0) {
     ));
 }
 
-$tolerancia = 1000;
+$tolerancia = 500;
 
 // Consulta SQL para buscar el accidente más cercano a las coordenadas recibidas.
 $sql = " 
