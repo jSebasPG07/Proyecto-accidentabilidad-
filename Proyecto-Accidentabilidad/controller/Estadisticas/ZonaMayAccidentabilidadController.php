@@ -48,13 +48,14 @@ class ZonaMayAccidentabilidadController{
         // Para las zonas usamos la direccion
         // esta consulta muestra la zona los cuenta cuantos accidentes hubieron en esa zona y muestra cuantos lesionados hubieron, todo lo muestra de mayor a menor 
         $sql = "SELECT 
-                    direccion AS zona,
-                    COUNT(*) as accidentes,
-                    COALESCE(SUM(num_lesionados),0) as lesionados
-                 FROM reporte_accidente
-                 GROUP BY direccion
-                 ORDER BY accidentes DESC
-                 LIMIT 5";
+            b.nombre AS zona,
+            COUNT(*) AS accidentes,
+            COALESCE(SUM(r.num_lesionados),0) AS lesionados
+            FROM reporte_accidente r
+            INNER JOIN barrio b
+                ON r.id_barrio = b.id_barrio
+                GROUP BY b.nombre
+                ORDER BY accidentes DESC";
         $reporte = $obj->select($sql);
 
         $zonas = array();
