@@ -23,7 +23,7 @@
                 <div class="card-body p-0">
                     <div style="overflow-x:auto; width:100%;">
                         <div class="mscross border"
-                             style="overflow:hidden; width:730px; height:660px; -moz-user-select:none; position:relative;"
+                             style="overflow:hidden; width:1147px; height:660px; -moz-user-select:none; position:relative;"
                              id="dc_main">
                         </div>
                     </div>
@@ -154,15 +154,17 @@
 
         // AJAX al endpoint (patrón de consulta_ejemplo.php)
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "consultar_accidente.php?x=" + encodeURIComponent(xx) + "&y=" + encodeURIComponent(yy), true);
-        xhr.onreadystatechange = function() {
+        xhr.open("GET", "consultar_accidente.php?x=" + encodeURIComponent(xx) + "&y=" + encodeURIComponent(yy), true); // Se envían las coordenadas del punto seleccionado al archivo PHP.
+        xhr.onreadystatechange = function() { // Se ejecuta cuando el servidor responde.
             if (xhr.readyState == 4) {
-                var data = JSON.parse(xhr.responseText);
+                var data = JSON.parse(xhr.responseText);  // Convierte la respuesta JSON en un objeto JavaScript.
                 if (data.encontrado) {
-                    var img = data.imagen
+                    var img = data.imagen // Si el reporte tiene imagen, la prepara para mostrarla.
                         ? '<img src="../img/' + data.imagen + '" class="img-fluid rounded mb-3" style="max-height:220px;object-fit:cover;width:100%;">'
                         : '';
-                    document.getElementById('modalAccidenteBody').innerHTML =
+
+                        // Se llena el modal con toda la información del accidente.
+                    document.getElementById('modalAccidenteBody').innerHTML = 
                         img +
                         '<div class="row g-2">' +
                             '<div class="col-6"><span class="text-muted small">ID Reporte</span><p class="fw-semibold mb-1">#' + data.id + '</p></div>' +
@@ -175,7 +177,7 @@
                             '<div class="col-12"><span class="text-muted small">Observaciones</span><p class="fw-semibold mb-1">' + (data.observaciones || '—') + '</p></div>' +
                             '<div class="col-12 text-muted" style="font-size:0.75rem;">Distancia al punto seleccionado: ' + data.distancia + ' m</p></div>' +
                         '</div>';
-                } else {
+                } else { // Si no hay accidentes cercanos, se informa al usuario.
                     document.getElementById('modalAccidenteBody').innerHTML =
                         '<div class="text-center py-4 text-muted">' +
                         '<i class="fas fa-map-marker-alt fa-2x mb-2"></i>' +
@@ -183,14 +185,14 @@
                 }
             }
         };
-        xhr.send(null);
+        xhr.send(null); // Se envía la petición al servidor.
     }
 
     function chgLayers() {
         var list = "";
-        var objForm = document.forms["select_layers"];
-        for (var i = 0; i < objForm.length; i++) {
-            if (objForm.elements["layer[" + i + "]"].checked) {
+        var objForm = document.forms["select_layers"]; // Se obtiene el formulario que contiene los checkbox.
+        for (var i = 0; i < objForm.length; i++) { // Se recorren todas las opciones del formulario.
+            if (objForm.elements["layer[" + i + "]"].checked) { // Si una capa está seleccionada, se agrega a la lista.
                 list += objForm.elements["layer[" + i + "]"].value + " ";
             }
         }

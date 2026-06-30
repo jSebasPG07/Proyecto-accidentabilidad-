@@ -8,7 +8,7 @@ MAP
     FONTSET "misc/fonts/fonts.txt"
     SYMBOLSET "misc/symbols/symbols.sym"
 
-    IMAGECOLOR 218 235 247
+    IMAGECOLOR 233 243 255
 
     WEB
 
@@ -23,22 +23,22 @@ MAP
         TYPE POLYGON
         CLASS
             STYLE
-                COLOR 232 224 196
-                OUTLINECOLOR 95 95 95 
+                COLOR 236 238 224
+                OUTLINECOLOR 160 160 160
             END
         END
     END
 
     LAYER
-        TRANSPARENCY 50
+        TRANSPARENCY 70
         NAME "Comunas"
         STATUS ON
         DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\ComunasC.shp" 
         TYPE POLYGON
         CLASS
             STYLE
-                COLOR 207 222 184
-                OUTLINECOLOR 105 125 95
+                COLOR 186 220 255
+                OUTLINECOLOR 75 125 185
             END
         END
     END
@@ -49,21 +49,30 @@ MAP
         STATUS ON
         DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\MallaVialC.shp" 
         TYPE LINE
-        LABELITEM "numero"
+        LabelItem "nombre"
         CLASS
             STYLE
-                COLOR 0 0 0
-                WIDTH 2
+                COLOR 120 120 120
+                WIDTH 1
             END
             LABEL   
-                SIZE SMALL
-                COLOR 0 0 0
+                TYPE TRUETYPE
+                FONT "sans"
+                ENCODING "UTF-8"
+                POSITION CC 
+                ANGLE auto
+                PARTIALS true
+                SIZE 7
+                COLOR 80 80 80
+                OUTLINECOLOR 255 255 255
+                SHADOWCOLOR 255 255 255
+                SHADOWSIZE 1 1
             END
         END
     END
 
     LAYER
-        TRANSPARENCY 45
+        TRANSPARENCY 35
         NAME "Barrio"
         STATUS ON
         DATA "C:\ms4w\Apache\htdocs\Giav-proyecto\Proyecto-accidentabilidad-\Proyecto-Accidentabilidad\web\assets\shapeCali41\Barrios.shp" 
@@ -72,8 +81,8 @@ MAP
         CLASS
             NAME "LABEL"
             STYLE
-                COLOR 190 55 45
-                OUTLINECOLOR 90 40 35
+                COLOR 255 242 204
+                OUTLINECOLOR 219 170 0
             END
             LABEL   
                 SIZE SMALL
@@ -95,8 +104,8 @@ MAP
         CLASS
             STYLE
                 SYMBOL star
-                SIZE 15
-                COLOR 200 0 0
+                SIZE 18
+                COLOR 230 57 70
                 OUTLINECOLOR 255 255 255
             END
         END

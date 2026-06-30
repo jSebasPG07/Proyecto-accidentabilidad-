@@ -70,10 +70,10 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?>
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> //recorre uno de los registros obtenidos de una consulta, extrae una fila como arreglo y la guarda en la variable $est
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> //Verifica si el estado actual almacenado en $datos['estado'] es igual al nombre del estado de la opción que se está recorriendo ($est['nombre'])
                 
                             <?php echo $est['nombre']; ?>
             

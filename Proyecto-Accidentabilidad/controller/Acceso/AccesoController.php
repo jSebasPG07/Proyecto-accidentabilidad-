@@ -23,7 +23,8 @@ class AccesoController
                 FROM usuarios u
                 INNER JOIN roles r ON u.id_rol = r.id_rol
                 WHERE u.correo = '$usu_correo'
-                AND u.contrasena = '$usu_clave'";
+                AND u.contrasena = '$usu_clave'
+                AND id_estado = 1";
 
     
     $usuario = $obj->select($sql);
