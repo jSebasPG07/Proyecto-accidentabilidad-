@@ -6,33 +6,23 @@
 		<ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
 			
 			<!-- User Profile -->
-			<ul class="navbar-nav">
-				<li class="nav-item topbar-user dropdown hidden-caret">
-					<a class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">
-						<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?>
-					</a>
+			<div class="d-flex align-items-center gap-4">
 
-					
+            	<span class="fw-semibold text-dark">
+                	<i class="fas fa-user-circle me-2"></i>
+                	<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?>
+            	</span>
 
-					<ul class="dropdown-menu">
+            	<a class="nav-link text-dark" href="<?php echo getUrl("Usuario", "Usuario", "perfil"); ?>">
+                	<i class="fas fa-user me-1"></i> Mi Perfil
+            	</a>
 
-						<li>
-       					 <a class="dropdown-item"
-          				  href="<?php echo getUrl("Usuario", "Usuario", "perfil"); ?>">
-           				 <i class="usu"></i> Mi Perfil
-        				</a>
-    				</li>
+            	<a class="nav-link text-danger" href="<?php echo getUrl("Acceso", "Acceso", "logout"); ?>">
+                	<i class="fas fa-sign-out-alt me-1"></i> Cerrar sesión
+            	</a>
 
-						<li>
-							<a class="dropdown-item"
-								href="<?php echo getUrl("Acceso", "Acceso", "logout"); ?>">
-								Cerrar sesi&oacute;n
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
+        	</div>
+
 		</ul>
 	</div>
 </nav>
