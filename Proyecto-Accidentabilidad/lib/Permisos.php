@@ -41,5 +41,17 @@ class Permisos {
         return false;
     }
 
+     public static function hasPermissionById($idPermiso) {
+        if (!isset($_SESSION['permisos'])) {
+            return false;
+        }
+        foreach ($_SESSION['permisos'] as $permiso) {
+            if ($permiso['permiso_id'] == $idPermiso) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 ?>
