@@ -167,15 +167,21 @@
                     document.getElementById('modalAccidenteBody').innerHTML = 
                         img +
                         '<div class="row g-2">' +
-                            '<div class="col-6"><span class="text-muted small">ID Reporte</span><p class="fw-semibold mb-1">#' + data.id + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Fecha</span><p class="fw-semibold mb-1">' + (data.fecha || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Direcci&oacute;n</span><p class="fw-semibold mb-1">' + (data.direccion || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Tipo de choque</span><p class="fw-semibold mb-1">' + (data.tipo_choque || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Lesionados</span><p class="fw-semibold mb-1">' + (data.lesionados || '0') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Estado</span><p class="fw-semibold mb-1">' + (data.estado || '—') + '</p></div>' +
-                            '<div class="col-6"><span class="text-muted small">Reportado por</span><p class="fw-semibold mb-1">' + (data.reportado_por || '—') + '</p></div>' +
-                            '<div class="col-12"><span class="text-muted small">Observaciones</span><p class="fw-semibold mb-1">' + (data.observaciones || '—') + '</p></div>' +
-                            '<div class="col-12 text-muted" style="font-size:0.75rem;">Distancia al punto seleccionado: ' + data.distancia + ' m</p></div>' +
+                        '<div class="col-6"><span class="text-muted small">ID Reporte</span><p class="fw-semibold mb-1">#' + data.id + '</p></div>' +
+                        '<div class="col-6"><span class="text-muted small">Fecha</span><p class="fw-semibold mb-1">' + (data.fecha || '—') + '</p></div>' +
+
+                        '<div class="col-6"><span class="text-muted small">Direcci&oacute;n</span><p class="fw-semibold mb-1">' + (data.direccion || '—') + '</p></div>' +
+                        '<div class="col-6"><span class="text-muted small">Barrio</span><p class="fw-semibold mb-1">' + (data.barrio || '—') + '</p></div>' +
+
+                        '<div class="col-6"><span class="text-muted small">Tipo de choque</span><p class="fw-semibold mb-1">' + (data.tipo_choque || '—') + '</p></div>' +
+                        '<div class="col-6"><span class="text-muted small">Lesionados</span><p class="fw-semibold mb-1">' + (data.lesionados || '0') + '</p></div>' +
+
+                        '<div class="col-6"><span class="text-muted small">Estado</span><p class="fw-semibold mb-1">' + (data.estado || '—') + '</p></div>' +
+                        '<div class="col-6"><span class="text-muted small">Reportado por</span><p class="fw-semibold mb-1">' + (data.reportado_por || '—') + '</p></div>' +
+
+                        '<div class="col-12"><span class="text-muted small">Observaciones</span><p class="fw-semibold mb-1">' + (data.observaciones || '—') + '</p></div>' +
+
+                        '<div class="col-12 text-muted" style="font-size:0.75rem;">Distancia al punto seleccionado: ' + data.distancia + ' m</div>' +
                         '</div>';
                 } else { // Si no hay accidentes cercanos, se informa al usuario.
                     document.getElementById('modalAccidenteBody').innerHTML =
