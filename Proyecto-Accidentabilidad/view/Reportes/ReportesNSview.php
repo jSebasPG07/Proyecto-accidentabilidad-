@@ -21,7 +21,20 @@
 
                 <div class="row g-3">
 
-                    
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="barrio">Barrio</label>
+                        <select name="barrio" id="barrio" class="form-control direccion" required>
+
+                        <option value="">Seleccione...</option>
+                        
+                            <?php while ($barrio = pg_fetch_assoc($barrios)) { ?> 
+                                <option value="<?php echo $barrio['id_barrio']; ?>"> 
+                                    <?php echo $barrio['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>    
+
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="orientacion">Orientaci&oacute;n</label>
                         <select name="orientacion" id="orientacion" class="form-control"
@@ -215,19 +228,7 @@
                         <input type="text" class="form-control bg-light" id="direccionPreview" readonly>
                     </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label fw-semibold" for="barrio">Barrio</label>
-                        <select name="barrio" id="barrio" class="form-control direccion" required>
-
-                        <option value="">Seleccione...</option>
-                        
-                            <?php while ($barrio = pg_fetch_assoc($barrios)) { ?> 
-                                <option value="<?php echo $barrio['id_barrio']; ?>"> 
-                                    <?php echo $barrio['nombre']; ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
+                    
 
     
                     <div class="col-12 col-md-6">
