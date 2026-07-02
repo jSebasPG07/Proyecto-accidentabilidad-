@@ -33,7 +33,7 @@ unset($_SESSION['error_verificacion'], $_SESSION['msg_recuperacion']);
     <style>
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0b2f5b 0%, #154a8a 50%, #f4f7fb 100%);
+            background: linear-gradient(135deg, #2E6EB5 0%, #5A9BE6 50%, #F4F7FB 100%);
         }
 
         .verify-card {
