@@ -54,7 +54,7 @@
     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="numero1">N&uacute;mero de via</label>
-                        <input class="form-control direccion" id="numero1" name="numero1"maxlength="3" required>
+                        <input type="number" class="form-control direccion" id="numero1" name="numero1"maxlength="3" required>
                     </div>
 
                     <div class="col-12 col-md-6">
@@ -130,7 +130,7 @@
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="numero2">Número después del #</label>
-                        <input class="form-control direccion" id="numero2" name="numero2" maxlength="3" required>
+                        <input type="number" class="form-control direccion" id="numero2" name="numero2" maxlength="3" required>
                     </div>
 
                     <div class="col-12 col-md-6">
@@ -206,7 +206,7 @@
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="numero3">Número de predio</label>
-                        <input class="form-control direccion" id="numero3" name="numero3" maxlength="3" required>
+                        <input type="number" class="form-control direccion" id="numero3" name="numero3" maxlength="3" required>
                     </div>
 
 

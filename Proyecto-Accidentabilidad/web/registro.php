@@ -125,13 +125,98 @@ include_once '../lib/helpers.php';
 
                                 <div class="form-group">
                                     <label class="form-label fw-semibold" for="numero1">N&uacute;mero de via</label>
-                                    <input type="text" name="numero1" class="form-control" required>
+                                    <input type="number" name="numero1" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="cuadrante">Cuadrante</label>
+                                    <select class="form-control direccion" id="cuad1" name="cuad1">
+                                        <option value=""></option>
+                                        <option>Norte</option>
+                                        <option>Sur</option>
+                                        <option>Oriente</option>
+                                        <option>Oeste</option>
+                                    </select>
                                 </div>
 
                                 
                                 <div class="form-group">
-                                    <label class="form-label fw-semibold">N&uacute;mero de predio</label>
-                                    <input type="text" name="numero3" class="form-control"required>
+                                    <label class="form-label fw-semibold" for="complemento"> Complemento</label>
+                                    <select class="form-control direccion" id="comp2" name="comp2">
+                                        <option value="">Ninguno</option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <option>E</option>
+                                        <option>F</option>
+                                        <option>G</option>
+                                        <option>H</option>
+                                        <option>I</option>
+                                        <option>J</option>
+                                        <option>K</option>
+                                        <option>L</option>
+                                        <option>M</option>
+                                        <option>N</option>
+                                        <option>O</option>
+                                        <option>P</option>
+                                        <option>Q</option>
+                                        <option>R</option>
+                                        <option>S</option>
+                                        <option>T</option>
+                                        <option>U</option>
+                                        <option>V</option>
+                                        <option>W</option>
+                                        <option>X</option>
+                                        <option>Y</option>
+                                        <option>Z</option>
+                                        <option>Bis</option>
+                                        <option>Bis A</option>
+                                        <option>Bis B</option>
+                                        <option>Bis C</option>
+                                        <option>Bis D</option>
+                                        <option>Bis E</option>
+                                        <option>Bis F</option>
+                                        <option>Bis G</option>
+                                        <option>Bis H</option>
+                                        <option>Bis I</option>
+                                        <option>Bis J</option>
+                                        <option>Bis K</option>
+                                        <option>Bis L</option>
+                                        <option>Bis M</option>
+                                        <option>Bis N</option>
+                                        <option>Bis O</option>
+                                        <option>Bis P</option>
+                                        <option>Bis Q</option>
+                                        <option>Bis R</option>
+                                        <option>Bis S</option>
+                                        <option>Bis T</option>
+                                        <option>Bis U</option>
+                                        <option>Bis V</option>
+                                        <option>Bis W</option>
+                                        <option>Bis X</option>
+                                        <option>Bis Y</option>
+                                        <option>Bis Z</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="numero3">Número de predio</label>
+                                    <input type="number" class="form-control direccion" id="numero3" name="numero3" maxlength="3" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="barrio">Barrio</label>
+                                    <select name="barrio" id="barrio" class="form-control direccion" required>
+
+                                            <option value="">Seleccione...</option>
+                        
+                                        <?php while ($barrio = pg_fetch_assoc($barrios)) { ?> 
+                                            <option value="<?php echo $barrio['id_barrio']; ?>"> 
+                                        <?php echo $barrio['nombre']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
 
                             </div>
@@ -156,7 +241,8 @@ include_once '../lib/helpers.php';
 
                                 <div class="form-group">
                                     <label class="form-label fw-semibold" for="tipovia">Tipo de via</label>
-                                    <select name="tipo_via" class="form-control" required>                 
+                                    <select id="tipo_via" name="tipo_via" class="form-control" required> 
+                                        <option value="">Ninguno</option>                
                                         <option value="Calle">Calle</option>
                                         <option value="Carrera">Carrera</option>
                                         <option value="Avenida">Avenida</option>
@@ -167,8 +253,84 @@ include_once '../lib/helpers.php';
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-label fw-semibold" for="caracter">N&uacute;mero despues de #</label>
-                                    <input type="text" name="numero2" class="form-control" required>
+                                    <label class="form-label fw-semibold" for="complemento">Complemento</label>
+                                    <select class="form-control direccion" id="comp1" name="comp1">
+                                        <option value="">Ninguno</option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <option>E</option>
+                                        <option>F</option>
+                                        <option>G</option>
+                                        <option>H</option>
+                                        <option>I</option>
+                                        <option>J</option>
+                                        <option>K</option>
+                                        <option>L</option>
+                                        <option>M</option>
+                                        <option>N</option>
+                                        <option>O</option>
+                                        <option>P</option>
+                                        <option>Q</option>
+                                        <option>R</option>
+                                        <option>S</option>
+                                        <option>T</option>
+                                        <option>U</option>
+                                        <option>V</option>
+                                        <option>W</option>
+                                        <option>X</option>
+                                        <option>Y</option>
+                                        <option>Z</option>
+                                        <option>Bis</option>
+                                        <option>Bis A</option>
+                                        <option>Bis B</option>
+                                        <option>Bis C</option>
+                                        <option>Bis D</option>
+                                        <option>Bis E</option>
+                                        <option>Bis F</option>
+                                        <option>Bis G</option>
+                                        <option>Bis H</option>
+                                        <option>Bis I</option>
+                                        <option>Bis J</option>
+                                        <option>Bis K</option>
+                                        <option>Bis L</option>
+                                        <option>Bis M</option>
+                                        <option>Bis N</option>
+                                        <option>Bis O</option>
+                                        <option>Bis P</option>
+                                        <option>Bis Q</option>
+                                        <option>Bis R</option>
+                                        <option>Bis S</option>
+                                        <option>Bis T</option>
+                                        <option>Bis U</option>
+                                        <option>Bis V</option>
+                                        <option>Bis W</option>
+                                        <option>Bis X</option>
+                                        <option>Bis Y</option>
+                                        <option>Bis Z</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="numero2">Número después del #</label>
+                                    <input type="number" class="form-control direccion" id="numero2" name="numero2" maxlength="3" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="cuadrante">Cuadrante</label>
+                                    <select class="form-control direccion" id="cuad2" name="cuad2">
+                                        <option value="">Ninguno</option>
+                                        <option>Norte</option>
+                                        <option>Sur</option>
+                                        <option>Este</option>
+                                        <option>Oeste</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label fw-semibold" for="direccion"> Dirección completa</label>
+                                    <input type="text" class="form-control bg-light" id="direccionPreview" readonly>
                                 </div>
 
 

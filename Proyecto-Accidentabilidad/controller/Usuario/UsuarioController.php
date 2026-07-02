@@ -6,6 +6,8 @@ function getCreate(){
 $obj      = new UsuarioModel();
 $sql      = "SELECT * FROM tipo_documento";
 $ejecutar = $obj->select($sql);
+$sql = "SELECT * FROM barrio";
+$barrios = $obj->select($sql);
 
 $tipo = array();
 if ($ejecutar && pg_num_rows($ejecutar) > 0) {
@@ -28,11 +30,17 @@ include_once "../web/registro.php";
         $contrasena = $_POST['contrasena'];
         $salt = "giavpassword0602";
         $contrasenaHash = md5($salt . $contrasena);
+        $barrio = $_POST['barrio'];
         $tipo_via = $_POST['tipo_via'];
         $numero1 = strtoupper($_POST['numero1']);
-        $numero2 = $_POST['numero2'];
+        $comp1 = $_POST['comp1'];
+        $cuad1 = $_POST['cuad1'];
+        $numero2 = strtoupper($_POST['numero2']);
+        $comp2 = $_POST['comp2'];
+        $cuad2 = $_POST['cuad2'];
         $numero3 = $_POST['numero3'];
-        $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
+        $direccion = preg_replace('/\s+/', ' ', trim(
+        $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
 
 
         //Esta validacion solo son son numeros deben de ser minimo de 8 digitos y maximo 11 digitos 
