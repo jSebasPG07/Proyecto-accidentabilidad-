@@ -125,7 +125,7 @@ include_once '../lib/helpers.php';
 
                                 <div class="form-group">
                                     <label class="form-label fw-semibold" for="numero1">N&uacute;mero de via</label>
-                                    <input type="number" name="numero1" class="form-control" required>
+                                    <input type="number" class="form-control direccion" id="numero1" name="numero1"maxlength="3" required>
                                 </div>
 
                                 <div class="form-group">
