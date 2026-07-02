@@ -10,17 +10,28 @@ class SolicitudVMEController {
         $sql = "SELECT * FROM tipo_dano_via";
         $tiposDanoVia = $obj->select($sql);
 
+        $sql = "SELECT * FROM barrio";
+        $barrios = $obj->select($sql);
+
         include_once "../view/Reportes/SolicitudVMEView.php";
     }
 
     public function postCreate() {
         $obj = new SolicitudVMEModel();
         $fechavme = date("d-m-y");
-        $numero1 = strtoupper($_POST['numero1']); 
-        $numero2 = $_POST['numero2'];
+        $barrio = $_POST['barrio'];
+        $tipo_via = $_POST['tipo_via'];
+        $numero1 = strtoupper($_POST['numero1']);
+        $comp1 = $_POST['comp1'];
+        $cuad1 = $_POST['cuad1'];
+        $numero2 = strtoupper($_POST['numero2']);
+        $comp2 = $_POST['comp2'];
+        $cuad2 = $_POST['cuad2'];
         $numero3 = $_POST['numero3'];
+        $direccion = preg_replace('/\s+/', ' ', trim(
+        $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
         $referencia = $_POST['referencia'];
-        $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
+        $referencia = $_POST['referencia'];
         $descripcion = $_POST['descripcion'];
         $idtipodanovia = $_POST['idtipodanovia'];
         $id_usuario = $_POST['id'];
@@ -96,9 +107,9 @@ class SolicitudVMEController {
             if (move_uploaded_file($archivo, $ruta)) {
 
                 $sql = "INSERT INTO sol_via_mal_estado 
-                            (fecha_via_mal_estado, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_dano_via, id_usuario, coordenadas) 
+                            (fecha_via_mal_estado, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_dano_via, id_usuario, id_barrio,coordenadas) 
                         VALUES 
-                            ('$fechavme','$descripcion', '$ruta', '$direccion', '$referencia','$id_estado', '$idtipodanovia', '$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
+                            ('$fechavme','$descripcion', '$ruta', '$direccion', '$referencia','$id_estado', '$idtipodanovia', '$id_usuario', '$barrio',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 
@@ -126,11 +137,13 @@ class SolicitudVMEController {
                        vm.referencia,
                        es.nombre AS estado, 
                        tdv.descripcion AS tipo_dano_via,  
-                       u.numero_id AS usuario
+                       u.numero_id AS usuario,
+                       b.nombre AS Barrio
                 FROM sol_via_mal_estado vm 
                 LEFT JOIN estado es ON vm.id_estado = es.id_estado 
                 LEFT JOIN tipo_dano_via tdv ON vm.id_tipo_dano_via = tdv.id_tipo_dano_via  
                 LEFT JOIN usuarios u ON vm.id_usuario = u.id
+                LEFT JOIN barrio b ON vm.id_barrio = b.id_barrio
                 WHERE vm.id_sol_via_mal = $id_sol_via_mal";
 
         $reporte = $obj->select($sql);

@@ -23,40 +23,45 @@
             <form action="<?php echo getUrl('Reportes','ReportesSolicitudNR','postUpdate');?>"
                   method="post" enctype="multipart/form-data">
 
-                  <input type="hidden" name="id_sol_nuevas_red" value="<?php echo $datos['id_sol_nuevas_red']; ?>"> <!-- Guarda el ID de la solicitud para enviarlo junto con el formulario. -->
+                  <input type="hidden" name="id_sol_nuevas_red" value="<?php echo $datos['id_sol_nuevas_red']; ?>"> 
 
                 <div class="row g-3">
 
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="id_tipo_reductor">Tipo de Reductor</label>
-                        <p class="form-control"><?php echo $datos['tipo_reductor'] ?></p> <!-- Se muestra el tipo de reductor registrado en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['tipo_reductor'] ?></p> 
                     </div>
 
                     <!-- Tipo de Daño -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="id_tipo_dano">Tipo de da&ntilde;o</label>
-                        <p class="form-control"><?php echo $datos['tipo_dano_reductor'] ?></p> <!-- Se muestra el tipo de daño del reductor registrado en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['tipo_dano_reductor'] ?></p> 
                     </div>
                     <!-- Dirección -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="direccion">Direccion</label>
-                        <p class="form-control"><?php echo $datos['direccion'] ?></p> <!-- Se muestra la dirección registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['direccion'] ?></p> 
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="barrio">Barrio</label>
+                        <p class="form-control"><?php echo $datos['barrio'] ?></p>
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="referencia">Referencia</label>
-                        <p class="form-control"><?php echo $datos['referencia'] ?></p> <!-- Se muestra la referencia registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p> 
                     </div>
 
                     <!-- Imagen -->
                     <div class="col-12 col-md-6">
                          <label>Imagen</label>
                         <div>
-                            <?php if($datos['imagen_url'] != ""){ ?> // Se verifica si la solicitud tiene una imagen registrada.
-                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">   <!-- Si existe una imagen, se muestra en pantalla. -->
+                            <?php if($datos['imagen_url'] != ""){ ?> 
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120">   
                             <?php } else { ?>
-                                <p class="form-control">Sin imagen</p> //Si no hay
+                                <p class="form-control">Sin imagen</p> 
                             <?php } ?>
                         </div>
                     </div>
@@ -64,16 +69,16 @@
                     <!-- DESCRIPCIÓN -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> <!-- Se muestra la descripción registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> 
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?> //recorre uno de los registros obtenidos de una consulta, extrae una fila como arreglo y la guarda en la variable $est
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> 
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> //Verifica si el estado actual almacenado en $datos['estado'] es igual al nombre del estado de la opción que se está recorriendo ($est['nombre'])
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>>
                 
                             <?php echo $est['nombre']; ?>
             
@@ -88,7 +93,7 @@
                             <i class="fas fa-save me-2"></i>Registrar nuevo reductor</button>
                     </div>
 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> <!-- Guarda el ID del usuario que inició sesión para enviarlo con el formulario. -->
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> 
 
                 </div>
 

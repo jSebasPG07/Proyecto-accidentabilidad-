@@ -170,6 +170,13 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
+                        <label><strong>Barrio</strong></label>
+                        <p class="form-control">
+                            <?php echo $a['barrio']; ?>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
                         <label><strong>Tipo de choque</strong></label>
                         <p class="form-control">
                             <?php echo $a['tipo_choque']; ?>

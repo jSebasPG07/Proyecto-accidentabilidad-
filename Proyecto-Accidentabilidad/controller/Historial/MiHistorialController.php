@@ -33,7 +33,8 @@ class MiHistorialController {
                        a.imagen_url,
                        t.nombre AS tipo_choque,
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM reporte_accidente a
                 LEFT JOIN estado es ON a.id_estado = es.id_estado 
                 LEFT JOIN tipo_choque t ON a.id_tipo_choque = t.id_tipo_choque
@@ -50,12 +51,14 @@ class MiHistorialController {
                        a.imagen_url,
                        es.nombre AS estado,
                        t.nombre AS tipo_choque,
+                       b.nombre AS Barrio,
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
                        u.numero_id AS identificacion
                 FROM reporte_accidente a
                 LEFT JOIN estado es ON a.id_estado = es.id_estado 
                 LEFT JOIN tipo_choque t ON a.id_tipo_choque = t.id_tipo_choque
                 LEFT JOIN usuarios u ON a.id_usuario = u.id
+                LEFT JOIN barrio b ON a.id_barrio = b.id_barrio
                 ORDER BY a.id_reporte_acc ASC";
         }
 
@@ -86,12 +89,14 @@ class MiHistorialController {
                        tp.nombre_senal AS tipo_senal, 
                        ori.nombre AS orientacion, 
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_nueva_senal ns 
                 LEFT JOIN estado es ON ns.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON ns.id_tipo_senal = tp.id_tipo_senal 
                 LEFT JOIN orientacion_senal ori ON ns.id_orientacion = ori.id_orientacion 
                 LEFT JOIN usuarios u ON ns.id_usuario = u.id
+                LEFT JOIN barrio b ON a.id_barrio = b.id_barrio
                 WHERE ns.id_usuario = ".$_SESSION['id']."
                 ORDER BY ns.id_sol_nueva_sen ASC";
         } else {
@@ -106,12 +111,14 @@ class MiHistorialController {
                        tp.nombre_senal AS tipo_senal, 
                        ori.nombre AS orientacion, 
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_nueva_senal ns 
                 LEFT JOIN estado es ON ns.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON ns.id_tipo_senal = tp.id_tipo_senal 
                 LEFT JOIN orientacion_senal ori ON ns.id_orientacion = ori.id_orientacion 
                 LEFT JOIN usuarios u ON ns.id_usuario = u.id
+                LEFT JOIN barrio b ON ns.id_barrio = b.id_barrio
                 ORDER BY ns.id_sol_nueva_sen ASC";
         }
 
@@ -143,13 +150,15 @@ class MiHistorialController {
                        td.id_tipo_dano_senal AS tipo_dano_senal, 
                        ori.nombre AS orientacion, 
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_senal_mal_estado sme 
                 LEFT JOIN estado es ON sme.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON sme.id_tipo_senal = tp.id_tipo_senal
                 LEFT JOIN tipo_dano_senal td ON sme.id_tipo_dano_senal = td.id_tipo_dano_senal 
                 LEFT JOIN orientacion_senal ori ON sme.id_orientacion = ori.id_orientacion 
                 LEFT JOIN usuarios u ON sme.id_usuario = u.id
+                LEFT JOIN barrio b ON sme.id_barrio = b.id_barrio
                 WHERE sme.id_usuario = ".$_SESSION['id']."
                 ORDER BY sme.id_sol_mal ASC";
         } else {
@@ -165,13 +174,15 @@ class MiHistorialController {
                        td.descripcion AS tipo_dano_senal, 
                        ori.nombre AS orientacion, 
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_senal_mal_estado sme 
                 LEFT JOIN estado es ON sme.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON sme.id_tipo_senal = tp.id_tipo_senal
                 LEFT JOIN tipo_dano_senal td ON sme.id_tipo_dano_senal = td.id_tipo_dano_senal 
                 LEFT JOIN orientacion_senal ori ON sme.id_orientacion = ori.id_orientacion 
                 LEFT JOIN usuarios u ON sme.id_usuario = u.id
+                LEFT JOIN barrio b ON sme.id_barrio = b.id_barrio
                 ORDER BY sme.id_sol_mal ASC";
         }
 
@@ -200,12 +211,14 @@ class MiHistorialController {
                        tr.nombre AS tipo_reductor,
                        tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS barrio
                 FROM sol_nuevo_reductor rn 
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rn.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rn.id_usuario = u.id
+                LEFT JOIN barrio b ON rn.id_barrio = b.id_barrio
                 WHERE rn.id_usuario = ".$_SESSION['id']."
                 ORDER BY rn.id_sol_nuevas_red ASC";
         } else {
@@ -220,12 +233,14 @@ class MiHistorialController {
                        tr.nombre AS tipo_reductor,
                        tdr.descripcion AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS barrio
                 FROM sol_nuevo_reductor rn 
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rn.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rn.id_usuario = u.id
+                LEFT JOIN barrio b ON rn.id_barrio = b.id_barrio
                 ORDER BY rn.id_sol_nuevas_red ASC";
         }
 
@@ -254,12 +269,14 @@ class MiHistorialController {
                        tr.nombre AS tipo_reductor,
                        tdr.descripcion AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_reductor_mal_estado rm 
                 LEFT JOIN estado es ON rm.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rm.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rm.id_usuario = u.id
+                LEFT JOIN barrio b ON rm.id_barrio = b.id_barrio
                 WHERE rm.id_usuario = ".$_SESSION[id]."
                 ORDER BY rm.id_sol_red_mal ASC";
 
@@ -275,12 +292,14 @@ class MiHistorialController {
                        tr.nombre AS tipo_reductor,
                        tdr.id_tipo_dano_reductor AS tipo_dano_reductor,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_reductor_mal_estado rm 
                 LEFT JOIN estado es ON rm.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rm.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rm.id_usuario = u.id
+                LEFT JOIN barrio b ON rm.id_barrio = b.id_barrio
                 ORDER BY rm.id_sol_red_mal ASC";
         }
 
@@ -308,11 +327,13 @@ class MiHistorialController {
                        es.nombre AS estado, 
                        tdv.descripcion AS tipo_dano_via,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_via_mal_estado vm 
                 LEFT JOIN estado es ON vm.id_estado = es.id_estado 
                 LEFT JOIN tipo_dano_via tdv ON vm.id_tipo_dano_via = tdv.id_tipo_dano_via  
                 LEFT JOIN usuarios u ON vm.id_usuario = u.id
+                LEFT JOIN barrio b ON vm.id_barrio = b.id_barrio
                 WHERE vm.id_usuario = ".$_SESSION[id]."
                 ORDER BY vm.id_sol_via_mal ASC";
         }else{
@@ -326,11 +347,13 @@ class MiHistorialController {
                        es.nombre AS estado, 
                        tdv.id_tipo_dano_via AS tipo_dano_via,  
                        CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                       u.numero_id AS identificacion
+                       u.numero_id AS identificacion,
+                       b.nombre AS Barrio
                 FROM sol_via_mal_estado vm 
                 LEFT JOIN estado es ON vm.id_estado = es.id_estado 
                 LEFT JOIN tipo_dano_via tdv ON vm.id_tipo_dano_via = tdv.id_tipo_dano_via  
                 LEFT JOIN usuarios u ON vm.id_usuario = u.id
+                LEFT JOIN barrio b ON vm.id_barrio = b.id_barrio
                 ORDER BY vm.id_sol_via_mal ASC";
         }
 

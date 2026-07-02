@@ -8,6 +8,8 @@ class ReportesAController {
         $obj = new ReportesAModel();
         $sql = "SELECT * FROM tipo_choque";
         $reportes = $obj->select($sql);
+        $sql = "SELECT * FROM barrio";
+        $barrios = $obj->select($sql);
         include_once "../view/Reportes/ReportesAView.php";
     }
 
@@ -17,11 +19,17 @@ class ReportesAController {
         $fechaaccidente = date("Y-m-d");
         $nlesionados = $_POST['nlesionados'];
         $tchoque = $_POST['tchoque'];
+        $barrio = $_POST['barrio'];
         $tipo_via = $_POST['tipo_via'];
         $numero1 = strtoupper($_POST['numero1']);
-        $numero2 = $_POST['numero2'];
+        $comp1 = $_POST['comp1'];
+        $cuad1 = $_POST['cuad1'];
+        $numero2 = strtoupper($_POST['numero2']);
+        $comp2 = $_POST['comp2'];
+        $cuad2 = $_POST['cuad2'];
         $numero3 = $_POST['numero3'];
-        $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
+        $direccion = preg_replace('/\s+/', ' ', trim(
+        $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
         $observaciones = $_POST['observaciones'];
 
         $id_estado = 3;
@@ -58,12 +66,13 @@ class ReportesAController {
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=obs_formato';</script>";
             exit();
         }
-
         //Esta validacion es por si no selecciona un punto en el mapa no lo deja hacer el registro
         if($coordX == 0 || $coordY == 0){
             echo "<script>window.location.href='".getUrl("Reportes","ReportesA","getCreate")."&msg=coordenadas';</script>";
             exit();
         }
+
+        
 
     
         $img = $_FILES['imagen']['name'];
@@ -74,7 +83,7 @@ class ReportesAController {
         if (!empty($img)) {
 
             //Esto va obtener la extension del archivo osea ps si es jpg o png 
-            $extension = strtolower(pathinfo($img, PATHINFO_EXTENSION)); //saca la extension del archivo osea si el archivoes foto.PNG entonces solo saca el PNG 
+            $extension = strtolower(pathinfo($img, PATHINFO_EXTENSION)); //saca la extension del archivo osea si el archivo es foto.PNG entonces solo saca el PNG 
             //Y el strtolower Lo convierte en minuscula esta extension que saca
 
 
@@ -91,9 +100,9 @@ class ReportesAController {
         if(move_uploaded_file($archivo, $ruta)){
 
             $sql = "INSERT INTO reporte_accidente 
-            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario, coordenadas) 
+            (fecha_accidente, num_lesionados, observaciones, imagen_url, direccion, id_estado, id_tipo_choque, id_usuario, id_barrio, coordenadas) 
             VALUES 
-            ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
+            ('$fechaaccidente', '$nlesionados', '$observaciones', '$ruta', '$direccion', '$id_estado', '$tchoque','$id_usuario', '$barrio', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
             $ejecutar = $obj->insert($sql);
 
@@ -117,10 +126,12 @@ class ReportesAController {
                        a.direccion,
                        es.nombre AS estado,
                        a.imagen_url,
-                       t.nombre AS tipo_choque
+                       t.nombre AS tipo_choque,
+                       b.nombre AS Barrio
                 FROM reporte_accidente a
                 LEFT JOIN estado es ON a.id_estado = es.id_estado 
                 LEFT JOIN tipo_choque t ON a.id_tipo_choque = t.id_tipo_choque
+                LEFT JOIN barrio b ON a.id_barrio = b.id_barrio
                 WHERE a.id_reporte_acc = $id_reporte_acc";
 
         $reporte = $obj->select($sql);

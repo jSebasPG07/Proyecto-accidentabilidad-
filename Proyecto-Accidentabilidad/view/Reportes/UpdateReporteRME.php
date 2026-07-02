@@ -46,6 +46,11 @@
                         <p class="form-control"><?php echo $datos['direccion'] ?></p>
                     </div>
 
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="barrio">Barrio</label>
+                        <p class="form-control"><?php echo $datos['barrio'] ?></p>
+                    </div>
+
     
                     <div class="col-12 col-md-6">
                         <label>Referencia del lugar</label>
@@ -56,10 +61,10 @@
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                         <<div>
-                            <?php if($datos['imagen_url'] != ""){ ?> // Se verifica si el reporte tiene una imagen registrada.
-                                <img src="<?php echo $datos['imagen_url']; ?>" width="120"> <!-- Si existe una imagen, se muestra en pantalla. -->
+                            <?php if($datos['imagen_url'] != ""){ ?> 
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120"> 
                             <?php } else { ?>
-                                <p class="form-control">Sin imagen</p> // Si no hay
+                                <p class="form-control">Sin imagen</p> 
                             <?php } ?>
                         </div>
                     </div>
@@ -67,16 +72,16 @@
                     
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> <!-- Se muestra la descripción registrada del reporte. -->
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> 
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?> // Se recorren los estados de la base de datos
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> 
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> <!-- Si el estado coincide con el del reporte, se marca como seleccionado. -->
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> 
                 
                             <?php echo $est['nombre']; ?>
             

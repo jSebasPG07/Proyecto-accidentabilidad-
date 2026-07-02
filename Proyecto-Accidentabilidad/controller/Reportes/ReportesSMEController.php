@@ -5,12 +5,12 @@
     class ReportesSMEController{
         public function getCreate(){
             $obj = new ReportesSMEModel();
-            $sql = "SELECT * FROM tipo_senal";
-            $nsenal = $obj->select($sql);
-            $sql = "SELECT * FROM tipo_dano_senal";
-            $tdano = $obj->select($sql);
             $sql = "SELECT * FROM orientacion_senal";
             $orientacionn = $obj->select($sql);
+            $sql = "SELECT * FROM tipo_dano_senal";
+            $tdano = $obj->select($sql);
+            $sql = "SELECT * FROM barrio";
+            $barrios = $obj->select($sql);
             include_once "../view/Reportes/ReportesSMEView.php";
         }
 
@@ -19,12 +19,18 @@
             $fechaaccidente = date("d-m-y");
             $orientacion = $_POST['orientacion'];
             $descripcion = $_POST['descripcion'];
+            $barrio = $_POST['barrio'];
             $tipo_via = $_POST['tipo_via'];
             $numero1 = strtoupper($_POST['numero1']);
-            $numero2 = $_POST['numero2'];
+            $comp1 = $_POST['comp1'];
+            $cuad1 = $_POST['cuad1'];
+            $numero2 = strtoupper($_POST['numero2']);
+            $comp2 = $_POST['comp2'];
+            $cuad2 = $_POST['cuad2'];
             $numero3 = $_POST['numero3'];
+            $direccion = preg_replace('/\s+/', ' ', trim(
+            $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
             $referencia = $_POST['referencia'];
-            $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
             $tsenal = $_POST['tsenal'];
             $tdano = $_POST['tdano'];
             $id_usuario = $_POST['id'];
@@ -69,12 +75,15 @@
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=ref_formato';</script>";
                 exit();
             }
-
             //Esta validacion es por si no selecciona un punto en el mapa no lo deja hacer el registro
             if($coordX == 0 || $coordY == 0){
                 echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=coordenadas';</script>";
                 exit();
             }
+
+            
+
+            
 
             $img = $_FILES['imagen']['name'];
             $archivo = $_FILES['imagen']['tmp_name'];
@@ -96,9 +105,9 @@
 
             if(move_uploaded_file($archivo, $ruta)){
                 $sql = "INSERT INTO sol_senal_mal_estado 
-                (fecha_senal_mal_estado,descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario, coordenadas)
+                (fecha_senal_mal_estado,descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_senal , id_tipo_dano_senal, id_orientacion, id_usuario, id_barrio, coordenadas)
                 VALUES 
-                ('$fechaaccidente','$descripcion','$ruta','$direccion','$referencia','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 
+                ('$fechaaccidente','$descripcion','$ruta','$direccion','$referencia','$id_estado','$tsenal','$tdano','$orientacion','$id_usuario', '$barrio',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))"; 
 
                 $ejecutar = $obj->insert($sql);
 
@@ -111,8 +120,31 @@
             } else {
                  echo "<script>window.location.href='".getUrl("Reportes","ReportesSME","getCreate")."&msg=imgerror';</script>";
             }
-
         }
+
+        public function getTipoSenal(){
+
+            $obj = new ReportesSMEModel();
+
+            $id_orientacion = $_GET['id_orientacion'];
+
+            $sql = "SELECT * 
+                FROM tipo_senal
+                WHERE id_orientacion = $id_orientacion
+                ORDER BY nombre_senal";
+
+            $tipos = $obj->select($sql);
+
+                echo '<option value="">Seleccione...</option>';
+
+            while($t = pg_fetch_assoc($tipos)){
+                ?>
+                <option value="<?php echo $t['id_tipo_senal']; ?>">
+                   <?php echo $t['nombre_senal']; ?>
+                </option>
+                <?php
+            }
+        }   
         public function getUpdate(){
             $obj = new ReportesSMEModel();
             
@@ -124,17 +156,20 @@
                        sme.imagen_url, 
                        sme.direccion,
                        sme.referencia,
+                       sme.coordenadas,
                        es.nombre AS estado, 
                        tp.nombre_senal AS tipo_senal,
                        td.descripcion AS tipo_dano,
                        ori.nombre AS orientacion, 
-                       u.numero_id AS usuario
+                       u.numero_id AS usuario,
+                       b.nombre AS Barrio
                 FROM sol_senal_mal_estado sme 
                 LEFT JOIN estado es ON sme.id_estado = es.id_estado 
                 LEFT JOIN tipo_senal tp ON sme.id_tipo_senal = tp.id_tipo_senal
                 LEFT JOIN tipo_dano_senal td ON sme.id_tipo_dano_senal = td.id_tipo_dano_senal 
                 LEFT JOIN orientacion_senal ori ON sme.id_orientacion = ori.id_orientacion 
                 LEFT JOIN usuarios u ON sme.id_usuario = u.id
+                LEFT JOIN barrio b ON sme.id_barrio = b.id_barrio
                 WHERE sme.id_sol_mal = $id_sol_mal";
 
             $reporte = $obj->select($sql);

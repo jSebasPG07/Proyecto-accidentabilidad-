@@ -18,6 +18,8 @@ class ReportesSolicitudNRController {
             $sqlDano = "SELECT * FROM tipo_dano_reductor";
             $danos = $obj->select($sqlDano);
 
+            $sql = "SELECT * FROM barrio";
+            $barrios = $obj->select($sql);
             include_once "../view/Reportes/ReportesSolicitudNR.php";
         }
 
@@ -28,11 +30,18 @@ class ReportesSolicitudNRController {
             $fechanreductor = date("d-m-y");
             $tipo_via = $_POST['tipo_via'];
             $descripcion = $_POST['descripcion'];
-            $numero1 = strtoupper($_POST['numero1']); 
-            $numero2 = $_POST['numero2'];
+            $barrio = $_POST['barrio'];
+            $tipo_via = $_POST['tipo_via'];
+            $numero1 = strtoupper($_POST['numero1']);
+            $comp1 = $_POST['comp1'];
+            $cuad1 = $_POST['cuad1'];
+            $numero2 = strtoupper($_POST['numero2']);
+            $comp2 = $_POST['comp2'];
+            $cuad2 = $_POST['cuad2'];
             $numero3 = $_POST['numero3'];
+            $direccion = preg_replace('/\s+/', ' ', trim(
+            $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
             $referencia = $_POST['referencia'];
-            $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
             $idTipoReductor = $_POST['id_tipo_reductor'];
             $idTipoDanoReductor = $_POST['id_tipo_dano_reductor'];
 
@@ -84,6 +93,8 @@ class ReportesSolicitudNRController {
                 exit();
             }
 
+            
+
 
             $img = $_FILES['imagen']['name'];
             $archivo = $_FILES['imagen']['tmp_name'];
@@ -108,9 +119,9 @@ class ReportesSolicitudNRController {
             if(move_uploaded_file($archivo, $ruta)){
 
                 $sql = "INSERT INTO sol_nuevo_reductor(
-                fecha_nuevo_reductor,descripcion,referencia,imagen_url,direccion,id_estado,id_tipo_reductor,id_tipo_dano_reductor,id_usuario,coordenadas)
+                fecha_nuevo_reductor,descripcion,referencia,imagen_url,direccion,id_estado,id_tipo_reductor,id_tipo_dano_reductor,id_usuario,id_barrio,coordenadas)
                 VALUES
-                ('$fechanreductor','$descripcion','$referencia','$ruta','$direccion','$idEstado','$idTipoReductor','$idTipoDanoReductor','$id_usuario',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
+                ('$fechanreductor','$descripcion','$referencia','$ruta','$direccion','$idEstado','$idTipoReductor','$idTipoDanoReductor','$id_usuario','$barrio',ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 
@@ -139,12 +150,14 @@ class ReportesSolicitudNRController {
                        es.nombre AS estado, 
                        tr.nombre AS tipo_reductor,
                        tdr.descripcion AS tipo_dano_reductor,  
-                       u.numero_id AS usuario
+                       u.numero_id AS usuario,
+                       b.nombre AS Barrio
                 FROM sol_nuevo_reductor rn 
                 LEFT JOIN estado es ON rn.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rn.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rn.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rn.id_usuario = u.id
+                LEFT JOIN barrio b ON rn.id_barrio = b.id_barrio
                 WHERE rn.id_sol_nuevas_red = $id_sol_nuevas_red";
         $reporte = $obj->select($sql);
 

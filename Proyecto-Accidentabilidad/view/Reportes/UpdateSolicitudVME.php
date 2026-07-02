@@ -30,26 +30,31 @@
                     <!-- Tipo de daño -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="idtipodanovia">Tipo de da&ntilde;o</label>
-                        <p class="form-control"><?php echo $datos['tipo_dano_via'] ?></p> <!-- Se muestra el tipo de daño de la vía registrado en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['tipo_dano_via'] ?></p> 
                     </div>
 
                     <!-- Dirección -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="direccion">Direcci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['direccion'] ?></p> <!-- Se muestra la dirección registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['direccion'] ?></p> 
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" for="barrio">Barrio</label>
+                        <p class="form-control"><?php echo $datos['barrio'] ?></p>
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="referencia">Referencia</label>
-                        <p class="form-control"><?php echo $datos['referencia'] ?></p> <!-- Se muestra la referencia registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['referencia'] ?></p> 
                     </div>
 
                     <!-- Imagen -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="imagen">Evidencia fotogr&aacute;fica</label>
                         <div>
-                            <?php if($datos['imagen_url'] != ""){ ?> // Se verifica si la solicitud tiene una imagen registrada.
-                                <img src="<?php echo $datos['imagen_url']; ?>" width="120"> <!-- Si existe una imagen, se muestra en pantalla. -->
+                            <?php if($datos['imagen_url'] != ""){ ?> 
+                                <img src="<?php echo $datos['imagen_url']; ?>" width="120"> 
                             <?php } else { ?>
                                 <p class="form-control">Sin imagen</p> //Si no hay imagen
                             <?php } ?>
@@ -59,16 +64,16 @@
                     <!-- Descripción -->
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Descripci&oacute;n</label>
-                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> <!-- Se muestra la descripción registrada en la solicitud. -->
+                        <p class="form-control"><?php echo $datos['descripcion'] ?></p> 
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label class="form-label fw-semibold" for="descripcion">Estado</label>
                         <select name="id_estado" id="estado" class="form-control" required>
-                            <?php while ($est = pg_fetch_assoc($estados)) { ?> <!-- Se recorren todos los estados de la base de datos. -->
+                            <?php while ($est = pg_fetch_assoc($estados)) { ?> 
             
                         <option value="<?php echo $est['id_estado']; ?>"
-                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> <!-- Marca como seleccionado el estado actual de la solicitud. -->
+                            <?php if($datos['estado'] == $est['nombre']) echo "selected"; ?>> 
                 
                             <?php echo $est['nombre']; ?>
             
@@ -84,8 +89,7 @@
 
                     </div>
 
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> <!-- Se envía el ID del usuario que inició sesión junto con el formulario. -->
-
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>"> 
                 </div>
 
             </form>

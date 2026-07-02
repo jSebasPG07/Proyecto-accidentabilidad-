@@ -171,6 +171,12 @@
                             <?php echo $ns['direccion']; ?>
                         </p>
                     </div>
+                    <div class="col-md-6 mb-3">
+                        <label><strong>Barrio</strong></label>
+                        <p class="form-control">
+                            <?php echo $ns['barrio']; ?>
+                        </p>
+                    </div>
 
                     <div class="col-md-6 mb-3">
                         <label><strong>Lugar de referencia</strong></label>

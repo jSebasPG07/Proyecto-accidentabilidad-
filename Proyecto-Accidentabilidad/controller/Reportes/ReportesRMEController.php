@@ -15,6 +15,9 @@ class ReportesRMEController {
         $sql2 = "SELECT * FROM tipo_dano_reductor";
         $tiposDanoReductor = $obj->select($sql2);
 
+        $sql = "SELECT * FROM barrio";
+            $barrios = $obj->select($sql);
+
         include_once "../view/Reportes/ReportesRMEView.php";
     }
 
@@ -23,12 +26,18 @@ class ReportesRMEController {
 
         $fecharme = date("d-m-y");
         $descripcion = $_POST['descripcion'];
+        $barrio = $_POST['barrio'];
         $tipo_via = $_POST['tipo_via'];
         $numero1 = strtoupper($_POST['numero1']);
-        $numero2 = $_POST['numero2'];
+        $comp1 = $_POST['comp1'];
+        $cuad1 = $_POST['cuad1'];
+        $numero2 = strtoupper($_POST['numero2']);
+        $comp2 = $_POST['comp2'];
+        $cuad2 = $_POST['cuad2'];
         $numero3 = $_POST['numero3'];
+        $direccion = preg_replace('/\s+/', ' ', trim(
+        $tipo_via . " " . $numero1 . " " . $comp1 . " " . $cuad1 . " # " . $numero2 . " " . $comp2 . " " .$cuad2 . " - " .$numero3));
         $referencia = $_POST['referencia'];
-        $direccion = "$tipo_via $numero1 # $numero2 - $numero3";
         $idtipored = $_POST['idtipored'];
         $idtipodanoreductor = $_POST['idtipodanoreductor'];
         $id_usuario = $_POST['id'];
@@ -79,6 +88,9 @@ class ReportesRMEController {
                 exit();
             }
 
+
+            
+
             $img = $_FILES['imagen']['name'];
             $archivo = $_FILES['imagen']['tmp_name'];
             $ruta = "../img/" . $img;
@@ -102,9 +114,9 @@ class ReportesRMEController {
             if (move_uploaded_file($archivo, $ruta)) {
 
                 $sql = "INSERT INTO sol_reductor_mal_estado 
-                            (fecha_reductor_mal_estado, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario, coordenadas) 
+                            (fecha_reductor_mal_estado, descripcion, imagen_url, direccion, referencia, id_estado, id_tipo_reductor, id_tipo_dano_reductor, id_usuario, id_barrio,coordenadas) 
                         VALUES 
-                            ('$fecharme','$descripcion', '$ruta', '$direccion', '$referencia','$id_estado','$idtipored', '$idtipodanoreductor', '$id_usuario', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
+                            ('$fecharme','$descripcion', '$ruta', '$direccion', '$referencia','$id_estado','$idtipored', '$idtipodanoreductor', '$id_usuario', '$barrio', ST_SetSRID(ST_MakePoint($coordX, $coordY), 4326))";
 
                 $ejecutar = $obj->insert($sql);
 
@@ -135,12 +147,14 @@ class ReportesRMEController {
                     es.nombre AS estado, 
                     tr.nombre AS tipo_reductor,
                     tdr.descripcion AS tipo_dano,  
-                    u.numero_id AS usuario
+                    u.numero_id AS usuario,
+                    b.nombre AS Barrio
                 FROM sol_reductor_mal_estado rm 
                 LEFT JOIN estado es ON rm.id_estado = es.id_estado 
                 LEFT JOIN tipo_reductor tr ON rm.id_tipo_reductor = tr.id_tipo_reductor
                 LEFT JOIN tipo_dano_reductor tdr ON rm.id_tipo_dano_reductor = tdr.id_tipo_dano_reductor  
                 LEFT JOIN usuarios u ON rm.id_usuario = u.id
+                LEFT JOIN barrio b ON rm.id_barrio = b.id_barrio
                 WHERE rm.id_sol_red_mal = $id_sol_red_mal";
 
         $reporte = $obj->select($sql);
